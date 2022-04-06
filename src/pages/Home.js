@@ -18,14 +18,15 @@ const Home = () => {
 				name='conundrum'
 				description="find today's scrambled words"
 			/>
-			<GameTypeScreen
-				url={'/unscramble'}
-				name='unscramble'
-				description="find today's scrambled words"
-			/>
+
 			<GameTypeScreen
 				url={'/letterround'}
 				name='letter round'
+				description="find today's scrambled words"
+			/>
+			<GameTypeScreen
+				url={'/unscramble'}
+				name='unscramble'
 				description="find today's scrambled words"
 			/>
 		</StyledHome>

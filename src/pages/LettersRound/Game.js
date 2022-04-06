@@ -259,7 +259,6 @@ const StyledGame = styled.section`
 					}
 				}
 			}
-			/* border-spacing: 2rem; */
 		}
 		.letter-round-user-result {
 			font-size: 2.6rem;
@@ -276,22 +275,17 @@ const StyledGame = styled.section`
 		}
 		.best-attempt {
 			list-style: none;
-			/* align-self: center; */
-			/* display: none; */
+
 			li {
-				/* font-family: 'Indie Flower', cursive; */
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				/* font-size: 3rem; */
 				letter-spacing: 2px;
-				/* border-bottom: 3px solid ${({ theme }) => theme.bgChosen}; */
 				column-gap: 1rem;
 				p {
 					font-size: 2rem;
 					span {
 						color: ${({ theme }) => theme.bgChosen};
-						/* font-weight: bolder; */
 						font-size: 2.6rem;
 					}
 				}
@@ -334,7 +328,6 @@ const StyledGame = styled.section`
 					flex-direction: row;
 					align-items: center;
 					justify-content: space-between;
-					/* font-family: 'Bebas Neue', cursive; */
 					letter-spacing: 2px;
 					font-size: 1.6rem;
 					padding: 0.5rem 1rem;
@@ -347,42 +340,13 @@ const StyledGame = styled.section`
 					column-gap: 1rem;
 				}
 			}
-			/* .share-wrapper {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-around;
-				row-gap: 2rem;
-				border-left: 2px solid ${({ theme }) => theme.bg};
-				flex: 1;
-				p {
-					font-size: 1.6rem;
-					line-height: 1;
-				}
-				button {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-					justify-content: space-around;
-					font-family: 'Bebas Neue', cursive;
-					letter-spacing: 2px;
-					font-size: 1.6rem;
-					padding: 0.5rem 1rem;
-					background-color: ${({ theme }) => theme.bgChosen};
-					border: none;
-					border-radius: 5px;
-					color: ${({ theme }) => theme.syntax};
-					cursor: pointer;
-					padding: 0.2rem 1rem 0.5rem 1rem;
-				}
-			} */
+
 			button {
 				display: flex;
 				align-items: center;
 				border: none;
 				background-color: ${({ theme }) => theme.bgChosen};
 				column-gap: 1rem;
-				/* border: 2px solid white; */
 			}
 		}
 		&.show {
@@ -394,7 +358,6 @@ const StyledGame = styled.section`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* flex: 1; */
 	}
 	.game-variables-container {
 		display: block;
@@ -403,9 +366,7 @@ const StyledGame = styled.section`
 	}
 	.words-display-container {
 		display: flex;
-		/* justify-content: auto; */
-		/* align-items: center; */
-		/* width: 100%; */
+
 		flex: 1;
 	}
 	.user-letter-container {

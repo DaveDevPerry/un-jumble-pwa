@@ -16,6 +16,12 @@ import ConundrumHome from './pages/Conundrum/Home';
 import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
 import ConundrumRules from './pages/Conundrum/Rules';
+// LETTER ROUND
+import LetterRoundHome from './pages/LettersRound/Home';
+import LetterRoundRules from './pages/LettersRound/Rules';
+import LetterSelect from './pages/LettersRound/LetterSelect';
+import LetterRoundGame from './pages/LettersRound/Game';
+import LetterRoundResults from './pages/LettersRound/Results';
 
 function App() {
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -32,6 +38,12 @@ function App() {
 	const [allFiveLetterWords, setAllFiveLetterWords] = useState(null);
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
+
+	// LETTER ROUND
+	const [letterTypes, setLetterTypes] = useState([]);
+	const [gameLetters, setGameLetters] = useState([]);
+	const [isLetterRoundTimeUp, setIsLetterRoundTimeUp] = useState(false);
+	const [letterRoundData, setLetterRoundData] = useState(null);
 
 	useEffect(() => {
 		const letterRoundWords = englishDictionary.filter(function (word) {
@@ -142,6 +154,48 @@ function App() {
 								}
 							/>
 							{/* letter round  */}
+							<Route path='/letterround' element={<LetterRoundHome />} />
+							<Route path='/letterround/rules' element={<LetterRoundRules />} />
+							<Route
+								path='/selectletters'
+								element={
+									<LetterSelect
+										gameLetters={gameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										setGameLetters={setGameLetters}
+									/>
+								}
+							/>
+							<Route
+								path='/letterround/game'
+								element={
+									<LetterRoundGame
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										dictionary={dictionary}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+									/>
+								}
+							/>
+							<Route
+								path='/letterround/results'
+								element={
+									<LetterRoundResults
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										setLetterTypes={setLetterTypes}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+									/>
+								}
+							/>
 
 							<Route path='*' element={<ErrorPage />} />
 						</Routes>

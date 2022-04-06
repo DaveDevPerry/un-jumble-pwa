@@ -81,7 +81,8 @@ export const GlobalStyles = createGlobalStyle`
 	color: ${({ theme }) => theme.syntax};
 	cursor: pointer;
 	border: none;
-	width: 100%;
+	/* width: 100%; */
+  height: 4.6rem;
 
   }
 .hide{

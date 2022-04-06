@@ -50,6 +50,7 @@ const StyledFooter = styled.footer`
 		line-height: 1px;
 		letter-spacing: initial;
 		width: unset;
+		height: 1rem;
 	}
 	#savannah {
 		position: absolute;

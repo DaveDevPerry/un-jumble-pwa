@@ -1,32 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import GameTitle from '../../components/GameTitle';
+import Button from '../../components/Button';
 // import { Link } from 'react-router-dom';
 
 const LetterRoundHome = () => {
 	let navigate = useNavigate();
 	// let { username } = useParams();
 	return (
-		<StyledLetterRoundHome>
-			<div className='how-to-play'>
-				<h2>How to play</h2>
-				<p>
-					You must choose how many vowels and consonants you would like to make
-					up nine randomly chosen letters.
-				</p>
-				<p>There must be at least three vowels and four consonants.</p>
-				<p>
-					You then have 30 seconds to find the longest word that they can make
-					out of these letters.
-				</p>
+		<>
+			<GameTitle title='letter round' />
+			<StyledLetterRoundHome>
+				<div className='how-to-play'>
+					<h2>How to play</h2>
+					<p>
+						You must choose how many vowels and consonants you would like to
+						make up nine randomly chosen letters.
+					</p>
+					<p>There must be at least three vowels and four consonants.</p>
+					<p>
+						You then have 30 seconds to find the longest word that they can make
+						out of these letters.
+					</p>
 
-				{/* <p>
+					{/* <p>
 					You must choose how many vowels and consonants you would like
 					to make up nine randomly chosen letters. There must be at least three
 					vowels and four consonants. You then have 30 seconds to
 					find the longest word that they can make out of these letters.
 				</p> */}
-				{/* <ul>
+					{/* <ul>
 					<li>
 						<p>Choose a random six Letters.</p>
 					</li>
@@ -41,48 +45,29 @@ const LetterRoundHome = () => {
 					</li>
 					<li>
 						<p>Not all Letters need to be used.</p>
-					</li>
-				</ul> */}
-			</div>
-			<button
-				className='btn start-btn'
-				onClick={() => {
-					navigate('/selectletters');
-				}}
-			>
-				play
-			</button>
-			<button
-				className='btn'
-				onClick={() => {
-					navigate('/letterround/rules');
-				}}
-			>
-				RULES
-			</button>
-		</StyledLetterRoundHome>
-		// <StyledLetterRoundHome
-		// 	className={
-		// 		isGameInProgress === false && showRules === false
-		// 			? 'LetterRoundHome-container show'
-		// 			: 'LetterRoundHome-container '
-		// 	}
-		// >
-		// 	<div className='how-to-play'>
-		// 		<h2>How to play</h2>
-		// 		<p>
-		// 			Choose a random six Letters and you have 30 seconds to use your
-		// 			Letters to get to a randomly generated 3 digit Letter. Each Letter
-		// 			must only be used once. However not all Letters need to be used.
-		// 		</p>
-		// 	</div>
-		// 	<button className='btn start-btn' onClick={handleStart}>
-		// 		START
-		// 	</button>
-		// 	<button className='btn' onClick={handleRules}>
-		// 		RULES
-		// 	</button>
-		// </StyledLetterRoundHome>
+						</li>
+					</ul> */}
+				</div>
+				<button
+					className='btn start-btn'
+					onClick={() => {
+						navigate('/selectletters');
+					}}
+				>
+					play
+				</button>
+				{/* <button
+					className='btn'
+					onClick={() => {
+						navigate('/letterround/rules');
+					}}
+				>
+					RULES
+				</button> */}
+				<Button url='/letterround/rules' name='rules' />
+			</StyledLetterRoundHome>
+			{/* <Button url='/conundrum/rules' name='rules' /> */}
+		</>
 	);
 };
 
