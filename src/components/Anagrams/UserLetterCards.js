@@ -19,6 +19,7 @@ const UserLetterCards = ({
 	handleLetter,
 	handleReset,
 	handleSubmit,
+	handleSkip,
 }) => {
 	// const [shuffledTiles, setShuffledTiles] = useState(null);
 
@@ -98,13 +99,19 @@ const UserLetterCards = ({
 	return (
 		<StyledUserLetterCards>
 			<div className='row-btns-container'>
-				<div className='button'>
+				<div className='button small-btn'>
 					<button className='btn-back btn-cta'>reset</button>
 					<button className='btn-front btn-cta' onClick={handleReset}>
 						reset
 					</button>
 				</div>
-				<div className='button'>
+				<div className='button small-btn'>
+					<button className='btn-back btn-cta'>skip</button>
+					<button className='btn-front btn-cta' onClick={handleSkip}>
+						skip
+					</button>
+				</div>
+				<div className='button small-btn'>
 					<button className='btn-back btn-cta'>Submit</button>
 					<button className='btn-front btn-cta' onClick={handleSubmit}>
 						Submit
@@ -136,13 +143,28 @@ const StyledUserLetterCards = styled.div`
 	.row-btns-container {
 		perspective: 500px;
 		display: flex;
-		column-gap: 2rem;
+		column-gap: 1rem;
 		margin-bottom: 1rem;
+
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		/* grid-template-rows:  */
 	}
 	.button {
 		position: relative;
 		height: 45px;
 		flex: 1;
+		&.small-btn {
+			height: 34px;
+			/* font-size: 2.5rem; */
+			&:last-child {
+				grid-column: span 2;
+			}
+		}
+		&.small-btn > button {
+			height: 34px;
+			font-size: 2rem;
+		}
 	}
 	.btn-cta {
 		position: absolute;

@@ -115,7 +115,7 @@ const StyledSmallNumberOutput = styled.div`
 		color: ${({ theme }) => theme.syntax}; */
 
 		/* border-bottom: 1px solid ${({ theme }) => theme.borderPrimary}; */
-		border-radius: 1rem;
+		border-radius: 5px;
 		padding: 1rem 1rem 1rem 1rem;
 		font-size: 3rem;
 		font-family: 'Montserrat', sans-serif;
@@ -138,6 +138,7 @@ const StyledSmallNumberOutput = styled.div`
 	}
 	.guess-front > p.reveal {
 		transform: translateY(0px);
+		font-family: 'Montserrat', sans-serif;
 	}
 `;
 

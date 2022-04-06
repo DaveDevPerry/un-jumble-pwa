@@ -5,7 +5,8 @@ import GamePanel from '../../components/Anagrams/GamePanel';
 // import GuessTiles from '../../components/Anagrams/GuessTiles';
 
 // import InGameControls from '../../components/Anagrams/InGameControls';
-import InGameMessages from '../../components/Anagrams/InGameMessages';
+// import InGameMessages from '../../components/Anagrams/InGameMessages';
+import InGameStats from '../../components/Anagrams/InGameStats';
 // import PlayerTiles from '../../components/Anagrams/PlayerTiles';
 import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
@@ -609,6 +610,18 @@ const AnagramRoundGame = ({
 		}
 	};
 
+	const handleSkip = (e) => {
+		e.preventDefault();
+		console.log('reset tiles');
+		setCurrentWord([]);
+		// setCurrentUserGuess([]);
+		const tiles = document.querySelectorAll('.card-front');
+		tiles.forEach((tile) => {
+			tile.classList.remove('active');
+			tile.style.pointerEvents = 'initial';
+		});
+	};
+
 	// clears letters from ui
 	const resetWord = () => {
 		console.log('reset word - check states');
@@ -659,6 +672,8 @@ const AnagramRoundGame = ({
 	// 			isCorrect: isWordValid,
 	// 		},
 
+	const [currentWordScore, setCurrentWordScore] = useState(0);
+
 	// checks validity of word and displays relative msg
 	const checkWord = () => {
 		// console.log(currentUserGuess);
@@ -668,12 +683,22 @@ const AnagramRoundGame = ({
 		console.log('current word', currentWord);
 		if (!dictionary.includes(currentWord)) {
 			console.log('wrong');
+			setCurrentWordScore(-2);
+			setAllUserWords([
+				...allUserWords,
+				{ word: currentTargetWord, score: currentWordScore, isCorrect: false },
+			]);
 			// showAlert(currentTargetWord);
 			// return;
 		}
 		if (dictionary.includes(currentWord)) {
 			console.log('right');
-			setAllUserWords([...allUserWords, currentWord]);
+			getWordScore();
+			// setAllUserWords([...allUserWords, currentWord]);
+			setAllUserWords([
+				...allUserWords,
+				{ word: currentWord, score: currentWordScore, isCorrect: true },
+			]);
 
 			// setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
 			// showAlert('Correct!');
@@ -695,6 +720,37 @@ const AnagramRoundGame = ({
 		}
 		resetWord();
 		getNewWord();
+	};
+
+	const getWordScore = () => {
+		let newWordScore = 0;
+		switch (currentWord.length) {
+			case 9:
+				newWordScore = 20;
+				break;
+			case 8:
+				newWordScore = 13;
+				break;
+			case 7:
+				newWordScore = 10;
+				break;
+			case 6:
+				newWordScore = 7;
+				break;
+			case 5:
+				newWordScore = 5;
+				break;
+			case 4:
+				newWordScore = 3;
+				break;
+			case 3:
+				newWordScore = 1;
+				break;
+			default:
+				break;
+		}
+		setCurrentWordScore(newWordScore);
+		return;
 	};
 
 	// updates ui with letter chosen by user
@@ -719,6 +775,24 @@ const AnagramRoundGame = ({
 		}
 	}, [currentWord]);
 
+	// const [first, setfirst] = useState(second)
+
+	// const [currentGameData, setCurrentGameData] = useState({
+	// 	words: 0,
+	// 	score: 0,
+	// 	winPercentage: 0,
+	// })
+	const [currentScore, setCurrentScore] = useState(0);
+	const [totalWordCount, setTotalWordCount] = useState(0);
+	console.log(setCurrentScore, setTotalWordCount);
+	// useEffect(() => {
+
+	// 	let totalWords = allUserWords.length;
+	// 	setTotalWordCount(totalWords);
+	// 	let totalScore = currentScore;
+	// 	setCurrentScore((totalScore += currentWordScore));
+	// }, [allUserWords]);
+
 	return (
 		<StyledGame>
 			{/* <h2>{wordOfTheDay}</h2> */}
@@ -729,22 +803,26 @@ const AnagramRoundGame = ({
 			{/* <Controls /> */}
 			{/* <Controls handleStart={handleStart} isPlaying={isPlaying} /> */}
 			{/* <GuessTiles /> */}
-
-			<div className='words-display-container'>
-				<UserWordsDisplay
-					// conundrumOfTheDay={conundrumOfTheDay}
-					// handleStartGame={handleStartGame}
-					// shuffled={shuffled}
-					// currentWord={currentWord}
-					// setCurrentWord={setCurrentWord}
-					allUserWords={allUserWords}
-					setAllUserWords={setAllUserWords}
-				/>
-			</div>
-			<div className='game-variables-container'>
-				<GamePanel handleStart={handleStart} />
-				{/* <GamePanel handleStartGame={handleStartGame} /> */}
-			</div>
+			<InGameStats
+				allUserWords={allUserWords}
+				currentScore={currentScore}
+				totalWordCount={totalWordCount}
+			/>
+			{/* <div className='words-display-container'> */}
+			<UserWordsDisplay
+				// conundrumOfTheDay={conundrumOfTheDay}
+				// handleStartGame={handleStartGame}
+				// shuffled={shuffled}
+				// currentWord={currentWord}
+				// setCurrentWord={setCurrentWord}
+				allUserWords={allUserWords}
+				setAllUserWords={setAllUserWords}
+			/>
+			{/* </div> */}
+			{/* <div className='game-variables-container'> */}
+			<GamePanel handleStart={handleStart} />
+			{/* <GamePanel handleStartGame={handleStartGame} /> */}
+			{/* </div> */}
 			{/* <div className='user-letter-container'>
 				<UserLetterCards
 					currentWord={currentWord}
@@ -759,7 +837,7 @@ const AnagramRoundGame = ({
 				
 				/>
 			</div> */}
-			<InGameMessages />
+			{/* <InGameMessages /> */}
 			{/* <InGameControls /> */}
 			{/* <InGameControls handleDelete={handleDelete} handleSubmit={handleSubmit} /> */}
 			{/* <PlayerTiles /> */}
@@ -773,28 +851,29 @@ const AnagramRoundGame = ({
 				/>
 			</div> */}
 
-			<div className='user-letter-container'>
-				<UserLetterCards
-					// currentLetterRoundWord={currentLetterRoundWord}
-					// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-					currentWord={currentWord}
-					setCurrentWord={setCurrentWord}
-					dictionary={dictionary}
-					shuffledTiles={shuffledTiles}
-					currentShuffledTargetWord={currentShuffledTargetWord}
-					handleLetter={handleLetter}
-					handleReset={handleReset}
-					handleSubmit={handleSubmit}
-					// setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-					// allLetterRoundUserWords={allLetterRoundUserWords}
-					// setGotNineLetterWord={setGotNineLetterWord}
-					// setLetterRoundLongestWord={setLetterRoundLongestWord}
-					// letterRoundLongestWord={letterRoundLongestWord}
-					// gameLetters={gameLetters}
-					// setLetterRoundData={setLetterRoundData}
-					// letterRoundData={letterRoundData}
-				/>
-			</div>
+			{/* <div className='user-letter-container'> */}
+			<UserLetterCards
+				// currentLetterRoundWord={currentLetterRoundWord}
+				// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				currentWord={currentWord}
+				setCurrentWord={setCurrentWord}
+				dictionary={dictionary}
+				shuffledTiles={shuffledTiles}
+				currentShuffledTargetWord={currentShuffledTargetWord}
+				handleLetter={handleLetter}
+				handleReset={handleReset}
+				handleSubmit={handleSubmit}
+				handleSkip={handleSkip}
+				// setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				// allLetterRoundUserWords={allLetterRoundUserWords}
+				// setGotNineLetterWord={setGotNineLetterWord}
+				// setLetterRoundLongestWord={setLetterRoundLongestWord}
+				// letterRoundLongestWord={letterRoundLongestWord}
+				// gameLetters={gameLetters}
+				// setLetterRoundData={setLetterRoundData}
+				// letterRoundData={letterRoundData}
+			/>
+			{/* </div> */}
 			{/* <LetterRoundResults
 				showLetterRoundResults={showLetterRoundResults}
 				allLetterRoundUserWords={allLetterRoundUserWords}
@@ -1009,7 +1088,7 @@ const StyledGame = styled.section`
 			opacity: 1;
 		}
 	}
-	.timer-container {
+	/* .timer-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -1026,7 +1105,7 @@ const StyledGame = styled.section`
 	}
 	.user-letter-container {
 		display: block;
-	}
+	} */
 
 	/* .user-answers-container {
 		display: block;

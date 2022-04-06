@@ -6,6 +6,17 @@ const UserWordsDisplay = ({ allUserWords }) => {
 		<StyledWordsDisplay>
 			{/* <p className='update-current-word-elem'>{currentWord}</p> */}
 			<ul>
+				{allUserWords.map((userWord, index) => {
+					return (
+						<li key={userWord.word + index}>
+							<p className={userWord.isCorrect === false ? 'strike' : ''}>
+								{userWord.word}
+							</p>
+						</li>
+					);
+				})}
+			</ul>
+			{/* <ul>
 				{allUserWords
 					.sort(function (a, b) {
 						return parseFloat(b.length) - parseFloat(a.length);
@@ -15,20 +26,23 @@ const UserWordsDisplay = ({ allUserWords }) => {
 							<li key={word + index}>
 								<p>
 									{word}
-									{/* <span>{word.length}</span> */}
 								</p>
 							</li>
 						);
 					})}
-			</ul>
+			</ul> */}
 		</StyledWordsDisplay>
 	);
 };
 const StyledWordsDisplay = styled.section`
-	background-color: ${({ theme }) => theme.bgTile};
+	/* background-color: ${({ theme }) => theme.bgTile}; */
+	background-color: ${({ theme }) => theme.syntax};
 	padding: 1rem 2rem;
 	border-radius: 10px;
+	/* display: flex; */
 	width: 100%;
+	flex: 1;
+	border: 6px solid ${({ theme }) => theme.bgChosen};
 	ul {
 		list-style: none;
 		font-size: 3rem;
@@ -40,8 +54,14 @@ const StyledWordsDisplay = styled.section`
 			display: flex;
 			justify-content: flex-start;
 			p {
-				font-size: 1.4rem;
+				font-size: 1.8rem;
 				text-transform: capitalize;
+				color: black;
+				&.strike {
+					text-decoration: line-through;
+					color: #9e9a9a;
+					color: #ca0404;
+				}
 			}
 		}
 	}

@@ -32,7 +32,7 @@ const StyledGuessTiles = styled.section`
 
 	.guess-tile {
 		border-bottom: 4px solid ${({ theme }) => theme.borderPrimary};
-		border-radius: 1rem;
+		border-radius: 5px;
 		padding: 1rem 1rem 1rem 1rem;
 		font-size: 3.5rem;
 		font-family: 'Fredoka', sans-serif;
