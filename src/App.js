@@ -22,6 +22,10 @@ import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
 import LetterRoundResults from './pages/LettersRound/Results';
+import AnagramRoundHome from './pages/Anagrams/Home';
+import AnagramRoundRules from './pages/Anagrams/Rules';
+import AnagramRoundGame from './pages/Anagrams/Game';
+import AnagramRoundResults from './pages/Anagrams/Results';
 
 function App() {
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -150,6 +154,53 @@ function App() {
 									<ConundrumResults
 									// conundrumData={conundrumData}
 									// setConundrumData={setConundrumData}
+									/>
+								}
+							/>
+							{/* anagram round  */}
+							<Route path='/anagramround' element={<AnagramRoundHome />} />
+							<Route
+								path='/anagramround/rules'
+								element={<AnagramRoundRules />}
+							/>
+							{/* <Route
+								path='/selectletters'
+								element={
+									<LetterSelect
+										gameLetters={gameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										setGameLetters={setGameLetters}
+									/>
+								}
+							/> */}
+							<Route
+								path='/anagramround/game'
+								element={
+									<AnagramRoundGame
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										dictionary={dictionary}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+										allFiveLetterWords={allFiveLetterWords}
+									/>
+								}
+							/>
+							<Route
+								path='/anagramround/results'
+								element={
+									<AnagramRoundResults
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										setLetterTypes={setLetterTypes}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
 									/>
 								}
 							/>
