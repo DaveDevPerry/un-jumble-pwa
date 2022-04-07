@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import UserSelectedLetters from '../../components/LettersRound/UserSelectLetters';
 import LetterCards from '../../components/LettersRound/LetterCards';
-import GameTitle from '../../components/GameTitle';
+import GameTitle from '../../components/Global/GameTitle';
 
 const LetterSelect = ({
 	gameLetters,

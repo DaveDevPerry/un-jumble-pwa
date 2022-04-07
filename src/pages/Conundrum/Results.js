@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import NextGameCountdown from '../../components/NextGameCountdown';
+import NextGameCountdown from '../../components/Global/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
 import { BsFillShareFill, BsWhatsapp } from 'react-icons/bs';
+import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
+import GameTitle from '../../components/Global/GameTitle';
 
 const ConundrumResults = ({
 	showResults,
@@ -11,6 +13,15 @@ const ConundrumResults = ({
 	isNextDayCountdownActive,
 	setIsNextDayCountdownActive,
 }) => {
+	useEffect(() => {
+		console.log('conundrum results');
+		setTimeout(() => {
+			const gameLetterTiles = document.querySelectorAll('.results-card');
+			gameLetterTiles.forEach((tile) => {
+				tile.classList.add('visible');
+			});
+		}, 1000);
+	}, []);
 	// const [meaning, setMeaning] = useState('');
 	let navigate = useNavigate();
 	// const API_KEY = '573fddf5-f4bb-412f-a305-f614bfb3d5f3';
@@ -114,17 +125,16 @@ const ConundrumResults = ({
 	// console.log(allWordsSorted, 'all sorted');
 	// console.log(usersBestWord, 'best');
 	// console.log(best, 'best');
-	useEffect(() => {
-		console.log('conundrum results');
-	}, []);
+
 	return (
 		<>
+			<GameTitle title='results' />
 			<StyledConundrumResults>
 				{/* <StyledConundrumResults
 			className={showResults ? 'results-modal show' : 'results-modal'}
 		> */}
-				<h2>RESULTS</h2>
-				<div className='conundrum-stats-container'>
+				{/* <h2>RESULTS</h2> */}
+				<div className='conundrum-stats-container hide'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
@@ -137,27 +147,61 @@ const ConundrumResults = ({
 						<p>100</p>
 						<p>win %</p>
 					</div>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>current streak</p>
+				</div>
+				<div className='conundrum-level-stats-grid'>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCrossMark size='15px' color='#8a0202' />
+						</p>
+						<p>master</p>
 					</div>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>max streak</p>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCrossMark size='15px' color='#8a0202' />
+						</p>
+						<p>expert</p>
+					</div>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCrossMark size='15px' color='#8a0202' />
+						</p>
+						<p>advanced</p>
+					</div>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCheckMark size='15px' color='#004600' />
+						</p>
+						<p>intermediate</p>
+					</div>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCrossMark size='15px' color='#8a0202' />
+						</p>
+						<p>beginner</p>
+					</div>
+					<div className='level-stat-wrapper'>
+						<p>
+							<GiCheckMark size='15px' color='#004600' />
+						</p>
+						<p>advanced</p>
 					</div>
 				</div>
 
 				{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
-				{/* <StyledLetterOutput>
-				{conundrum.split('').map((letter, index) => {
-					return (
-						<div key={index} className='card'>
-							<div className='card-back card-letter'>{letter}</div>
-							<div className='card-front card-letter'>&nbsp;</div>
-						</div>
-					);
-				})}
-			</StyledLetterOutput> */}
+				<StyledLetterOutput>
+					{conundrum.split('').map((letter, index) => {
+						return (
+							<div key={index} className='results-card'>
+								<div className='results-card-back results-card-letter'>
+									&nbsp;
+								</div>
+								<div className='results-card-front results-card-letter'>
+									{letter}
+								</div>
+							</div>
+						);
+					})}
+				</StyledLetterOutput>
 				{/* <p className='conundrum-meaning'>{meaning}</p> */}
 				<p className='conundrum-meaning'>meaning of the word goes here</p>
 				{/* <ul className='best-attempt'>
@@ -193,16 +237,14 @@ const ConundrumResults = ({
 					<p>{longestWord.length} letters</p>
 				</li>
 			</ul> */}
-				<p className='conundrum-user-result'>
-					{gotConundrum ? 'CONGRATULATIONS!' : 'BETTER LUCK TOMORROW'}
-				</p>
+				<p className='conundrum-user-result'>CONGRATULATIONS!</p>
 				{/* <p className='conundrum-user-result'>
 				{gotConundrum.length === 9
 					? 'CONGRATULATIONS!'
 					: 'BETTER LUCK TOMORROW'}
 			</p> */}
 				<div className='points-container'>
-					<h2 id='share-conundrum-points'>{gotConundrum ? '+1' : ''}</h2>
+					<h2 id='share-conundrum-points'>+1</h2>
 					<p>win</p>
 				</div>
 
@@ -350,6 +392,37 @@ const StyledConundrumResults = styled.section`
 			}
 		}
 	}
+	.conundrum-level-stats-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(1, 1fr);
+		grid-gap: 1rem;
+		.level-stat-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			flex: 1;
+			p {
+				font-size: 2rem;
+				font-weight: 800;
+				line-height: 1;
+				color: ${({ theme }) => theme.bgChosen};
+				&:last-child {
+					font-family: 'Montserrat';
+					text-transform: capitalize;
+					font-size: 1.2rem;
+					font-weight: 400;
+					text-align: center;
+					color: ${({ theme }) => theme.syntax};
+				}
+			}
+		}
+	}
+	.conundrum-meaning {
+		text-align: center;
+	}
 	.conundrum-user-result {
 		font-size: 3rem;
 		border-top: 2px solid ${({ theme }) => theme.bgChosen};
@@ -422,103 +495,54 @@ const StyledConundrumResults = styled.section`
 			}
 		}
 	}
-	/* position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 310px;
-	background: ${({ theme }) => theme.bgTile};
-	border-radius: 5px;
-	padding: 1rem 0.5rem;
-	opacity: 0;
-	justify-content: space-between;
-	flex-direction: column;
-	display: flex;
-	z-index: 500000;
-	pointer-events: none;
-	transition: opacity 300ms ease-in;
-	p {
-		display: flex;
-		align-items: center;
-		align-self: center;
-		span {
-			font-size: 6rem;
-			color: ${({ theme }) => theme.bgChosen};
-			padding: 0 0.5rem;
-			font-weight: bold;
-		}
-	}
-	&.show {
-		opacity: 1;
-		pointer-events: all;
-	}
-	.close-results-btn {
-		width: 50%;
-		align-self: center;
-		font-size: 2rem;
-		font-weight: bold;
-		padding: 0.5rem 1rem;
-		margin-top: 2rem;
-		margin-bottom: 1rem;
-		background-color: ${({ theme }) => theme.bgChosen};
-		border: 1px solid ${({ theme }) => theme.btnBorder};
-		border-radius: 5px;
-		color: ${({ theme }) => theme.syntax};
-		opacity: 0;
-		transition: opacity 300ms ease-in;
-		&.show {
-			display: block;
-			opacity: 1;
-			pointer-events: all;
-		}
-	} */
 `;
-// const StyledLetterOutput = styled.div`
-// 	display: grid;
-// 	justify-content: center;
-// 	grid-template-columns: repeat(var(--letter-count), 1fr);
-// 	grid-template-rows: repeat(1, 4.5rem);
-// 	border-radius: 5px;
-// 	perspective: 500px;
-// 	gap: 0.3rem;
-// 	.card {
-// 		position: relative;
-// 	}
-// 	.card-letter {
-// 		position: absolute;
-// 		width: 100%;
-// 		height: 100%;
-// 		display: flex;
-// 		justify-content: center;
-// 		align-items: center;
-// 		overflow: hidden;
-// 		backface-visibility: hidden;
-// 		transition: transform 500ms ease-in-out;
-// 	}
-// 	.card.visible .card-back {
-// 		transform: rotateY(-180deg);
-// 	}
-// 	.card.visible .card-front {
-// 		transform: rotateY(0);
-// 	}
+const StyledLetterOutput = styled.div`
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(var(--letter-count), 1fr);
+	grid-template-rows: repeat(1, 4.5rem);
+	border-radius: 5px;
+	perspective: 500px;
+	gap: 0.3rem;
+	.results-card {
+		position: relative;
+	}
+	.results-card-letter {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		backface-visibility: hidden;
+		transition: transform 500ms ease-in-out;
+	}
+	.results-card.visible .results-card-back {
+		transform: rotateY(-180deg);
+	}
+	.results-card.visible .results-card-front {
+		transform: rotateY(0);
+	}
 
-// 	.card-back {
-// 		font-size: 3rem;
-// 		outline: none;
-// 		background-color: ${({ theme }) => theme.bgChosen};
-// 		color: ${({ theme }) => theme.syntax};
-// 		display: grid;
-// 		place-content: center;
-// 		border-radius: 5px;
-// 	}
-// 	.card-front {
-// 		font-size: 3rem;
-// 		outline: none;
-// 		display: grid;
-// 		place-content: center;
-// 		border-radius: 5px;
-// 		transform: rotateY(180deg);
-// 		background-color: ${({ theme }) => theme.bgChosen};
-// 	}
-// `;
+	.results-card-back {
+		font-size: 3rem;
+		outline: none;
+		background-color: ${({ theme }) => theme.bgTile};
+
+		display: grid;
+		place-content: center;
+		border-radius: 5px;
+	}
+	.results-card-front {
+		font-size: 3rem;
+		outline: none;
+		display: grid;
+		place-content: center;
+		border-radius: 5px;
+		transform: rotateY(180deg);
+		background-color: ${({ theme }) => theme.bgChosen};
+		color: ${({ theme }) => theme.syntax};
+	}
+`;
 export default ConundrumResults;

@@ -117,6 +117,7 @@ const StyledNextGameCountdown = styled.div`
 	}
 	.clock section p {
 		font-size: 4rem;
+		font-family: 'Roboto Mono', monospace;
 	}
 	.clock section small {
 		color: silver;

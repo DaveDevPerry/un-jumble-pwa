@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import NextGameCountdown from '../../components/NextGameCountdown';
+import NextGameCountdown from '../../components/Global/NextGameCountdown';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
 import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';

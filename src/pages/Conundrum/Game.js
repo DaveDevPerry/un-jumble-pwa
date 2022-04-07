@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ClockTimer from '../../components/Conundrum/ClockTimer';
+// import ClockTimer from '../../components/Conundrum/ClockTimer';
 import GamePanel from '../../components/Conundrum/GamePanel';
-import UserLetterCards from '../../components/Conundrum/UserLetterCards';
 import UserWordsDisplay from '../../components/Conundrum/UserWordsDisplay';
-import ConundrumResults from '../../pages/Conundrum/Results';
+// import ConundrumResults from '../../pages/Conundrum/Results';
 import { useNavigate } from 'react-router-dom';
-// import RotatingButton from '../../components/RotatingButton';
+import ConundrumUserLetterCards from '../../components/Conundrum/UserLetterCards';
 
 const ConundrumGame = ({
 	dictionary,
@@ -17,19 +16,29 @@ const ConundrumGame = ({
 	allFiveLetterWords,
 	allFourLetterWords,
 	gameMode,
+	showResults,
+	gotConundrum,
+	setIsNextDayCountdownActive,
+	conundrum,
+	setConundrum,
+	setGotConundrum,
+	setShowResults,
 }) => {
+	useEffect(() => {
+		console.log('conundrum game render');
+	}, []);
 	let navigate = useNavigate();
-	const [conundrum, setConundrum] = useState('');
+	// const [conundrum, setConundrum] = useState('');
 	const [conundrumOfTheDay, setConundrumOfTheDay] = useState([]);
 	const [conundrumOfTheDayArray, setConundrumOfTheDayArray] = useState([]);
 	const [shuffled, setShuffled] = useState([]);
-	const [ticking, setTicking] = useState(false);
+	// const [ticking, setTicking] = useState(false);
 	const [currentWord, setCurrentWord] = useState('');
 	const [allUserWords, setAllUserWords] = useState([]);
-	const [showResults, setShowResults] = useState(false);
-	const [gotConundrum, setGotConundrum] = useState(false);
-	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
-		useState(false);
+	// const [showResults, setShowResults] = useState(false);
+	// const [gotConundrum, setGotConundrum] = useState(false);
+	// const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
+	// 	useState(false);
 	const [longestWord, setLongestWord] = useState('');
 
 	// TESTING VARIABLE LETTER LENGTH
@@ -38,7 +47,6 @@ const ConundrumGame = ({
 		const msOffset = Date.now() - offsetFromDate;
 		const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 		let getConundrumOfTheDay;
-
 		switch (gameMode) {
 			case 9:
 				getConundrumOfTheDay = allNineLetterWords[Math.floor(dayOffset)];
@@ -62,7 +70,6 @@ const ConundrumGame = ({
 				console.error('error in word length choice');
 				return;
 		}
-
 		const getConundrumOfTheDayArray = getConundrumOfTheDay.split('');
 		setConundrum(getConundrumOfTheDay);
 		setConundrumOfTheDay(getConundrumOfTheDay);
@@ -76,20 +83,8 @@ const ConundrumGame = ({
 		allFiveLetterWords,
 		allFourLetterWords,
 		gameMode,
+		setConundrum,
 	]);
-
-	// WORKING WITH NINE LETTERS
-	// useEffect(() => {
-	// 	const offsetFromDate = new Date(2022, 0, 1);
-	// 	const msOffset = Date.now() - offsetFromDate;
-	// 	const dayOffset = msOffset / 1000 / 60 / 60 / 24;
-	// 	const getConundrumOfTheDay = allNineLetterWords[Math.floor(dayOffset)];
-	// 	const getConundrumOfTheDayArray = getConundrumOfTheDay.split('');
-	// 	setConundrum(getConundrumOfTheDay);
-	// 	setConundrumOfTheDay(getConundrumOfTheDay);
-	// 	setConundrumOfTheDayArray(getConundrumOfTheDayArray);
-	// 	setShuffled(shuffleArray(getConundrumOfTheDayArray));
-	// }, [allNineLetterWords]);
 
 	// shuffle word - WORKING
 	function shuffleArray(array) {
@@ -108,30 +103,25 @@ const ConundrumGame = ({
 		const gameLetterTiles = document.querySelectorAll('.card');
 		gameLetterTiles.forEach((tile) => {
 			tile.classList.add('visible');
-			console.log(setTicking);
-			console.log(conundrumOfTheDay);
-			console.log(conundrumOfTheDayArray);
+			// console.log(setTicking);
 		});
+		console.log(conundrumOfTheDay);
+		console.log(conundrumOfTheDayArray);
 		document.querySelectorAll('.button').forEach((btn) => {
 			btn.classList.add('visible');
 		});
-
-		setTimeout(() => {
-			// document.querySelector('.results-home-btn').style.pointerEvents = 'none';
-			setTimeout(() => {
-				// TURN THIS ON TO SHOW RESULTS PAGE
-				setIsNextDayCountdownActive(true);
-				// setTimeout(() => {}, 2000);
-			}, 30000);
-		}, 2000);
+		// setTimeout(() => {
+		// document.querySelector('.results-home-btn').style.pointerEvents = 'none';
+		// setTimeout(() => {
+		// TURN THIS ON TO SHOW RESULTS PAGE
+		// setIsNextDayCountdownActive(true);
+		// setTimeout(() => {}, 2000);
+		// }, 30000);
+		// }, 2000);
 	};
 
 	return (
-		<StyledGame>
-			{/* <Button url='/' */}
-			{/* <div className='back-btn-container'>
-				<RotatingButton url='/' name='try again later' />
-			</div> */}
+		<StyledConundrumGame>
 			<div className='back-btn-container'>
 				<div className='button'>
 					<button className='btn-back btn-cta'>back</button>
@@ -145,44 +135,45 @@ const ConundrumGame = ({
 					</button>
 				</div>
 			</div>
-			<div className='timer-container hide'>
-				<ClockTimer ticking={ticking} />
-			</div>
-			<div className='game-variables-container'>
-				<GamePanel handleStartGame={handleStartGame} shuffled={shuffled} />
-			</div>
-			<div className='words-display-container'>
-				<UserWordsDisplay
-					// conundrumOfTheDay={conundrumOfTheDay}
-					// handleStartGame={handleStartGame}
-					// shuffled={shuffled}
-					currentWord={currentWord}
-					// setCurrentWord={setCurrentWord}
-					// allUserWords={allUserWords}
-					// setAllUserWords={setAllUserWords}
-				/>
-			</div>
-			<div className='user-letter-container'>
-				<UserLetterCards
-					currentWord={currentWord}
-					setCurrentWord={setCurrentWord}
-					shuffled={shuffled}
-					dictionary={dictionary}
-					setAllUserWords={setAllUserWords}
-					allUserWords={allUserWords}
-					setGotConundrum={setGotConundrum}
-					setLongestWord={setLongestWord}
-					longestWord={longestWord}
-					setShowResults={setShowResults}
-					setIsNextDayCountdownActive={setIsNextDayCountdownActive}
-					conundrum={conundrum}
-					// conundrumOfTheDay={conundrumOfTheDay}
-					// handleStartGame={handleStartGame}
-					// usersBestWords={usersBestWords}
-					// setUsersBestWords={setUsersBestWords}
-				/>
-			</div>
-			<ConundrumResults
+			{/* <div className='timer-container hide'> */}
+			{/* <ClockTimer ticking={ticking} /> */}
+			{/* </div> */}
+			{/* <div className='game-variables-container'> */}
+			<GamePanel handleStartGame={handleStartGame} shuffled={shuffled} />
+			{/* </div> */}
+			{/* <div className='words-display-container'> */}
+			<UserWordsDisplay
+				// conundrumOfTheDay={conundrumOfTheDay}
+				// handleStartGame={handleStartGame}
+				// shuffled={shuffled}
+				currentWord={currentWord}
+				// setCurrentWord={setCurrentWord}
+				// allUserWords={allUserWords}
+				// setAllUserWords={setAllUserWords}
+			/>
+			{/* </div> */}
+			{/* <div className='user-letter-container'> */}
+			<ConundrumUserLetterCards
+				currentWord={currentWord}
+				setCurrentWord={setCurrentWord}
+				shuffled={shuffled}
+				dictionary={dictionary}
+				setAllUserWords={setAllUserWords}
+				allUserWords={allUserWords}
+				setGotConundrum={setGotConundrum}
+				setLongestWord={setLongestWord}
+				longestWord={longestWord}
+				setShowResults={setShowResults}
+				setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+				conundrum={conundrum}
+				setConundrum={setConundrum}
+				// conundrumOfTheDay={conundrumOfTheDay}
+				// handleStartGame={handleStartGame}
+				// usersBestWords={usersBestWords}
+				// setUsersBestWords={setUsersBestWords}
+			/>
+			{/* </div> */}
+			{/* <ConundrumResults
 				showResults={showResults}
 				conundrum={conundrum}
 				gotConundrum={gotConundrum}
@@ -197,12 +188,11 @@ const ConundrumGame = ({
 				// usersBestWords={usersBestWords}
 				// setUsersBestWords={setUsersBestWords}
 				// longestWord={longestWord}
-			/>
-		</StyledGame>
+			/> */}
+		</StyledConundrumGame>
 	);
 };
-const StyledGame = styled.section`
-	/* padding: 0 1rem; */
+const StyledConundrumGame = styled.section`
 	padding: 0;
 	flex-direction: column;
 	word-wrap: wrap;

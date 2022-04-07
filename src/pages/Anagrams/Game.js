@@ -11,7 +11,7 @@ import InGameStats from '../../components/Anagrams/InGameStats';
 import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 import UserWordsDisplay from '../../components/Anagrams/UserWordsDisplay';
-import GameTitle from '../../components/GameTitle';
+import GameTitle from '../../components/Global/GameTitle';
 // import Timer from '../../components/Anagrams/Timer';
 import DigitalTimer from '../../components/Anagrams/DigitalTimer';
 // import ClockTimer from '../../components/Anagrams/ClockTimer';

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 // COMPONENTS
-import Header from './components/Header';
-import Footer from './components/Footer';
-import { useDarkMode } from './components/useDarkMode';
+import Header from './components/Global/Header';
+import Footer from './components/Global/Footer';
+import { useDarkMode } from './components/Global/useDarkMode';
 import { GlobalStyles } from './components/globalStyles';
 import { lightTheme, darkTheme } from './components/Themes';
 // PAGES
@@ -22,18 +22,23 @@ import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
 import LetterRoundResults from './pages/LettersRound/Results';
+// ANAGRAM - UNSCRAMBLE
 import AnagramRoundHome from './pages/Anagrams/Home';
 import AnagramRoundRules from './pages/Anagrams/Rules';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 
 function App() {
+	useEffect(() => {
+		console.log('app render');
+	}, []);
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
 	const themeMode = theme === 'light' ? lightTheme : darkTheme;
 	const [dictionary, setDictionary] = useState(null);
 	const englishDictionary = require('an-array-of-english-words');
 
 	// CONUNDRUM
+	const [conundrum, setConundrum] = useState('');
 	const [showResults, setShowResults] = useState(false);
 	const [allNineLetterWords, setAllNineLetterWords] = useState(null);
 	const [allEightLetterWords, setAllEightLetterWords] = useState(null);
@@ -42,6 +47,8 @@ function App() {
 	const [allFiveLetterWords, setAllFiveLetterWords] = useState(null);
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
+	// const [showResults, setShowResults] = useState(false);
+	const [gotConundrum, setGotConundrum] = useState(false);
 
 	// ANAGRAM ROUND
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
@@ -149,6 +156,10 @@ function App() {
 										showResults={showResults}
 										setShowResults={setShowResults}
 										dictionary={dictionary}
+										setGotConundrum={setGotConundrum}
+										setConundrum={setConundrum}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 									/>
 								}
 							/>
@@ -156,8 +167,14 @@ function App() {
 								path='/conundrum/results'
 								element={
 									<ConundrumResults
-									// conundrumData={conundrumData}
-									// setConundrumData={setConundrumData}
+										// conundrumData={conundrumData}
+										// setConundrumData={setConundrumData}
+										showResults={showResults}
+										conundrum={conundrum}
+										setGotConundrum={setGotConundrum}
+										gotConundrum={gotConundrum}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 									/>
 								}
 							/>

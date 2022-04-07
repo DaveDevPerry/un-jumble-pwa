@@ -1,14 +1,12 @@
-import React from 'react';
-// import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import GameTitle from '../components/GameTitle';
-// import { useNavigate } from 'react-router-dom';
-
-// import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
-import GameTypeScreen from '../components/GameTypeScreen';
+import GameTitle from '../components/Global/GameTitle';
+import GameTypeScreen from '../components/Global/GameTypeScreen';
 
 const Home = () => {
-	// let navigate = useNavigate();
+	useEffect(() => {
+		console.log('home rendered');
+	}, []);
 
 	return (
 		<StyledHome>
@@ -33,11 +31,8 @@ const Home = () => {
 };
 
 const StyledHome = styled.section`
-	/* padding: 1rem; */
 	justify-content: space-between;
-	/* align-items: center; */
 	flex-direction: column;
-	/* word-wrap: wrap; */
 	display: flex;
 	flex: 1;
 	row-gap: 1rem;

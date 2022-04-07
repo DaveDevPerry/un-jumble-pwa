@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const UserLetterCards = ({
+const ConundrumUserLetterCards = ({
 	currentWord,
 	setCurrentWord,
 	shuffled,
@@ -15,8 +15,10 @@ const UserLetterCards = ({
 	setShowResults,
 	setIsNextDayCountdownActive,
 	conundrum,
+	setConundrum,
 }) => {
 	let navigate = useNavigate();
+
 	const tileAudio = () => {
 		const audio = new Audio('/audio/tile.mp3');
 		audio.play();
@@ -24,12 +26,12 @@ const UserLetterCards = ({
 
 	const handleReset = (e) => {
 		e.preventDefault();
-		setCurrentWord([]);
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
 			tile.classList.remove('active');
 			tile.style.pointerEvents = 'initial';
 		});
+		setCurrentWord([]);
 	};
 	// let letterIndex = 0;
 
@@ -47,10 +49,7 @@ const UserLetterCards = ({
 
 	const handleLetter = (e) => {
 		tileAudio();
-		// letterIndex = e.target.dataset.index;
-		// console.log(letterIndex);
 		e.preventDefault();
-
 		if (e.target.classList.contains('active')) {
 			e.target.classList.remove('active');
 			e.target.style.pointerEvents = 'initial';
@@ -63,39 +62,33 @@ const UserLetterCards = ({
 
 	// checks validity of word and displays relative msg
 	const checkWord = () => {
-		// console.log(conundrum);
+		console.log(conundrum);
 		// console.log('current word', currentWord);
 		if (!dictionary.includes(currentWord)) {
 			console.log('wrong');
+			// display word is incorrect
 			return;
 		}
 		if (dictionary.includes(currentWord)) {
 			console.log('right');
-			setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
-			if (currentWord.length > longestWord.length) {
-				setLongestWord(currentWord);
-			}
-			if (currentWord === conundrum) {
-				setGotConundrum(true);
-				setIsNextDayCountdownActive(true);
-				// setShowResults(true);
-				// navigate('/conundrum/results');
-				setTimeout(() => {
-					navigate('/conundrum/results');
-				}, 2000);
-				setTimeout(() => {
-					const gameLetterTiles = document.querySelectorAll('.card');
-					gameLetterTiles.forEach((tile) => {
-						tile.classList.remove('visible');
-					});
-				}, 2000);
-			}
+			setConundrum(currentWord);
+			// setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
+			// if (currentWord.length > longestWord.length) {
+			// 	setLongestWord(currentWord);
+			// }
+			// setGotConundrum(true); - WHY?
+			setIsNextDayCountdownActive(true);
+			// setIsNextDayCountdownActive(true); - CAN THIS BE TRUE FROM APP LAUNCH
+			setTimeout(() => {
+				navigate('/conundrum/results');
+			}, 500);
+
 			return;
 		}
 	};
 
 	return (
-		<StyledUserLetterCards>
+		<StyledConundrumUserLetterCards>
 			<div className='row-btns-container'>
 				<div className='button'>
 					<button className='btn-back btn-cta'>reset</button>
@@ -127,10 +120,10 @@ const UserLetterCards = ({
 					);
 				})}
 			</StyledSmallNumberOutput>
-		</StyledUserLetterCards>
+		</StyledConundrumUserLetterCards>
 	);
 };
-const StyledUserLetterCards = styled.div`
+const StyledConundrumUserLetterCards = styled.div`
 	border: none;
 	.row-btns-container {
 		perspective: 500px;
@@ -337,14 +330,14 @@ const StyledSmallNumberOutput = styled.div`
 	} */
 `;
 
-export default UserLetterCards;
+export default ConundrumUserLetterCards;
 
 // import React from 'react';
 // import styled from 'styled-components';
 
-// const UserLetterCards = ({ gameNumbers }) => {
+// const ConundrumUserLetterCards = ({ gameNumbers }) => {
 // 	return (
-// 		<StyledUserLetterCards>
+// 		<StyledConundrumUserLetterCards>
 // 			<StyledSmallNumberOutput>
 // 				{gameNumbers
 // 					.sort(function (a, b) {
@@ -358,10 +351,10 @@ export default UserLetterCards;
 // 						);
 // 					})}
 // 			</StyledSmallNumberOutput>
-// 		</StyledUserLetterCards>
+// 		</StyledConundrumUserLetterCards>
 // 	);
 // };
-// const StyledUserLetterCards = styled.div`
+// const StyledConundrumUserLetterCards = styled.div`
 // 	border: 0px solid;
 // `;
 // const StyledSmallNumberOutput = styled.div`
@@ -422,4 +415,4 @@ export default UserLetterCards;
 // 	}
 // `;
 
-// export default UserLetterCards;
+// export default ConundrumUserLetterCards;

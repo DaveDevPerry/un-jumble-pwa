@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import GameTitle from '../../components/GameTitle';
-import Button from '../../components/Button';
+import GameTitle from '../../components/Global/GameTitle';
+import Button from '../../components/Global/Button';
 // import { Link } from 'react-router-dom';
 
 const AnagramRoundHome = () => {
