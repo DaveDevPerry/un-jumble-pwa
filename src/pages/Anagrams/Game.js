@@ -12,6 +12,8 @@ import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 import UserWordsDisplay from '../../components/Anagrams/UserWordsDisplay';
 import GameTitle from '../../components/GameTitle';
+// import Timer from '../../components/Anagrams/Timer';
+import DigitalTimer from '../../components/Anagrams/DigitalTimer';
 // import ClockTimer from '../../components/Anagrams/ClockTimer';
 // import GamePanel from '../../components/Anagrams/GamePanel';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
@@ -499,6 +501,7 @@ const AnagramRoundGame = ({
 	// const [currentUserGuess, setCurrentUserGuess] = useState('');
 	const [currentWord, setCurrentWord] = useState('');
 	const [allUserWords, setAllUserWords] = useState([]);
+	const [isTimerActive, setIsTimerActive] = useState(false);
 
 	useEffect(() => {
 		setCurrentTargetWord(
@@ -513,6 +516,8 @@ const AnagramRoundGame = ({
 		root.style.setProperty('--letter-count', 5);
 		// }
 		// start timer
+		// runTimer()
+		setIsTimerActive(true);
 		// get current target word
 		getNewWord();
 		document.querySelector('.start-btns-container').classList.add('hide');
@@ -818,6 +823,10 @@ const AnagramRoundGame = ({
 				allUserWords={allUserWords}
 				setAllUserWords={setAllUserWords}
 			/>
+			<DigitalTimer
+				isTimerActive={isTimerActive}
+				setIsTimerActive={setIsTimerActive}
+			/>
 			{/* </div> */}
 			{/* <div className='game-variables-container'> */}
 			<GamePanel handleStart={handleStart} />
@@ -897,7 +906,7 @@ const StyledGame = styled.section`
 	flex: 1;
 	position: relative;
 	row-gap: 1rem;
-	.results-modal {
+	/* .results-modal {
 		display: none;
 		opacity: 0;
 		justify-content: space-between;
@@ -968,7 +977,6 @@ const StyledGame = styled.section`
 			font-size: 1.2rem;
 		}
 		.letter-round-player-word-table {
-			/* border: 1px solid blue; */
 			align-self: center;
 			font-size: 1.8rem;
 			th {
@@ -1087,7 +1095,7 @@ const StyledGame = styled.section`
 			display: flex;
 			opacity: 1;
 		}
-	}
+	} */
 	/* .timer-container {
 		display: flex;
 		justify-content: center;

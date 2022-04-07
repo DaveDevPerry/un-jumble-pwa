@@ -28,9 +28,9 @@ const Clock = ({ timerHours, timerMinutes, timerSeconds }) => {
 };
 
 Clock.defaultProps = {
-	timerHours: 10,
-	timerMinutes: 10,
-	timerSeconds: 10,
+	timerHours: 0,
+	timerMinutes: 0,
+	timerSeconds: 0,
 };
 
 export default Clock;

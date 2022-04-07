@@ -43,6 +43,10 @@ function App() {
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
 
+	// ANAGRAM ROUND
+	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
+		useState(false);
+
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
 	const [gameLetters, setGameLetters] = useState([]);
@@ -195,12 +199,14 @@ function App() {
 								path='/anagramround/results'
 								element={
 									<AnagramRoundResults
-										isLetterRoundTimeUp={isLetterRoundTimeUp}
-										gameLetters={gameLetters}
-										setGameLetters={setGameLetters}
-										setLetterTypes={setLetterTypes}
-										setLetterRoundData={setLetterRoundData}
-										letterRoundData={letterRoundData}
+										// isLetterRoundTimeUp={isLetterRoundTimeUp}
+										// gameLetters={gameLetters}
+										// setGameLetters={setGameLetters}
+										// setLetterTypes={setLetterTypes}
+										// setLetterRoundData={setLetterRoundData}
+										// letterRoundData={letterRoundData}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 									/>
 								}
 							/>

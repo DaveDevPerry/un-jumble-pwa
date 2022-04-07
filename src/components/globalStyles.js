@@ -58,7 +58,7 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     flex: 1;
     row-gap: 1rem;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     margin: 0 1rem 1rem 1rem;
   }
   p {
