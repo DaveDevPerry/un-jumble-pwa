@@ -39,7 +39,7 @@ const StyledHome = styled.section`
 	flex-direction: column;
 	/* word-wrap: wrap; */
 	display: flex;
-	/* flex: 1; */
+	flex: 1;
 	row-gap: 1rem;
 `;
 

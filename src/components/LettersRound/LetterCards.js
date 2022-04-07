@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { GiCheckMark } from 'react-icons/gi';
 
 const LetterCards = ({
 	gameLetters,
@@ -116,108 +117,7 @@ const LetterCards = ({
 	);
 	const [vowelCount, setVowelCount] = useState(1);
 	const [consonantCount, setConsonantCount] = useState(1);
-	// const allVowels = [
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'E',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'A',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'I',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'O',
-	// 	'U',
-	// 	'U',
-	// 	'U',
-	// 	'U',
-	// ];
-	// const allConsonants = [
-	// 	'N',
-	// 	'N',
-	// 	'N',
-	// 	'N',
-	// 	'N',
-	// 	'N',
-	// 	'R',
-	// 	'R',
-	// 	'R',
-	// 	'R',
-	// 	'R',
-	// 	'R',
-	// 	'T',
-	// 	'T',
-	// 	'T',
-	// 	'T',
-	// 	'T',
-	// 	'T',
-	// 	'L',
-	// 	'L',
-	// 	'L',
-	// 	'L',
-	// 	'S',
-	// 	'S',
-	// 	'S',
-	// 	'S',
-	// 	'D',
-	// 	'D',
-	// 	'D',
-	// 	'D',
-	// 	'G',
-	// 	'G',
-	// 	'G',
-	// 	'B',
-	// 	'B',
-	// 	'C',
-	// 	'C',
-	// 	'M',
-	// 	'M',
-	// 	'P',
-	// 	'P',
-	// 	'F',
-	// 	'F',
-	// 	'H',
-	// 	'H',
-	// 	'V',
-	// 	'V',
-	// 	'W',
-	// 	'W',
-	// 	'Y',
-	// 	'Y',
-	// 	'K',
-	// 	'J',
-	// 	'X',
-	// 	'Q',
-	// 	'Z',
-	// ];
+
 	// const [consonants, setConsonants] = useState([])
 	const handlePickVowel = (e) => {
 		console.log(vowels, setVowels);
@@ -262,6 +162,43 @@ const LetterCards = ({
 					<button className='letter-btn vowel-btn' onClick={handlePickVowel}>
 						VOWEL
 					</button>
+					<div className='count-update'>
+						<p>Minimum</p>
+						<p>
+							{2 - vowelCount + 2 > 0 ? (
+								2 - vowelCount + 2
+							) : (
+								<GiCheckMark size='30px' color='#004600' />
+							)}
+						</p>
+						<p>required</p>
+					</div>
+				</StyledVowelContainer>
+				<StyledConsonantContainer className='consonant-container'>
+					<button
+						className='letter-btn consonant-btn'
+						onClick={handlePickConsonant}
+					>
+						Consonant
+					</button>
+					<div className='count-update'>
+						<p>Minimum</p>
+						<p>
+							{3 - consonantCount + 2 > 0 ? (
+								3 - consonantCount + 2
+							) : (
+								<GiCheckMark size='30px' color='#004600' />
+							)}
+						</p>
+						<p>required</p>
+					</div>
+				</StyledConsonantContainer>
+			</StyledLetterCards>
+			{/* <StyledLetterCards>
+				<StyledVowelContainer className='vowel-container'>
+					<button className='letter-btn vowel-btn' onClick={handlePickVowel}>
+						VOWEL
+					</button>
 				</StyledVowelContainer>
 				<StyledConsonantContainer className='consonant-container'>
 					<button
@@ -271,8 +208,8 @@ const LetterCards = ({
 						Consonant
 					</button>
 				</StyledConsonantContainer>
-			</StyledLetterCards>
-			<div className='letter-choice-msg-container'>
+			</StyledLetterCards> */}
+			{/* <div className='letter-choice-msg-container'>
 				{consonantCount < 7 && vowelCount < 6 ? (
 					<p className='letter-choice-msg'>MIN 3 VOWELS & 4 CONSONANTS</p>
 				) : (
@@ -286,64 +223,96 @@ const LetterCards = ({
 					</p>
 				)}
 
-				{/* {consonantCount === 6 ? 'THE REST MUST BE VOWELS' : ' '}
-				{vowelCount === 5 ? 'THE REST MUST BE CONSONANTS' : ' '} */}
-			</div>
+		
+			</div> */}
 		</>
 	);
 };
 const StyledLetterCards = styled.div`
-	padding: 1rem 1rem 0 1rem;
+	/* padding: 1rem 0rem; */
 	display: flex;
 	justify-content: space-between;
 	column-gap: 1rem;
-	margin-bottom: 3rem;
+	/* margin-bottom: 3rem; */
 `;
 const StyledVowelContainer = styled.div`
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+	row-gap: 0.5rem;
+	flex: 1;
+	background-color: ${({ theme }) => theme.bgTile};
+	.letter-btn {
+		background-color: ${({ theme }) => theme.bgChosen};
+	}
+	.count-update {
+		background-color: ${({ theme }) => theme.bgTile};
+		align-self: center;
+		p {
+			font-size: 1.6rem;
+			text-align: center;
+			&:nth-child(2) {
+				font-size: 4rem;
+				color: ${({ theme }) => theme.bgChosen};
+				font-family: 'Bebas Neue', cursive;
+				/* line-height: 5rem; */
+				font-weight: 800;
+				text-align: center;
+				line-height: 1;
+				/* display: grid;
+				place-content: center; */
+			}
+		}
+	}
+	/* background-color: ${({ theme }) => theme.bgNumber}; */
+	/* border-radius: 5px; */
+	/* background-color: ${({ theme }) => theme.bgChosen}; */
+	/* font-size: 3rem; */
+	/* border-radius: 5px; */
+	/* padding: 0 1rem; */
+	/* flex: 1; */
+	/* display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
 	background-color: ${({ theme }) => theme.bgNumber};
-	padding: 0.3rem;
 	border-radius: 5px;
 	background-color: ${({ theme }) => theme.bgChosen};
 	font-size: 3rem;
-	padding: 1rem;
 	border-radius: 5px;
-	.title {
-		background-color: ${({ theme }) => theme.bgChosen};
-		font-size: 3rem;
-		padding: 1rem;
-		border-radius: 5px;
-	}
-	.vowel-cards {
-		background-color: black;
-		display: flex;
-		position: relative;
-		.vowel-card {
-			border: 1px solid white;
-			background-color: blue !important;
-			/* background-color: transparent; */
-			width: 60px;
-			height: 60px;
-			position: absolute;
-			top: 0;
-			border-radius: 5px;
-		}
-	}
+	padding: 0 1rem;
+	flex: 1; */
 `;
 const StyledConsonantContainer = styled.div`
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: ${({ theme }) => theme.bgNumber};
-	padding: 0.3rem;
-	border-radius: 5px;
-	background-color: ${({ theme }) => theme.bgChosen};
-	font-size: 3rem;
-	padding: 1rem;
-	border-radius: 5px;
-	.title {
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+	flex: 1;
+	row-gap: 0.5rem;
+	background-color: ${({ theme }) => theme.bgTile};
+	.letter-btn {
+		background-color: ${({ theme }) => theme.bgChosen};
+	}
+	.count-update {
+		background-color: ${({ theme }) => theme.bgTile};
+		align-self: center;
+		p {
+			font-size: 1.6rem;
+			text-align: center;
+			&:nth-child(2) {
+				font-size: 4rem;
+				color: ${({ theme }) => theme.bgChosen};
+				font-family: 'Bebas Neue', cursive;
+				/* line-height: 5rem; */
+				font-weight: 800;
+				text-align: center;
+				line-height: 1;
+			}
+		}
+	}
+	/* .title {
 		background-color: ${({ theme }) => theme.bgChosen};
 		font-size: 3rem;
 		padding: 1rem;
@@ -356,43 +325,13 @@ const StyledConsonantContainer = styled.div`
 		.vowel-card {
 			border: 1px solid white;
 			background-color: blue !important;
-			/* background-color: transparent; */
 			width: 60px;
 			height: 60px;
 			position: absolute;
 			top: 0;
 			border-radius: 5px;
 		}
-	}
+	} */
 `;
-// const StyledVowelGrid = styled.div`
-// 	display: grid;
-// 	justify-content: center;
-// 	grid-template-columns: repeat(5, 1fr);
-// 	grid-template-rows: repeat(2, 6rem);
-// 	/* border: 2px solid ${({ theme }) => theme.border}; */
-// 	/* background-color: ${({ theme }) => theme.bgTile}; */
-// 	border-radius: 5px;
-// 	gap: 0.3rem;
-// 	.vowel-card {
-// 		cursor: pointer;
-// 		font-size: 2rem;
-// 		/* border: 1px solid ${({ theme }) => theme.bgNumber}; */
-// 		/* border: 1px solid white; */
-// 		outline: none;
-// 		background-color: ${({ theme }) => theme.bgNumber};
-// 		display: grid;
-// 		place-content: center;
-// 		border-radius: 5px;
-// 		transition: all 0.2s linear;
-// 		/* &:hover,
-// 		&:focus {
-// 			background-color: rgba(3, 4, 94, 0.9);
-// 		} */
-// 		&.chosen {
-// 			background-color: ${({ theme }) => theme.bgChosen};
-// 		}
-// 	}
-// `;
 
 export default LetterCards;

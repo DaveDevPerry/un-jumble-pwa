@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const UserLetterCards = ({
 	currentWord,
@@ -15,6 +16,7 @@ const UserLetterCards = ({
 	setIsNextDayCountdownActive,
 	conundrum,
 }) => {
+	let navigate = useNavigate();
 	const tileAudio = () => {
 		const audio = new Audio('/audio/tile.mp3');
 		audio.play();
@@ -76,7 +78,11 @@ const UserLetterCards = ({
 			if (currentWord === conundrum) {
 				setGotConundrum(true);
 				setIsNextDayCountdownActive(true);
-				setShowResults(true);
+				// setShowResults(true);
+				// navigate('/conundrum/results');
+				setTimeout(() => {
+					navigate('/conundrum/results');
+				}, 2000);
 				setTimeout(() => {
 					const gameLetterTiles = document.querySelectorAll('.card');
 					gameLetterTiles.forEach((tile) => {

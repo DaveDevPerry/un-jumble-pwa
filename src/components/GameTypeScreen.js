@@ -47,6 +47,7 @@ const StyledGameTypeScreen = styled.div`
 	/* margin: 0 2rem; */
 	row-gap: 1rem;
 	cursor: pointer;
+	/* flex: 1; */
 	.game-mode-header {
 		display: flex;
 		justify-content: space-between;

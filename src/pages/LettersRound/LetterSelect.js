@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import UserSelectedLetters from '../../components/LettersRound/UserSelectLetters';
 import LetterCards from '../../components/LettersRound/LetterCards';
+import GameTitle from '../../components/GameTitle';
 
 const LetterSelect = ({
 	gameLetters,
@@ -29,23 +30,37 @@ const LetterSelect = ({
 	// };
 	// let { username } = useParams();
 	return (
-		<StyledLetterSelect>
-			<div className='modal-header'>
-				<p>select</p>
-				<span>{9 - gameLetters.length}</span>
-				<p>letters</p>
-			</div>
-			<UserSelectedLetters
-				gameLetters={gameLetters}
-				letterTypes={letterTypes}
-			/>
-			<LetterCards
-				gameLetters={gameLetters}
-				letterTypes={letterTypes}
-				setGameLetters={setGameLetters}
-				setLetterTypes={setLetterTypes}
-			/>
+		<>
+			<GameTitle title='letter round' />
+			<StyledLetterSelect>
+				<div className='modal-header'>
+					<p>select</p>
+					<span>{9 - gameLetters.length}</span>
+					<p>letters</p>
+				</div>
+				<UserSelectedLetters
+					gameLetters={gameLetters}
+					letterTypes={letterTypes}
+				/>
+				<LetterCards
+					gameLetters={gameLetters}
+					letterTypes={letterTypes}
+					setGameLetters={setGameLetters}
+					setLetterTypes={setLetterTypes}
+				/>
 
+				{/* <button
+				className={
+					gameLetters.length === 9 ? 'close-modal-btn show' : 'close-modal-btn'
+				}
+				onClick={() => {
+					// updateLRPlayed();
+					navigate('/letterround/game');
+				}}
+			>
+				NEXT
+			</button> */}
+			</StyledLetterSelect>
 			<button
 				className={
 					gameLetters.length === 9 ? 'close-modal-btn show' : 'close-modal-btn'
@@ -57,24 +72,25 @@ const LetterSelect = ({
 			>
 				NEXT
 			</button>
-		</StyledLetterSelect>
+		</>
 	);
 };
 
 const StyledLetterSelect = styled.section`
-	position: absolute;
+	/* position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 310px;
+	transform: translate(-50%, -50%); */
+	/* width: 310px; */
 	background: ${({ theme }) => theme.bgTile};
 	border-radius: 5px;
-	padding: 1rem 0.5rem;
+	padding: 1rem 1rem 2rem 1rem;
 	/* opacity: 0; */
 	justify-content: space-between;
 	flex-direction: column;
 	display: flex;
-	z-index: 500000;
+	row-gap: 1rem;
+	/* z-index: 500000; */
 	/* pointer-events: none; */
 	transition: opacity 200ms ease-in;
 
@@ -105,6 +121,7 @@ const StyledLetterSelect = styled.section`
 		opacity: 1;
 		pointer-events: all;
 	} */
+
 	.close-modal-btn {
 		width: 50%;
 		align-self: center;

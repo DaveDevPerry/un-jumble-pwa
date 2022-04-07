@@ -13,7 +13,7 @@ const LetterRoundHome = () => {
 			<GameTitle title='letter round' />
 			<StyledLetterRoundHome>
 				<div className='how-to-play'>
-					<h2>How to play</h2>
+					{/* <h2>How to play</h2> */}
 					<p>
 						You must choose how many vowels and consonants you would like to
 						make up nine randomly chosen letters.
@@ -72,7 +72,7 @@ const LetterRoundHome = () => {
 };
 
 const StyledLetterRoundHome = styled.section`
-	padding: 1rem 3rem;
+	/* padding: 1rem 3rem; */
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
@@ -87,11 +87,11 @@ const StyledLetterRoundHome = styled.section`
 	-ms-user-select: none;
 	user-select: none; */
 	.how-to-play {
-		/* padding: 0 3rem; */
+		padding: 0 2rem;
 		h2 {
 			letter-spacing: 2px;
 			text-align: center;
-			margin-bottom: 2rem;
+			/* margin-bottom: 2rem; */
 			font-size: 2.5rem;
 			font-weight: 100;
 			/* padding-bottom: 1rem; */
@@ -106,7 +106,7 @@ const StyledLetterRoundHome = styled.section`
 			row-gap: 1rem;
 		}
 		p {
-			font-family: 'Montserrat';
+			font-family: 'Montserrat', sans-serif;
 			font-weight: 100;
 			font-size: 1.6rem;
 			pointer-events: none;

@@ -109,7 +109,7 @@ const StyledAnagramRoundHome = styled.section`
 			row-gap: 1rem;
 		}
 		p {
-			font-family: 'Montserrat';
+			font-family: 'Montserrat', sans-serif;
 			font-weight: 100;
 			font-size: 1.6rem;
 			pointer-events: none;

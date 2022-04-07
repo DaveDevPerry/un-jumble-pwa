@@ -214,66 +214,7 @@ const StyledGame = styled.section`
 		perspective: 500px;
 	}
 
-	.button {
-		position: relative;
-		height: 37px;
-	}
-	.btn-cta {
-		position: absolute;
-		width: 100%;
-		/* height: 100%; */
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		overflow: hidden;
-		backface-visibility: hidden;
-		transition: transform 500ms ease-in-out;
-		font-size: 2.5rem !important;
-		padding: 0.2rem 0rem;
-	}
-	.button.visible .btn-back {
-		transform: rotateX(-180deg);
-		/* background-color: pink; */
-	}
-	.button.visible .btn-front {
-		transform: rotateX(0);
-	}
-	/* .card.matched .card-value {
-	animation: correct 1s linear forwards 500ms;
-} */
-
-	.btn-back {
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
-		font-size: 2rem;
-		/* border: 1px solid white; */
-		outline: none;
-		background-color: ${({ theme }) => theme.bgTile};
-		color: ${({ theme }) => theme.bgTile};
-		display: grid;
-		place-content: center;
-		border-radius: 5px;
-		/* border-radius: 5px; */
-	}
-	.btn-front {
-		/* border: 1px solid white; */
-		font-size: 3rem;
-		/* border: 1px solid white; */
-		outline: none;
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
-		/* color: ${({ theme }) => theme.bgChosen}; */
-		display: grid;
-		place-content: center;
-		border-radius: 5px;
-		/* border-radius: 5px; */
-		transform: rotateX(180deg);
-		background-color: ${({ theme }) => theme.bgChosen};
-		color: ${({ theme }) => theme.syntax};
-		&.active {
-			background-color: ${({ theme }) => theme.bgChosen};
-		}
-	}
-
-	.results-modal {
+	/* .results-modal {
 		display: none;
 		opacity: 0;
 		justify-content: space-between;
@@ -356,31 +297,26 @@ const StyledGame = styled.section`
 			display: none;
 			p {
 			}
-		}
-		.best-attempt {
+		} */
+	/* .best-attempt {
 			list-style: none;
-			/* align-self: center; */
-			/* display: none; */
+		
 			li {
-				/* font-family: 'Indie Flower', cursive; */
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				/* font-size: 3rem; */
 				letter-spacing: 2px;
-				/* border-bottom: 2px solid ${({ theme }) => theme.bg}; */
 				column-gap: 1rem;
 				p {
 					font-size: 2rem;
 					span {
 						color: ${({ theme }) => theme.bgChosen};
-						/* font-weight: bolder; */
 						font-size: 2.6rem;
 					}
 				}
 			}
-		}
-		.wrapper {
+		} */
+	/* .wrapper {
 			display: flex;
 			width: 100%;
 			justify-content: space-between;
@@ -417,7 +353,6 @@ const StyledGame = styled.section`
 					flex-direction: row;
 					align-items: center;
 					justify-content: space-between;
-					/* font-family: 'Bebas Neue', cursive; */
 					letter-spacing: 2px;
 					font-size: 1.6rem;
 					padding: 0.5rem 1rem;
@@ -429,8 +364,8 @@ const StyledGame = styled.section`
 					padding: 0.2rem 1rem 0.5rem 1rem;
 					column-gap: 1rem;
 				}
-			}
-			/* .share-wrapper {
+			} */
+	/* .share-wrapper {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -459,20 +394,19 @@ const StyledGame = styled.section`
 					padding: 0.2rem 1rem 0.5rem 1rem;
 				}
 			} */
-			button {
+	/* button {
 				display: flex;
 				align-items: center;
 				border: none;
 				background-color: ${({ theme }) => theme.bgChosen};
 				column-gap: 1rem;
-				/* border: 2px solid white; */
 			}
 		}
 		&.show {
 			display: flex;
 			opacity: 1;
-		}
-	}
+		} */
+
 	/* .back-btn-container {
 		display: flex;
 		align-items: center;
@@ -480,12 +414,11 @@ const StyledGame = styled.section`
 			width: 100%;
 		}
 	} */
-	.timer-container {
+	/* .timer-container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* flex: 1; */
-		/* display: none; */
+	
 	}
 	.game-variables-container {
 		display: block;
@@ -494,14 +427,12 @@ const StyledGame = styled.section`
 	}
 	.words-display-container {
 		display: flex;
-		/* justify-content: auto; */
-		/* align-items: center; */
-		/* width: 100%; */
+	
 		flex: 1;
 	}
 	.user-letter-container {
 		display: block;
-	}
+	} */
 
 	/* .user-answers-container {
 		display: block;
