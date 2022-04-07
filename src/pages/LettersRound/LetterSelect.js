@@ -61,47 +61,35 @@ const LetterSelect = ({
 				NEXT
 			</button> */}
 			</StyledLetterSelect>
-			<button
+			<StyledCloseBtn
 				className={
 					gameLetters.length === 9 ? 'close-modal-btn show' : 'close-modal-btn'
 				}
 				onClick={() => {
-					// updateLRPlayed();
 					navigate('/letterround/game');
 				}}
 			>
 				NEXT
-			</button>
+			</StyledCloseBtn>
 		</>
 	);
 };
 
 const StyledLetterSelect = styled.section`
-	/* position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); */
-	/* width: 310px; */
 	background: ${({ theme }) => theme.bgTile};
 	border-radius: 5px;
 	padding: 1rem 1rem 2rem 1rem;
-	/* opacity: 0; */
 	justify-content: space-between;
 	flex-direction: column;
 	display: flex;
 	row-gap: 1rem;
-	/* z-index: 500000; */
-	/* pointer-events: none; */
 	transition: opacity 200ms ease-in;
-
 	.modal-header {
 		font-family: 'Bebas Neue', cursive;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
 		column-gap: 1rem;
-		/* flex: 1; */
 		p {
 			font-size: 3rem;
 			flex: 1;
@@ -117,31 +105,25 @@ const StyledLetterSelect = styled.section`
 			font-weight: bold;
 		}
 	}
-	/* &.show {
+`;
+const StyledCloseBtn = styled.button`
+	width: 100%;
+	align-self: center;
+	font-size: 2rem;
+	font-weight: bold;
+	padding: 0.5rem 1rem;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	background-color: ${({ theme }) => theme.bgChosen};
+	border: none;
+	border-radius: 5px;
+	color: ${({ theme }) => theme.syntax};
+	opacity: 0;
+	transition: opacity 200ms ease-in;
+	&.show {
+		display: block;
 		opacity: 1;
 		pointer-events: all;
-	} */
-
-	.close-modal-btn {
-		width: 50%;
-		align-self: center;
-		font-size: 2rem;
-		font-weight: bold;
-		padding: 0.5rem 1rem;
-		margin-top: 2rem;
-		margin-bottom: 1rem;
-		background-color: ${({ theme }) => theme.bgChosen};
-		/* border: 1px solid ${({ theme }) => theme.btnBorder}; */
-		border: none;
-		border-radius: 5px;
-		color: ${({ theme }) => theme.syntax};
-		opacity: 0;
-		transition: opacity 200ms ease-in;
-		&.show {
-			display: block;
-			opacity: 1;
-			pointer-events: all;
-		}
 	}
 `;
 

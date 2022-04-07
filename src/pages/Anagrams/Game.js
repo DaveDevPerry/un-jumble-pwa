@@ -61,7 +61,7 @@ const AnagramRoundGame = ({
 	// 		checkWord();
 	// 	}
 
-	// 	console.log(currentWord);
+	// 	console.log(currentAnagramWord);
 	// };
 	// checks validity of word and displays relative msg
 	// const checkWord = () => {
@@ -69,10 +69,10 @@ const AnagramRoundGame = ({
 	// 	// let isWordValid;
 	// 	if (!dictionary.includes(letters)) {
 	// 		// console.log(letters, 'not in dictionary');
-	// 		console.log('current word', currentWord);
+	// 		console.log('current word', currentAnagramWord);
 	// 		setInvalidWordCount(invalidWordCount + 1);
 	// 		// isWordValid = false;
-	// 		showAlert(currentWord);
+	// 		showAlert(currentAnagramWord);
 	// 		// showAlert('Invalid Word');
 	// 		console.log(startTime, endTime, newHighScore, isTimer, closeModalAudio);
 	// 	}
@@ -153,7 +153,7 @@ const AnagramRoundGame = ({
 	// 	const newWord =
 	// 		allFiveLetterWords[Math.floor(Math.random() * allFiveLetterWords.length)];
 	// 	// console.log(newWord);
-	// 	setCurrentWord(newWord);
+	// 	setCurrentAnagramWord(newWord);
 	// 	const shuffleLetters = shuffleArray(newWord.split(''));
 	// 	// console.log(shuffleLetters);
 	// 	renderNewWord(shuffleLetters);
@@ -499,8 +499,8 @@ const AnagramRoundGame = ({
 	]);
 	const [shuffledTiles, setShuffledTiles] = useState(null);
 	// const [currentUserGuess, setCurrentUserGuess] = useState('');
-	const [currentWord, setCurrentWord] = useState('');
-	const [allUserWords, setAllUserWords] = useState([]);
+	const [currentAnagramWord, setCurrentAnagramWord] = useState('');
+	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
 	const [isTimerActive, setIsTimerActive] = useState(false);
 
 	useEffect(() => {
@@ -575,7 +575,7 @@ const AnagramRoundGame = ({
 	const handleReset = (e) => {
 		e.preventDefault();
 		console.log('reset tiles');
-		setCurrentWord([]);
+		setCurrentAnagramWord([]);
 		// setCurrentUserGuess([]);
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -594,7 +594,7 @@ const AnagramRoundGame = ({
 			tile.classList.remove('active');
 			tile.style.pointerEvents = 'initial';
 		});
-		setCurrentWord([]);
+		setCurrentAnagramWord([]);
 		// setCurrentUserGuess([]);
 	};
 
@@ -608,7 +608,7 @@ const AnagramRoundGame = ({
 			e.target.style.pointerEvents = 'initial';
 		} else {
 			e.target.classList.add('active');
-			setCurrentWord(currentWord + e.target.textContent);
+			setCurrentAnagramWord(currentAnagramWord + e.target.textContent);
 			e.target.style.pointerEvents = 'none';
 			// setCurrentUserGuess(currentUserGuess + e.target.textContent);
 			// setCurrentUserGuess([...currentUserGuess, e.target.textContent]);
@@ -618,7 +618,7 @@ const AnagramRoundGame = ({
 	const handleSkip = (e) => {
 		e.preventDefault();
 		console.log('reset tiles');
-		setCurrentWord([]);
+		setCurrentAnagramWord([]);
 		// setCurrentUserGuess([]);
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -649,10 +649,10 @@ const AnagramRoundGame = ({
 	// let isWordValid;
 	// 	if (!dictionary.includes(letters)) {
 	// 		// console.log(letters, 'not in dictionary');
-	// 		console.log('current word', currentWord);
+	// 		console.log('current word', currentAnagramWord);
 	// 		setInvalidWordCount(invalidWordCount + 1);
 	// 		// isWordValid = false;
-	// 		showAlert(currentWord);
+	// 		showAlert(currentAnagramWord);
 	// 		// showAlert('Invalid Word');
 	// 		console.log(startTime, endTime, newHighScore, isTimer, closeModalAudio);
 	// 	}
@@ -677,40 +677,48 @@ const AnagramRoundGame = ({
 	// 			isCorrect: isWordValid,
 	// 		},
 
-	const [currentWordScore, setCurrentWordScore] = useState(0);
+	const [currentAnagramWordScore, setCurrentAnagramWordScore] = useState(0);
 
 	// checks validity of word and displays relative msg
 	const checkWord = () => {
 		// console.log(currentUserGuess);
-		// setCurrentWord(currentUserGuess.join(''));
+		// setCurrentAnagramWord(currentUserGuess.join(''));
 		// console.log(currentUserGuess);
 		// console.log(conundrum);
-		console.log('current word', currentWord);
-		if (!dictionary.includes(currentWord)) {
+		console.log('current word', currentAnagramWord);
+		if (!dictionary.includes(currentAnagramWord)) {
 			console.log('wrong');
-			setCurrentWordScore(-2);
-			setAllUserWords([
-				...allUserWords,
-				{ word: currentTargetWord, score: currentWordScore, isCorrect: false },
+			setCurrentAnagramWordScore(-2);
+			setAllAnagramUserWords([
+				...allAnagramUserWords,
+				{
+					word: currentTargetWord,
+					score: currentAnagramWordScore,
+					isCorrect: false,
+				},
 			]);
 			// showAlert(currentTargetWord);
 			// return;
 		}
-		if (dictionary.includes(currentWord)) {
+		if (dictionary.includes(currentAnagramWord)) {
 			console.log('right');
 			getWordScore();
-			// setAllUserWords([...allUserWords, currentWord]);
-			setAllUserWords([
-				...allUserWords,
-				{ word: currentWord, score: currentWordScore, isCorrect: true },
+			// setallAnagramUserWords([...allAnagramUserWords, currentAnagramWord]);
+			setAllAnagramUserWords([
+				...allAnagramUserWords,
+				{
+					word: currentAnagramWord,
+					score: currentAnagramWordScore,
+					isCorrect: true,
+				},
 			]);
 
-			// setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
+			// setallAnagramUserWords([...allAnagramUserWords, [currentAnagramWord, currentAnagramWord.length]]);
 			// showAlert('Correct!');
-			// if (currentWord.length > longestWord.length) {
-			// 	setLongestWord(currentWord);
+			// if (currentAnagramWord.length > longestWord.length) {
+			// 	setLongestWord(currentAnagramWord);
 			// }
-			// if (currentWord === conundrum) {
+			// if (currentAnagramWord === conundrum) {
 			// 	setGotConundrum(true);
 			// 	setIsNextDayCountdownActive(true);
 			// 	setShowResults(true);
@@ -729,7 +737,7 @@ const AnagramRoundGame = ({
 
 	const getWordScore = () => {
 		let newWordScore = 0;
-		switch (currentWord.length) {
+		switch (currentAnagramWord.length) {
 			case 9:
 				newWordScore = 20;
 				break;
@@ -754,7 +762,7 @@ const AnagramRoundGame = ({
 			default:
 				break;
 		}
-		setCurrentWordScore(newWordScore);
+		setCurrentAnagramWordScore(newWordScore);
 		return;
 	};
 
@@ -767,18 +775,18 @@ const AnagramRoundGame = ({
 			elem.firstElementChild.classList.remove('reveal');
 			elem.firstElementChild.textContent = '\u00a0';
 		});
-		for (let i = 0; i < currentWord.length; i++) {
-			console.log(currentWord[i]);
+		for (let i = 0; i < currentAnagramWord.length; i++) {
+			console.log(currentAnagramWord[i]);
 			console.log(lettersElem[i]);
 			// const strElem = document.createElement('p');
 			// strElem.classList.add('reveal');
 			// strElem.textContent = letters[i];
 			// lettersElem[i].appendChild(strElem);
 			lettersElem[i].firstElementChild.classList.add('reveal');
-			lettersElem[i].firstElementChild.textContent = currentWord[i];
+			lettersElem[i].firstElementChild.textContent = currentAnagramWord[i];
 			// lettersElem[i].textContent = letters[i];
 		}
-	}, [currentWord]);
+	}, [currentAnagramWord]);
 
 	// const [first, setfirst] = useState(second)
 
@@ -792,11 +800,11 @@ const AnagramRoundGame = ({
 	console.log(setCurrentScore, setTotalWordCount);
 	// useEffect(() => {
 
-	// 	let totalWords = allUserWords.length;
+	// 	let totalWords = allAnagramUserWords.length;
 	// 	setTotalWordCount(totalWords);
 	// 	let totalScore = currentScore;
-	// 	setCurrentScore((totalScore += currentWordScore));
-	// }, [allUserWords]);
+	// 	setCurrentScore((totalScore += currentAnagramWordScore));
+	// }, [allAnagramUserWords]);
 
 	return (
 		<StyledGame>
@@ -809,7 +817,7 @@ const AnagramRoundGame = ({
 			{/* <Controls handleStart={handleStart} isPlaying={isPlaying} /> */}
 			{/* <GuessTiles /> */}
 			<InGameStats
-				allUserWords={allUserWords}
+				allAnagramUserWords={allAnagramUserWords}
 				currentScore={currentScore}
 				totalWordCount={totalWordCount}
 			/>
@@ -818,10 +826,10 @@ const AnagramRoundGame = ({
 				// conundrumOfTheDay={conundrumOfTheDay}
 				// handleStartGame={handleStartGame}
 				// shuffled={shuffled}
-				// currentWord={currentWord}
-				// setCurrentWord={setCurrentWord}
-				allUserWords={allUserWords}
-				setAllUserWords={setAllUserWords}
+				// currentAnagramWord={currentAnagramWord}
+				// setCurrentAnagramWord={setCurrentAnagramWord}
+				allAnagramUserWords={allAnagramUserWords}
+				setAllAnagramUserWords={setAllAnagramUserWords}
 			/>
 			<DigitalTimer
 				isTimerActive={isTimerActive}
@@ -834,12 +842,12 @@ const AnagramRoundGame = ({
 			{/* </div> */}
 			{/* <div className='user-letter-container'>
 				<UserLetterCards
-					currentWord={currentWord}
-					setCurrentWord={setCurrentWord}
+					currentAnagramWord={currentAnagramWord}
+					setCurrentAnagramWord={setCurrentAnagramWord}
 					shuffled={shuffled}
 					dictionary={dictionary}
-					setAllUserWords={setAllUserWords}
-					allUserWords={allUserWords}
+					setallAnagramUserWords={setallAnagramUserWords}
+					allAnagramUserWords={allAnagramUserWords}
 				
 					setShowResults={setShowResults}
 					setIsNextDayCountdownActive={setIsNextDayCountdownActive}
@@ -864,8 +872,8 @@ const AnagramRoundGame = ({
 			<UserLetterCards
 				// currentLetterRoundWord={currentLetterRoundWord}
 				// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-				currentWord={currentWord}
-				setCurrentWord={setCurrentWord}
+				currentAnagramWord={currentAnagramWord}
+				setCurrentAnagramWord={setCurrentAnagramWord}
 				dictionary={dictionary}
 				shuffledTiles={shuffledTiles}
 				currentShuffledTargetWord={currentShuffledTargetWord}

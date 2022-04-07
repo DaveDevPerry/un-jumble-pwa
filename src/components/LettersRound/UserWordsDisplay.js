@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserAllWordsDisplay = ({
-	currentLetterRoundWord,
-	allLetterRoundUserWords,
-}) => {
+const UserAllWordsDisplay = ({ allLetterRoundUserWords }) => {
 	console.log(allLetterRoundUserWords, 'alluserwords');
 	console.log(
 		allLetterRoundUserWords.sort(function (a, b) {
@@ -18,15 +15,14 @@ const UserAllWordsDisplay = ({
 			{/* {allLetterRoundUserWords} */}
 			<ul>
 				{allLetterRoundUserWords
-					.sort(function (a, b) {
-						return parseFloat(b.length) - parseFloat(a.length);
-					})
-					.map((word, index) => {
+					// .sort(function (a, b) {
+					// 	return parseFloat(b.length) - parseFloat(a.length);
+					// })
+					.map((userWord, index) => {
 						return (
-							<li key={word + index}>
-								<p>
-									{word.word}
-									<span>{word.length}</span>
+							<li key={userWord.word + index}>
+								<p className={userWord.isCorrect === false ? 'strike' : ''}>
+									{userWord.word}
 								</p>
 							</li>
 						);
@@ -54,10 +50,12 @@ const UserAllWordsDisplay = ({
 	);
 };
 const StyledWordsDisplay = styled.section`
-	background-color: ${({ theme }) => theme.bgTile};
+	background-color: ${({ theme }) => theme.syntax};
 	padding: 1rem 2rem;
 	border-radius: 10px;
 	width: 100%;
+	flex: 1;
+	border: 6px solid ${({ theme }) => theme.bgChosen};
 	ul {
 		list-style: none;
 		font-size: 3rem;
@@ -69,12 +67,13 @@ const StyledWordsDisplay = styled.section`
 			display: flex;
 			justify-content: flex-start;
 			p {
-				font-size: 2.5rem;
-				span {
-					color: ${({ theme }) => theme.bgChosen};
-					padding-left: 1rem;
-					font-size: 3rem;
-					font-weight: bolder;
+				font-size: 1.8rem;
+				text-transform: capitalize;
+				color: black;
+				&.strike {
+					text-decoration: line-through;
+					color: #9e9a9a;
+					color: #ca0404;
 				}
 			}
 		}

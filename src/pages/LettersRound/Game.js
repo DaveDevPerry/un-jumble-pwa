@@ -1,27 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ClockTimer from '../../components/LettersRound/ClockTimer';
 import GamePanel from '../../components/LettersRound/GamePanel';
 import UserLetterCards from '../../components/LettersRound/UserLetterCards';
 import UserAllWordsDisplay from '../../components/LettersRound/UserWordsDisplay';
-// import ClockTimer from '../../components/LetterRound/ClockTimer';
-// import GamePanel from '../../components/LetterRound/GamePanel';
-// import UserLetterCards from '../../components/LetterRound/UserLetterCards';
-// import UserWordsDisplay from '../../components/LetterRound/UserWordsDisplay';
-// import ClockTimer from '../../components/LettersRound/ClockTimer';
-// import NextGameCountdown from '../../components/NumberRound/NextGameCountdown';
-// import { BsFillShareFill } from 'react-icons/bs';
-// import { useNavigate } from 'react-router-dom';
 import LetterRoundResults from '../../pages/LettersRound/Results';
-// import { useNavigate, useParams } from 'react-router-dom';
-// COMPONENTS
-// import Calculator from '../../components/NumberRound/Calculator';
-// import ClockTimer from '../../components/NumberRound/ClockTimer';
-// import GameAnswerDisplay from '../../components/NumberRound/GameAnswerDisplay';
-// import GamePanel from '../../components/NumberRound/GamePanel';
-// import Timer from '../../components/NumberRound/Timer';
-// import { BsFillShareFill } from 'react-icons/bs';
-// import NextGameCountdown from '../../components/NumberRound/NextGameCountdown';
 
 const LetterRoundGame = ({
 	gameLetters,
@@ -30,6 +14,7 @@ const LetterRoundGame = ({
 	setLetterRoundData,
 	letterRoundData,
 }) => {
+	let navigate = useNavigate();
 	const [letterRoundTicking, setLetterRoundTicking] = useState(false);
 	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
 	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
@@ -77,17 +62,17 @@ const LetterRoundGame = ({
 				// TURN THIS ON TO SHOW RESULTS PAGE
 				updatePlayed();
 				setIsNextDayCountdownActive(true);
-				setShowLetterRoundResults(true);
+				// setShowLetterRoundResults(true);
 				setLetterRoundTicking(false);
-
+				navigate('/letterround/results');
 				setTimeout(() => {
 					const gameLetterTiles = document.querySelectorAll('.card');
 					gameLetterTiles.forEach((tile) => {
 						tile.classList.remove('visible');
 						// console.log(setShowResults);
 					});
-					document.querySelector('.results-home-btn').style.pointerEvents =
-						'initial';
+					// document.querySelector('.results-home-btn').style.pointerEvents =
+					// 	'initial';
 				}, 2000);
 			}, 30000);
 		}, 2000);
@@ -155,7 +140,6 @@ const LetterRoundGame = ({
 	);
 };
 const StyledGame = styled.section`
-	/* padding: 0 1rem; */
 	padding: 0;
 	flex-direction: column;
 	word-wrap: wrap;
@@ -163,7 +147,7 @@ const StyledGame = styled.section`
 	flex: 1;
 	position: relative;
 	row-gap: 1rem;
-	.results-modal {
+	/* .results-modal {
 		display: none;
 		opacity: 0;
 		justify-content: space-between;
@@ -234,7 +218,6 @@ const StyledGame = styled.section`
 			font-size: 1.2rem;
 		}
 		.letter-round-player-word-table {
-			/* border: 1px solid blue; */
 			align-self: center;
 			font-size: 1.8rem;
 			th {
@@ -370,14 +353,6 @@ const StyledGame = styled.section`
 		flex: 1;
 	}
 	.user-letter-container {
-		display: block;
-	}
-
-	/* .user-answers-container {
-		display: block;
-		flex: 1;
-	}
-	.calculator-container {
 		display: block;
 	} */
 `;

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserWordsDisplay = ({ allUserWords }) => {
+const UserWordsDisplay = ({ allAnagramUserWords }) => {
 	return (
 		<StyledWordsDisplay>
-			{/* <p className='update-current-word-elem'>{currentWord}</p> */}
+			{/* <p className='update-current-word-elem'>{currentAnagramWord}</p> */}
 			<ul>
-				{allUserWords.map((userWord, index) => {
+				{allAnagramUserWords.map((userWord, index) => {
 					return (
 						<li key={userWord.word + index}>
 							<p className={userWord.isCorrect === false ? 'strike' : ''}>
@@ -17,7 +17,7 @@ const UserWordsDisplay = ({ allUserWords }) => {
 				})}
 			</ul>
 			{/* <ul>
-				{allUserWords
+				{allAnagramUserWords
 					.sort(function (a, b) {
 						return parseFloat(b.length) - parseFloat(a.length);
 					})

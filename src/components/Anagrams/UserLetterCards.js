@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const UserLetterCards = ({
-	currentWord,
-	setCurrentWord,
+	currentAnagramWord,
+	setCurrentAnagramWord,
 	shuffled,
 	dictionary,
-	setAllUserWords,
-	allUserWords,
+	setallAnagramUserWords,
+	allAnagramUserWords,
 	setGotConundrum,
 	setLongestWord,
 	longestWord,
@@ -30,7 +30,7 @@ const UserLetterCards = ({
 
 	// const handleReset = (e) => {
 	// 	e.preventDefault();
-	// 	setCurrentWord([]);
+	// 	setCurrentAnagramWord([]);
 	// 	const tiles = document.querySelectorAll('.card-front');
 	// 	tiles.forEach((tile) => {
 	// 		tile.classList.remove('active');
@@ -48,7 +48,7 @@ const UserLetterCards = ({
 	// 		tile.classList.remove('active');
 	// 		tile.style.pointerEvents = 'initial';
 	// 	});
-	// 	setCurrentWord([]);
+	// 	setCurrentAnagramWord([]);
 	// };
 
 	// const handleLetter = (e) => {
@@ -62,7 +62,7 @@ const UserLetterCards = ({
 	// 		e.target.style.pointerEvents = 'initial';
 	// 	} else {
 	// 		e.target.classList.add('active');
-	// 		setCurrentWord((currentWord += e.target.textContent));
+	// 		setCurrentAnagramWord((currentAnagramWord += e.target.textContent));
 	// 		e.target.style.pointerEvents = 'none';
 	// 	}
 	// };
@@ -70,18 +70,18 @@ const UserLetterCards = ({
 	// // checks validity of word and displays relative msg
 	// const checkWord = () => {
 	// 	// console.log(conundrum);
-	// 	// console.log('current word', currentWord);
-	// 	if (!dictionary.includes(currentWord)) {
+	// 	// console.log('current word', currentAnagramWord);
+	// 	if (!dictionary.includes(currentAnagramWord)) {
 	// 		console.log('wrong');
 	// 		return;
 	// 	}
-	// 	if (dictionary.includes(currentWord)) {
+	// 	if (dictionary.includes(currentAnagramWord)) {
 	// 		console.log('right');
-	// 		setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
-	// 		if (currentWord.length > longestWord.length) {
-	// 			setLongestWord(currentWord);
+	// 		setallAnagramUserWords([...allAnagramUserWords, [currentAnagramWord, currentAnagramWord.length]]);
+	// 		if (currentAnagramWord.length > longestWord.length) {
+	// 			setLongestWord(currentAnagramWord);
 	// 		}
-	// 		if (currentWord === conundrum) {
+	// 		if (currentAnagramWord === conundrum) {
 	// 			setGotConundrum(true);
 	// 			setIsNextDayCountdownActive(true);
 	// 			setShowResults(true);

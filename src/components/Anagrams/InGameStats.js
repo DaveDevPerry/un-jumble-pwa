@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const InGameStats = ({ allUserWords, currentScore, totalWordCount }) => {
+const InGameStats = ({ allAnagramUserWords, currentScore, totalWordCount }) => {
 	return (
 		<StyledInGameStats className='in-game-stats-container'>
 			<div className='in-game-stat-wrapper'>

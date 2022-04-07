@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const UserLetterCards = ({
@@ -46,11 +46,127 @@ const UserLetterCards = ({
 	// fiveLetterWords.length * 5 +
 	// fourLetterWords.length * 3 +
 	// threeLetterWords.length * 1
-	const updateLS = (newWord) => {
-		console.log(letterRoundData, 'lrd');
+	// const updateLS = (newWord) => {
+	// 	console.log(letterRoundData, 'lrd');
+	// 	let newWordScore = 0;
+	// 	// get score
+	// 	switch (newWord.length) {
+	// 		case 9:
+	// 			newWordScore = 20;
+	// 			break;
+	// 		case 8:
+	// 			newWordScore = 13;
+	// 			break;
+	// 		case 7:
+	// 			newWordScore = 10;
+	// 			break;
+	// 		case 6:
+	// 			newWordScore = 7;
+	// 			break;
+	// 		case 5:
+	// 			newWordScore = 5;
+	// 			break;
+	// 		case 4:
+	// 			newWordScore = 3;
+	// 			break;
+	// 		case 3:
+	// 			newWordScore = 1;
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
+	// 	letterRoundData.score += newWordScore;
+	// 	// const newData =
+	// 	letterRoundData.words.push(newWord);
+	// 	console.log(letterRoundData, 'new lrd');
+	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
+	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
+	// 	wordObj.words.push(newWord);
+	// 	wordObj.score += newWordScore;
+	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
+	// 	setLetterRoundData(letterRoundData);
+	// 	console.log(letterRoundData, 'new lrd');
+	// };
+
+	// works
+	// const updateLS = (newWord) => {
+	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
+	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
+	// 	wordObj.words.push(newWord);
+	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
+	// };
+
+	const handleLetter = (e) => {
+		tileAudio();
+		e.preventDefault();
+		console.log(e.target.textContent);
+		if (e.target.classList.contains('active')) {
+			e.target.classList.remove('active');
+			e.target.style.pointerEvents = 'initial';
+		} else {
+			e.target.classList.add('active');
+			e.target.style.pointerEvents = 'none';
+		}
+		setCurrentLetterRoundWord((currentLetterRoundWord += e.target.textContent));
+	};
+
+	const [currentLetterRoundWordScore, setCurrentLetterRoundWordScore] =
+		useState(0);
+
+	// checks validity of word and displays relative msg
+	const checkWord = () => {
+		console.log('current word', currentLetterRoundWord);
+		// if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
+		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
+			console.log('wrong');
+			setCurrentLetterRoundWordScore(-2);
+			setAllLetterRoundUserWords([
+				...allLetterRoundUserWords,
+				{
+					word: currentLetterRoundWord,
+					score: currentLetterRoundWordScore,
+					isCorrect: false,
+				},
+			]);
+			// return;
+		}
+		// if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
+		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
+			console.log('right');
+			getWordScore();
+
+			setAllLetterRoundUserWords([
+				...allLetterRoundUserWords,
+				{
+					word: currentLetterRoundWord,
+					score: currentLetterRoundWordScore,
+					isCorrect: true,
+				},
+			]);
+			// updateLS({
+			// 	word: currentLetterRoundWord,
+			// 	length: currentLetterRoundWord.length,
+			// });
+			// works
+			// updateLS({
+			// 	word: currentLetterRoundWord,
+			// 	length: currentLetterRoundWord.length,
+			// });
+
+			// later
+			// if (currentLetterRoundWord.length > letterRoundLongestWord.length) {
+			// 	setLetterRoundLongestWord(currentLetterRoundWord);
+			// }
+			// if (currentLetterRoundWord.length === 9) {
+			// 	setGotNineLetterWord(setCurrentLetterRoundWord);
+			// }
+			// return;
+		}
+	};
+
+	const getWordScore = () => {
 		let newWordScore = 0;
-		// get score
-		switch (newWord.length) {
+		switch (currentLetterRoundWord.length) {
 			case 9:
 				newWordScore = 20;
 				break;
@@ -75,75 +191,8 @@ const UserLetterCards = ({
 			default:
 				break;
 		}
-		letterRoundData.score += newWordScore;
-		// const newData =
-		letterRoundData.words.push(newWord);
-		console.log(letterRoundData, 'new lrd');
-		const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
-		const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
-		wordObj.words.push(newWord);
-		wordObj.score += newWordScore;
-		localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
-		setLetterRoundData(letterRoundData);
-		console.log(letterRoundData, 'new lrd');
-	};
-
-	// works
-	// const updateLS = (newWord) => {
-	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
-	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
-	// 	wordObj.words.push(newWord);
-	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
-	// };
-
-	const handleLetter = (e) => {
-		tileAudio();
-		e.preventDefault();
-		console.log(e.target.textContent);
-		if (e.target.classList.contains('active')) {
-			e.target.classList.remove('active');
-			e.target.style.pointerEvents = 'initial';
-		} else {
-			e.target.classList.add('active');
-			e.target.style.pointerEvents = 'none';
-		}
-		setCurrentLetterRoundWord((currentLetterRoundWord += e.target.textContent));
-	};
-
-	// checks validity of word and displays relative msg
-	const checkWord = () => {
-		console.log('current word', currentLetterRoundWord);
-		// if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-			console.log('wrong');
-			return;
-		}
-		// if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-			console.log('right');
-
-			setAllLetterRoundUserWords([
-				...allLetterRoundUserWords,
-				{ word: currentLetterRoundWord, length: currentLetterRoundWord.length },
-			]);
-			updateLS({
-				word: currentLetterRoundWord,
-				length: currentLetterRoundWord.length,
-			});
-			// works
-			// updateLS({
-			// 	word: currentLetterRoundWord,
-			// 	length: currentLetterRoundWord.length,
-			// });
-
-			if (currentLetterRoundWord.length > letterRoundLongestWord.length) {
-				setLetterRoundLongestWord(currentLetterRoundWord);
-			}
-			if (currentLetterRoundWord.length === 9) {
-				setGotNineLetterWord(setCurrentLetterRoundWord);
-			}
-			return;
-		}
+		setCurrentLetterRoundWordScore(newWordScore);
+		return;
 	};
 
 	return (
