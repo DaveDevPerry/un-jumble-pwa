@@ -56,7 +56,7 @@ const DigitalTimer = ({
 	// 		}
 	// 	});
 	// }, [isNextDayCountdownActive]);
-	let time = 10;
+	let time = 120;
 	// useEffect(() => {
 	// 	// setTimerSeconds(time);
 	// }, [time]);
