@@ -9,7 +9,6 @@ const UserWordsDisplay = ({ currentWord }) => {
 	);
 };
 const StyledWordsDisplay = styled.section`
-	/* background-color: ${({ theme }) => theme.bgTile}; */
 	background-color: ${({ theme }) => theme.syntax};
 	padding: 1rem 2rem;
 	border-radius: 5px;
@@ -19,7 +18,6 @@ const StyledWordsDisplay = styled.section`
 	align-items: center;
 	flex: 1;
 	border: 6px solid ${({ theme }) => theme.bgChosen};
-
 	.update-current-word-elem {
 		font-size: 4rem;
 		text-transform: uppercase;

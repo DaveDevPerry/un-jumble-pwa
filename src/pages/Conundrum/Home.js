@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Button from '../../components/Global/Button';
 import GameTitle from '../../components/Global/GameTitle';
-import GameLevelScreen from '../../components/Global/GameLevelscreen';
+import GameLevelScreen from '../../components/Conundrum/GameLevelScreen';
 import { useEffect } from 'react';
 
 const ConundrumHome = ({ setGameMode }) => {

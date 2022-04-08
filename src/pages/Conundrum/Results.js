@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import NextGameCountdown from '../../components/Global/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
-// import { BsFillShareFill, BsWhatsapp } from 'react-icons/bs';
 import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 
 const ConundrumResults = ({
-	// showResults,
 	conundrum,
-	// gotConundrum,
 	isNextDayCountdownActive,
-	setIsNextDayCountdownActive,
+	// setIsNextDayCountdownActive,
 }) => {
 	useEffect(() => {
 		console.log('conundrum results');
@@ -203,7 +199,6 @@ const ConundrumResults = ({
 						);
 					})}
 				</StyledLetterOutput>
-				{/* <p className='conundrum-meaning'>{meaning}</p> */}
 				<p className='conundrum-meaning'>meaning of the word goes here</p>
 				{/* <ul className='best-attempt'>
 				<li>{usersBestAttempt}</li>
@@ -268,85 +263,17 @@ const ConundrumResults = ({
 					isNextDayCountdownActive={isNextDayCountdownActive}
 					shareMobile={shareMobile}
 				/>
-				{/* <div className='wrapper'>
-					<div className='next-wrapper'>
-						<p>Next Game</p>
-						<NextGameCountdown
-							isNextDayCountdownActive={isNextDayCountdownActive}
-						/>
-					</div>
-					<div className='share-wrapper-whatsapp'>
-						<button className='share-btn-whatsapp' onClick={shareMobile}>
-							<BsFillShareFill size='20px' />
-							<BsWhatsapp size='25px' />
-						</button>
-					</div>
-			
-				</div> */}
 				{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
 			</StyledConundrumResults>
 			<button
 				className='results-home-btn'
 				onClick={() => {
-					// setConundrumData({ played: 2 });
-					// 				showResults,
-					// allUserWords,
-					// conundrumOfTheDay,
-					// conundrumOfTheDayArray,
-					// conundrum,
-					// usersBestWords,
-					// setUsersBestWords,
-					// gotConundrum,
-					// isNextDayCountdownActive,
-					// setIsNextDayCountdownActive,
-					// longestWord,
-					// conundrumData,
-					// setConundrumData,
-					// setData();
-					// let updatedValue = {};
-					// updatedValue = {"item1":"juice"};
-
-					// let updatedValue = {};
-					// updatedValue = {"item1":"juice"};
-					// setShopCart(shopCart => ({
-					// 			...shopCart,
-					// 			...updatedValue
-					// 		}));
-					// updateStatus();
-					// setIsNextDayCountdownActive(false);
 					navigate('/');
-					// setConundrumStatus((conundrumStatus) => ({
-					// 	...conundrumStatus,
-					// 	...{ four: true },
-					// }));
-
-					// setConundrumData({ ...conundrumData, played: 2 });
-					// setAllAttempts([]);
-					// setGameNumbers([]);
-					// setNumberTarget(0);
-					// setGameNumberSizes([]);
-					// 	document
-					// 		.querySelector('.start-btns-container')
-					// 		.classList.remove('hide');
 				}}
 			>
 				HOME
 			</button>
 		</>
-		// <StyledConundrumResults className={isTimeUp === true ? 'results show' : 'results'}>
-		// 	<p className='results-header'>GAME OVER - RESULTS</p>
-
-		// 	<button
-		// 		className={
-		// 			gameNumbers.length === 6
-		// 				? 'close-results-btn show'
-		// 				: 'close-results-btn'
-		// 		}
-		// 		onClick={closeResults}
-		// 	>
-		// 		HOME
-		// 	</button>
-		// </StyledConundrumResults>
 	);
 };
 const StyledConundrumResults = styled.section`
@@ -430,9 +357,9 @@ const StyledConundrumResults = styled.section`
 		border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
 		font-family: 'Bebas Neue', cursive;
 		letter-spacing: 1px;
-		/* text-align: center; */
 		align-self: center;
 		display: inline-block;
+		padding: 0 1rem;
 	}
 	.points-container {
 		display: flex;
@@ -448,54 +375,6 @@ const StyledConundrumResults = styled.section`
 			font-size: 2rem;
 		}
 	}
-	/* .wrapper {
-		display: flex;
-		width: 100%;
-		justify-content: space-between;
-		.next-wrapper {
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items: center;
-			flex: 1;
-			p {
-				font-size: 1.6rem;
-				color: ${({ theme }) => theme.bgChosen};
-				line-height: 1;
-				font-weight: bolder;
-				&:last-child {
-					font-size: 2rem;
-					font-weight: lighter;
-					color: ${({ theme }) => theme.syntax};
-				}
-			}
-		}
-		.share-wrapper-whatsapp {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-around;
-			row-gap: 2rem;
-			border-left: 2px solid ${({ theme }) => theme.bgChosen};
-			flex: 1;
-			.share-btn-whatsapp {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-between;
-				letter-spacing: 2px;
-				font-size: 1.6rem;
-				padding: 0.5rem 1rem;
-				background-color: ${({ theme }) => theme.bgChosen};
-				border: none;
-				border-radius: 5px;
-				color: ${({ theme }) => theme.syntax};
-				cursor: pointer;
-				padding: 0.2rem 1rem;
-				column-gap: 1rem;
-			}
-		}
-	} */
 `;
 const StyledLetterOutput = styled.div`
 	display: grid;
