@@ -39,7 +39,6 @@ function App() {
 
 	// CONUNDRUM
 	const [conundrum, setConundrum] = useState('');
-	// const [showResults, setShowResults] = useState(false);
 	const [allNineLetterWords, setAllNineLetterWords] = useState(null);
 	const [allEightLetterWords, setAllEightLetterWords] = useState(null);
 	const [allSevenLetterWords, setAllSevenLetterWords] = useState(null);
