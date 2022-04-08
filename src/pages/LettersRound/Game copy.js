@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-// import ClockTimer from '../../components/LettersRound/ClockTimer';
-// import GamePanel from '../../components/LettersRound/GamePanel';
-import NewDigitalTimer from '../../components/LettersRound/NewDigitalTimer';
+import ClockTimer from '../../components/LettersRound/ClockTimer';
+import GamePanel from '../../components/LettersRound/GamePanel';
 import UserLetterCards from '../../components/LettersRound/UserLetterCards';
 import UserAllWordsDisplay from '../../components/LettersRound/UserWordsDisplay';
 // import LetterRoundResults from '../../pages/LettersRound/Results';
@@ -15,22 +14,18 @@ const LetterRoundGame = ({
 	setLetterRoundData,
 	letterRoundData,
 	setGotNineLetterWord,
-	// setShowLetterRoundResults,
+	setShowLetterRoundResults,
 	setLetterRoundLongestWord,
 	letterRoundLongestWord,
 	allLetterRoundUserWords,
 	setAllLetterRoundUserWords,
-	setCurrentLetterRoundWord,
-	currentLetterRoundWord,
 }) => {
 	useEffect(() => {
 		console.log('lr game render');
 	}, []);
-	// let navigate = useNavigate();
-	// const [letterRoundTicking, setLetterRoundTicking] = useState(false);
-	// const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
-	const [isTimerActive, setIsTimerActive] = useState(false);
-	// const [isTimerActive, setIsTimerActive] = useState(false);
+	let navigate = useNavigate();
+	const [letterRoundTicking, setLetterRoundTicking] = useState(false);
+	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
 	// const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
 	// const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
 	// const [letterRoundUsersBestWords, setLetterRoundUsersBestWords] = useState(
@@ -41,198 +36,84 @@ const LetterRoundGame = ({
 	// 	useState(false);
 	// const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
 
-	// const updatePlayed = () => {
-	// 	// letterRoundData.score += newWordScore;
-	// 	// const newData =
-	// 	// letterRoundData.words.push(newWord);
-	// 	console.log(letterRoundData, 'new lrd');
-	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
-	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
-	// 	// wordObj.words.push(newWord);
-	// 	wordObj.played += 1;
-	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
-	// 	setLetterRoundData(letterRoundData);
-	// 	console.log(letterRoundData, 'new lrd');
-	// };
+	const updatePlayed = () => {
+		// letterRoundData.score += newWordScore;
+		// const newData =
+		// letterRoundData.words.push(newWord);
+		console.log(letterRoundData, 'new lrd');
+		const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
+		const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
+		// wordObj.words.push(newWord);
+		wordObj.played += 1;
+		localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
+		setLetterRoundData(letterRoundData);
+		console.log(letterRoundData, 'new lrd');
+	};
 
-	// const handleLetterGameStart = (e) => {
-	// 	e.preventDefault();
-	// 	document.querySelector('.start-btns-container').classList.add('hide');
-	// 	const gameLetterTiles = document.querySelectorAll('.card');
-	// 	gameLetterTiles.forEach((tile) => {
-	// 		tile.classList.add('visible');
-	// 		console.log(setShowLetterRoundResults);
-	// 	});
-	// 	document.querySelectorAll('.button').forEach((btn) => {
-	// 		btn.classList.add('visible');
-	// 	});
-	// 	setIsTimerActive(true);
-	// };
-
-	const handleLetterRoundStart = (e) => {
+	const handleLetterGameStart = (e) => {
 		e.preventDefault();
-		setIsTimerActive(true);
-		document.querySelectorAll('.btn-timer').forEach((btn) => {
-			btn.classList.add('visible');
+		document.querySelector('.start-btns-container').classList.add('hide');
+		const gameLetterTiles = document.querySelectorAll('.card');
+		gameLetterTiles.forEach((tile) => {
+			tile.classList.add('visible');
+			console.log(setShowLetterRoundResults);
 		});
 		document.querySelectorAll('.button').forEach((btn) => {
 			btn.classList.add('visible');
 		});
-		document.querySelectorAll('.card').forEach((card) => {
-			card.classList.add('visible');
-		});
+
+		setTimeout(() => {
+			setLetterRoundTicking(true);
+			timerAudio();
+			setTimeout(() => {
+				// TURN THIS ON TO SHOW RESULTS PAGE
+				updatePlayed();
+				setTimeout(() => {
+					navigate('/letterround/results');
+				}, 1000);
+				setLetterRoundTicking(false);
+				setTimeout(() => {
+					const gameLetterTiles = document.querySelectorAll('.card');
+					gameLetterTiles.forEach((tile) => {
+						tile.classList.remove('visible');
+					});
+				}, 2000);
+			}, 30000);
+		}, 2000);
 	};
 
-	const handleReset = (e) => {
-		playClear();
-		e.preventDefault();
-		console.log('reset tiles');
-		setCurrentLetterRoundWord('');
-		// setCurrentAnagramWord([]);
-		// setCurrentUserGuess([]);
-		const tiles = document.querySelectorAll('.card-front');
-		tiles.forEach((tile) => {
-			tile.classList.remove('active');
-			tile.style.pointerEvents = 'initial';
-		});
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (currentLetterRoundWord.length < 3) return;
-		checkWord();
-		// reset tiles
-		const tiles = document.querySelectorAll('.card-front');
-		tiles.forEach((tile) => {
-			tile.classList.remove('active');
-			tile.style.pointerEvents = 'initial';
-		});
-		setCurrentLetterRoundWord('');
-		// setCurrentLetterRoundWord((currentLetterRoundWord += e.target.textContent));
-		// setCurrentAnagramWord([]);
-	};
-
-	const handleLetter = (e) => {
-		tileAudio();
-		e.preventDefault();
-		console.log(e.target.textContent, 'e');
-		if (e.target.classList.contains('active')) {
-			e.target.classList.remove('active');
-			e.target.style.pointerEvents = 'initial';
-		} else {
-			e.target.classList.add('active');
-			setCurrentLetterRoundWord(
-				(currentLetterRoundWord += e.target.textContent)
-			);
-			// setCurrentAnagramWord(currentAnagramWord + e.target.textContent);
-			e.target.style.pointerEvents = 'none';
-		}
-	};
-	// clears letters from ui
-	const resetWord = () => {
-		console.log('reset word - check states');
-		const currentTileElement = document.querySelectorAll('.card-front');
-		currentTileElement.forEach((tile) => {
-			tile.classList.remove('active');
-			// tile.textContent = '\u00A0';
-			tile.style.pointerEvents = 'initial';
-		});
-	};
-	const checkWord = () => {
-		console.log('current word', currentLetterRoundWord);
-		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-			console.log('wrong');
-			// setCurrentAnagramWordScore(-2);
-			const currentWordPoints = parseInt('-' + getWordScore());
-			setAllLetterRoundUserWords([
-				...allLetterRoundUserWords,
-				{
-					word: currentLetterRoundWord,
-					score: currentWordPoints,
-					isCorrect: false,
-				},
-			]);
-		}
-		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-			console.log('right');
-			const currentWordPoints = getWordScore();
-			setAllLetterRoundUserWords([
-				...allLetterRoundUserWords,
-				{
-					word: currentLetterRoundWord,
-					score: currentWordPoints,
-					isCorrect: true,
-				},
-			]);
-		}
-		// resetWord(); - yes or no?
-		resetWord();
-	};
-
-	const getWordScore = () => {
-		let newWordScore = 0;
-		switch (currentLetterRoundWord.length) {
-			case 9:
-				newWordScore = 20;
-				break;
-			case 8:
-				newWordScore = 13;
-				break;
-			case 7:
-				newWordScore = 10;
-				break;
-			case 6:
-				newWordScore = 7;
-				break;
-			case 5:
-				newWordScore = 5;
-				break;
-			case 4:
-				newWordScore = 3;
-				break;
-			case 3:
-				newWordScore = 1;
-				break;
-			default:
-				break;
-		}
-		return newWordScore;
-	};
-	const tileAudio = () => {
-		const audio = new Audio('/audio/tile.mp3');
-		audio.play();
-	};
-	const playClear = () => {
-		const audio = new Audio('/audio/negative.mp3');
+	const timerAudio = () => {
+		const audio = new Audio('/audio/cc timer30.mp3');
 		audio.play();
 	};
 
 	return (
 		<StyledGame>
-			{/* <ClockTimer letterRoundTicking={letterRoundTicking} /> */}
-
-			<UserAllWordsDisplay
-				// handleLetterGameStart={handleLetterGameStart}
-				currentLetterRoundWord={currentLetterRoundWord}
-				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-				allLetterRoundUserWords={allLetterRoundUserWords}
-				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-			/>
-			<NewDigitalTimer
-				isTimerActive={isTimerActive}
-				setIsTimerActive={setIsTimerActive}
-				handleLetterRoundStart={handleLetterRoundStart}
-			/>
-			{/* <GamePanel
-				// handleStart={handleStart}
-				handleLetterRoundStart={handleLetterRoundStart}
-			/> */}
-			{/* <GamePanel
+			{/* <h2>{wordOfTheDay}</h2> */}
+			{/* <div className='timer-container'> */}
+			<ClockTimer letterRoundTicking={letterRoundTicking} />
+			{/* </div> */}
+			{/* <div className='game-variables-container'> */}
+			<GamePanel
 				gameLetters={gameLetters}
 				handleLetterGameStart={handleLetterGameStart}
 				setLetterRoundData={setLetterRoundData}
 				letterRoundData={letterRoundData}
-			/> */}
+			/>
+			{/* </div> */}
+			{/* <div className='words-display-container'> */}
+			<UserAllWordsDisplay
+				// currentLetterRoundWord={currentLetterRoundWord}
+				// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				handleLetterGameStart={handleLetterGameStart}
+				currentLetterRoundWord={currentLetterRoundWord}
+				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				allLetterRoundUserWords={allLetterRoundUserWords}
+				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				// setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+			/>
+			{/* </div> */}
+			{/* <div className='user-letter-container'> */}
 			<UserLetterCards
 				currentLetterRoundWord={currentLetterRoundWord}
 				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
@@ -245,15 +126,20 @@ const LetterRoundGame = ({
 				gameLetters={gameLetters}
 				setLetterRoundData={setLetterRoundData}
 				letterRoundData={letterRoundData}
-				// currentAnagramWord={currentAnagramWord}
-				// setCurrentAnagramWord={setCurrentAnagramWord}
-				// shuffledTiles={shuffledTiles}
-				// currentShuffledTargetWord={currentShuffledTargetWord}
-				handleLetter={handleLetter}
-				handleReset={handleReset}
-				handleSubmit={handleSubmit}
-				// handleSkip={handleSkip}
 			/>
+			{/* </div> */}
+			{/* <LetterRoundResults
+				showLetterRoundResults={showLetterRoundResults}
+				allLetterRoundUserWords={allLetterRoundUserWords}
+				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				gameLetters={gameLetters}
+				gotNineLetterWord={gotNineLetterWord}
+				isNextDayCountdownActive={isNextDayCountdownActive}
+				setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+				letterRoundLongestWord={letterRoundLongestWord}
+				setGameLetters={setGameLetters}
+				// setLetterTypes={setLetterTypes}
+			/> */}
 		</StyledGame>
 	);
 };

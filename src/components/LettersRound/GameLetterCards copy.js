@@ -8,19 +8,18 @@ const GameLetterCards = ({
 }) => {
 	return (
 		<StyledGameLetterCards>
-			<button className='start-btns-container' onClick={handleLetterRoundStart}>
+			<button className='start-btns-container' onClick={handleLetterGameStart}>
 				start game
 			</button>
 			<StyledLettersOutput>
-				{gameLetters &&
-					gameLetters.map((letter, index) => {
-						return (
-							<div key={index} className='card'>
-								<div className='card-back card-letter'>&nbsp;</div>
-								<div className='card-front card-letter'>{letter}</div>
-							</div>
-						);
-					})}
+				{gameLetters.map((letter, index) => {
+					return (
+						<div key={index} className='card'>
+							<div className='card-back card-letter'>&nbsp;</div>
+							<div className='card-front card-letter'>{letter}</div>
+						</div>
+					);
+				})}
 			</StyledLettersOutput>
 			{/* <StyledLettersOutput>
 				{wordOfTheDay.split('').map((letter, index) => {

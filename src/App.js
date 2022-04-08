@@ -64,6 +64,7 @@ function App() {
 	const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
 	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
 	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
+	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
 	// const [nineLetterWords, setNineLetterWords] = useState([])
 
 	// ANAGRAM
@@ -315,6 +316,8 @@ function App() {
 										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
 										sortedWordsByLengthArray={sortedWordsByLengthArray}
 										setSortedWordsByLengthArray={setSortedWordsByLengthArray}
+										currentLetterRoundWord={currentLetterRoundWord}
+										setCurrentLetterRoundWord={setCurrentLetterRoundWord}
 									/>
 								}
 							/>

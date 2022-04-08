@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import GameLetterCards from './GameLetterCards';
 
-const GamePanel = ({ gameLetters, handleLetterGameStart }) => {
+const GamePanel = ({
+	gameLetters,
+	handleLetterGameStart,
+	handleLetterRoundStart,
+}) => {
 	return (
 		<StyledGameTargetTotal>
 			<GameLetterCards
 				gameLetters={gameLetters}
 				handleLetterGameStart={handleLetterGameStart}
+				handleLetterRoundStart={handleLetterRoundStart}
 			/>
 		</StyledGameTargetTotal>
 	);
