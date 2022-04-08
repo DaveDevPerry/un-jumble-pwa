@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 // import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NextGameCountdown from '../../components/Global/NextGameCountdown';
+// import NextGameCountdown from '../../components/Global/NextGameCountdown';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
-import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
+// import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
 import GameTitle from '../../components/Global/GameTitle';
+import ResultsFooter from '../../components/Global/ResultsFooter';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const AnagramRoundResults = ({
@@ -344,7 +345,11 @@ const AnagramRoundResults = ({
 			<div className='rank-container'>
 				<p>RANKED: 560th</p>
 			</div>*/}
-				<div className='wrapper'>
+				<ResultsFooter
+					isNextDayCountdownActive={isNextDayCountdownActive}
+					shareMobile={shareMobile}
+				/>
+				{/* <div className='wrapper'>
 					<div className='next-wrapper'>
 						<p>Next Game</p>
 						<NextGameCountdown
@@ -353,12 +358,12 @@ const AnagramRoundResults = ({
 					</div>
 					<div className='share-wrapper-whatsapp'>
 						<button className='share-btn-whatsapp' onClick={shareMobile}>
-							{/* <p>Share</p> */}
+						
 							<BsFillShareFill size='20px' />
 							<BsWhatsapp size='25px' />
 						</button>
 					</div>
-				</div>
+				</div> */}
 				{/* <button
 				className='results-home-btn'
 				onClick={() => {
@@ -503,7 +508,7 @@ const StyledAnagramResults = styled.section`
 			font-size: 2rem;
 		}
 	}
-	.wrapper {
+	/* .wrapper {
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
@@ -552,7 +557,7 @@ const StyledAnagramResults = styled.section`
 				column-gap: 1rem;
 			}
 		}
-	}
+	} */
 `;
 
 export default AnagramRoundResults;

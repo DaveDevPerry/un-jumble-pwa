@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import NextGameCountdown from '../../components/Global/NextGameCountdown';
+// import NextGameCountdown from '../../components/Global/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
-import { BsFillShareFill, BsWhatsapp } from 'react-icons/bs';
+// import { BsFillShareFill, BsWhatsapp } from 'react-icons/bs';
 import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
+import ResultsFooter from '../../components/Global/ResultsFooter';
 
 const ConundrumResults = ({
 	// showResults,
@@ -262,7 +263,12 @@ const ConundrumResults = ({
 				{/* <div className='rank-container'>
 				<p>RANKED: 560th</p>
 			</div> */}
-				<div className='wrapper'>
+
+				<ResultsFooter
+					isNextDayCountdownActive={isNextDayCountdownActive}
+					shareMobile={shareMobile}
+				/>
+				{/* <div className='wrapper'>
 					<div className='next-wrapper'>
 						<p>Next Game</p>
 						<NextGameCountdown
@@ -275,13 +281,8 @@ const ConundrumResults = ({
 							<BsWhatsapp size='25px' />
 						</button>
 					</div>
-					{/* <div className='share-wrapper'>
-					<button id='share-btn'>
-						<p>Share</p>
-						<BsFillShareFill size='25px' />
-					</button>
+			
 				</div> */}
-				</div>
 				{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
 			</StyledConundrumResults>
 			<button
@@ -447,7 +448,7 @@ const StyledConundrumResults = styled.section`
 			font-size: 2rem;
 		}
 	}
-	.wrapper {
+	/* .wrapper {
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
@@ -494,7 +495,7 @@ const StyledConundrumResults = styled.section`
 				column-gap: 1rem;
 			}
 		}
-	}
+	} */
 `;
 const StyledLetterOutput = styled.div`
 	display: grid;

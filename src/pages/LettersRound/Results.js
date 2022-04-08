@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NextGameCountdown from '../../components/Global/NextGameCountdown';
+// import NextGameCountdown from '../../components/Global/NextGameCountdown';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
-import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
+// import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
 import GameTitle from '../../components/Global/GameTitle';
+import ResultsFooter from '../../components/Global/ResultsFooter';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const LetterRoundResults = ({
@@ -95,7 +96,7 @@ const LetterRoundResults = ({
 				return b.word.length - a.word.length;
 			});
 		console.log(sortedWrongWordsByLength, 'sorted words');
-		// setsortedWrongWordsByLengthArray(sortedWrongWordsByLength);
+		// setSortedWrongWordsByLengthArray(sortedWrongWordsByLength);
 		console.log(sortedWrongWordsByLength, 'sorted');
 		const nineCountWrong = sortedWrongWordsByLength.filter((wordItem) => {
 			return wordItem.word.length === 9;
@@ -700,8 +701,12 @@ const LetterRoundResults = ({
 				{/* <div className='rank-container'>
 					<p>RANKED: 560th</p>
 				</div> */}
+				<ResultsFooter
+					isNextDayCountdownActive={isNextDayCountdownActive}
+					shareMobile={shareMobile}
+				/>
 
-				<div className='wrapper'>
+				{/* <div className='wrapper'>
 					<div className='next-wrapper'>
 						<p>Next Game</p>
 						<NextGameCountdown
@@ -710,17 +715,15 @@ const LetterRoundResults = ({
 					</div>
 					<div className='share-wrapper-whatsapp'>
 						<button className='share-btn-whatsapp' onClick={shareMobile}>
-							{/* {' '}
-						<p>Share</p> */}
+						
 							<BsFillShareFill size='20px' />
 							<BsWhatsapp size='25px' />
 						</button>
 						{/* <button id='share-btn'>
 						<p>Share</p>
 						<BsFillShareFill size='16px' />
-					</button> */}
 					</div>
-				</div>
+				</div> */}
 			</StyledLetterRoundResults>
 			<button
 				className='results-home-btn'
@@ -818,6 +821,7 @@ const StyledLetterRoundResults = styled.section`
 		/* text-align: center; */
 		align-self: center;
 		display: inline-block;
+		padding: 0 1rem;
 	}
 	.points-table-container {
 		align-self: center;
@@ -889,7 +893,7 @@ const StyledLetterRoundResults = styled.section`
 			font-size: 2rem;
 		}
 	}
-	.wrapper {
+	/* .wrapper {
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
@@ -936,7 +940,7 @@ const StyledLetterRoundResults = styled.section`
 				column-gap: 1rem;
 			}
 		}
-	}
+	} */
 `;
 const StyledLetterOutput = styled.div`
 	display: grid;

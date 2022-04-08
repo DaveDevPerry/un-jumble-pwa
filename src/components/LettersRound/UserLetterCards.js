@@ -25,6 +25,7 @@ const UserLetterCards = ({
 }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (currentLetterRoundWord.length < 3) return;
 		checkWord();
 		// reset tiles
 		const tiles = document.querySelectorAll('.card-front');

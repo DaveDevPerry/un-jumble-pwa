@@ -48,7 +48,7 @@ const StyledGameLevelScreen = styled.div`
 	align-items: center;
 	height: 100%;
 	width: 100%;
-	border-radius: 10px;
+	border-radius: 5px;
 	background-color: ${({ theme }) => theme.bgTile};
 	border: none;
 	padding: 1rem;
