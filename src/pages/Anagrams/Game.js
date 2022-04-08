@@ -577,8 +577,13 @@ const AnagramRoundGame = ({
 		const audio = new Audio('/audio/tile.mp3');
 		audio.play();
 	};
+	const playClear = () => {
+		const audio = new Audio('/audio/negative.mp3');
+		audio.play();
+	};
 
 	const handleReset = (e) => {
+		playClear();
 		e.preventDefault();
 		console.log('reset tiles');
 		setCurrentAnagramWord([]);
