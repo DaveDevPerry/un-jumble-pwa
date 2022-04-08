@@ -251,7 +251,7 @@ const LetterRoundResults = ({
 			<GameTitle title='results' />
 			<StyledLetterRoundResults>
 				{/* <h2>RESULTS</h2> */}
-				<div className='letter-round-stats-container'>
+				{/* <div className='letter-round-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
@@ -272,7 +272,7 @@ const LetterRoundResults = ({
 						<p>03</p>
 						<p>max streak</p>
 					</div>
-				</div>
+				</div> */}
 
 				{/* // IF 9 letter word can be made from all letters display below */}
 				<StyledLetterOutput>
@@ -650,6 +650,9 @@ const LetterRoundResults = ({
 							fiveLetterWords.length * 5 +
 							fourLetterWords.length * 3 +
 							threeLetterWords.length * 1} */}
+						{allLetterRoundUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0)}
 					</h2>
 					<p>points</p>
 				</div>

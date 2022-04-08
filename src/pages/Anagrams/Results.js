@@ -352,7 +352,7 @@ const AnagramRoundResults = ({
 			<button
 				className='results-home-btn'
 				onClick={() => {
-					setIsNextDayCountdownActive(false);
+					// setIsNextDayCountdownActive(false);
 					// updateLRPlayed();
 
 					navigate('/');

@@ -312,7 +312,7 @@ const ConundrumResults = ({
 					// 			...updatedValue
 					// 		}));
 					// updateStatus();
-					setIsNextDayCountdownActive(false);
+					// setIsNextDayCountdownActive(false);
 					navigate('/');
 					// setConundrumStatus((conundrumStatus) => ({
 					// 	...conundrumStatus,
