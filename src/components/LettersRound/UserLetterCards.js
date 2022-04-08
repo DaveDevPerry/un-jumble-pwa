@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const UserLetterCards = ({
@@ -32,11 +32,11 @@ const UserLetterCards = ({
 			tile.classList.remove('active');
 			tile.style.pointerEvents = 'initial';
 		});
-		setCurrentLetterRoundWord([]);
+		setCurrentLetterRoundWord('');
 	};
 	const handleReset = (e) => {
 		e.preventDefault();
-		// setCurrentWord([]);
+		setCurrentLetterRoundWord('');
 		// setCurrentWordLetterIndex([]);
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -119,8 +119,8 @@ const UserLetterCards = ({
 		setCurrentLetterRoundWord((currentLetterRoundWord += e.target.textContent));
 	};
 
-	const [currentLetterRoundWordScore, setCurrentLetterRoundWordScore] =
-		useState(0);
+	// const [currentLetterRoundWordScore, setCurrentLetterRoundWordScore] =
+	// 	useState(0);
 
 	// useEffect(()=>{
 	// 	console.log('setting sorted');
@@ -166,27 +166,28 @@ const UserLetterCards = ({
 		// if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			console.log('wrong');
-			setCurrentLetterRoundWordScore(-2);
+			// setCurrentLetterRoundWordScore(-2);
 			setAllLetterRoundUserWords([
 				...allLetterRoundUserWords,
 				{
 					word: currentLetterRoundWord,
-					score: currentLetterRoundWordScore,
+					score: -2,
 					isCorrect: false,
 				},
 			]);
 			// return;
+			// setCurrentLetterRoundWord('');
 		}
 		// if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			console.log('right');
-			getWordScore();
+			const currentWordPoints = getWordScore();
 
 			setAllLetterRoundUserWords([
 				...allLetterRoundUserWords,
 				{
 					word: currentLetterRoundWord,
-					score: currentLetterRoundWordScore,
+					score: currentWordPoints,
 					isCorrect: true,
 				},
 			]);
@@ -274,8 +275,8 @@ const UserLetterCards = ({
 			default:
 				break;
 		}
-		setCurrentLetterRoundWordScore(newWordScore);
-		return;
+		// setCurrentLetterRoundWordScore(newWordScore);
+		return newWordScore;
 	};
 
 	return (

@@ -15,6 +15,7 @@ export const lightTheme = {
 	textTarget: 'rgb(228, 207, 23)',
 	textMarker: '#ffffff',
 	bgChosen: '#3d0101',
+	red: '#980303',
 };
 export const darkTheme = {
 	syntax: '#ffffff',
@@ -35,4 +36,5 @@ export const darkTheme = {
 	textTarget: 'rgb(228, 207, 23)',
 	textMarker: '#000000',
 	bgChosen: '#1b2877',
+	red: '#980303',
 };
