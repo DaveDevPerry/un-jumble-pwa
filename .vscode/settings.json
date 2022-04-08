@@ -1,3 +1,8 @@
 {
-	"cSpell.words": ["anagramround", "letterround", "selectletters"]
+	"cSpell.words": [
+		"anagramround",
+		"letterround",
+		"selectletters",
+		"selectwordlength"
+	]
 }

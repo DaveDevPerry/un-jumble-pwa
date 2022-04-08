@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { MdOutlineTimerOff } from 'react-icons/md';
+import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
 
-const GameTypeScreen = ({ url, name, description }) => {
+const GameTypeScreen = ({ url, name, description, isTimed }) => {
 	let navigate = useNavigate();
 	return (
 		<StyledGameTypeScreen
@@ -14,9 +14,19 @@ const GameTypeScreen = ({ url, name, description }) => {
 			}}
 		>
 			<div className='game-mode-header'>
-				<MdOutlineTimerOff size='22px' />
+				{isTimed === 'true' ? (
+					<MdOutlineTimer size='22px' />
+				) : (
+					<MdOutlineTimerOff size='22px' />
+				)}
+				{/* <MdOutlineTimerOff size='22px' /> */}
 				<h3>{name}</h3>
-				<MdOutlineTimerOff size='22px' />
+				{isTimed === 'true' ? (
+					<MdOutlineTimer size='22px' />
+				) : (
+					<MdOutlineTimerOff size='22px' />
+				)}
+				{/* <MdOutlineTimerOff size='22px' /> */}
 			</div>
 			<p>{description}</p>
 			<div className='game-mode-stats-container'>
@@ -71,6 +81,7 @@ const StyledGameTypeScreen = styled.div`
 		display: flex;
 		justify-content: space-evenly;
 		align-items: flex-start;
+		opacity: 0;
 		.stat-wrapper {
 			display: flex;
 			flex-direction: column;

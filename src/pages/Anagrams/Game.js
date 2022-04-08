@@ -188,7 +188,7 @@ const AnagramRoundGame = ({
 	// 	}
 	// 	return array;
 	// }
-	// inits one full game playthrough
+	// inits one full game playThrough
 	// const play = () => {
 	// 	setIsPlaying(true);
 	// 	getNewWord();
@@ -276,9 +276,9 @@ const AnagramRoundGame = ({
 	// 		console.log('no game data yet');
 	// 	}
 
-	// 	// render highscore
+	// 	// render highScore
 
-	// 	// set highscore
+	// 	// set highScore
 	// }, [gameData, newHighScore]);
 
 	// let time = 120;
@@ -834,7 +834,7 @@ const AnagramRoundGame = ({
 		}
 	}, [currentAnagramWord]);
 
-	// const [first, setfirst] = useState(second)
+	// const [first, setFirst] = useState(second)
 
 	// const [currentGameData, setCurrentGameData] = useState({
 	// 	words: 0,
@@ -893,7 +893,7 @@ const AnagramRoundGame = ({
 					setCurrentAnagramWord={setCurrentAnagramWord}
 					shuffled={shuffled}
 					dictionary={dictionary}
-					setallAnagramUserWords={setallAnagramUserWords}
+					setAllAnagramUserWords={setAllAnagramUserWords}
 					allAnagramUserWords={allAnagramUserWords}
 				
 					setShowResults={setShowResults}
