@@ -29,13 +29,28 @@ import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 
 function App() {
+	const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
 	useEffect(() => {
 		console.log('app render');
+		// const API_KEY = process.env.REACT_APP_API_KEY;
+		// setTimeout(() => {
+		// console.log(API_KEY);
+		// }, 1000);
+		// setAPIKey(API_KEY);
+		console.log(setAPIKey);
 	}, []);
+
+	// const API_KEY = process.env.REACT_APP_API_KEY;
+	// setTimeout(() => {
+	// 	console.log(API_KEY);
+	// }, 1000);
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
 	const themeMode = theme === 'light' ? lightTheme : darkTheme;
 	const [dictionary, setDictionary] = useState(null);
 	const englishDictionary = require('an-array-of-english-words');
+	// GLOBAL - working with conundrum
+	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
+		useState(true);
 
 	// CONUNDRUM
 	const [conundrum, setConundrum] = useState('');
@@ -48,10 +63,6 @@ function App() {
 	const [gameMode, setGameMode] = useState('');
 	// const [showResults, setShowResults] = useState(false);
 	// const [gotConundrum, setGotConundrum] = useState(false);
-
-	// GLOBAL - working with conundrum
-	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
-		useState(true);
 
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
@@ -141,7 +152,12 @@ function App() {
 		setDictionary(letterRoundWords);
 	}, [englishDictionary]);
 
-	if (!mountedComponent) return <div>Can i see this</div>;
+	if (!mountedComponent)
+		return (
+			<div id='unmounted' style={{ backgroundColor: '#ff3366' }}>
+				Can i see this
+			</div>
+		);
 
 	return (
 		<ThemeProvider theme={themeMode}>
@@ -225,6 +241,8 @@ function App() {
 										// gotConundrum={gotConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										APIKey={APIKey}
+										// defData={defData}
 									/>
 								}
 							/>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+// import DataFetching from '../components/Conundrum/DataFetching';
 import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
 
@@ -10,6 +11,7 @@ const Home = () => {
 
 	return (
 		<StyledHome>
+			{/* <DataFetching /> */}
 			<GameTitle title='select game' />
 			<GameTypeScreen
 				url='/conundrum'

@@ -4,11 +4,17 @@ import { useNavigate } from 'react-router-dom';
 // import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
+// import DataFetching from '../../components/Conundrum/WordDefinition';
+import WordDefinition from '../../components/Conundrum/WordDefinition';
+
+// import axios from 'axios';
 
 const ConundrumResults = ({
 	conundrum,
 	isNextDayCountdownActive,
+	APIKey,
 	// setIsNextDayCountdownActive,
+	// defData,
 }) => {
 	useEffect(() => {
 		console.log('conundrum results');
@@ -19,39 +25,8 @@ const ConundrumResults = ({
 			});
 		}, 1000);
 	}, []);
-	// const [meaning, setMeaning] = useState('');
+	// const [defMeaning, setDefMeaning] = useState(null);
 	let navigate = useNavigate();
-	// const API_KEY = '573fddf5-f4bb-412f-a305-f614bfb3d5f3';
-	// useEffect(() => {
-	// 	// setMeaning(fetchData());
-	// 	const wordMeaning = fetchData();
-	// 	setMeaning(wordMeaning);
-	// 	// .then((data) =>
-	// 	// 	setMeaning(data[0].meanings[0].definitions[0].definition)
-	// 	// );
-	// }, []);
-
-	// const fetchData = () => {
-	// 	return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${conundrum}`)
-	// 		.then((response) => response.json())
-	// 		.then((data) => wordMeaning = data[0].meanings[0].definitions[0].definition)
-	// 			// console.log(data[0].meanings[0].definitions[0].definition)
-	// 		// );
-	// };
-	// const fetchData = () => {
-	// 	fetch(
-	// 		`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${conundrum}?key=${API_KEY}`
-	// 	)
-	// 		.then((response) => response.json())
-	// 		.then((data) => console.log(data));
-	// 	// .then((data) => setMeaning(data));
-	// };
-	// const fetchData = () => {
-	// 	fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${conundrum}`)
-	// 		.then((response) => response.json())
-	// 		.then((data) => console.log(data));
-	// 	// .then((data) => setMeaning(data));
-	// };
 
 	// const updateStatus = () => {
 	// 	let updatedValue = {};
@@ -127,6 +102,10 @@ const ConundrumResults = ({
 		<>
 			<GameTitle title='results' />
 			<StyledConundrumResults>
+				{/* <DataFetching conundrum={conundrum} /> */}
+				{/* <WordDefinition conundrum={conundrum} /> */}
+				{/* <p>{defData}</p> */}
+				{/* <p>{defMeaning}</p> */}
 				{/* <StyledConundrumResults
 			className={showResults ? 'results-modal show' : 'results-modal'}
 		> */}
@@ -199,7 +178,9 @@ const ConundrumResults = ({
 						);
 					})}
 				</StyledLetterOutput>
-				<p className='conundrum-meaning'>meaning of the word goes here</p>
+				<WordDefinition conundrum={conundrum} APIKey={APIKey} />
+				{/* <p className='conundrum-meaning'>{meaning}</p> */}
+				{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
 				{/* <ul className='best-attempt'>
 				<li>{usersBestAttempt}</li>
 			</ul> */}
@@ -348,9 +329,9 @@ const StyledConundrumResults = styled.section`
 			}
 		}
 	}
-	.conundrum-meaning {
+	/* .conundrum-meaning {
 		text-align: center;
-	}
+	} */
 	.conundrum-user-result {
 		font-size: 3rem;
 		border-top: 2px solid ${({ theme }) => theme.bgChosen};

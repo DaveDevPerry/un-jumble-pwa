@@ -30,15 +30,6 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
     height: 100vh;
   }
-  nav{
-    font-size: 2rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    a{
-      color: white;
-    }
-  }
   .container {
     height: 100vh;
     width: clamp(320px, 100%, 500px);
@@ -79,7 +70,4 @@ export const GlobalStyles = createGlobalStyle`
 	  border: none;
     height: 4.6rem;
   }
-  /* .hide{
-    display: none !important;
-  } */
 `;
