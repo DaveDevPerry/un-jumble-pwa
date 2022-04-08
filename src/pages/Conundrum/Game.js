@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import ClockTimer from '../../components/Conundrum/ClockTimer';
-import GamePanel from '../../components/Conundrum/GamePanel';
+// import GamePanel from '../../components/Conundrum/GamePanel';
 import UserWordsDisplay from '../../components/Conundrum/UserWordsDisplay';
 import { useNavigate } from 'react-router-dom';
 import ConundrumUserLetterCards from '../../components/Conundrum/UserLetterCards';
@@ -84,7 +84,7 @@ const ConundrumGame = ({
 	const handleStartGame = (e) => {
 		e.preventDefault();
 		console.log(conundrum);
-		document.querySelector('.start-btns-container').classList.add('hide');
+		// document.querySelector('.start-btns-container').classList.add('hide');
 		const gameLetterTiles = document.querySelectorAll('.card');
 		gameLetterTiles.forEach((tile) => {
 			tile.classList.add('visible');
@@ -98,7 +98,7 @@ const ConundrumGame = ({
 
 	return (
 		<StyledConundrumGame>
-			<div className='back-btn-container'>
+			{/* <div className='back-btn-container'>
 				<div className='button'>
 					<button className='btn-back btn-cta'>back</button>
 					<button
@@ -110,10 +110,25 @@ const ConundrumGame = ({
 						try again later
 					</button>
 				</div>
-			</div>
+			</div> */}
 			{/* <ClockTimer ticking={ticking} /> */}
-			<GamePanel handleStartGame={handleStartGame} shuffled={shuffled} />
+			{/* <GamePanel handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 			<UserWordsDisplay currentWord={currentWord} />
+			<div className='back-btn-container'>
+				<div className='button'>
+					<button className='btn-back btn-cta' onClick={handleStartGame}>
+						start game
+					</button>
+					<button
+						className='btn-front btn-cta'
+						onClick={() => {
+							navigate('/');
+						}}
+					>
+						back
+					</button>
+				</div>
+			</div>
 			<ConundrumUserLetterCards
 				currentWord={currentWord}
 				setCurrentWord={setCurrentWord}
@@ -133,8 +148,63 @@ const StyledConundrumGame = styled.section`
 	flex: 1;
 	position: relative;
 	row-gap: 1rem;
-	.back-btn-container {
+
+	.back-btns-container {
 		perspective: 500px;
+		display: flex;
+		column-gap: 2rem;
+		margin-bottom: 1rem;
+	}
+	.button {
+		position: relative;
+		height: 45px;
+		flex: 1;
+	}
+	.btn-cta {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		backface-visibility: hidden;
+		transition: transform 500ms ease-in-out;
+		font-size: 3rem;
+		border: none;
+		outline: none;
+		font-family: 'Bebas Neue', cursive;
+		letter-spacing: 2px;
+	}
+	.button.visible .btn-back {
+		transform: rotateX(-180deg);
+	}
+	.button.visible .btn-front {
+		transform: rotateX(0);
+	}
+
+	.btn-back {
+		font-size: 2rem;
+		outline: none;
+		background-color: ${({ theme }) => theme.bgChosen};
+		color: ${({ theme }) => theme.syntax};
+		display: grid;
+		place-content: center;
+		border-radius: 5px;
+	}
+	.btn-front {
+		font-size: 3rem;
+		outline: none;
+		display: grid;
+		place-content: center;
+		border-radius: 5px;
+		transform: rotateX(180deg);
+		background-color: ${({ theme }) => theme.bgChosen};
+		color: ${({ theme }) => theme.syntax};
+		cursor: pointer;
+		&.active {
+			background-color: ${({ theme }) => theme.bgChosen};
+		}
 	}
 `;
 export default ConundrumGame;

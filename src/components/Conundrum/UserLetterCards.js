@@ -16,8 +16,17 @@ const ConundrumUserLetterCards = ({
 		const audio = new Audio('/audio/tile.mp3');
 		audio.play();
 	};
+	const playShowResults = () => {
+		const audio = new Audio('/audio/squeek.mp3');
+		audio.play();
+	};
+	const playClear = () => {
+		const audio = new Audio('/audio/negative.mp3');
+		audio.play();
+	};
 
 	const handleReset = (e) => {
+		playClear();
 		e.preventDefault();
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -71,6 +80,7 @@ const ConundrumUserLetterCards = ({
 			// setIsNextDayCountdownActive(true);
 			// setIsNextDayCountdownActive(true); - CAN THIS BE TRUE FROM APP LAUNCH
 			setTimeout(() => {
+				playShowResults();
 				navigate('/conundrum/results');
 			}, 1000);
 			return;
@@ -80,14 +90,18 @@ const ConundrumUserLetterCards = ({
 	return (
 		<StyledConundrumUserLetterCards>
 			<div className='row-btns-container'>
-				<div className='button'>
-					<button className='btn-back btn-cta'>clear</button>
+				<div className='button small-btn'>
+					<button className='btn-back btn-cta conundrum-btn'>
+						cleargdfgdfg
+					</button>
 					<button className='btn-front btn-cta' onClick={handleReset}>
 						clear
 					</button>
 				</div>
-				<div className='button'>
-					<button className='btn-back btn-cta'>Submit</button>
+				<div className='button small-btn'>
+					<button className='btn-back btn-cta conundrum-btn'>
+						Submitggdsfg
+					</button>
 					<button className='btn-front btn-cta' onClick={handleSubmit}>
 						Submit
 					</button>
@@ -118,13 +132,26 @@ const StyledConundrumUserLetterCards = styled.div`
 	.row-btns-container {
 		perspective: 500px;
 		display: flex;
-		column-gap: 2rem;
+		column-gap: 1rem;
 		margin-bottom: 1rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 	}
 	.button {
 		position: relative;
 		height: 45px;
 		flex: 1;
+		&.small-btn {
+			height: 34px;
+			/* font-size: 2.5rem; */
+			/* &:last-child {
+				grid-column: span 2;
+			} */
+		}
+		&.small-btn > button {
+			height: 34px;
+			font-size: 2rem;
+		}
 	}
 	.btn-cta {
 		position: absolute;
@@ -157,6 +184,10 @@ const StyledConundrumUserLetterCards = styled.div`
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
+		&.conundrum-btn {
+			background-color: ${({ theme }) => theme.bgTile};
+			color: ${({ theme }) => theme.bgTile};
+		}
 	}
 	.btn-front {
 		font-size: 3rem;

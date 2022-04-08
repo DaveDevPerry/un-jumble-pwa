@@ -15,18 +15,18 @@ const GameTypeScreen = ({ url, name, description, isTimed }) => {
 		>
 			<div className='game-mode-header'>
 				{isTimed === 'true' ? (
-					<MdOutlineTimer size='22px' />
+					<MdOutlineTimer size='25px' />
 				) : (
-					<MdOutlineTimerOff size='22px' />
+					<MdOutlineTimerOff size='25px' />
 				)}
-				{/* <MdOutlineTimerOff size='22px' /> */}
+				{/* <MdOutlineTimerOff size='25px' /> */}
 				<h3>{name}</h3>
 				{isTimed === 'true' ? (
-					<MdOutlineTimer size='22px' />
+					<MdOutlineTimer size='25px' />
 				) : (
-					<MdOutlineTimerOff size='22px' />
+					<MdOutlineTimerOff size='25px' />
 				)}
-				{/* <MdOutlineTimerOff size='22px' /> */}
+				{/* <MdOutlineTimerOff size='25px' /> */}
 			</div>
 			<p>{description}</p>
 			<div className='game-mode-stats-container'>
@@ -58,6 +58,9 @@ const StyledGameTypeScreen = styled.div`
 	row-gap: 1rem;
 	cursor: pointer;
 	/* flex: 1; */
+	p {
+		text-align: center;
+	}
 	.game-mode-header {
 		display: flex;
 		justify-content: space-between;
