@@ -55,12 +55,12 @@ const StyledWordsDisplay = styled.section`
 			justify-content: flex-start;
 			p {
 				font-size: 1.8rem;
-				text-transform: capitalize;
+				text-transform: uppercase;
 				color: black;
 				&.strike {
 					text-decoration: line-through;
 					color: #9e9a9a;
-					color: #ca0404;
+					color: ${({ theme }) => theme.red};
 				}
 			}
 		}

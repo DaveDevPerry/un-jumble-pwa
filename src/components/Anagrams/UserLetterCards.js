@@ -6,7 +6,7 @@ const UserLetterCards = ({
 	setCurrentAnagramWord,
 	shuffled,
 	dictionary,
-	setallAnagramUserWords,
+	setAllAnagramUserWords,
 	allAnagramUserWords,
 	setGotConundrum,
 	setLongestWord,
@@ -100,9 +100,9 @@ const UserLetterCards = ({
 		<StyledUserLetterCards>
 			<div className='row-btns-container'>
 				<div className='button small-btn'>
-					<button className='btn-back btn-cta'>reset</button>
+					<button className='btn-back btn-cta'>clear</button>
 					<button className='btn-front btn-cta' onClick={handleReset}>
-						reset
+						clear
 					</button>
 				</div>
 				<div className='button small-btn'>

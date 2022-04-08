@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const AnagramRoundRules = () => {
+	useEffect(() => {
+		console.log('anagram rules render');
+	}, []);
 	let navigate = useNavigate();
 	// let { username } = useParams();
 	return (

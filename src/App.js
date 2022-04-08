@@ -66,6 +66,9 @@ function App() {
 	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
 	// const [nineLetterWords, setNineLetterWords] = useState([])
 
+	// ANAGRAM
+	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
+
 	// useEffect(() => {
 	// 		console.log('setting sorted');
 	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
@@ -256,6 +259,8 @@ function App() {
 										setLetterRoundData={setLetterRoundData}
 										letterRoundData={letterRoundData}
 										allFiveLetterWords={allFiveLetterWords}
+										allAnagramUserWords={allAnagramUserWords}
+										setAllAnagramUserWords={setAllAnagramUserWords}
 									/>
 								}
 							/>
@@ -271,6 +276,8 @@ function App() {
 										// letterRoundData={letterRoundData}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										allAnagramUserWords={allAnagramUserWords}
+										setAllAnagramUserWords={setAllAnagramUserWords}
 									/>
 								}
 							/>

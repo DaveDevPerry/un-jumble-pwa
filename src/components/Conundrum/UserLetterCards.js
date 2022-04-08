@@ -91,9 +91,9 @@ const ConundrumUserLetterCards = ({
 		<StyledConundrumUserLetterCards>
 			<div className='row-btns-container'>
 				<div className='button'>
-					<button className='btn-back btn-cta'>reset</button>
+					<button className='btn-back btn-cta'>clear</button>
 					<button className='btn-front btn-cta' onClick={handleReset}>
-						reset
+						clear
 					</button>
 				</div>
 				<div className='button'>

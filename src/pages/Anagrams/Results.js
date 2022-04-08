@@ -5,6 +5,7 @@ import NextGameCountdown from '../../components/Global/NextGameCountdown';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
 import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
+import GameTitle from '../../components/Global/GameTitle';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const AnagramRoundResults = ({
@@ -20,7 +21,12 @@ const AnagramRoundResults = ({
 	// setLetterTypes,
 	// setLetterRoundData,
 	// letterRoundData,
+	allAnagramUserWords,
+	setAllAnagramUserWords,
 }) => {
+	useEffect(() => {
+		console.log('anagram results render');
+	}, []);
 	let navigate = useNavigate();
 
 	const shareMobile = () => {
@@ -85,9 +91,10 @@ const AnagramRoundResults = ({
 
 	return (
 		<>
+			<GameTitle title='results' />
 			<StyledAnagramResults>
-				<h2>RESULTS</h2>
-				<div className='anagram-stats-container'>
+				{/* <h2>RESULTS</h2> */}
+				{/* <div className='anagram-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
@@ -108,10 +115,35 @@ const AnagramRoundResults = ({
 						<p>03</p>
 						<p>max streak</p>
 					</div>
+				</div> */}
+
+				<div className='anagram-word-list-container'>
+					<ul className='anagram-word-list'>
+						{allAnagramUserWords.map((userWord, index) => {
+							return (
+								<li key={userWord + index}>
+									<p className={userWord.isCorrect === false ? 'strike' : ''}>
+										{userWord.word}
+									</p>
+								</li>
+							);
+						})}
+					</ul>
 				</div>
-				<p className='anagram-user-result'>CONGRATULATIONS!</p>
+
+				<p className='anagram-user-result'>
+					{allAnagramUserWords.reduce((accumulator, object) => {
+						return accumulator + object.score;
+					}, 0) > 50
+						? 'EXCELLENT'
+						: 'GOOD JOB'}
+				</p>
 				<div className='points-container'>
-					<h2 id='share-anagram-points'>35</h2>
+					<h2 id='share-anagram-points'>
+						{allAnagramUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0)}
+					</h2>
 					<p>points</p>
 				</div>
 				{/* <StyledLetterOutput>
@@ -354,7 +386,7 @@ const AnagramRoundResults = ({
 				onClick={() => {
 					// setIsNextDayCountdownActive(false);
 					// updateLRPlayed();
-
+					setAllAnagramUserWords([]);
 					navigate('/');
 					// setAllAttempts([]);
 					// setGameNumbers([]);
@@ -417,6 +449,34 @@ const StyledAnagramResults = styled.section`
 			}
 		}
 	}
+	.anagram-word-list-container {
+		/* width: 100%; */
+		align-self: center;
+		ul {
+			list-style: none;
+			/* font-size: 3rem; */
+			display: grid;
+			grid-template-columns: repeat(4, auto);
+			grid-template-rows: repeat(8, auto);
+			grid-auto-flow: column;
+			li {
+				display: flex;
+				justify-content: flex-start;
+				margin-left: 1rem;
+				p {
+					font-size: 1.2rem;
+					text-transform: uppercase;
+					color: ${({ theme }) => theme.bgChosen};
+					font-weight: 800;
+					&.strike {
+						text-decoration: line-through;
+						color: #9e9a9a;
+						color: ${({ theme }) => theme.red};
+					}
+				}
+			}
+		}
+	}
 	.anagram-user-result {
 		font-size: 3rem;
 		border-top: 2px solid ${({ theme }) => theme.bgChosen};
@@ -426,7 +486,9 @@ const StyledAnagramResults = styled.section`
 		/* text-align: center; */
 		align-self: center;
 		display: inline-block;
+		padding: 0 1rem;
 	}
+
 	.points-container {
 		display: flex;
 		flex-direction: column;
@@ -452,12 +514,14 @@ const StyledAnagramResults = styled.section`
 			align-items: center;
 			flex: 1;
 			p {
-				font-size: 1.6rem;
+				font-size: 2rem;
 				color: ${({ theme }) => theme.bgChosen};
 				line-height: 1;
-				font-weight: bolder;
+				font-weight: 800;
+				text-transform: uppercase;
+				font-family: 'Bebas Neue', cursive;
 				&:last-child {
-					font-size: 2rem;
+					font-size: 2.2rem;
 					font-weight: lighter;
 					color: ${({ theme }) => theme.syntax};
 				}

@@ -148,7 +148,7 @@ const ConundrumResults = ({
 						<p>win %</p>
 					</div>
 				</div>
-				<div className='conundrum-level-stats-grid'>
+				<div className='conundrum-level-stats-grid hide'>
 					<div className='level-stat-wrapper'>
 						<p>
 							<GiCrossMark size='15px' color='#8a0202' />

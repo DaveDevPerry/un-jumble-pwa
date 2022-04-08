@@ -91,7 +91,10 @@ const DigitalTimer = ({
 			if (time === 0) {
 				clearInterval(timer);
 				setIsTimerActive(false);
-				navigate('/anagramround/results');
+				setTimeout(() => {
+					navigate('/anagramround/results');
+				}, 1000);
+				return;
 			}
 			time--;
 			// setTimerSeconds(time);
@@ -247,6 +250,7 @@ const StyledDigitalTimer = styled.div`
 	}
 	.clock section p {
 		font-size: 4rem;
+		font-family: 'Roboto Mono', monospace;
 	}
 	.clock section small {
 		color: silver;

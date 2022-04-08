@@ -166,12 +166,13 @@ const UserLetterCards = ({
 		// if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			console.log('wrong');
+			const currentWordPoints = parseInt('-' + getWordScore());
 			// setCurrentLetterRoundWordScore(-2);
 			setAllLetterRoundUserWords([
 				...allLetterRoundUserWords,
 				{
 					word: currentLetterRoundWord,
-					score: -2,
+					score: currentWordPoints,
 					isCorrect: false,
 				},
 			]);

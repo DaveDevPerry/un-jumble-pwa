@@ -72,8 +72,11 @@ const LetterRoundGame = ({
 				updatePlayed();
 				// setIsNextDayCountdownActive(true);
 				// setShowLetterRoundResults(true);
+
+				setTimeout(() => {
+					navigate('/letterround/results');
+				}, 1000);
 				setLetterRoundTicking(false);
-				navigate('/letterround/results');
 				setTimeout(() => {
 					const gameLetterTiles = document.querySelectorAll('.card');
 					gameLetterTiles.forEach((tile) => {

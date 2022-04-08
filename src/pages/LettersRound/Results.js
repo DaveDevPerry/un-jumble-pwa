@@ -312,11 +312,9 @@ const LetterRoundResults = ({
 				{/* <ul className='longest-word'>
 				<li>Total Word Count</li>
 			</ul> */}
-				{/* <p className='letter-round-user-result'>
-				{gotNineLetterWord.length === 9 ? 'YOU HIT THE NINE!' : 'WELL PLAYED'}
-			</p> */}
-				<p className='letter-round-user-result'>
-					{/* {nineLetterWords.length * 20 +
+
+				{/* <p className='letter-round-user-result'> */}
+				{/* {nineLetterWords.length * 20 +
 						eightLetterWords.length * 13 +
 						sevenLetterWords.length * 10 +
 						sixLetterWords.length * 7 +
@@ -326,7 +324,7 @@ const LetterRoundResults = ({
 					10
 						? 'YOU PLAYED OK'
 						: 'WELL PLAYED'} */}
-				</p>
+				{/* </p> */}
 
 				<ul className='best-attempt hide'>
 					<li>
@@ -656,6 +654,14 @@ const LetterRoundResults = ({
 					</h2>
 					<p>points</p>
 				</div>
+
+				<p className='letter-round-user-result'>
+					{allLetterRoundUserWords.reduce((accumulator, object) => {
+						return accumulator + object.score;
+					}, 0) > 20
+						? 'EXCELLENT'
+						: 'GOOD JOB'}
+				</p>
 
 				{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 				{/* <StyledSmallNumberOutput>

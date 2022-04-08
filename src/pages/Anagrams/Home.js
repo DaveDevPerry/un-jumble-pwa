@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import GameTitle from '../../components/Global/GameTitle';
@@ -6,14 +6,16 @@ import Button from '../../components/Global/Button';
 // import { Link } from 'react-router-dom';
 
 const AnagramRoundHome = () => {
+	useEffect(() => {
+		console.log('anagram home render');
+	}, []);
 	let navigate = useNavigate();
 	// let { username } = useParams();
 	return (
 		<>
-			<GameTitle title='letter round' />
+			<GameTitle title='anagram round' />
 			<StyledAnagramRoundHome>
-				<div className='how-to-play'>
-					{/* <h2>How to play</h2> */}
+				{/* <div className='how-to-play'>
 					<p>
 						You must choose how many vowels and consonants you would like to
 						make up nine randomly chosen letters.
@@ -24,30 +26,7 @@ const AnagramRoundHome = () => {
 						out of these letters.
 					</p>
 
-					{/* <p>
-					You must choose how many vowels and consonants you would like
-					to make up nine randomly chosen letters. There must be at least three
-					vowels and four consonants. You then have 30 seconds to
-					find the longest word that they can make out of these letters.
-				</p> */}
-					{/* <ul>
-					<li>
-						<p>Choose a random six Letters.</p>
-					</li>
-					<li>
-						<p>Given 30 seconds and a random 3 digit target Letter.</p>
-					</li>
-					<li>
-						<p>Use your Letters and maths to reach the target.</p>
-					</li>
-					<li>
-						<p>Each Letter must only be used once.</p>
-					</li>
-					<li>
-						<p>Not all Letters need to be used.</p>
-						</li>
-					</ul> */}
-				</div>
+				</div> */}
 				<button
 					className='btn start-btn'
 					onClick={() => {
@@ -121,7 +100,7 @@ const StyledAnagramRoundHome = styled.section`
 		height: 100%;
 		/* height: 200px; */
 		width: 200px;
-		border-radius: 10px;
+		border-radius: 5px;
 		background-color: ${({ theme }) => theme.bgTile};
 		border: none;
 		font-size: 5rem;
