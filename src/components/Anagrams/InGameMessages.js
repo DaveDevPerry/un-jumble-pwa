@@ -41,9 +41,9 @@ const StyledInGameMessages = styled.div`
 	.alert:last-child {
 		margin-bottom: 0;
 	}
-	.alert.hide {
+	/* .alert.hide {
 		opacity: 0;
-	}
+	} */
 `;
 
 export default InGameMessages;

@@ -560,40 +560,40 @@ const AnagramRoundGame = ({
 		// // setShuffledTiles(currentShuffledTargetWord);
 		// // console.log(shuffledTiles);
 	};
-	const handleStart = (e) => {
-		e.preventDefault();
+	// const handleStart = (e) => {
+	// 	e.preventDefault();
 
-		const root = document.querySelector(':root');
-		root.style.setProperty('--letter-count', 5);
-		// }
-		// start timer
-		// runTimer()
-		setIsTimerActive(true);
-		// get current target word
-		getNewWord();
-		document.querySelector('.start-btns-container').classList.add('hide');
-		const gameLetterTiles = document.querySelectorAll('.guess');
-		gameLetterTiles.forEach((tile) => {
-			tile.classList.add('visible');
-			// console.log(setShowLetterRoundResults);
-		});
-		document.querySelectorAll('.button').forEach((btn) => {
-			btn.classList.add('visible');
-		});
-		document.querySelectorAll('.card').forEach((card) => {
-			card.classList.add('visible');
-		});
-		// const currentTargetWord =
-		// 	allFiveLetterWords[Math.floor(Math.random() * allFiveLetterWords.length)];
-		// console.log(currentTargetWord);
-		// const currentShuffledTargetWord = currentTargetWord
-		// 	.split('')
-		// 	.sort(() => Math.random() - 0.5);
-		// // const shuffled = list.sort(() => Math.random() - 0.5)
-		// console.log(currentShuffledTargetWord);
-		// // setShuffledTiles(currentShuffledTargetWord);
-		// // console.log(shuffledTiles);
-	};
+	// 	const root = document.querySelector(':root');
+	// 	root.style.setProperty('--letter-count', 5);
+	// 	// }
+	// 	// start timer
+	// 	// runTimer()
+	// 	setIsTimerActive(true);
+	// 	// get current target word
+	// 	getNewWord();
+	// 	document.querySelector('.start-btns-container').classList.add('hide');
+	// 	const gameLetterTiles = document.querySelectorAll('.guess');
+	// 	gameLetterTiles.forEach((tile) => {
+	// 		tile.classList.add('visible');
+	// 		// console.log(setShowLetterRoundResults);
+	// 	});
+	// 	document.querySelectorAll('.button').forEach((btn) => {
+	// 		btn.classList.add('visible');
+	// 	});
+	// 	document.querySelectorAll('.card').forEach((card) => {
+	// 		card.classList.add('visible');
+	// 	});
+	// 	// const currentTargetWord =
+	// 	// 	allFiveLetterWords[Math.floor(Math.random() * allFiveLetterWords.length)];
+	// 	// console.log(currentTargetWord);
+	// 	// const currentShuffledTargetWord = currentTargetWord
+	// 	// 	.split('')
+	// 	// 	.sort(() => Math.random() - 0.5);
+	// 	// // const shuffled = list.sort(() => Math.random() - 0.5)
+	// 	// console.log(currentShuffledTargetWord);
+	// 	// // setShuffledTiles(currentShuffledTargetWord);
+	// 	// // console.log(shuffledTiles);
+	// };
 	const getNewWord = () => {
 		setCurrentTargetWord(
 			allFiveLetterWords[Math.floor(Math.random() * allFiveLetterWords.length)]
@@ -939,7 +939,7 @@ const AnagramRoundGame = ({
 			{/* </div> */}
 			{/* <div className='game-variables-container'> */}
 			<GamePanel
-				handleStart={handleStart}
+				// handleStart={handleStart}
 				handleAnagramStart={handleAnagramStart}
 			/>
 			{/* <GamePanel handleStartGame={handleStartGame} /> */}

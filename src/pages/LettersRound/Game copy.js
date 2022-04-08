@@ -52,7 +52,7 @@ const LetterRoundGame = ({
 
 	const handleLetterGameStart = (e) => {
 		e.preventDefault();
-		document.querySelector('.start-btns-container').classList.add('hide');
+		// document.querySelector('.start-btns-container').classList.add('hide');
 		const gameLetterTiles = document.querySelectorAll('.card');
 		gameLetterTiles.forEach((tile) => {
 			tile.classList.add('visible');

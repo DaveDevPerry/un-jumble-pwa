@@ -327,16 +327,15 @@ const LetterRoundResults = ({
 						: 'WELL PLAYED'} */}
 				{/* </p> */}
 
-				<ul className='best-attempt hide'>
+				{/* <ul className='best-attempt'>
 					<li>
 						<p>best word</p>
 						<p>
 							<span>{letterRoundLongestWord}</span>
 						</p>
 						<p> letters</p>
-						{/* <p>{letterRoundLongestWord.length} letters</p> */}
 					</li>
-				</ul>
+				</ul> */}
 
 				<section className='points-table-container'>
 					<table className='letter-round-player-word-table'>

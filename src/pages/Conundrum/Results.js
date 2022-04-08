@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
+// import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 
@@ -131,7 +131,7 @@ const ConundrumResults = ({
 			className={showResults ? 'results-modal show' : 'results-modal'}
 		> */}
 				{/* <h2>RESULTS</h2> */}
-				<div className='conundrum-stats-container hide'>
+				{/* <div className='conundrum-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
@@ -145,7 +145,7 @@ const ConundrumResults = ({
 						<p>win %</p>
 					</div>
 				</div>
-				<div className='conundrum-level-stats-grid hide'>
+				<div className='conundrum-level-stats-grid'>
 					<div className='level-stat-wrapper'>
 						<p>
 							<GiCrossMark size='15px' color='#8a0202' />
@@ -182,7 +182,7 @@ const ConundrumResults = ({
 						</p>
 						<p>advanced</p>
 					</div>
-				</div>
+				</div> */}
 
 				{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 				<StyledLetterOutput>

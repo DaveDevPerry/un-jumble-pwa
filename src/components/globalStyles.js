@@ -79,7 +79,7 @@ export const GlobalStyles = createGlobalStyle`
 	  border: none;
     height: 4.6rem;
   }
-  .hide{
+  /* .hide{
     display: none !important;
-  }
+  } */
 `;
