@@ -39,7 +39,7 @@ function App() {
 
 	// CONUNDRUM
 	const [conundrum, setConundrum] = useState('');
-	const [showResults, setShowResults] = useState(false);
+	// const [showResults, setShowResults] = useState(false);
 	const [allNineLetterWords, setAllNineLetterWords] = useState(null);
 	const [allEightLetterWords, setAllEightLetterWords] = useState(null);
 	const [allSevenLetterWords, setAllSevenLetterWords] = useState(null);
@@ -48,17 +48,64 @@ function App() {
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
 	// const [showResults, setShowResults] = useState(false);
-	const [gotConundrum, setGotConundrum] = useState(false);
+	// const [gotConundrum, setGotConundrum] = useState(false);
 
-	// ANAGRAM ROUND
+	// GLOBAL - working with conundrum
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
-		useState(false);
+		useState(true);
 
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
 	const [gameLetters, setGameLetters] = useState([]);
 	const [isLetterRoundTimeUp, setIsLetterRoundTimeUp] = useState(false);
 	const [letterRoundData, setLetterRoundData] = useState(null);
+	const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
+	const [gotNineLetterWord, setGotNineLetterWord] = useState('');
+	const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
+	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
+	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
+	// const [nineLetterWords, setNineLetterWords] = useState([])
+
+	// useEffect(() => {
+	// 		console.log('setting sorted');
+	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
+	// 		return b.word.length - a.word.length;
+	// 	});
+	// 	console.log(sortedWordsByLength, 'sorted words');
+	// 	setSortedWordsByLengthArray([
+	// 		...sortedWordsByLengthArray,
+	// 		sortedWordsByLength,
+	// 	]);
+	// console.log(sortedWordsByLength, 'sorted');
+	// const nineCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 9;
+	// });
+	// setNineLetterWords(nineCount);
+	// const eightCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 8;
+	// });
+	// setEightLetterWords(eightCount);
+	// const sevenCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 7;
+	// });
+	// setSevenLetterWords(sevenCount);
+	// const sixCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 6;
+	// });
+	// setSixLetterWords(sixCount);
+	// const fiveCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 5;
+	// });
+	// setFiveLetterWords(fiveCount);
+	// const fourCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 4;
+	// });
+	// setFourLetterWords(fourCount);
+	// const threeCount = sortedWordsByLength.filter((wordItem) => {
+	// 	return wordItem.word.length === 3;
+	// });
+	// setThreeLetterWords(threeCount);
+	// },[allLetterRoundUserWords])
 
 	useEffect(() => {
 		const letterRoundWords = englishDictionary.filter(function (word) {
@@ -153,10 +200,10 @@ function App() {
 										allFourLetterWords={allFourLetterWords}
 										setGameMode={setGameMode}
 										gameMode={gameMode}
-										showResults={showResults}
-										setShowResults={setShowResults}
+										// showResults={showResults}
+										// setShowResults={setShowResults}
 										dictionary={dictionary}
-										setGotConundrum={setGotConundrum}
+										// setGotConundrum={setGotConundrum}
 										setConundrum={setConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
@@ -169,10 +216,10 @@ function App() {
 									<ConundrumResults
 										// conundrumData={conundrumData}
 										// setConundrumData={setConundrumData}
-										showResults={showResults}
+										// showResults={showResults}
 										conundrum={conundrum}
-										setGotConundrum={setGotConundrum}
-										gotConundrum={gotConundrum}
+										// setGotConundrum={setGotConundrum}
+										// gotConundrum={gotConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 									/>
@@ -248,12 +295,19 @@ function App() {
 										isLetterRoundTimeUp={isLetterRoundTimeUp}
 										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
 										gameLetters={gameLetters}
-										setGameLetters={setGameLetters}
+										// setGameLetters={setGameLetters}
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
 										setLetterRoundData={setLetterRoundData}
 										letterRoundData={letterRoundData}
+										setGotNineLetterWord={setGotNineLetterWord}
+										letterRoundLongestWord={letterRoundLongestWord}
+										setLetterRoundLongestWord={setLetterRoundLongestWord}
+										allLetterRoundUserWords={allLetterRoundUserWords}
+										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+										sortedWordsByLengthArray={sortedWordsByLengthArray}
+										setSortedWordsByLengthArray={setSortedWordsByLengthArray}
 									/>
 								}
 							/>
@@ -267,6 +321,16 @@ function App() {
 										setLetterTypes={setLetterTypes}
 										setLetterRoundData={setLetterRoundData}
 										letterRoundData={letterRoundData}
+										showLetterRoundResults={showLetterRoundResults}
+										allLetterRoundUserWords={allLetterRoundUserWords}
+										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+										gotNineLetterWord={gotNineLetterWord}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										letterRoundLongestWord={letterRoundLongestWord}
+										setShowLetterRoundResults={setShowLetterRoundResults}
+										sortedWordsByLengthArray={sortedWordsByLengthArray}
+										setSortedWordsByLengthArray={setSortedWordsByLengthArray}
 									/>
 								}
 							/>

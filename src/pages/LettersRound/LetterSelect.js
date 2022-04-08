@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import UserSelectedLetters from '../../components/LettersRound/UserSelectLetters';
@@ -13,6 +13,11 @@ const LetterSelect = ({
 	setLetterRoundData,
 	letterRoundData,
 }) => {
+	useEffect(() => {
+		console.log('lr letter select render');
+		// setGameLetters([])
+		// setLetterTypes([])
+	}, []);
 	let navigate = useNavigate();
 
 	// const updateLRPlayed = () => {
@@ -109,11 +114,11 @@ const StyledLetterSelect = styled.section`
 const StyledCloseBtn = styled.button`
 	width: 100%;
 	align-self: center;
-	font-size: 2rem;
+	font-size: 2.5rem;
 	font-weight: bold;
 	padding: 0.5rem 1rem;
-	margin-top: 2rem;
-	margin-bottom: 1rem;
+	/* margin-top: 2rem; */
+	/* margin-bottom: 1rem; */
 	background-color: ${({ theme }) => theme.bgChosen};
 	border: none;
 	border-radius: 5px;

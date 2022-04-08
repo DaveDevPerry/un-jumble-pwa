@@ -3,30 +3,31 @@ import styled from 'styled-components';
 
 const UserAllWordsDisplay = ({ allLetterRoundUserWords }) => {
 	console.log(allLetterRoundUserWords, 'alluserwords');
-	console.log(
-		allLetterRoundUserWords.sort(function (a, b) {
-			return parseFloat(b.length) - parseFloat(a.length);
-		}),
-		'sorted'
-	);
+	// console.log(
+	// 	allLetterRoundUserWords.sort(function (a, b) {
+	// 		return parseFloat(b.length) - parseFloat(a.length);
+	// 	}),
+	// 	'sorted'
+	// );
 	console.log(allLetterRoundUserWords, 'alluserwords');
 	return (
 		<StyledWordsDisplay>
 			{/* {allLetterRoundUserWords} */}
 			<ul>
-				{allLetterRoundUserWords
-					// .sort(function (a, b) {
-					// 	return parseFloat(b.length) - parseFloat(a.length);
-					// })
-					.map((userWord, index) => {
-						return (
-							<li key={userWord.word + index}>
-								<p className={userWord.isCorrect === false ? 'strike' : ''}>
-									{userWord.word}
-								</p>
-							</li>
-						);
-					})}
+				{allLetterRoundUserWords &&
+					allLetterRoundUserWords
+						// .sort(function (a, b) {
+						// 	return parseFloat(b.length) - parseFloat(a.length);
+						// })
+						.map((userWord, index) => {
+							return (
+								<li key={userWord.word + index}>
+									<p className={userWord.isCorrect === false ? 'strike' : ''}>
+										{userWord.word}
+									</p>
+								</li>
+							);
+						})}
 			</ul>
 		</StyledWordsDisplay>
 		// <StyledWordsDisplay>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ClockTimer = ({ letterRoundTicking }) => {
 	return (
-		<StyledClock className='clock'>
+		<StyledClockTimer className='clock-timer'>
 			<div
 				className={letterRoundTicking === true ? 'backlight tick' : 'backlight'}
 			>
@@ -17,11 +17,11 @@ const ClockTimer = ({ letterRoundTicking }) => {
 
 			<div className='dot'></div>
 			<div className={letterRoundTicking === true ? 'hand tick' : 'hand'}></div>
-		</StyledClock>
+		</StyledClockTimer>
 	);
 };
 
-const StyledClock = styled.div`
+const StyledClockTimer = styled.div`
 	background-color: #c0c0c0;
 	/* height: 60%;
 	width: 60%; */
@@ -29,6 +29,7 @@ const StyledClock = styled.div`
 	width: 200px; */
 	/* height: 100px;
 	width: 100px; */
+	align-self: center;
 	height: 150px;
 	width: 150px;
 	border-radius: 50%;

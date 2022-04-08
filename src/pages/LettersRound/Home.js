@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import GameTitle from '../../components/Global/GameTitle';
 import Button from '../../components/Global/Button';
 
 const LetterRoundHome = () => {
+	useEffect(() => {
+		console.log('lr home render');
+	}, []);
 	let navigate = useNavigate();
 	return (
 		<>
 			<GameTitle title='letter round' />
 			<StyledLetterRoundHome>
-				<div className='how-to-play'>
+				{/* <div className='how-to-play hide'>
 					<p>
 						You must choose how many vowels and consonants you would like to
 						make up nine randomly chosen letters.
@@ -20,7 +23,7 @@ const LetterRoundHome = () => {
 						You then have 30 seconds to find the longest word that they can make
 						out of these letters.
 					</p>
-				</div>
+				</div> */}
 				<button
 					className='btn start-btn'
 					onClick={() => {
@@ -43,7 +46,7 @@ const StyledLetterRoundHome = styled.section`
 	display: flex;
 	flex: 1;
 	row-gap: 1rem;
-	.how-to-play {
+	/* .how-to-play {
 		padding: 0 2rem;
 		h2 {
 			letter-spacing: 2px;
@@ -65,7 +68,7 @@ const StyledLetterRoundHome = styled.section`
 			text-align: center;
 			margin-bottom: 1rem;
 		}
-	}
+	} */
 	.start-btn {
 		height: 100%;
 		width: 200px;

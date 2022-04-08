@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ClockTimer from '../../components/LettersRound/ClockTimer';
 import GamePanel from '../../components/LettersRound/GamePanel';
 import UserLetterCards from '../../components/LettersRound/UserLetterCards';
 import UserAllWordsDisplay from '../../components/LettersRound/UserWordsDisplay';
-import LetterRoundResults from '../../pages/LettersRound/Results';
+// import LetterRoundResults from '../../pages/LettersRound/Results';
 
 const LetterRoundGame = ({
 	gameLetters,
-	setGameLetters,
+	// setGameLetters,
 	dictionary,
 	setLetterRoundData,
 	letterRoundData,
+	setGotNineLetterWord,
+	setShowLetterRoundResults,
+	setLetterRoundLongestWord,
+	letterRoundLongestWord,
+	allLetterRoundUserWords,
+	setAllLetterRoundUserWords,
 }) => {
+	useEffect(() => {
+		console.log('lr game render');
+	}, []);
 	let navigate = useNavigate();
 	const [letterRoundTicking, setLetterRoundTicking] = useState(false);
 	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
-	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
-	const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
+	// const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
+	// const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
 	// const [letterRoundUsersBestWords, setLetterRoundUsersBestWords] = useState(
 	// 	[]
 	// );
-	const [gotNineLetterWord, setGotNineLetterWord] = useState('');
-	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
-		useState(false);
-	const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
+	// const [gotNineLetterWord, setGotNineLetterWord] = useState('');
+	// const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
+	// 	useState(false);
+	// const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
 
 	const updatePlayed = () => {
 		// letterRoundData.score += newWordScore;
@@ -56,12 +65,12 @@ const LetterRoundGame = ({
 		setTimeout(() => {
 			// setNumberTarget(randomNumber);
 			setLetterRoundTicking(true);
-			document.querySelector('.results-home-btn').style.pointerEvents = 'none';
+			// document.querySelector('.results-home-btn').style.pointerEvents = 'none';
 			timerAudio();
 			setTimeout(() => {
 				// TURN THIS ON TO SHOW RESULTS PAGE
 				updatePlayed();
-				setIsNextDayCountdownActive(true);
+				// setIsNextDayCountdownActive(true);
 				// setShowLetterRoundResults(true);
 				setLetterRoundTicking(false);
 				navigate('/letterround/results');
@@ -86,45 +95,45 @@ const LetterRoundGame = ({
 	return (
 		<StyledGame>
 			{/* <h2>{wordOfTheDay}</h2> */}
-			<div className='timer-container'>
-				<ClockTimer letterRoundTicking={letterRoundTicking} />
-			</div>
-			<div className='game-variables-container'>
-				<GamePanel
-					gameLetters={gameLetters}
-					handleLetterGameStart={handleLetterGameStart}
-					setLetterRoundData={setLetterRoundData}
-					letterRoundData={letterRoundData}
-				/>
-			</div>
-			<div className='words-display-container'>
-				<UserAllWordsDisplay
-					// currentLetterRoundWord={currentLetterRoundWord}
-					// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-					handleLetterGameStart={handleLetterGameStart}
-					currentLetterRoundWord={currentLetterRoundWord}
-					setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-					allLetterRoundUserWords={allLetterRoundUserWords}
-					setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-					// setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-				/>
-			</div>
-			<div className='user-letter-container'>
-				<UserLetterCards
-					currentLetterRoundWord={currentLetterRoundWord}
-					setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-					dictionary={dictionary}
-					setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-					allLetterRoundUserWords={allLetterRoundUserWords}
-					setGotNineLetterWord={setGotNineLetterWord}
-					setLetterRoundLongestWord={setLetterRoundLongestWord}
-					letterRoundLongestWord={letterRoundLongestWord}
-					gameLetters={gameLetters}
-					setLetterRoundData={setLetterRoundData}
-					letterRoundData={letterRoundData}
-				/>
-			</div>
-			<LetterRoundResults
+			{/* <div className='timer-container'> */}
+			<ClockTimer letterRoundTicking={letterRoundTicking} />
+			{/* </div> */}
+			{/* <div className='game-variables-container'> */}
+			<GamePanel
+				gameLetters={gameLetters}
+				handleLetterGameStart={handleLetterGameStart}
+				setLetterRoundData={setLetterRoundData}
+				letterRoundData={letterRoundData}
+			/>
+			{/* </div> */}
+			{/* <div className='words-display-container'> */}
+			<UserAllWordsDisplay
+				// currentLetterRoundWord={currentLetterRoundWord}
+				// setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				handleLetterGameStart={handleLetterGameStart}
+				currentLetterRoundWord={currentLetterRoundWord}
+				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				allLetterRoundUserWords={allLetterRoundUserWords}
+				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				// setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+			/>
+			{/* </div> */}
+			{/* <div className='user-letter-container'> */}
+			<UserLetterCards
+				currentLetterRoundWord={currentLetterRoundWord}
+				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+				dictionary={dictionary}
+				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				allLetterRoundUserWords={allLetterRoundUserWords}
+				setGotNineLetterWord={setGotNineLetterWord}
+				setLetterRoundLongestWord={setLetterRoundLongestWord}
+				letterRoundLongestWord={letterRoundLongestWord}
+				gameLetters={gameLetters}
+				setLetterRoundData={setLetterRoundData}
+				letterRoundData={letterRoundData}
+			/>
+			{/* </div> */}
+			{/* <LetterRoundResults
 				showLetterRoundResults={showLetterRoundResults}
 				allLetterRoundUserWords={allLetterRoundUserWords}
 				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
@@ -135,13 +144,14 @@ const LetterRoundGame = ({
 				letterRoundLongestWord={letterRoundLongestWord}
 				setGameLetters={setGameLetters}
 				// setLetterTypes={setLetterTypes}
-			/>
+			/> */}
 		</StyledGame>
 	);
 };
 const StyledGame = styled.section`
 	padding: 0;
 	flex-direction: column;
+
 	word-wrap: wrap;
 	display: flex;
 	flex: 1;

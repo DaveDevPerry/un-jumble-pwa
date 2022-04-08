@@ -7,9 +7,9 @@ import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
 
 const ConundrumResults = ({
-	showResults,
+	// showResults,
 	conundrum,
-	gotConundrum,
+	// gotConundrum,
 	isNextDayCountdownActive,
 	setIsNextDayCountdownActive,
 }) => {

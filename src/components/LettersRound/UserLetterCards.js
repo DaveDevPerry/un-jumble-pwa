@@ -13,6 +13,15 @@ const UserLetterCards = ({
 	setGotNineLetterWord,
 	setLetterRoundData,
 	letterRoundData,
+	sortedWordsByLengthArray,
+	setSortedWordsByLengthArray,
+	setNineLetterWords,
+	setEightLetterWords,
+	setSevenLetterWords,
+	setSixLetterWords,
+	setFiveLetterWords,
+	setFourLetterWords,
+	setThreeLetterWords,
 }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -113,6 +122,44 @@ const UserLetterCards = ({
 	const [currentLetterRoundWordScore, setCurrentLetterRoundWordScore] =
 		useState(0);
 
+	// useEffect(()=>{
+	// 	console.log('setting sorted');
+	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
+	// 		return b.word.length - a.word.length;
+	// 	});
+	// 	console.log(sortedWordsByLength, 'sorted words');
+	// 	setSortedWordsByLengthArray(sortedWordsByLength);
+	// 	console.log(sortedWordsByLengthArray, 'sorted');
+	// 	const nineCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 9;
+	// 	});
+	// 	setNineLetterWords(nineCount);
+	// 	const eightCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 8;
+	// 	});
+	// 	setEightLetterWords(eightCount);
+	// 	const sevenCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 7;
+	// 	});
+	// 	setSevenLetterWords(sevenCount);
+	// 	const sixCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 6;
+	// 	});
+	// 	setSixLetterWords(sixCount);
+	// 	const fiveCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 5;
+	// 	});
+	// 	setFiveLetterWords(fiveCount);
+	// 	const fourCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 4;
+	// 	});
+	// 	setFourLetterWords(fourCount);
+	// 	const threeCount = sortedWordsByLengthArray.filter((wordItem) => {
+	// 		return wordItem.word.length === 3;
+	// 	});
+	// 	setThreeLetterWords(threeCount);
+	// },[setAllLetterRoundUserWords])
+
 	// checks validity of word and displays relative msg
 	const checkWord = () => {
 		console.log('current word', currentLetterRoundWord);
@@ -143,6 +190,7 @@ const UserLetterCards = ({
 					isCorrect: true,
 				},
 			]);
+
 			// updateLS({
 			// 	word: currentLetterRoundWord,
 			// 	length: currentLetterRoundWord.length,
@@ -162,6 +210,41 @@ const UserLetterCards = ({
 			// }
 			// return;
 		}
+		// console.log('setting sorted');
+		// const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
+		// 	return b.word.length - a.word.length;
+		// });
+		// console.log(sortedWordsByLength, 'sorted words');
+		// setSortedWordsByLengthArray(sortedWordsByLength);
+		// console.log(sortedWordsByLengthArray, 'sorted');
+		// const nineCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 9;
+		// });
+		// setNineLetterWords(nineCount);
+		// const eightCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 8;
+		// });
+		// setEightLetterWords(eightCount);
+		// const sevenCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 7;
+		// });
+		// setSevenLetterWords(sevenCount);
+		// const sixCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 6;
+		// });
+		// setSixLetterWords(sixCount);
+		// const fiveCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 5;
+		// });
+		// setFiveLetterWords(fiveCount);
+		// const fourCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 4;
+		// });
+		// setFourLetterWords(fourCount);
+		// const threeCount = sortedWordsByLengthArray.filter((wordItem) => {
+		// 	return wordItem.word.length === 3;
+		// });
+		// setThreeLetterWords(threeCount);
 	};
 
 	const getWordScore = () => {

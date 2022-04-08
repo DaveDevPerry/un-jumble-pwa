@@ -16,13 +16,13 @@ const ConundrumGame = ({
 	allFiveLetterWords,
 	allFourLetterWords,
 	gameMode,
-	showResults,
-	gotConundrum,
-	setIsNextDayCountdownActive,
+	// showResults,
+	// gotConundrum,
+	// setIsNextDayCountdownActive,
 	conundrum,
 	setConundrum,
-	setGotConundrum,
-	setShowResults,
+	// setGotConundrum,
+	// setShowResults,
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
@@ -34,12 +34,12 @@ const ConundrumGame = ({
 	const [shuffled, setShuffled] = useState([]);
 	// const [ticking, setTicking] = useState(false);
 	const [currentWord, setCurrentWord] = useState('');
-	const [allUserWords, setAllUserWords] = useState([]);
+	// const [allUserWords, setAllUserWords] = useState([]);
 	// const [showResults, setShowResults] = useState(false);
 	// const [gotConundrum, setGotConundrum] = useState(false);
 	// const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
 	// 	useState(false);
-	const [longestWord, setLongestWord] = useState('');
+	// const [longestWord, setLongestWord] = useState('');
 
 	// TESTING VARIABLE LETTER LENGTH
 	useEffect(() => {
@@ -98,7 +98,7 @@ const ConundrumGame = ({
 	const handleStartGame = (e) => {
 		e.preventDefault();
 		console.log(conundrum);
-		setIsNextDayCountdownActive(true);
+		// setIsNextDayCountdownActive(true);
 		document.querySelector('.start-btns-container').classList.add('hide');
 		const gameLetterTiles = document.querySelectorAll('.card');
 		gameLetterTiles.forEach((tile) => {
@@ -158,13 +158,13 @@ const ConundrumGame = ({
 				setCurrentWord={setCurrentWord}
 				shuffled={shuffled}
 				dictionary={dictionary}
-				setAllUserWords={setAllUserWords}
-				allUserWords={allUserWords}
-				setGotConundrum={setGotConundrum}
-				setLongestWord={setLongestWord}
-				longestWord={longestWord}
-				setShowResults={setShowResults}
-				setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+				// setAllUserWords={setAllUserWords}
+				// allUserWords={allUserWords}
+				// setGotConundrum={setGotConundrum}
+				// setLongestWord={setLongestWord}
+				// longestWord={longestWord}
+				// setShowResults={setShowResults}
+				// setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 				conundrum={conundrum}
 				setConundrum={setConundrum}
 				// conundrumOfTheDay={conundrumOfTheDay}

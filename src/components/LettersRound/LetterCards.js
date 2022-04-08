@@ -159,9 +159,6 @@ const LetterCards = ({
 		<>
 			<StyledLetterCards>
 				<StyledVowelContainer className='vowel-container'>
-					<button className='letter-btn vowel-btn' onClick={handlePickVowel}>
-						VOWEL
-					</button>
 					<div className='count-update'>
 						<p>Minimum</p>
 						<p>
@@ -173,14 +170,11 @@ const LetterCards = ({
 						</p>
 						<p>required</p>
 					</div>
+					<button className='letter-btn vowel-btn' onClick={handlePickVowel}>
+						VOWEL
+					</button>
 				</StyledVowelContainer>
 				<StyledConsonantContainer className='consonant-container'>
-					<button
-						className='letter-btn consonant-btn'
-						onClick={handlePickConsonant}
-					>
-						Consonant
-					</button>
 					<div className='count-update'>
 						<p>Minimum</p>
 						<p>
@@ -192,6 +186,12 @@ const LetterCards = ({
 						</p>
 						<p>required</p>
 					</div>
+					<button
+						className='letter-btn consonant-btn'
+						onClick={handlePickConsonant}
+					>
+						Consonant
+					</button>
 				</StyledConsonantContainer>
 			</StyledLetterCards>
 			{/* <StyledLetterCards>

@@ -8,11 +8,11 @@ const ConundrumUserLetterCards = ({
 	shuffled,
 	dictionary,
 	setAllUserWords,
-	allUserWords,
-	setGotConundrum,
-	setLongestWord,
-	longestWord,
-	setShowResults,
+	// allUserWords,
+	// setGotConundrum,
+	// setLongestWord,
+	// longestWord,
+	// setShowResults,
 	setIsNextDayCountdownActive,
 	conundrum,
 	setConundrum,
@@ -77,11 +77,11 @@ const ConundrumUserLetterCards = ({
 			// 	setLongestWord(currentWord);
 			// }
 			// setGotConundrum(true); - WHY?
-			setIsNextDayCountdownActive(true);
+			// setIsNextDayCountdownActive(true);
 			// setIsNextDayCountdownActive(true); - CAN THIS BE TRUE FROM APP LAUNCH
 			setTimeout(() => {
 				navigate('/conundrum/results');
-			}, 500);
+			}, 1000);
 
 			return;
 		}
