@@ -6,14 +6,15 @@ import GamePanel from '../../components/Anagrams/GamePanel';
 
 // import InGameControls from '../../components/Anagrams/InGameControls';
 // import InGameMessages from '../../components/Anagrams/InGameMessages';
-import InGameStats from '../../components/Anagrams/InGameStats';
+// import InGameStats from '../../components/Anagrams/InGameStats';
 // import PlayerTiles from '../../components/Anagrams/PlayerTiles';
 import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
 import UserWordsDisplay from '../../components/Anagrams/UserWordsDisplay';
 // import GameTitle from '../../components/Global/GameTitle';
 // import Timer from '../../components/Anagrams/Timer';
-import DigitalTimer from '../../components/Anagrams/DigitalTimer';
+// import DigitalTimer from '../../components/Anagrams/DigitalTimer';
+import NewDigitalTimer from '../../components/Anagrams/NewDigitalTimer';
 // import ClockTimer from '../../components/Anagrams/ClockTimer';
 // import GamePanel from '../../components/Anagrams/GamePanel';
 // import UserLetterCards from '../../components/Anagrams/UserLetterCards';
@@ -31,8 +32,12 @@ const AnagramRoundGame = ({
 }) => {
 	useEffect(() => {
 		console.log('anagram game render');
-		console.log(setCurrentScore, setTotalWordCount);
+		// console.log(setCurrentScore, setTotalWordCount);
 	}, []);
+
+	// const [currentScore, setCurrentScore] = useState(0);
+	// const [totalWordCount, setTotalWordCount] = useState(0);
+
 	// const [allShuffled, setAllShuffled] = useState([]);
 	// const [totalWordCount, setTotalWordCount] = useState(0);
 	// const [validWordCount, setValidWordCount] = useState(0);
@@ -515,6 +520,46 @@ const AnagramRoundGame = ({
 		);
 	}, [allFiveLetterWords]);
 
+	const handleAnagramStart = (e) => {
+		e.preventDefault();
+
+		const root = document.querySelector(':root');
+		root.style.setProperty('--letter-count', 5);
+		// }
+		// start timer
+		// runTimer()
+		setIsTimerActive(true);
+		// get current target word
+		getNewWord();
+		// document.querySelector('.start-btns-container').classList.add('hide');
+		const gameLetterTiles = document.querySelectorAll('.guess');
+		gameLetterTiles.forEach((tile) => {
+			tile.classList.add('visible');
+			// console.log(setShowLetterRoundResults);
+		});
+		document.querySelectorAll('.btn-timer').forEach((btn) => {
+			btn.classList.add('visible');
+		});
+		document.querySelectorAll('.button').forEach((btn) => {
+			btn.classList.add('visible');
+		});
+		document.querySelectorAll('.card').forEach((card) => {
+			card.classList.add('visible');
+		});
+		// document.querySelectorAll('.button').forEach((btn) => {
+		// 	btn.classList.add('visible');
+		// });
+		// const currentTargetWord =
+		// 	allFiveLetterWords[Math.floor(Math.random() * allFiveLetterWords.length)];
+		// console.log(currentTargetWord);
+		// const currentShuffledTargetWord = currentTargetWord
+		// 	.split('')
+		// 	.sort(() => Math.random() - 0.5);
+		// // const shuffled = list.sort(() => Math.random() - 0.5)
+		// console.log(currentShuffledTargetWord);
+		// // setShuffledTiles(currentShuffledTargetWord);
+		// // console.log(shuffledTiles);
+	};
 	const handleStart = (e) => {
 		e.preventDefault();
 
@@ -846,8 +891,7 @@ const AnagramRoundGame = ({
 	// 	score: 0,
 	// 	winPercentage: 0,
 	// })
-	const [currentScore, setCurrentScore] = useState(0);
-	const [totalWordCount, setTotalWordCount] = useState(0);
+
 	// console.log(setCurrentScore, setTotalWordCount);
 
 	// useEffect(() => {
@@ -868,11 +912,11 @@ const AnagramRoundGame = ({
 			{/* <Controls /> */}
 			{/* <Controls handleStart={handleStart} isPlaying={isPlaying} /> */}
 			{/* <GuessTiles /> */}
-			<InGameStats
+			{/* <InGameStats
 				allAnagramUserWords={allAnagramUserWords}
 				currentScore={currentScore}
 				totalWordCount={totalWordCount}
-			/>
+			/> */}
 			{/* <div className='words-display-container'> */}
 			<UserWordsDisplay
 				// conundrumOfTheDay={conundrumOfTheDay}
@@ -883,13 +927,21 @@ const AnagramRoundGame = ({
 				allAnagramUserWords={allAnagramUserWords}
 				setAllAnagramUserWords={setAllAnagramUserWords}
 			/>
-			<DigitalTimer
+			{/* <DigitalTimer
 				isTimerActive={isTimerActive}
 				setIsTimerActive={setIsTimerActive}
+			/> */}
+			<NewDigitalTimer
+				isTimerActive={isTimerActive}
+				setIsTimerActive={setIsTimerActive}
+				handleAnagramStart={handleAnagramStart}
 			/>
 			{/* </div> */}
 			{/* <div className='game-variables-container'> */}
-			<GamePanel handleStart={handleStart} />
+			<GamePanel
+				handleStart={handleStart}
+				handleAnagramStart={handleAnagramStart}
+			/>
 			{/* <GamePanel handleStartGame={handleStartGame} /> */}
 			{/* </div> */}
 			{/* <div className='user-letter-container'>

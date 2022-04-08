@@ -97,7 +97,7 @@ const StyledNextGameCountdown = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		column-gap: 0.4rem;
+		column-gap: 0.2rem;
 		/* background: linear-gradient(270deg, #051817, #0e3839); */
 		/* height: 180px; */
 		/* width: 360px; */

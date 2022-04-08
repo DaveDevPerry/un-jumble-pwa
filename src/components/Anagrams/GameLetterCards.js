@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 // import FunctionButton from '../FunctionButton';
 
-const GameLetterCards = ({ handleStartGame, handleStart }) => {
+const GameLetterCards = ({
+	handleStartGame,
+	handleStart,
+	handleAnagramStart,
+}) => {
 	return (
 		<StyledGameLetterCards>
 			{/* <FunctionButton functionName='handleStartGame' name='start game' /> */}
-			<button className='start-btns-container' onClick={handleStart}>
+			{/* <button className='start-btns-container' onClick={handleStart}>
 				start game
-			</button>
+			</button> */}
 
 			<StyledSmallNumberOutput className='guesses word-wrapper' data-guess>
 				<div className='guess'>
@@ -98,23 +102,13 @@ const StyledSmallNumberOutput = styled.div`
 	.guess-back {
 		font-size: 2rem;
 		outline: none;
-		background-color: ${({ theme }) => theme.bgChosen};
-		color: ${({ theme }) => theme.bgChosen};
+		/* background-color: ${({ theme }) => theme.bgTile}; */
+		/* color: ${({ theme }) => theme.bgTile}; */
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
 	}
 	.guess-front {
-		/* font-size: 3rem;
-		outline: none;
-		display: grid;
-		place-content: center;
-		border-radius: 5px;
-		transform: rotateY(180deg);
-		background-color: ${({ theme }) => theme.bgTile};
-		color: ${({ theme }) => theme.syntax}; */
-
-		/* border-bottom: 1px solid ${({ theme }) => theme.borderPrimary}; */
 		border-radius: 5px;
 		padding: 1rem 1rem 1rem 1rem;
 		font-size: 3rem;
