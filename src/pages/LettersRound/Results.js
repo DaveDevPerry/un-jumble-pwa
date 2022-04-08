@@ -818,7 +818,6 @@ const StyledLetterRoundResults = styled.section`
 		border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
 		font-family: 'Bebas Neue', cursive;
 		letter-spacing: 1px;
-		/* text-align: center; */
 		align-self: center;
 		display: inline-block;
 		padding: 0 1rem;
@@ -878,7 +877,6 @@ const StyledLetterRoundResults = styled.section`
 			}
 		}
 	}
-
 	.points-container {
 		display: flex;
 		flex-direction: column;
@@ -893,54 +891,6 @@ const StyledLetterRoundResults = styled.section`
 			font-size: 2rem;
 		}
 	}
-	/* .wrapper {
-		display: flex;
-		width: 100%;
-		justify-content: space-between;
-		.next-wrapper {
-			display: flex;
-			justify-content: center;
-			flex-direction: column;
-			align-items: center;
-			flex: 1;
-			p {
-				font-size: 1.6rem;
-				color: ${({ theme }) => theme.bgChosen};
-				line-height: 1;
-				font-weight: bolder;
-				&:last-child {
-					font-size: 2rem;
-					font-weight: lighter;
-					color: ${({ theme }) => theme.syntax};
-				}
-			}
-		}
-		.share-wrapper-whatsapp {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-around;
-			row-gap: 2rem;
-			border-left: 2px solid ${({ theme }) => theme.bgChosen};
-			flex: 1;
-			.share-btn-whatsapp {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-between;
-				letter-spacing: 2px;
-				font-size: 1.6rem;
-				padding: 0.5rem 1rem;
-				background-color: ${({ theme }) => theme.bgChosen};
-				border: none;
-				border-radius: 5px;
-				color: ${({ theme }) => theme.syntax};
-				cursor: pointer;
-				padding: 0.2rem 1rem;
-				column-gap: 1rem;
-			}
-		}
-	} */
 `;
 const StyledLetterOutput = styled.div`
 	display: grid;

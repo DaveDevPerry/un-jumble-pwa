@@ -8,8 +8,7 @@ const Button = ({ url, name }) => {
 		<StyledButton
 			className='btn-front btn-cta'
 			onClick={() => {
-				navigate({ url });
-				// navigate('/');
+				navigate(url);
 			}}
 		>
 			{name}
@@ -28,7 +27,6 @@ const StyledButton = styled.button`
 	cursor: pointer;
 	border: none;
 	width: 100%;
-	/* margin: 0 2rem; */
 `;
 
 export default Button;
