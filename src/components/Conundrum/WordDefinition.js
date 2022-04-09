@@ -28,54 +28,57 @@ function WordDefinition({ conundrum, APIKey }) {
 	}, [conundrum, APIKey]);
 	return (
 		<StyledWordDefinition>
-			<table>
-				<tbody>
-					{wordData && wordData.noun ? (
-						<tr>
-							<td>
-								<p>{wordData.noun.substring(1, 4)}</p>
-							</td>
-							<td>
-								<p>{wordData.noun.substring(6, wordData.noun.length)}</p>
-							</td>
-						</tr>
-					) : (
-						''
-					)}
-					{wordData && wordData.verb ? (
-						<tr>
-							<td>
-								<p>{wordData.verb.substring(1, 4)}</p>
-							</td>
-							<td>{wordData.verb.substring(6, wordData.verb.length)}</td>
-						</tr>
-					) : (
-						''
-					)}
-					{wordData && wordData.adverb ? (
-						<tr>
-							<td>
-								<p>{wordData.adverb.substring(1, 4)}</p>
-							</td>
-							<td>{wordData.adverb.substring(6, wordData.adverb.length)}</td>
-						</tr>
-					) : (
-						''
-					)}
-					{wordData && wordData.adjective ? (
-						<tr>
-							<td>
-								<p>{wordData.adjective.substring(1, 4)}</p>
-							</td>
-							<td>
-								{wordData.adjective.substring(6, wordData.adjective.length)}
-							</td>
-						</tr>
-					) : (
-						''
-					)}
-				</tbody>
-				{/* {wordData && wordData.noun ? <li>{wordData && wordData.noun}</li> : ''}
+			{wordData === undefined ? (
+				<p>Descriptions are not available for this word at present</p>
+			) : (
+				<table>
+					<tbody>
+						{wordData && wordData.noun ? (
+							<tr>
+								<td>
+									<p>{wordData.noun.substring(1, 4)}</p>
+								</td>
+								<td>
+									<p>{wordData.noun.substring(6, wordData.noun.length)}</p>
+								</td>
+							</tr>
+						) : (
+							''
+						)}
+						{wordData && wordData.verb ? (
+							<tr>
+								<td>
+									<p>{wordData.verb.substring(1, 4)}</p>
+								</td>
+								<td>{wordData.verb.substring(6, wordData.verb.length)}</td>
+							</tr>
+						) : (
+							''
+						)}
+						{wordData && wordData.adverb ? (
+							<tr>
+								<td>
+									<p>{wordData.adverb.substring(1, 4)}</p>
+								</td>
+								<td>{wordData.adverb.substring(6, wordData.adverb.length)}</td>
+							</tr>
+						) : (
+							''
+						)}
+						{wordData && wordData.adjective ? (
+							<tr>
+								<td>
+									<p>{wordData.adjective.substring(1, 4)}</p>
+								</td>
+								<td>
+									{wordData.adjective.substring(6, wordData.adjective.length)}
+								</td>
+							</tr>
+						) : (
+							''
+						)}
+					</tbody>
+					{/* {wordData && wordData.noun ? <li>{wordData && wordData.noun}</li> : ''}
 				{wordData && wordData.verb ? <li>{wordData && wordData.verb}</li> : ''}
 				{wordData && wordData.adverb ? (
 					<li>{wordData && wordData.adverb}</li>
@@ -87,7 +90,8 @@ function WordDefinition({ conundrum, APIKey }) {
 				) : (
 					''
 				)} */}
-			</table>
+				</table>
+			)}
 		</StyledWordDefinition>
 		// <StyledWordDefinition>
 		// 	<ul>
@@ -111,6 +115,10 @@ function WordDefinition({ conundrum, APIKey }) {
 }
 
 const StyledWordDefinition = styled.div`
+	p {
+		text-align: center;
+		text-transform: uppercase;
+	}
 	table {
 		/* border: 1px solid; */
 		font-family: 'Montserrat', cursive;
