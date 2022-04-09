@@ -3,6 +3,7 @@ export const lightTheme = {
 	bg: '#000000',
 	bgContainer: 'rgb(45,52,105)',
 	bgTile: '#841d1d',
+	bgTileInset: '#235980',
 	bgNumber: '#980303',
 	bgTarget: '#333333',
 	border: '#980303',
@@ -12,12 +13,14 @@ export const lightTheme = {
 	textTarget: 'rgb(228, 207, 23)',
 	bgChosen: '#3d0101',
 	red: '#980303',
+	green: '#156d01',
 };
 export const darkTheme = {
 	syntax: '#ffffff',
 	bg: 'rgb(38,61,142)',
 	bgContainer: 'rgb(38,61,142)',
 	bgTile: 'rgb(51,112,156)',
+	bgTileInset: '#235980',
 	bgNumber: 'rgb(27,66,121)',
 	bgTarget: '#333333',
 	border: 'rgb(27,66,121)',
@@ -27,4 +30,5 @@ export const darkTheme = {
 	textTarget: 'rgb(228, 207, 23)',
 	bgChosen: '#1b2877',
 	red: '#980303',
+	green: '#156d01',
 };

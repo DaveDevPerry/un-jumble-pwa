@@ -47,9 +47,9 @@ const StyledWordsDisplay = styled.section`
 		list-style: none;
 		font-size: 3rem;
 		display: grid;
-		grid-template-columns: repeat(2, auto);
+		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(4, auto);
-		grid-auto-flow: column;
+		grid-auto-flow: row;
 		li {
 			display: flex;
 			justify-content: flex-start;

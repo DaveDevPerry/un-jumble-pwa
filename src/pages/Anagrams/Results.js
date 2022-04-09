@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
 import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
+import UserWordResultsDisplay from '../../components/Anagrams/UserWordResultsDisplay';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const AnagramRoundResults = ({
@@ -118,7 +119,9 @@ const AnagramRoundResults = ({
 					</div>
 				</div> */}
 
-				<div className='anagram-word-list-container'>
+				<UserWordResultsDisplay allAnagramUserWords={allAnagramUserWords} />
+
+				{/* <div className='anagram-word-list-container'>
 					<ul className='anagram-word-list'>
 						{allAnagramUserWords.map((userWord, index) => {
 							return (
@@ -130,15 +133,15 @@ const AnagramRoundResults = ({
 							);
 						})}
 					</ul>
-				</div>
+				</div> */}
 
-				<p className='anagram-user-result'>
+				{/* <p className='anagram-user-result'>
 					{allAnagramUserWords.reduce((accumulator, object) => {
 						return accumulator + object.score;
 					}, 0) > 50
 						? 'EXCELLENT'
 						: 'GOOD JOB'}
-				</p>
+				</p> */}
 				<div className='points-container'>
 					<h2 id='share-anagram-points'>
 						{allAnagramUserWords.reduce((accumulator, object) => {
@@ -416,7 +419,7 @@ const StyledAnagramResults = styled.section`
 	flex-direction: column;
 	background-color: ${({ theme }) => theme.bgTile};
 	border-radius: 5px;
-	padding: 1rem 2rem;
+	padding: 1rem;
 	transition: all 300ms ease-in;
 	flex: 1;
 	h2 {
