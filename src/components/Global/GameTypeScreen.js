@@ -63,13 +63,14 @@ const StyledGameTypeScreen = styled.div`
 	}
 	.game-mode-header {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
+		column-gap: 1rem;
 		align-items: center;
 		width: 100%;
 		color: ${({ theme }) => theme.bgChosen};
 		h3 {
 			font-weight: lighter;
-			border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
+			/* border-bottom: 2px solid ${({ theme }) => theme.bgChosen}; */
 			display: inline-block;
 			/* margin-bottom: 1rem; */
 			font-size: 2.8rem;

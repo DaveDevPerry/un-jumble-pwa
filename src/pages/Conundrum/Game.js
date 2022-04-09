@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import ClockTimer from '../../components/Conundrum/ClockTimer';
-// import GamePanel from '../../components/Conundrum/GamePanel';
 import UserWordsDisplay from '../../components/Conundrum/UserWordsDisplay';
 import { useNavigate } from 'react-router-dom';
 import ConundrumUserLetterCards from '../../components/Conundrum/UserLetterCards';
+// import YesterdayUserWordDisplay from '../../components/Conundrum/WeeksResultsTable';
+import WeeksResultsTable from '../../components/Conundrum/WeeksResultsTable';
 
 const ConundrumGame = ({
 	dictionary,
@@ -20,10 +20,10 @@ const ConundrumGame = ({
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
-		// console.log(gameMode, 'gm');
 	}, []);
 	let navigate = useNavigate();
 	const [conundrumOfTheDay, setConundrumOfTheDay] = useState([]);
+	// const [yesterdayConundrum, setYesterdayConundrum] = useState()
 	const [conundrumOfTheDayArray, setConundrumOfTheDayArray] = useState([]);
 	const [shuffled, setShuffled] = useState([]);
 	const [currentWord, setCurrentWord] = useState('');
@@ -37,6 +37,7 @@ const ConundrumGame = ({
 		console.log(dayOffset, 'dos');
 		console.log(allFourLetterWords, 'four');
 		console.log(gameMode, 'gm');
+		console.log(Math.floor(dayOffset), 'day offset');
 		let getConundrumOfTheDay;
 		switch (gameMode) {
 			case 9:
@@ -90,7 +91,6 @@ const ConundrumGame = ({
 	const handleStartGame = (e) => {
 		e.preventDefault();
 		console.log(conundrum);
-		// document.querySelector('.start-btns-container').classList.add('hide');
 		const gameLetterTiles = document.querySelectorAll('.card');
 		gameLetterTiles.forEach((tile) => {
 			tile.classList.add('visible');
@@ -119,6 +119,7 @@ const ConundrumGame = ({
 			</div> */}
 			{/* <ClockTimer ticking={ticking} /> */}
 			{/* <GamePanel handleStartGame={handleStartGame} shuffled={shuffled} /> */}
+			<WeeksResultsTable currentWord={currentWord} />
 			<UserWordsDisplay currentWord={currentWord} />
 			<div className='back-btn-container'>
 				<div className='button'>

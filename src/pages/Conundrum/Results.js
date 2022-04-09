@@ -7,6 +7,8 @@ import ResultsFooter from '../../components/Global/ResultsFooter';
 // import DataFetching from '../../components/Conundrum/WordDefinition';
 import WordDefinition from '../../components/Conundrum/WordDefinition';
 
+import { FaTrophy } from 'react-icons/fa';
+
 // import axios from 'axios';
 
 const ConundrumResults = ({
@@ -220,7 +222,8 @@ const ConundrumResults = ({
 					? 'CONGRATULATIONS!'
 					: 'BETTER LUCK TOMORROW'}
 			</p> */}
-				<div className='points-container'>
+				<div className='conundrum-points-container'>
+					<FaTrophy size='50px' id='trophy' />
 					<h2 id='share-conundrum-points'>+1</h2>
 					<p>win</p>
 				</div>
@@ -342,15 +345,25 @@ const StyledConundrumResults = styled.section`
 		display: inline-block;
 		padding: 0 1rem;
 	}
-	.points-container {
+	.conundrum-points-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		h2 {
-			color: ${({ theme }) => theme.bgChosen};
-			font-size: 5rem;
-			line-height: 0.7;
-			font-weight: 400;
+
+		svg {
+			position: relative;
+
+			h2 {
+				color: ${({ theme }) => theme.bgChosen};
+				font-size: 5rem;
+				line-height: 0.7;
+				font-weight: 400;
+				position: absolute;
+				z-index: 10;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
 		}
 		p {
 			font-size: 2rem;
