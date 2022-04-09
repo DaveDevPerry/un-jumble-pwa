@@ -214,7 +214,7 @@ const ConundrumResults = ({
 					<p>{longestWord.length} letters</p>
 				</li>
 			</ul> */}
-				<p className='conundrum-user-result'>CONGRATULATIONS!</p>
+				{/* <p className='conundrum-user-result'>CONGRATULATIONS!</p> */}
 				{/* <p className='conundrum-user-result'>
 				{gotConundrum.length === 9
 					? 'CONGRATULATIONS!'
@@ -263,7 +263,7 @@ const StyledConundrumResults = styled.section`
 	flex-direction: column;
 	background-color: ${({ theme }) => theme.bgTile};
 	border-radius: 5px;
-	padding: 1rem 2rem;
+	padding: 1rem;
 	transition: all 300ms ease-in;
 	flex: 1;
 	h2 {

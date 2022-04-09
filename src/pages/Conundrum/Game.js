@@ -20,6 +20,7 @@ const ConundrumGame = ({
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
+		// console.log(gameMode, 'gm');
 	}, []);
 	let navigate = useNavigate();
 	const [conundrumOfTheDay, setConundrumOfTheDay] = useState([]);
@@ -29,9 +30,13 @@ const ConundrumGame = ({
 
 	// TESTING VARIABLE LETTER LENGTH
 	useEffect(() => {
-		const offsetFromDate = new Date(2022, 0, 1);
+		const offsetFromDate = new Date(2022, 0, 2);
 		const msOffset = Date.now() - offsetFromDate;
+		console.log(msOffset, 'ms');
 		const dayOffset = msOffset / 1000 / 60 / 60 / 24;
+		console.log(dayOffset, 'dos');
+		console.log(allFourLetterWords, 'four');
+		console.log(gameMode, 'gm');
 		let getConundrumOfTheDay;
 		switch (gameMode) {
 			case 9:
@@ -54,9 +59,10 @@ const ConundrumGame = ({
 				break;
 			default:
 				console.error('error in word length choice');
-				return;
+			// return;
 		}
 		const getConundrumOfTheDayArray = getConundrumOfTheDay.split('');
+		console.log(getConundrumOfTheDayArray, 'arr');
 		setConundrum(getConundrumOfTheDay);
 		setConundrumOfTheDay(getConundrumOfTheDay);
 		setConundrumOfTheDayArray(getConundrumOfTheDayArray);

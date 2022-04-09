@@ -91,17 +91,13 @@ const ConundrumUserLetterCards = ({
 		<StyledConundrumUserLetterCards>
 			<div className='row-btns-container'>
 				<div className='button small-btn'>
-					<button className='btn-back btn-cta conundrum-btn'>
-						cleargdfgdfg
-					</button>
+					<button className='btn-back btn-cta conundrum-btn'>&nbsp;</button>
 					<button className='btn-front btn-cta' onClick={handleReset}>
 						clear
 					</button>
 				</div>
 				<div className='button small-btn'>
-					<button className='btn-back btn-cta conundrum-btn'>
-						Submitggdsfg
-					</button>
+					<button className='btn-back btn-cta conundrum-btn'>&nbsp;</button>
 					<button className='btn-front btn-cta' onClick={handleSubmit}>
 						Submit
 					</button>
