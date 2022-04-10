@@ -14,7 +14,8 @@ const ConundrumGame = ({
 	allSixLetterWords,
 	allFiveLetterWords,
 	allFourLetterWords,
-
+	message,
+	setMessage,
 	conundrum,
 	setConundrum,
 	conundrumGameMode,
@@ -118,7 +119,6 @@ const ConundrumGame = ({
 					</button>
 				</div>
 			</div> */}
-			{/* <ClockTimer ticking={ticking} /> */}
 			{/* <GamePanel handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 			<WeeksResultsTable currentWord={currentWord} />
 			<UserWordsDisplay currentWord={currentWord} />
@@ -144,6 +144,7 @@ const ConundrumGame = ({
 				dictionary={dictionary}
 				conundrum={conundrum}
 				setConundrum={setConundrum}
+				setMessage={setMessage}
 			/>
 		</StyledConundrumGame>
 	);

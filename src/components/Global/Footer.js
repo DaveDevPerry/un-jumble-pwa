@@ -2,8 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Toggle from './Toggler';
 import { useNavigate } from 'react-router-dom';
+import SpeechBubble from './SpeechBubble';
 
-function Footer({ theme, themeToggler }) {
+function Footer({ theme, themeToggler, message, setMessage }) {
+	// useEffect(() => {
+	// 	document.querySelector('.footer-speech-bubble').classList.add('bark');
+	// 	setTimeout(() => {
+	// 		document.querySelector('.footer-speech-bubble').classList.remove('bark');
+	// 	}, 500);
+	// }, [setMessage]);
 	let navigate = useNavigate();
 	return (
 		<StyledFooter>
@@ -15,8 +22,13 @@ function Footer({ theme, themeToggler }) {
 					navigate('/');
 				}}
 			/>
-			<p>© Silly Sausage Games 2022</p>
+			<p id='ssg'>© Silly Sausage Games 2022</p>
 			<Toggle theme={theme} toggleTheme={themeToggler} />
+			<SpeechBubble
+				message={message}
+				// message='test message here'
+				// className='footer-speech-bubble'
+			/>
 		</StyledFooter>
 	);
 }
@@ -25,7 +37,11 @@ const StyledFooter = styled.footer`
 	position: relative;
 	margin-top: 4rem;
 	border-top: 4px solid ${({ theme }) => theme.border};
-	p {
+	/* #footer-speech-bubble {
+		color: red;
+	} */
+	z-index: 500;
+	#ssg {
 		text-align: center;
 		padding: 0.5rem;
 		letter-spacing: 0.5px;

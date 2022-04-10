@@ -5,6 +5,7 @@ import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
 import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
+// import ReactTooltip from "react-tooltip";
 
 const GameTypeScreen = ({
 	url,
@@ -29,7 +30,23 @@ const GameTypeScreen = ({
 					<MdOutlineTimerOff size='25px' />
 				)}
 				<h3>{name}</h3>
+				{/* <a data-tip="React-tooltip"> */}
 				<BsWhatsapp size='22px' />
+				{/* </a>
+				{'<ReactTooltip place="' +
+                    place +
+                    '" type="' +
+                    type +
+                    '" effect="' +
+                    effect +
+                    '"/>'}
+				<ReactTooltip
+            id="main"
+            place={place}
+            type={type}
+            effect={effect}
+            multiline={true}
+          /> */}
 			</div>
 			<p>{description}</p>
 			{(() => {
@@ -66,7 +83,6 @@ const StyledGameTypeScreen = styled.div`
 	border: none;
 	padding: 1rem;
 	row-gap: 1rem;
-	cursor: pointer;
 	p {
 		text-align: center;
 	}

@@ -9,6 +9,7 @@ const ConundrumUserLetterCards = ({
 	dictionary,
 	conundrum,
 	setConundrum,
+	setMessage,
 }) => {
 	let navigate = useNavigate();
 
@@ -39,6 +40,7 @@ const ConundrumUserLetterCards = ({
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		checkWord();
+		// setMessage('');
 		// reset tiles
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -66,12 +68,15 @@ const ConundrumUserLetterCards = ({
 		console.log(conundrum);
 		if (!dictionary.includes(currentWord)) {
 			console.log('wrong');
+			setMessage('invalid word!');
+			// document.querySelector('#footer-speech-bubble')
 			// display word is incorrect
 			return;
 		}
 		if (dictionary.includes(currentWord)) {
 			console.log('right');
 			setConundrum(currentWord);
+			setMessage('correct word!');
 			// setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
 			// if (currentWord.length > longestWord.length) {
 			// 	setLongestWord(currentWord);

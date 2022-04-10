@@ -1,5 +1,6 @@
 export const lightTheme = {
 	syntax: '#ffffff',
+	black: '#000000',
 	bg: '#000000',
 	bgContainer: 'rgb(45,52,105)',
 	bgTile: '#841d1d',
@@ -18,6 +19,7 @@ export const lightTheme = {
 };
 export const darkTheme = {
 	syntax: '#ffffff',
+	black: '#000000',
 	bg: 'rgb(38,61,142)',
 	bgContainer: 'rgb(38,61,142)',
 	bgTile: 'rgb(51,112,156)',

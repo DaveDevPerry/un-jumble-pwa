@@ -100,6 +100,7 @@ const StyledConundrumLevelStatus = styled.section`
 		place-content: center;
 		font-weight: 800;
 		font-size: 2rem;
+		cursor: pointer;
 		&.isComplete {
 			background-color: ${({ theme }) => theme.isComplete};
 			color: ${({ theme }) => theme.bgChosen};
