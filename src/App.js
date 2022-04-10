@@ -32,18 +32,9 @@ function App() {
 	const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
 	useEffect(() => {
 		console.log('app render');
-		// const API_KEY = process.env.REACT_APP_API_KEY;
-		// setTimeout(() => {
-		// console.log(API_KEY);
-		// }, 1000);
-		// setAPIKey(API_KEY);
 		console.log(setAPIKey);
 	}, []);
 
-	// const API_KEY = process.env.REACT_APP_API_KEY;
-	// setTimeout(() => {
-	// 	console.log(API_KEY);
-	// }, 1000);
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
 	const themeMode = theme === 'light' ? lightTheme : darkTheme;
 	const [dictionary, setDictionary] = useState(null);
@@ -62,8 +53,6 @@ function App() {
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
 	const [conundrumGameMode, setConundrumGameMode] = useState('');
-	// const [showResults, setShowResults] = useState(false);
-	// const [gotConundrum, setGotConundrum] = useState(false);
 
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
@@ -76,52 +65,10 @@ function App() {
 	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
 	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
 	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
-	// const [nineLetterWords, setNineLetterWords] = useState([])
 
 	// ANAGRAM
 	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
 	const [anagramGameMode, setAnagramGameMode] = useState('');
-
-	// useEffect(() => {
-	// 		console.log('setting sorted');
-	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
-	// 		return b.word.length - a.word.length;
-	// 	});
-	// 	console.log(sortedWordsByLength, 'sorted words');
-	// 	setSortedWordsByLengthArray([
-	// 		...sortedWordsByLengthArray,
-	// 		sortedWordsByLength,
-	// 	]);
-	// console.log(sortedWordsByLength, 'sorted');
-	// const nineCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 9;
-	// });
-	// setNineLetterWords(nineCount);
-	// const eightCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 8;
-	// });
-	// setEightLetterWords(eightCount);
-	// const sevenCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 7;
-	// });
-	// setSevenLetterWords(sevenCount);
-	// const sixCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 6;
-	// });
-	// setSixLetterWords(sixCount);
-	// const fiveCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 5;
-	// });
-	// setFiveLetterWords(fiveCount);
-	// const fourCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 4;
-	// });
-	// setFourLetterWords(fourCount);
-	// const threeCount = sortedWordsByLength.filter((wordItem) => {
-	// 	return wordItem.word.length === 3;
-	// });
-	// setThreeLetterWords(threeCount);
-	// },[allLetterRoundUserWords])
 
 	useEffect(() => {
 		const letterRoundWords = englishDictionary.filter(function (word) {
@@ -190,34 +137,7 @@ function App() {
 									/>
 								}
 							/>
-							{/* <Route
-								path='/conundrum'
-								element={
-									<ConundrumHome
-										allNineLetterWords={allNineLetterWords}
-										allEightLetterWords={allEightLetterWords}
-										allSevenLetterWords={allSevenLetterWords}
-										allSixLetterWords={allSixLetterWords}
-										allFiveLetterWords={allFiveLetterWords}
-										allFourLetterWords={allFourLetterWords}
-									
-										gameMode={gameMode}
-										setGameMode={setGameMode}
-									/>
-								}
-							/> */}
 							<Route path='/conundrum/rules' element={<ConundrumRules />} />
-							{/* <Route
-								path='/selectwordlength'
-								element={
-									<WordLengthSelect
-										allNineLetterWords={allNineLetterWords}
-										allEightLetterWords={allEightLetterWords}
-										allSevenLetterWords={allSevenLetterWords}
-										allSixLetterWords={allSixLetterWords}
-									/>
-								}
-							/> */}
 							<Route
 								path='/conundrum/game'
 								element={
@@ -230,10 +150,7 @@ function App() {
 										allFourLetterWords={allFourLetterWords}
 										setGameMode={setGameMode}
 										gameMode={gameMode}
-										// showResults={showResults}
-										// setShowResults={setShowResults}
 										dictionary={dictionary}
-										// setGotConundrum={setGotConundrum}
 										setConundrum={setConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
@@ -246,36 +163,18 @@ function App() {
 								path='/conundrum/results'
 								element={
 									<ConundrumResults
-										// conundrumData={conundrumData}
-										// setConundrumData={setConundrumData}
-										// showResults={showResults}
 										conundrum={conundrum}
-										// setGotConundrum={setGotConundrum}
-										// gotConundrum={gotConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 										APIKey={APIKey}
-										// defData={defData}
 									/>
 								}
 							/>
 							{/* anagram round  */}
-							{/* <Route path='/anagramround' element={<AnagramRoundHome />} /> */}
 							<Route
 								path='/anagramround/rules'
 								element={<AnagramRoundRules />}
 							/>
-							{/* <Route
-								path='/selectletters'
-								element={
-									<LetterSelect
-										gameLetters={gameLetters}
-										letterTypes={letterTypes}
-										setLetterTypes={setLetterTypes}
-										setGameLetters={setGameLetters}
-									/>
-								}
-							/> */}
 							<Route
 								path='/anagramround/game'
 								element={
@@ -304,12 +203,6 @@ function App() {
 								path='/anagramround/results'
 								element={
 									<AnagramRoundResults
-										// isLetterRoundTimeUp={isLetterRoundTimeUp}
-										// gameLetters={gameLetters}
-										// setGameLetters={setGameLetters}
-										// setLetterTypes={setLetterTypes}
-										// setLetterRoundData={setLetterRoundData}
-										// letterRoundData={letterRoundData}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 										allAnagramUserWords={allAnagramUserWords}
@@ -338,7 +231,6 @@ function App() {
 										isLetterRoundTimeUp={isLetterRoundTimeUp}
 										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
 										gameLetters={gameLetters}
-										// setGameLetters={setGameLetters}
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
@@ -379,7 +271,6 @@ function App() {
 									/>
 								}
 							/>
-
 							<Route path='*' element={<ErrorPage />} />
 						</Routes>
 					</main>

@@ -1,42 +1,13 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import FunctionButton from '../FunctionButton';
 
-const GameLetterCards = ({
-	handleStartGame,
-	handleStart,
-	handleAnagramStart,
-	anagramGameMode,
-	setNumberOfGuessTilesToRender,
-	numberOfGuessTilesToRender,
-}) => {
-	// const [numberOfGuessTilesToRender, setNumberOfGuessTilesToRender] =
-	// 	useState(0);
-	// useEffect(() => {
-	// 	console.log('game letter cards render');
-	// 	setNumberOfGuessTilesToRender(anagramGameMode);
-	// }, [anagramGameMode, setNumberOfGuessTilesToRender]);
+const GameLetterCards = ({ anagramGameMode }) => {
 	useEffect(() => {
 		console.log('game letter cards', anagramGameMode);
 	}, [anagramGameMode]);
 	return (
 		<StyledGameLetterCards>
-			{/* <FunctionButton functionName='handleStartGame' name='start game' /> */}
-			{/* <button className='start-btns-container' onClick={handleStart}>
-				start game
-			</button> */}
-
 			<StyledSmallNumberOutput className='guesses word-wrapper' data-guess>
-				{/* {() => {
-					for (let i = 1; i <= { numberOfGuessTilesToRender }; i++) {
-						<div className='guess'>
-							<div className='guess-back guess-letter'>&nbsp;</div>
-							<div className='guess-front guess-letter guess-tile'>
-								<p>&nbsp;</p>
-							</div>
-						</div>;
-					}
-				}} */}
 				{anagramGameMode && anagramGameMode === 4 ? (
 					<>
 						<div className='guess'>
@@ -145,69 +116,7 @@ const GameLetterCards = ({
 				) : (
 					''
 				)}
-				{/* <div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div> */}
 			</StyledSmallNumberOutput>
-			{/* <StyledSmallNumberOutput className='guesses word-wrapper' data-guess>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-				<div className='guess'>
-					<div className='guess-back guess-letter'>&nbsp;</div>
-					<div className='guess-front guess-letter guess-tile'>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-			</StyledSmallNumberOutput> */}
 		</StyledGameLetterCards>
 	);
 };
@@ -221,15 +130,6 @@ const StyledGameLetterCards = styled.div`
 		transform: translate(-50%, -50%);
 		z-index: 50;
 		width: 100%;
-		/* font-family: 'Bebas Neue', cursive;
-		letter-spacing: 2px;
-		font-size: 2.8rem;
-		padding: 0.5rem 1rem;
-		background-color: ${({ theme }) => theme.bgChosen};
-		border-radius: 5px;
-		color: rgb(255, 255, 255);
-		cursor: pointer;
-		border: none; */
 	}
 `;
 const StyledSmallNumberOutput = styled.div`
@@ -260,12 +160,9 @@ const StyledSmallNumberOutput = styled.div`
 	.guess.visible .guess-front {
 		transform: rotateY(0);
 	}
-
 	.guess-back {
 		font-size: 2rem;
 		outline: none;
-		/* background-color: ${({ theme }) => theme.bgTile}; */
-		/* color: ${({ theme }) => theme.bgTile}; */
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
@@ -280,7 +177,6 @@ const StyledSmallNumberOutput = styled.div`
 		text-align: center;
 		text-transform: uppercase;
 		color: white;
-
 		text-shadow: 3px 3px 4px #000000;
 		background-color: rgba(0, 0, 0, 0.2);
 		box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2),

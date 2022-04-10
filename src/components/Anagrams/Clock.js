@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Clock = ({ timerMinutes, timerSeconds }) => {
+const Clock = ({ timerSeconds }) => {
 	return (
 		<Fragment>
 			<section className='timer-container'>
@@ -13,29 +13,12 @@ const Clock = ({ timerMinutes, timerSeconds }) => {
 						</section>
 					</div>
 				</section>
-				{/* <section className='timer'>
-					<div className='clock'>
-						<section>
-							<p id='timer-element-mins'>
-								{timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes}
-							</p>
-						</section>
-						<span>:</span>
-						<section>
-							<p id='timer-element-secs'>
-								{timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds}
-							</p>
-						</section>
-					</div>
-				</section> */}
 			</section>
 		</Fragment>
 	);
 };
 
 Clock.defaultProps = {
-	// timerHours: 0,
-	timerMinutes: 0,
 	timerSeconds: 0,
 };
 

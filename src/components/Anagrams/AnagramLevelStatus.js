@@ -6,7 +6,6 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 	let navigate = useNavigate();
 
 	function setTileStyleVariable(number) {
-		// console.log(typeof testNum, 'num?');
 		const root = document.querySelector(':root');
 		root.style.setProperty('--letter-count', number);
 	}
@@ -23,7 +22,6 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 			>
 				4
 			</div>
-
 			<div
 				className='quick-stat isComplete'
 				onClick={() => {
@@ -52,7 +50,6 @@ const StyledAnagramLevelStatus = styled.section`
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(1, auto);
 	column-gap: 0.5rem;
-	/* border: 1px solid black; */
 	width: 100%;
 	.quick-stat {
 		padding: 0.5rem;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const UserWordsDisplay = ({ allAnagramUserWords }) => {
 	return (
 		<StyledWordsDisplay>
-			{/* <p className='update-current-word-elem'>{currentAnagramWord}</p> */}
 			<ul>
 				{allAnagramUserWords.map((userWord, index) => {
 					return (
@@ -16,30 +15,13 @@ const UserWordsDisplay = ({ allAnagramUserWords }) => {
 					);
 				})}
 			</ul>
-			{/* <ul>
-				{allAnagramUserWords
-					.sort(function (a, b) {
-						return parseFloat(b.length) - parseFloat(a.length);
-					})
-					.map((word, index) => {
-						return (
-							<li key={word + index}>
-								<p>
-									{word}
-								</p>
-							</li>
-						);
-					})}
-			</ul> */}
 		</StyledWordsDisplay>
 	);
 };
 const StyledWordsDisplay = styled.section`
-	/* background-color: ${({ theme }) => theme.bgTile}; */
 	background-color: ${({ theme }) => theme.syntax};
 	padding: 1rem 2rem;
 	border-radius: 10px;
-	/* display: flex; */
 	width: 100%;
 	flex: 1;
 	border: 6px solid ${({ theme }) => theme.bgChosen};

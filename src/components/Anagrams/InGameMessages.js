@@ -1,15 +1,12 @@
 import React from 'react';
-// import { StyledInGameMessages } from './InGameMessagesStyles';
 import styled from 'styled-components';
 
 const InGameMessages = () => {
 	return (
-		<>
-			<StyledInGameMessages
-				className='alert-container'
-				data-alert-container
-			></StyledInGameMessages>
-		</>
+		<StyledInGameMessages
+			className='alert-container'
+			data-alert-container
+		></StyledInGameMessages>
 	);
 };
 const StyledInGameMessages = styled.div`
@@ -24,13 +21,10 @@ const StyledInGameMessages = styled.div`
 	font-family: 'Atma', cursive;
 	margin: 0 0.5rem;
 	overflow: hidden;
-
 	.alert {
 		pointer-events: none;
 		padding: 0.2rem;
 		color: ${({ theme }) => theme.red};
-		/* color: ${({ theme }) => theme.textColorPrimary};/ */
-		/* background: ${({ theme }) => theme.bg}; */
 		transition: all 0.5s linear;
 		opacity: 1;
 		transition: opacity 500ms ease-in-out;
@@ -41,9 +35,6 @@ const StyledInGameMessages = styled.div`
 	.alert:last-child {
 		margin-bottom: 0;
 	}
-	/* .alert.hide {
-		opacity: 0;
-	} */
 `;
 
 export default InGameMessages;

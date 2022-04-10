@@ -1,5 +1,4 @@
 import React from 'react';
-// import { StyledGuessTiles } from './GuessTilesStyles';
 import styled from 'styled-components';
 
 const GuessTiles = () => {
@@ -29,7 +28,6 @@ const StyledGuessTiles = styled.section`
 	align-items: center;
 	padding: 0 1rem;
 	gap: 0.5rem;
-
 	.guess-tile {
 		border-bottom: 4px solid ${({ theme }) => theme.borderPrimary};
 		border-radius: 5px;
@@ -41,7 +39,6 @@ const StyledGuessTiles = styled.section`
 		text-align: center;
 		text-transform: uppercase;
 		color: white;
-
 		text-shadow: 3px 3px 4px #000000;
 		background-color: rgba(0, 0, 0, 0.2);
 		box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2),

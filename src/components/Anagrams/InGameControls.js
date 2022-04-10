@@ -1,12 +1,10 @@
 import React from 'react';
 import Timer from './Timer';
-// import { StyledInGameControls } from './InGameControlsStyles';
 import styled from 'styled-components';
 
 function InGameControls({ handleDelete, handleSubmit }) {
 	return (
 		<StyledInGameControls className='btns'>
-			{/* <form> */}
 			<form onSubmit={handleDelete}>
 				<input
 					type='submit'
@@ -15,10 +13,7 @@ function InGameControls({ handleDelete, handleSubmit }) {
 					value='DELETE'
 				/>
 			</form>
-
 			<Timer />
-
-			{/* <form> */}
 			<form onSubmit={handleSubmit}>
 				<input
 					type='submit'
@@ -37,35 +32,9 @@ const StyledInGameControls = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	padding: 0;
-	/* .btn-grad.circle-btn {
-		padding: 5px 15px;
-		text-align: center;
-		text-transform: uppercase;
-		transition: 0.2s;
-		background-size: 200% auto;
-		color: white;
-		color: rgb(87, 39, 0);
-		box-shadow: 0 0 3px #eee;
-		border-radius: 10px;
-		font-weight: 600;
-		font-size: 2rem;
-	} */
 	.btn-grad {
 		margin: 10px;
-		/* padding: 5px 15px;
-		text-align: center;
-		text-transform: uppercase; */
-		/* transition: 0.5s; */
-		/* background-size: 200% auto; */
 		background: ${({ theme }) => theme.bgButton};
-		/* color: white;
-		color: rgb(87, 39, 0); */
-		/* color: ${({ theme }) => theme.textColorSecondary}; */
-		/* border-radius: 10px; */
-		/* font-weight: 600; */
-		/* height: 50px; */
-		/* width: 100px; */
-		/* font-size: 2rem; */
 		font-family: 'Fredoka', sans-serif;
 		transition: all 0.5s linear;
 	}
@@ -73,10 +42,7 @@ const StyledInGameControls = styled.section`
 		padding: 5px 15px;
 		text-align: center;
 		text-transform: uppercase;
-		/* transition: 0.2s; */
 		background-size: 200% auto;
-		/* color: white;
-		color: rgb(87, 39, 0); */
 		color: ${({ theme }) => theme.btnTextColor};
 		box-shadow: 0 0 3px #eee;
 		border-radius: 10px;

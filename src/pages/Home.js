@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-// import DataFetching from '../components/Conundrum/DataFetching';
 import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
 
@@ -10,16 +10,16 @@ const Home = ({
 	anagramGameMode,
 	setAnagramGameMode,
 }) => {
+	// let navigate
 	useEffect(() => {
 		console.log('home rendered');
+		// navigate = useNavigate();
 	}, []);
 
 	return (
 		<StyledHome>
-			{/* <DataFetching /> */}
 			<GameTitle title='select game' />
 			<GameTypeScreen
-				// url='/conundrum'
 				name='conundrum'
 				description="use all letters to make today's word"
 				isTimed='false'
@@ -27,7 +27,6 @@ const Home = ({
 				setConundrumGameMode={setConundrumGameMode}
 			/>
 			<GameTypeScreen
-				// url={'/anagramround'}
 				name='anagram round'
 				description='unscramble words in two minutes'
 				isTimed='true'
@@ -39,6 +38,7 @@ const Home = ({
 				name='letter round'
 				description='make words from a selection of nine letters'
 				isTimed='true'
+				// onClick={navigate('/letterround')}
 			/>
 		</StyledHome>
 	);

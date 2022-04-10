@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 const AnagramRoundRules = () => {
 	useEffect(() => {
 		console.log('anagram rules render');
 	}, []);
 	let navigate = useNavigate();
-	// let { username } = useParams();
 	return (
 		<StyledRules>
 			<div className='rules-container'>
@@ -59,8 +57,6 @@ const AnagramRoundRules = () => {
 				>
 					START
 				</button>
-				{/* </div> */}
-				{/* <div className='btn-container'> */}
 				<button
 					className='btn'
 					onClick={() => {
@@ -86,13 +82,9 @@ const StyledRules = styled.section`
 	h2 {
 		letter-spacing: 2px;
 		text-align: center;
-		/* margin-bottom: 2rem; */
 		font-size: 3rem;
-		/* padding-bottom: 1rem; */
 		text-decoration: underline;
 		display: none;
-		/* line-height: 1.2; */
-		/* color: ${({ theme }) => theme.bgChosen}; */
 	}
 	.btn-container {
 		display: flex;
@@ -102,10 +94,6 @@ const StyledRules = styled.section`
 		row-gap: 1rem;
 		width: 100%;
 		padding: 0 3rem;
-		/* button.btn {
-			flex: 1;
-			border: none;
-		} */
 		.start-btn {
 			width: 100%;
 			border-radius: 5px;
@@ -125,9 +113,6 @@ const StyledRules = styled.section`
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		/* justify-content: space-between; */
-		/* row-gap: 0.5rem; */
-		/* padding: 2rem; */
 		li {
 			font-family: 'Montserrat';
 			font-weight: 100;

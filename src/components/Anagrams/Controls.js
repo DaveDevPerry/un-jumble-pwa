@@ -1,8 +1,7 @@
 import React from 'react';
-// import { StyledControls } from './ControlsStyles';
 import styled from 'styled-components';
 
-const Controls = ({ handleStart, isPlaying }) => {
+const Controls = ({ handleStart }) => {
 	return (
 		<StyledControls className='game-btns'>
 			<form onSubmit={handleStart}>

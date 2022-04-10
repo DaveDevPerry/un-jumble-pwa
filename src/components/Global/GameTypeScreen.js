@@ -20,10 +20,7 @@ const GameTypeScreen = ({
 	return (
 		<StyledGameTypeScreen
 		// className='btn start-btn start-game-mode-btn'
-		// onClick={() => {
-		// 	navigate(url);
-		// 	// navigate('/conundrum');
-		// }}
+		// onClick={url === '/letterround' ? navigate('/') : navigate(url)}
 		>
 			<div className='game-mode-header'>
 				{isTimed === 'true' ? (
@@ -54,16 +51,6 @@ const GameTypeScreen = ({
 					return <p>&nbsp;</p>;
 				}
 			})()}
-			{/* <div className='game-mode-stats-container'>
-				<div className='stat-wrapper'>
-					<p>03</p>
-					<p>played</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>100</p>
-					<p>win %</p>
-				</div>
-			</div> */}
 		</StyledGameTypeScreen>
 	);
 };
@@ -96,7 +83,6 @@ const StyledGameTypeScreen = styled.div`
 			line-height: 1;
 		}
 	}
-
 	.game-mode-stats-container {
 		width: 100%;
 		font-size: 1.6rem;
