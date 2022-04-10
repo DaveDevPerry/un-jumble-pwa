@@ -43,6 +43,8 @@ function App() {
 	// GLOBAL - working with conundrum
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
 		useState(true);
+	// HEADER
+	const [pageTitle, setPageTitle] = useState('select game');
 	// FOOTER
 	const [message, setMessage] = useState('');
 
@@ -117,7 +119,7 @@ function App() {
 				<GlobalStyles />
 				<div className='container'>
 					<PageLoader />
-					<Header />
+					<Header pageTitle={pageTitle} />
 					<StrictMode>
 						<main>
 							<Routes>
@@ -139,10 +141,15 @@ function App() {
 											allFourLetterWords={allFourLetterWords}
 											anagramGameMode={anagramGameMode}
 											setAnagramGameMode={setAnagramGameMode}
+											setPageTitle={setPageTitle}
+											// pageTitle={pageTitle}
 										/>
 									}
 								/>
-								<Route path='/conundrum/rules' element={<ConundrumRules />} />
+								<Route
+									path='/conundrum/rules'
+									element={<ConundrumRules setPageTitle={setPageTitle} />}
+								/>
 								<Route
 									path='/conundrum/game'
 									element={
@@ -163,6 +170,7 @@ function App() {
 											setConundrumGameMode={setConundrumGameMode}
 											setMessage={setMessage}
 											message={message}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
@@ -174,13 +182,14 @@ function App() {
 											isNextDayCountdownActive={isNextDayCountdownActive}
 											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 											APIKey={APIKey}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
 								{/* anagram round  */}
 								<Route
 									path='/anagramround/rules'
-									element={<AnagramRoundRules />}
+									element={<AnagramRoundRules setPageTitle={setPageTitle} />}
 								/>
 								<Route
 									path='/anagramround/game'
@@ -203,6 +212,7 @@ function App() {
 											setAllAnagramUserWords={setAllAnagramUserWords}
 											anagramGameMode={anagramGameMode}
 											setAnagramGameMode={setAnagramGameMode}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
@@ -214,14 +224,18 @@ function App() {
 											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 											allAnagramUserWords={allAnagramUserWords}
 											setAllAnagramUserWords={setAllAnagramUserWords}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
 								{/* letter round  */}
-								<Route path='/letterround' element={<LetterRoundHome />} />
+								<Route
+									path='/letterround'
+									element={<LetterRoundHome setPageTitle={setPageTitle} />}
+								/>
 								<Route
 									path='/letterround/rules'
-									element={<LetterRoundRules />}
+									element={<LetterRoundRules setPageTitle={setPageTitle} />}
 								/>
 								<Route
 									path='/selectletters'
@@ -231,6 +245,7 @@ function App() {
 											letterTypes={letterTypes}
 											setLetterTypes={setLetterTypes}
 											setGameLetters={setGameLetters}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
@@ -255,6 +270,7 @@ function App() {
 											setSortedWordsByLengthArray={setSortedWordsByLengthArray}
 											currentLetterRoundWord={currentLetterRoundWord}
 											setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
@@ -278,10 +294,14 @@ function App() {
 											setShowLetterRoundResults={setShowLetterRoundResults}
 											sortedWordsByLengthArray={sortedWordsByLengthArray}
 											setSortedWordsByLengthArray={setSortedWordsByLengthArray}
+											setPageTitle={setPageTitle}
 										/>
 									}
 								/>
-								<Route path='*' element={<ErrorPage />} />
+								<Route
+									path='*'
+									element={<ErrorPage setPageTitle={setPageTitle} />}
+								/>
 							</Routes>
 						</main>
 					</StrictMode>

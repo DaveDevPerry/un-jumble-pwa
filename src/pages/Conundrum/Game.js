@@ -19,10 +19,13 @@ const ConundrumGame = ({
 	conundrum,
 	setConundrum,
 	conundrumGameMode,
+	setPageTitle,
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
-	}, []);
+		setPageTitle(`conundrum Level ${conundrumGameMode}`);
+		// setPageTitle('conundrum');
+	}, [setPageTitle, conundrumGameMode]);
 	let navigate = useNavigate();
 	const [conundrumOfTheDay, setConundrumOfTheDay] = useState([]);
 	// const [yesterdayConundrum, setYesterdayConundrum] = useState()

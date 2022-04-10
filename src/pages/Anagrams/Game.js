@@ -17,10 +17,12 @@ const AnagramRoundGame = ({
 	allAnagramUserWords,
 	setAllAnagramUserWords,
 	anagramGameMode,
+	setPageTitle,
 }) => {
 	useEffect(() => {
 		console.log('anagram game render');
-	}, []);
+		setPageTitle(`anagram Level ${anagramGameMode}`);
+	}, [setPageTitle, anagramGameMode]);
 
 	const [currentTargetWord, setCurrentTargetWord] = useState('');
 	const [allCurrentTargetWords, setAllCurrentTargetWords] = useState('');

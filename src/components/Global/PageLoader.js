@@ -22,7 +22,7 @@ const PageLoader = () => {
 			for (let i = 1; i <= 8; i++) {
 				jumpLetter(i);
 			}
-		}, 3800);
+		}, 3200);
 
 		gsap.to(
 			pageRef.current,
@@ -31,14 +31,14 @@ const PageLoader = () => {
 				duration: 1.5,
 				ease: 'Linear'.easeNone,
 			},
-			'+=5.5'
+			'+=5'
 		);
 	}, []);
 
 	const flipLetter = (i) => {
 		setTimeout(() => {
 			document.querySelector(`[data-order='${i}']`).classList.add('visible');
-		}, 400 * i);
+		}, 300 * i);
 	};
 
 	const jumpLetter = (i) => {

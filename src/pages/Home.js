@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import GameTitle from '../components/Global/GameTitle';
+// import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
 
 const Home = ({
@@ -9,16 +9,21 @@ const Home = ({
 	setConundrumGameMode,
 	anagramGameMode,
 	setAnagramGameMode,
+	setPageTitle,
 }) => {
 	// let navigate
 	useEffect(() => {
 		console.log('home rendered');
-		// navigate = useNavigate();
-	}, []);
+		setPageTitle('select game');
+	}, [setPageTitle]);
+
+	// const changeTitle = () => {
+	// 	setPageTitle('select game');
+	// }
 
 	return (
 		<StyledHome>
-			<GameTitle title='select game' />
+			{/* <GameTitle title='select game' /> */}
 			<GameTypeScreen
 				name='conundrum'
 				description="use all letters to make today's word"
