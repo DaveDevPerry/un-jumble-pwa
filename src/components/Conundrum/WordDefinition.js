@@ -20,8 +20,12 @@ function WordDefinition({ conundrum, APIKey }) {
 			.request(options)
 			.then(function (response) {
 				console.log(response.data.meaning);
+
 				setTimeout(() => {
 					setWordData(response.data.meaning);
+					document
+						.querySelector('.results-outcome-container')
+						.classList.add('appear');
 				}, 700);
 			})
 			.catch(function (error) {
@@ -29,7 +33,7 @@ function WordDefinition({ conundrum, APIKey }) {
 			});
 	}, [conundrum, APIKey]);
 	return (
-		<StyledWordDefinition>
+		<StyledWordDefinition className='word-description-wrapper'>
 			{wordData === undefined ? (
 				<p>Descriptions are not available for this word at present</p>
 			) : (
@@ -129,6 +133,7 @@ function WordDefinition({ conundrum, APIKey }) {
 }
 
 const StyledWordDefinition = styled.div`
+	/* opacity: 0; */
 	/* p {
 		text-align: center;
 	} */
@@ -168,6 +173,9 @@ const StyledWordDefinition = styled.div`
 			}
 		}
 	}
+	/* &.appear {
+		opacity: 1;
+	} */
 `;
 // const StyledWordDefinition = styled.div`
 // 	ul {

@@ -347,6 +347,7 @@ const StyledConundrumResults = styled.section`
 		/* border: 1px solid red; */
 		flex: 1;
 		row-gap: 0.5rem;
+		opacity: 0;
 		.conundrum-points-container {
 			display: flex;
 			flex-direction: column;
@@ -386,6 +387,9 @@ const StyledConundrumResults = styled.section`
 			display: inline-block;
 			padding: 0 1rem;
 			/* flex: 1; */
+		}
+		&.appear {
+			opacity: 1;
 		}
 	}
 `;

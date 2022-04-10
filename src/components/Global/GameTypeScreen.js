@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
 import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
+import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 
 const GameTypeScreen = ({ url, name, description, isTimed }) => {
 	let navigate = useNavigate();
@@ -26,7 +27,16 @@ const GameTypeScreen = ({ url, name, description, isTimed }) => {
 				<BsWhatsapp size='22px' />
 			</div>
 			<p>{description}</p>
-			{name === 'conundrum' ? <ConundrumLevelStatus /> : <p>&nbsp;</p>}
+			{/* {name === 'conundrum' ? <ConundrumLevelStatus /> : <p>&nbsp;</p>} */}
+			{(() => {
+				if (name === 'conundrum') {
+					return <ConundrumLevelStatus />;
+				} else if (name === 'anagram round') {
+					return <AnagramLevelStatus />;
+				} else {
+					return <p>&nbsp;</p>;
+				}
+			})()}
 			{/* <div className='game-mode-stats-container'>
 				<div className='stat-wrapper'>
 					<p>03</p>
