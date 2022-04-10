@@ -14,6 +14,7 @@ export const lightTheme = {
 	bgChosen: '#3d0101',
 	red: '#980303',
 	green: '#156d01',
+	isComplete: 'rgb(228, 207, 23)',
 };
 export const darkTheme = {
 	syntax: '#ffffff',
@@ -31,4 +32,5 @@ export const darkTheme = {
 	bgChosen: '#1b2877',
 	red: '#980303',
 	green: '#156d01',
+	isComplete: 'rgb(228, 207, 23)',
 };

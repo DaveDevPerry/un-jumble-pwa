@@ -20,7 +20,9 @@ function WordDefinition({ conundrum, APIKey }) {
 			.request(options)
 			.then(function (response) {
 				console.log(response.data.meaning);
-				setWordData(response.data.meaning);
+				setTimeout(() => {
+					setWordData(response.data.meaning);
+				}, 700);
 			})
 			.catch(function (error) {
 				console.error(error);

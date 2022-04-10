@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
+import { BsWhatsapp } from 'react-icons/bs';
+import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 
 const GameTypeScreen = ({ url, name, description, isTimed }) => {
 	let navigate = useNavigate();
@@ -21,15 +23,11 @@ const GameTypeScreen = ({ url, name, description, isTimed }) => {
 				)}
 				{/* <MdOutlineTimerOff size='25px' /> */}
 				<h3>{name}</h3>
-				{isTimed === 'true' ? (
-					<MdOutlineTimer size='25px' />
-				) : (
-					<MdOutlineTimerOff size='25px' />
-				)}
-				{/* <MdOutlineTimerOff size='25px' /> */}
+				<BsWhatsapp size='22px' />
 			</div>
 			<p>{description}</p>
-			<div className='game-mode-stats-container'>
+			{name === 'conundrum' ? <ConundrumLevelStatus /> : <p>&nbsp;</p>}
+			{/* <div className='game-mode-stats-container'>
 				<div className='stat-wrapper'>
 					<p>03</p>
 					<p>played</p>
@@ -38,7 +36,7 @@ const GameTypeScreen = ({ url, name, description, isTimed }) => {
 					<p>100</p>
 					<p>win %</p>
 				</div>
-			</div>
+			</div> */}
 		</StyledGameTypeScreen>
 	);
 };
@@ -50,7 +48,7 @@ const StyledGameTypeScreen = styled.div`
 	height: 100%;
 	/* flex: 1; */
 	width: 100%;
-	border-radius: 10px;
+	border-radius: 5px;
 	background-color: ${({ theme }) => theme.bgTile};
 	border: none;
 	padding: 1rem;
@@ -63,18 +61,19 @@ const StyledGameTypeScreen = styled.div`
 	}
 	.game-mode-header {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		column-gap: 1rem;
-		align-items: center;
+		align-items: flex-start;
 		width: 100%;
 		color: ${({ theme }) => theme.bgChosen};
 		h3 {
 			font-weight: lighter;
 			/* border-bottom: 2px solid ${({ theme }) => theme.bgChosen}; */
-			display: inline-block;
+			/* display: inline-block; */
 			/* margin-bottom: 1rem; */
 			font-size: 2.8rem;
-			align-self: center;
+			/* align-self: center; */
+			line-height: 1;
 			/* flex: 1; */
 		}
 	}
