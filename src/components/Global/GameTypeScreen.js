@@ -13,6 +13,8 @@ const GameTypeScreen = ({
 	isTimed,
 	conundrumGameMode,
 	setConundrumGameMode,
+	anagramGameMode,
+	setAnagramGameMode,
 }) => {
 	// let navigate = useNavigate();
 	return (
@@ -42,7 +44,12 @@ const GameTypeScreen = ({
 						/>
 					);
 				} else if (name === 'anagram round') {
-					return <AnagramLevelStatus />;
+					return (
+						<AnagramLevelStatus
+							anagramGameMode={anagramGameMode}
+							setAnagramGameMode={setAnagramGameMode}
+						/>
+					);
 				} else {
 					return <p>&nbsp;</p>;
 				}

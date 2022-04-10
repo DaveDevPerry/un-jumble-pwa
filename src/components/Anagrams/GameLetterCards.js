@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import FunctionButton from '../FunctionButton';
 
@@ -6,7 +6,19 @@ const GameLetterCards = ({
 	handleStartGame,
 	handleStart,
 	handleAnagramStart,
+	anagramGameMode,
+	setNumberOfGuessTilesToRender,
+	numberOfGuessTilesToRender,
 }) => {
+	// const [numberOfGuessTilesToRender, setNumberOfGuessTilesToRender] =
+	// 	useState(0);
+	// useEffect(() => {
+	// 	console.log('game letter cards render');
+	// 	setNumberOfGuessTilesToRender(anagramGameMode);
+	// }, [anagramGameMode, setNumberOfGuessTilesToRender]);
+	useEffect(() => {
+		console.log('game letter cards', anagramGameMode);
+	}, [anagramGameMode]);
 	return (
 		<StyledGameLetterCards>
 			{/* <FunctionButton functionName='handleStartGame' name='start game' /> */}
@@ -15,7 +27,125 @@ const GameLetterCards = ({
 			</button> */}
 
 			<StyledSmallNumberOutput className='guesses word-wrapper' data-guess>
-				<div className='guess'>
+				{/* {() => {
+					for (let i = 1; i <= { numberOfGuessTilesToRender }; i++) {
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>;
+					}
+				}} */}
+				{anagramGameMode && anagramGameMode === 4 ? (
+					<>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+					</>
+				) : (
+					''
+				)}
+				{anagramGameMode && anagramGameMode === 5 ? (
+					<>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+					</>
+				) : (
+					''
+				)}
+				{anagramGameMode && anagramGameMode === 6 ? (
+					<>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+						<div className='guess'>
+							<div className='guess-back guess-letter'>&nbsp;</div>
+							<div className='guess-front guess-letter guess-tile'>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+					</>
+				) : (
+					''
+				)}
+				{/* <div className='guess'>
 					<div className='guess-back guess-letter'>&nbsp;</div>
 					<div className='guess-front guess-letter guess-tile'>
 						<p>&nbsp;</p>
@@ -44,8 +174,40 @@ const GameLetterCards = ({
 					<div className='guess-front guess-letter guess-tile'>
 						<p>&nbsp;</p>
 					</div>
-				</div>
+				</div> */}
 			</StyledSmallNumberOutput>
+			{/* <StyledSmallNumberOutput className='guesses word-wrapper' data-guess>
+				<div className='guess'>
+					<div className='guess-back guess-letter'>&nbsp;</div>
+					<div className='guess-front guess-letter guess-tile'>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+				<div className='guess'>
+					<div className='guess-back guess-letter'>&nbsp;</div>
+					<div className='guess-front guess-letter guess-tile'>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+				<div className='guess'>
+					<div className='guess-back guess-letter'>&nbsp;</div>
+					<div className='guess-front guess-letter guess-tile'>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+				<div className='guess'>
+					<div className='guess-back guess-letter'>&nbsp;</div>
+					<div className='guess-front guess-letter guess-tile'>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+				<div className='guess'>
+					<div className='guess-back guess-letter'>&nbsp;</div>
+					<div className='guess-front guess-letter guess-tile'>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+			</StyledSmallNumberOutput> */}
 		</StyledGameLetterCards>
 	);
 };

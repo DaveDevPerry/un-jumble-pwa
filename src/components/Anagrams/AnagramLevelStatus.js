@@ -1,14 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const AnagramLevelStatus = () => {
+const AnagramLevelStatus = ({ setAnagramGameMode }) => {
+	let navigate = useNavigate();
+
+	function setTileStyleVariable(number) {
+		// console.log(typeof testNum, 'num?');
+		const root = document.querySelector(':root');
+		root.style.setProperty('--letter-count', number);
+	}
 	return (
 		<StyledAnagramLevelStatus>
 			{/* map stats here */}
+			<div
+				className='quick-stat isComplete'
+				onClick={() => {
+					setAnagramGameMode(4);
+					setTileStyleVariable(4);
+					navigate('/anagramround/game');
+				}}
+			>
+				4
+			</div>
 
-			<div className='quick-stat'>4</div>
-			<div className='quick-stat isComplete'>5</div>
-			<div className='quick-stat'>6</div>
+			<div
+				className='quick-stat isComplete'
+				onClick={() => {
+					setAnagramGameMode(5);
+					setTileStyleVariable(5);
+					navigate('/anagramround/game');
+				}}
+			>
+				5
+			</div>
+			<div
+				className='quick-stat'
+				onClick={() => {
+					setAnagramGameMode(6);
+					setTileStyleVariable(6);
+					navigate('/anagramround/game');
+				}}
+			>
+				6
+			</div>
 		</StyledAnagramLevelStatus>
 	);
 };

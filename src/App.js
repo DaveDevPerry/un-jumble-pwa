@@ -23,7 +23,7 @@ import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
 import LetterRoundResults from './pages/LettersRound/Results';
 // ANAGRAM - UNSCRAMBLE
-import AnagramRoundHome from './pages/Anagrams/Home';
+// import AnagramRoundHome from './pages/Anagrams/Home';
 import AnagramRoundRules from './pages/Anagrams/Rules';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
@@ -80,6 +80,7 @@ function App() {
 
 	// ANAGRAM
 	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
+	const [anagramGameMode, setAnagramGameMode] = useState('');
 
 	// useEffect(() => {
 	// 		console.log('setting sorted');
@@ -184,6 +185,8 @@ function App() {
 										allSixLetterWords={allSixLetterWords}
 										allFiveLetterWords={allFiveLetterWords}
 										allFourLetterWords={allFourLetterWords}
+										anagramGameMode={anagramGameMode}
+										setAnagramGameMode={setAnagramGameMode}
 									/>
 								}
 							/>
@@ -257,7 +260,7 @@ function App() {
 								}
 							/>
 							{/* anagram round  */}
-							<Route path='/anagramround' element={<AnagramRoundHome />} />
+							{/* <Route path='/anagramround' element={<AnagramRoundHome />} /> */}
 							<Route
 								path='/anagramround/rules'
 								element={<AnagramRoundRules />}
@@ -286,9 +289,14 @@ function App() {
 										dictionary={dictionary}
 										setLetterRoundData={setLetterRoundData}
 										letterRoundData={letterRoundData}
+										allSevenLetterWords={allSevenLetterWords}
+										allSixLetterWords={allSixLetterWords}
 										allFiveLetterWords={allFiveLetterWords}
+										allFourLetterWords={allFourLetterWords}
 										allAnagramUserWords={allAnagramUserWords}
 										setAllAnagramUserWords={setAllAnagramUserWords}
+										anagramGameMode={anagramGameMode}
+										setAnagramGameMode={setAnagramGameMode}
 									/>
 								}
 							/>

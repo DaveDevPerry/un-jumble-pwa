@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
 
-const Home = ({ conundrumGameMode, setConundrumGameMode }) => {
+const Home = ({
+	conundrumGameMode,
+	setConundrumGameMode,
+	anagramGameMode,
+	setAnagramGameMode,
+}) => {
 	useEffect(() => {
 		console.log('home rendered');
 	}, []);
@@ -22,10 +27,12 @@ const Home = ({ conundrumGameMode, setConundrumGameMode }) => {
 				setConundrumGameMode={setConundrumGameMode}
 			/>
 			<GameTypeScreen
-				url={'/anagramround'}
+				// url={'/anagramround'}
 				name='anagram round'
 				description='unscramble words in two minutes'
 				isTimed='true'
+				anagramGameMode={anagramGameMode}
+				setAnagramGameMode={setAnagramGameMode}
 			/>
 			<GameTypeScreen
 				url={'/letterround'}

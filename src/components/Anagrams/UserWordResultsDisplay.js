@@ -100,6 +100,7 @@ const StyledUserWordResultsDisplay = styled.div`
 	flex-direction: column;
 	row-gap: 0.5rem;
 	justify-content: flex-start;
+	flex: 1;
 	.word-status-btn-container {
 		display: flex;
 		justify-content: center;

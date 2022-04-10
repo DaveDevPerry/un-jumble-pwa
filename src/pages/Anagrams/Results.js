@@ -422,15 +422,32 @@ const StyledAnagramResults = styled.section`
 	padding: 1rem;
 	transition: all 300ms ease-in;
 	flex: 1;
-	h2 {
+	row-gap: 1rem;
+	.points-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1;
+		h2 {
+			color: ${({ theme }) => theme.bgChosen};
+			font-size: 5rem;
+			line-height: 0.7;
+			font-weight: 400;
+		}
+		p {
+			font-size: 2rem;
+		}
+	}
+	/* h2 {
 		font-family: 'Bebas Neue', cursive;
 		display: flex;
 		align-items: center;
 		align-self: center;
 		font-size: 2.5rem;
 		font-weight: 100;
-	}
-	.anagram-stats-container {
+	} */
+	/* .anagram-stats-container {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: flex-start;
@@ -456,13 +473,11 @@ const StyledAnagramResults = styled.section`
 				}
 			}
 		}
-	}
-	.anagram-word-list-container {
-		/* width: 100%; */
+	} */
+	/* .anagram-word-list-container {
 		align-self: center;
 		ul {
 			list-style: none;
-			/* font-size: 3rem; */
 			display: grid;
 			grid-template-columns: repeat(4, auto);
 			grid-template-rows: repeat(8, auto);
@@ -484,33 +499,18 @@ const StyledAnagramResults = styled.section`
 				}
 			}
 		}
-	}
-	.anagram-user-result {
+	} */
+	/* .anagram-user-result {
 		font-size: 3rem;
 		border-top: 2px solid ${({ theme }) => theme.bgChosen};
 		border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
 		font-family: 'Bebas Neue', cursive;
 		letter-spacing: 1px;
-		/* text-align: center; */
 		align-self: center;
 		display: inline-block;
 		padding: 0 1rem;
-	}
+	} */
 
-	.points-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		h2 {
-			color: ${({ theme }) => theme.bgChosen};
-			font-size: 5rem;
-			line-height: 0.7;
-			font-weight: 400;
-		}
-		p {
-			font-size: 2rem;
-		}
-	}
 	/* .wrapper {
 		display: flex;
 		width: 100%;
