@@ -142,13 +142,37 @@ const AnagramRoundResults = ({
 						? 'EXCELLENT'
 						: 'GOOD JOB'}
 				</p> */}
-				<div className='points-container'>
-					<h2 id='share-anagram-points'>
-						{allAnagramUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0)}
-					</h2>
-					<p>points</p>
+				<div className='anagram-results-outcome-container'>
+					<div className='points-container'>
+						<h2 id='share-anagram-points'>
+							{allAnagramUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0)}
+						</h2>
+						<p>points</p>
+					</div>
+					{(() => {
+						if (
+							allAnagramUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) < 10
+						) {
+							return <p className='anagram-user-result'>NOT GREAT</p>;
+						} else if (
+							allAnagramUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) > 10
+						) {
+							return <p className='anagram-user-result'>GOOD GAME</p>;
+						} else if (
+							allAnagramUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) > 20
+						) {
+							return <p className='anagram-user-result'>EXCELLENT!</p>;
+						}
+					})()}
+					{/* <p className='anagram-user-result'>CONGRATULATIONS!</p> */}
 				</div>
 				{/* <StyledLetterOutput>
 				{gameLetters.map((letter, index) => {
@@ -423,20 +447,40 @@ const StyledAnagramResults = styled.section`
 	transition: all 300ms ease-in;
 	flex: 1;
 	row-gap: 1rem;
-	.points-container {
+	.anagram-results-outcome-container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		/* border: 1px solid red; */
 		flex: 1;
-		h2 {
-			color: ${({ theme }) => theme.bgChosen};
-			font-size: 5rem;
-			line-height: 0.7;
-			font-weight: 400;
+		row-gap: 0.5rem;
+
+		.points-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			/* flex: 1; */
+			h2 {
+				color: ${({ theme }) => theme.bgChosen};
+				font-size: 3rem;
+				line-height: 0.7;
+				font-weight: 400;
+			}
+			p {
+				font-size: 2rem;
+			}
 		}
-		p {
-			font-size: 2rem;
+		.anagram-user-result {
+			font-size: 3rem;
+			border-top: 2px solid ${({ theme }) => theme.bgChosen};
+			border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
+			font-family: 'Bebas Neue', cursive;
+			letter-spacing: 1px;
+			align-self: center;
+			display: inline-block;
+			padding: 0 1rem;
+			/* flex: 1; */
 		}
 	}
 	/* h2 {

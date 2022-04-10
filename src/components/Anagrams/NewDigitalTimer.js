@@ -23,7 +23,7 @@ const NewDigitalTimer = ({
 	}, []);
 	let navigate = useNavigate();
 
-	let time = 120;
+	let time = 12;
 	// useEffect(() => {
 	// 	// setTimerSeconds(time);
 	// }, [time]);

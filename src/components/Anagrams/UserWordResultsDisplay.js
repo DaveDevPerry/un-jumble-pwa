@@ -39,7 +39,15 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 						{/* back */}
 						<div className='results-title-wrapper'>
 							<p className='results-title'>correct</p>
-							<p className='results-word-count'>25</p>
+							{/* <p className='results-word-count'>25</p> */}
+							<p className='results-word-count'>
+								x{' '}
+								{
+									allAnagramUserWords.filter((wordStatus) => {
+										return wordStatus.isCorrect === true;
+									}).length
+								}
+							</p>
 						</div>
 
 						<ul className='anagram-word-list'>
@@ -66,8 +74,15 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 					<div className='word-status-front word-status'>
 						{/* front */}
 						<div className='results-title-wrapper'>
-							<p className='results-word-count'>6</p>
-							<p className='right results-title'>incorrect</p>
+							<p className='results-title'>incorrect</p>
+							<p className='results-word-count'>
+								x{' '}
+								{
+									allAnagramUserWords.filter((wordStatus) => {
+										return wordStatus.isCorrect === false;
+									}).length
+								}
+							</p>
 						</div>
 
 						<ul className='anagram-word-list'>
