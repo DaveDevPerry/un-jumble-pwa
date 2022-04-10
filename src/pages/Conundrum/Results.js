@@ -216,16 +216,20 @@ const ConundrumResults = ({
 					<p>{longestWord.length} letters</p>
 				</li>
 			</ul> */}
-				{/* <p className='conundrum-user-result'>CONGRATULATIONS!</p> */}
+
 				{/* <p className='conundrum-user-result'>
 				{gotConundrum.length === 9
 					? 'CONGRATULATIONS!'
 					: 'BETTER LUCK TOMORROW'}
 			</p> */}
-				<div className='conundrum-points-container'>
-					<FaTrophy size='50px' id='trophy' />
-					<h2 id='share-conundrum-points'>+1</h2>
-					<p>win</p>
+				<div className='results-outcome-container'>
+					<div className='conundrum-points-container'>
+						<FaTrophy id='trophy' />
+						{/* <FaTrophy size='50px' id='trophy' /> */}
+						<h2 id='share-conundrum-points'>1</h2>
+						{/* <p>win</p> */}
+					</div>
+					<p className='conundrum-user-result'>CONGRATULATIONS!</p>
 				</div>
 
 				{/* <div className='points-container'>
@@ -269,6 +273,7 @@ const StyledConundrumResults = styled.section`
 	padding: 1rem;
 	transition: all 300ms ease-in;
 	flex: 1;
+	row-gap: 1rem;
 	h2 {
 		font-family: 'Bebas Neue', cursive;
 		display: flex;
@@ -335,38 +340,52 @@ const StyledConundrumResults = styled.section`
 	/* .conundrum-meaning {
 		text-align: center;
 	} */
-	.conundrum-user-result {
-		font-size: 3rem;
-		border-top: 2px solid ${({ theme }) => theme.bgChosen};
-		border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
-		font-family: 'Bebas Neue', cursive;
-		letter-spacing: 1px;
-		align-self: center;
-		display: inline-block;
-		padding: 0 1rem;
-	}
-	.conundrum-points-container {
+	.results-outcome-container {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-
-		svg {
+		justify-content: center;
+		/* border: 1px solid red; */
+		flex: 1;
+		row-gap: 0.5rem;
+		.conundrum-points-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			position: relative;
-
-			h2 {
+			/* border: 2px solid black; */
+			/* flex: 1; */
+			#trophy {
+				color: ${({ theme }) => theme.textTarget};
+				/* position: absolute; */
+				z-index: 2;
+				/* top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%); */
+				height: 6rem;
+				width: 6rem;
+			}
+			#share-conundrum-points {
 				color: ${({ theme }) => theme.bgChosen};
-				font-size: 5rem;
-				line-height: 0.7;
+				font-size: 3rem;
+				/* line-height: 0.7; */
 				font-weight: 400;
 				position: absolute;
-				z-index: 10;
+				z-index: 10000;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%, -50%);
+				transform: translate(-50%, -70%);
 			}
 		}
-		p {
-			font-size: 2rem;
+		.conundrum-user-result {
+			font-size: 3rem;
+			border-top: 2px solid ${({ theme }) => theme.bgChosen};
+			border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
+			font-family: 'Bebas Neue', cursive;
+			letter-spacing: 1px;
+			align-self: center;
+			display: inline-block;
+			padding: 0 1rem;
+			/* flex: 1; */
 		}
 	}
 `;
@@ -374,7 +393,7 @@ const StyledLetterOutput = styled.div`
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(var(--letter-count), 1fr);
-	grid-template-rows: repeat(1, 4.5rem);
+	grid-template-rows: repeat(1, 3rem);
 	border-radius: 5px;
 	perspective: 500px;
 	gap: 0.3rem;
@@ -409,7 +428,7 @@ const StyledLetterOutput = styled.div`
 		border-radius: 5px;
 	}
 	.results-card-front {
-		font-size: 3rem;
+		font-size: 2.2rem;
 		outline: none;
 		display: grid;
 		place-content: center;

@@ -36,7 +36,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCrossMark size='22px' color='#8a0202' />
+							<GiCrossMark size='18px' color='#8a0202' />
 						</td>
 					</tr>
 					<tr>
@@ -66,7 +66,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCheckMark size='22px' color='#004600' />
+							<GiCheckMark size='18px' color='#004600' />
 						</td>
 					</tr>
 					<tr>
@@ -96,7 +96,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCheckMark size='22px' color='#004600' />
+							<GiCheckMark size='18px' color='#004600' />
 						</td>
 					</tr>
 					<tr>
@@ -126,7 +126,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCrossMark size='22px' color='#8a0202' />
+							<GiCrossMark size='18px' color='#8a0202' />
 						</td>
 					</tr>
 					<tr>
@@ -156,7 +156,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCheckMark size='22px' color='#004600' />
+							<GiCheckMark size='18px' color='#004600' />
 						</td>
 					</tr>
 					<tr>
@@ -186,7 +186,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 							</StyledLetterOutput>
 						</td>
 						<td>
-							<GiCheckMark size='22px' color='#004600' />
+							<GiCheckMark size='18px' color='#004600' />
 						</td>
 					</tr>
 				</tbody>
@@ -209,7 +209,7 @@ const WeeksResultsTable = ({ currentWord }) => {
 		// 		</div>
 		// 	</StyledLetterOutput>
 		// 	<span>
-		// 		<GiCheckMark size='22px' color='#004600' />
+		// 		<GiCheckMark size='18px' color='#004600' />
 		// 	</span>
 		// </StyledWordsDisplay>
 	);
@@ -280,7 +280,7 @@ const StyledLetterOutput = styled.div`
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(1, 3rem);
+	grid-template-rows: repeat(1, auto);
 	border-radius: 5px;
 	/* perspective: 500px; */
 	gap: 0.1rem;
@@ -318,7 +318,7 @@ const StyledLetterOutput = styled.div`
 	} */
 	/* .results-card-front { */
 	padding: 0.2rem 1rem;
-		font-size: 2rem;
+		font-size: 1.6rem;
 		outline: none;
 		display: grid;
 		place-content: center;

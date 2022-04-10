@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const UserWordsDisplay = ({ currentWord }) => {
+	useEffect(() => {
+		console.log('initial render and current word?');
+	}, [currentWord]);
 	return (
 		<StyledWordsDisplay>
 			<p className='update-current-word-elem'>{currentWord}</p>
@@ -21,6 +24,9 @@ const StyledWordsDisplay = styled.section`
 	.update-current-word-elem {
 		font-size: 4rem;
 		text-transform: uppercase;
+		color: ${({ theme }) => theme.bgChosen};
+		font-family: 'Bebas Neue', cursive;
+		font-weight: 800;
 	}
 `;
 

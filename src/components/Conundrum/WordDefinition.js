@@ -39,7 +39,9 @@ function WordDefinition({ conundrum, APIKey }) {
 									<p>{wordData.noun.substring(1, 4)}</p>
 								</td>
 								<td>
-									<p>{wordData.noun.substring(6, wordData.noun.length)}</p>
+									<p className='word-description'>
+										{wordData.noun.substring(6, wordData.noun.length)}
+									</p>
 								</td>
 							</tr>
 						) : (
@@ -50,7 +52,11 @@ function WordDefinition({ conundrum, APIKey }) {
 								<td>
 									<p>{wordData.verb.substring(1, 4)}</p>
 								</td>
-								<td>{wordData.verb.substring(6, wordData.verb.length)}</td>
+								<td>
+									<p className='word-description'>
+										{wordData.verb.substring(6, wordData.verb.length)}
+									</p>
+								</td>
 							</tr>
 						) : (
 							''
@@ -60,7 +66,11 @@ function WordDefinition({ conundrum, APIKey }) {
 								<td>
 									<p>{wordData.adverb.substring(1, 4)}</p>
 								</td>
-								<td>{wordData.adverb.substring(6, wordData.adverb.length)}</td>
+								<td>
+									<p className='word-description'>
+										{wordData.adverb.substring(6, wordData.adverb.length)}
+									</p>
+								</td>
 							</tr>
 						) : (
 							''
@@ -71,7 +81,9 @@ function WordDefinition({ conundrum, APIKey }) {
 									<p>{wordData.adjective.substring(1, 4)}</p>
 								</td>
 								<td>
-									{wordData.adjective.substring(6, wordData.adjective.length)}
+									<p className='word-description'>
+										{wordData.adjective.substring(6, wordData.adjective.length)}
+									</p>
 								</td>
 							</tr>
 						) : (
@@ -115,10 +127,9 @@ function WordDefinition({ conundrum, APIKey }) {
 }
 
 const StyledWordDefinition = styled.div`
-	p {
+	/* p {
 		text-align: center;
-		text-transform: uppercase;
-	}
+	} */
 	table {
 		/* border: 1px solid; */
 		font-family: 'Montserrat', cursive;
@@ -127,6 +138,7 @@ const StyledWordDefinition = styled.div`
 			display: flex;
 			align-items: flex-start;
 			column-gap: 0.5rem;
+
 			td:first-child {
 				p {
 					font-weight: 800;
@@ -142,12 +154,15 @@ const StyledWordDefinition = styled.div`
 				border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
 				p {
 					text-wrap: balance;
+					/* font-size: 1.2rem; */
 				}
 			}
 			&:last-child {
 				td:last-child {
 					border-bottom: 0px solid ${({ theme }) => theme.bgChosen};
 				}
+			}
+			.word-description {
 			}
 		}
 	}
