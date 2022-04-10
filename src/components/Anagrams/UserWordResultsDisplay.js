@@ -37,7 +37,11 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 				<div className='status small-btn'>
 					<div className='word-status-back word-status'>
 						{/* back */}
-						<p className='results-title'>correct</p>
+						<div className='results-title-wrapper'>
+							<p className='results-title'>correct</p>
+							<p className='results-word-count'>25</p>
+						</div>
+
 						<ul className='anagram-word-list'>
 							{allAnagramUserWords
 								.filter((wordStatus) => {
@@ -61,7 +65,11 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 					</div>
 					<div className='word-status-front word-status'>
 						{/* front */}
-						<p className='right results-title'>incorrect</p>
+						<div className='results-title-wrapper'>
+							<p className='results-word-count'>6</p>
+							<p className='right results-title'>incorrect</p>
+						</div>
+
 						<ul className='anagram-word-list'>
 							{allAnagramUserWords
 								.filter((wordStatus) => {
@@ -149,17 +157,33 @@ const StyledUserWordResultsDisplay = styled.div`
 		font-family: 'Bebas Neue', cursive;
 		letter-spacing: 2px;
 		padding: 1rem 0.5rem;
-		.results-title {
-			font-size: 1.8rem;
-			font-family: 'Bebas Neue', cursive;
-			margin: 0 1rem 1rem 1rem;
-			/* text-decoration: underline; */
+		.results-title-wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			border-bottom: 2px solid ${({ theme }) => theme.bgChosen};
-			&.right {
-				text-align: right;
-				margin: 0 1rem 1rem 1rem;
+			margin: 0 1rem 1rem 1rem;
+			.results-title {
+				font-size: 1.8rem;
+				font-family: 'Bebas Neue', cursive;
+				/* margin: 0 1rem 1rem 1rem; */
+				/* text-decoration: underline; */
+				/* border-bottom: 2px solid ${({ theme }) => theme.bgChosen}; */
+				&.right {
+					text-align: right;
+					/* margin: 0 1rem 1rem 1rem; */
+				}
+			}
+			.results-word-count {
+				font-size: 1.8rem;
+				font-family: 'Bebas Neue', cursive;
+				&.right {
+					text-align: right;
+					/* margin: 0 1rem 1rem 1rem; */
+				}
 			}
 		}
+
 		ul {
 			list-style: none;
 			/* width: 100%; */

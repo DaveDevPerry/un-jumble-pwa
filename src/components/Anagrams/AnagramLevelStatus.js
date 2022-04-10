@@ -16,7 +16,7 @@ const StyledAnagramLevelStatus = styled.section`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: repeat(1, auto);
-	column-gap: 1rem;
+	column-gap: 0.5rem;
 	/* border: 1px solid black; */
 	width: 100%;
 	.quick-stat {

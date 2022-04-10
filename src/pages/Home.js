@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
 
-const Home = () => {
+const Home = ({ conundrumGameMode, setConundrumGameMode }) => {
 	useEffect(() => {
 		console.log('home rendered');
 	}, []);
@@ -14,10 +14,12 @@ const Home = () => {
 			{/* <DataFetching /> */}
 			<GameTitle title='select game' />
 			<GameTypeScreen
-				url='/conundrum'
+				// url='/conundrum'
 				name='conundrum'
 				description="use all letters to make today's word"
 				isTimed='false'
+				conundrumGameMode={conundrumGameMode}
+				setConundrumGameMode={setConundrumGameMode}
 			/>
 			<GameTypeScreen
 				url={'/anagramround'}

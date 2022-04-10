@@ -14,10 +14,9 @@ const ConundrumGame = ({
 	allSixLetterWords,
 	allFiveLetterWords,
 	allFourLetterWords,
-
+	gameMode,
 	conundrum,
 	setConundrum,
-	conundrumGameMode,
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
@@ -37,10 +36,10 @@ const ConundrumGame = ({
 		const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 		console.log(dayOffset, 'dos');
 		console.log(allFourLetterWords, 'four');
-		console.log(conundrumGameMode, 'gm');
+		console.log(gameMode, 'gm');
 		console.log(Math.floor(dayOffset), 'day offset');
 		let getConundrumOfTheDay;
-		switch (conundrumGameMode) {
+		switch (gameMode) {
 			case 9:
 				getConundrumOfTheDay = allNineLetterWords[Math.floor(dayOffset)];
 				break;
@@ -76,7 +75,7 @@ const ConundrumGame = ({
 		allSixLetterWords,
 		allFiveLetterWords,
 		allFourLetterWords,
-		conundrumGameMode,
+		gameMode,
 		setConundrum,
 	]);
 

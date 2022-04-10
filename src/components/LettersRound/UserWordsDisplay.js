@@ -61,12 +61,12 @@ const StyledWordsDisplay = styled.section`
 		list-style: none;
 		font-size: 3rem;
 		display: grid;
-		grid-template-columns: repeat(2, auto);
+		grid-template-columns: repeat(3, auto);
 		grid-template-rows: repeat(4, auto);
-		grid-auto-flow: column;
+		grid-auto-flow: row;
 		li {
 			display: flex;
-			justify-content: flex-start;
+			justify-content: center;
 			p {
 				font-size: 1.8rem;
 				text-transform: capitalize;

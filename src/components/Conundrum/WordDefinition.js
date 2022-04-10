@@ -134,9 +134,9 @@ function WordDefinition({ conundrum, APIKey }) {
 
 const StyledWordDefinition = styled.div`
 	/* opacity: 0; */
-	/* p {
+	p {
 		text-align: center;
-	} */
+	}
 	table {
 		/* border: 1px solid; */
 		font-family: 'Montserrat', cursive;

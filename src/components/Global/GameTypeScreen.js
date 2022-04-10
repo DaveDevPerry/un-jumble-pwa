@@ -1,20 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
 import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 
-const GameTypeScreen = ({ url, name, description, isTimed }) => {
-	let navigate = useNavigate();
+const GameTypeScreen = ({
+	url,
+	name,
+	description,
+	isTimed,
+	conundrumGameMode,
+	setConundrumGameMode,
+}) => {
+	// let navigate = useNavigate();
 	return (
 		<StyledGameTypeScreen
-			// className='btn start-btn start-game-mode-btn'
-			onClick={() => {
-				navigate(url);
-				// navigate('/conundrum');
-			}}
+		// className='btn start-btn start-game-mode-btn'
+		// onClick={() => {
+		// 	navigate(url);
+		// 	// navigate('/conundrum');
+		// }}
 		>
 			<div className='game-mode-header'>
 				{isTimed === 'true' ? (
@@ -22,15 +29,18 @@ const GameTypeScreen = ({ url, name, description, isTimed }) => {
 				) : (
 					<MdOutlineTimerOff size='25px' />
 				)}
-				{/* <MdOutlineTimerOff size='25px' /> */}
 				<h3>{name}</h3>
 				<BsWhatsapp size='22px' />
 			</div>
 			<p>{description}</p>
-			{/* {name === 'conundrum' ? <ConundrumLevelStatus /> : <p>&nbsp;</p>} */}
 			{(() => {
 				if (name === 'conundrum') {
-					return <ConundrumLevelStatus />;
+					return (
+						<ConundrumLevelStatus
+							conundrumGameMode={conundrumGameMode}
+							setConundrumGameMode={setConundrumGameMode}
+						/>
+					);
 				} else if (name === 'anagram round') {
 					return <AnagramLevelStatus />;
 				} else {
@@ -56,16 +66,13 @@ const StyledGameTypeScreen = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	height: 100%;
-	/* flex: 1; */
 	width: 100%;
 	border-radius: 5px;
 	background-color: ${({ theme }) => theme.bgTile};
 	border: none;
 	padding: 1rem;
-	/* margin: 0 2rem; */
 	row-gap: 1rem;
 	cursor: pointer;
-	/* flex: 1; */
 	p {
 		text-align: center;
 	}
@@ -78,13 +85,8 @@ const StyledGameTypeScreen = styled.div`
 		color: ${({ theme }) => theme.bgChosen};
 		h3 {
 			font-weight: lighter;
-			/* border-bottom: 2px solid ${({ theme }) => theme.bgChosen}; */
-			/* display: inline-block; */
-			/* margin-bottom: 1rem; */
 			font-size: 2.8rem;
-			/* align-self: center; */
 			line-height: 1;
-			/* flex: 1; */
 		}
 	}
 
@@ -109,7 +111,6 @@ const StyledGameTypeScreen = styled.div`
 			line-height: 1;
 			color: ${({ theme }) => theme.bgChosen};
 			&:last-child {
-				/* font-family: 'Montserrat'; */
 				text-transform: capitalize;
 				font-size: 1.2rem;
 				font-weight: 400;

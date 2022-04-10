@@ -12,7 +12,7 @@ import { lightTheme, darkTheme } from './components/Themes';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 // CONUNDRUM
-import ConundrumHome from './pages/Conundrum/Home';
+// import ConundrumHome from './pages/Conundrum/Home';
 import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
 import ConundrumRules from './pages/Conundrum/Rules';
@@ -61,6 +61,7 @@ function App() {
 	const [allFiveLetterWords, setAllFiveLetterWords] = useState(null);
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
+	const [conundrumGameMode, setConundrumGameMode] = useState('');
 	// const [showResults, setShowResults] = useState(false);
 	// const [gotConundrum, setGotConundrum] = useState(false);
 
@@ -171,14 +172,22 @@ function App() {
 								path='/'
 								element={
 									<Home
-									// gameData={gameData}
-									// setGameData={setGameData}
-									// setConundrumData={setConundrumData}
-									// letterRoundData={letterRoundData}
+										// gameData={gameData}
+										// setGameData={setGameData}
+										// setConundrumData={setConundrumData}
+										// letterRoundData={letterRoundData}
+										conundrumGameMode={conundrumGameMode}
+										setConundrumGameMode={setConundrumGameMode}
+										allNineLetterWords={allNineLetterWords}
+										allEightLetterWords={allEightLetterWords}
+										allSevenLetterWords={allSevenLetterWords}
+										allSixLetterWords={allSixLetterWords}
+										allFiveLetterWords={allFiveLetterWords}
+										allFourLetterWords={allFourLetterWords}
 									/>
 								}
 							/>
-							<Route
+							{/* <Route
 								path='/conundrum'
 								element={
 									<ConundrumHome
@@ -188,13 +197,12 @@ function App() {
 										allSixLetterWords={allSixLetterWords}
 										allFiveLetterWords={allFiveLetterWords}
 										allFourLetterWords={allFourLetterWords}
-										// chosenWordLength={chosenWordLength}
-										// setChosenWordLength={setChosenWordLength}
+									
 										gameMode={gameMode}
 										setGameMode={setGameMode}
 									/>
 								}
-							/>
+							/> */}
 							<Route path='/conundrum/rules' element={<ConundrumRules />} />
 							{/* <Route
 								path='/selectwordlength'
@@ -226,6 +234,8 @@ function App() {
 										setConundrum={setConundrum}
 										isNextDayCountdownActive={isNextDayCountdownActive}
 										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										conundrumGameMode={conundrumGameMode}
+										setConundrumGameMode={setConundrumGameMode}
 									/>
 								}
 							/>

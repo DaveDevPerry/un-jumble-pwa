@@ -52,7 +52,7 @@ const StyledWordsDisplay = styled.section`
 		grid-auto-flow: row;
 		li {
 			display: flex;
-			justify-content: flex-start;
+			justify-content: center;
 			p {
 				font-size: 1.8rem;
 				text-transform: uppercase;
