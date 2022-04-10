@@ -28,7 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1.6rem;
-    height: 100vh;
+    max-height: 100vh;
   }
   .container {
     height: 100vh;
