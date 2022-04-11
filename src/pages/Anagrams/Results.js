@@ -26,6 +26,7 @@ const AnagramRoundResults = ({
 	allAnagramUserWords,
 	setAllAnagramUserWords,
 	setPageTitle,
+	setMessage,
 }) => {
 	useEffect(() => {
 		console.log('anagram results render');
@@ -159,6 +160,7 @@ const AnagramRoundResults = ({
 			<button
 				className='results-home-btn'
 				onClick={() => {
+					setMessage('play again?');
 					setAllAnagramUserWords([]);
 					navigate('/');
 				}}

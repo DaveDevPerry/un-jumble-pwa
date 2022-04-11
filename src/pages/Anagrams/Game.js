@@ -158,6 +158,7 @@ const AnagramRoundGame = ({
 	};
 
 	const handleSkip = (e) => {
+		setMessage('skipping!?');
 		e.preventDefault();
 		console.log('skipped');
 		setAllAnagramUserWords([
@@ -173,6 +174,7 @@ const AnagramRoundGame = ({
 			tile.classList.remove('active');
 			tile.style.pointerEvents = 'initial';
 		});
+		// setCurrentAnagramWord('');
 		getNewWord();
 	};
 
@@ -197,7 +199,7 @@ const AnagramRoundGame = ({
 				'you what?',
 				'incorrect!',
 			];
-			console.log(Math.random() * wrongWordMessages.length);
+			// console.log(Math.random() * wrongWordMessages.length);
 			setMessage(
 				wrongWordMessages[Math.floor(Math.random() * wrongWordMessages.length)]
 			);

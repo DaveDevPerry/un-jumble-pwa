@@ -25,7 +25,7 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 							return b.date > a.date;
 						})
 						// return last 6
-						.slice(-6)
+						.slice(-3)
 						// .filter((item) => {
 						// 	return item
 						// })

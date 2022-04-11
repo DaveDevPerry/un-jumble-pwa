@@ -171,6 +171,20 @@ const StyledUserWordResultsDisplay = styled.div`
 					color: ${({ theme }) => theme.syntax};
 					font-weight: 800;
 				}
+
+				/* &:first-child, */
+				/* &:nth-child(1n + 3) {
+					justify-content: flex-start;
+					margin-left: 1rem;
+				}
+				&:nth-child(2n + 3) {
+					justify-content: center;
+					margin-left: 1rem;
+				}
+				&:nth-child(3n + 3) {
+					justify-content: flex-end;
+					margin-right: 1rem;
+				} */
 			}
 		}
 	}

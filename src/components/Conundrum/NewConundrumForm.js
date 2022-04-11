@@ -6,6 +6,7 @@ const NewConundrumForm = ({
 	conundrum,
 	conundrumGameMode,
 	isConundrumCorrect,
+	setMessage,
 	url,
 }) => {
 	useEffect(() => {
@@ -51,6 +52,7 @@ const NewConundrumForm = ({
 	return (
 		<button
 			onClick={() => {
+				setMessage('fancy another?');
 				// setDate(new Date().toLocaleDateString());
 				// setLevel(conundrumGameMode);
 				// setWordOfTheDay(conundrum);

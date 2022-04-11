@@ -39,6 +39,7 @@ const StyledSpeechBubble = styled.p`
 	color: ${({ theme }) => theme.black};
 	font-weight: 800;
 	width: 228px;
+	/* width: calc(100% - 90px); */
 	text-align: center;
 	text-transform: uppercase;
 	opacity: 0;

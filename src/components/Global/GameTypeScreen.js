@@ -6,6 +6,7 @@ import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
+import LetterRoundLevelStatus from '../LettersRound/LetterRoundLevelStatus';
 // import ReactTooltip from "react-tooltip";
 
 const GameTypeScreen = ({
@@ -26,13 +27,13 @@ const GameTypeScreen = ({
 		>
 			<div className='game-mode-header'>
 				{isTimed === 'true' ? (
-					<MdOutlineTimer size='25px' />
+					<MdOutlineTimer size='23px' />
 				) : (
-					<MdOutlineTimerOff size='25px' />
+					<MdOutlineTimerOff size='23px' />
 				)}
 				<h3>{name}</h3>
 				{/* <a data-tip="React-tooltip"> */}
-				<BsWhatsapp size='22px' />
+				<BsWhatsapp size='20px' />
 				{/* </a>
 				{'<ReactTooltip place="' +
                     place +
@@ -67,6 +68,13 @@ const GameTypeScreen = ({
 							setAnagramGameMode={setAnagramGameMode}
 						/>
 					);
+				} else if (name === 'letter round') {
+					return (
+						<LetterRoundLevelStatus
+						// anagramGameMode={anagramGameMode}
+						// setAnagramGameMode={setAnagramGameMode}
+						/>
+					);
 				} else {
 					return <p>&nbsp;</p>;
 				}
@@ -86,6 +94,7 @@ const StyledGameTypeScreen = styled.div`
 	border: none;
 	padding: 1rem;
 	row-gap: 1rem;
+	transition: all 200ms linear;
 	p {
 		text-align: center;
 	}
@@ -98,7 +107,7 @@ const StyledGameTypeScreen = styled.div`
 		color: ${({ theme }) => theme.bgChosen};
 		h3 {
 			font-weight: lighter;
-			font-size: 2.8rem;
+			font-size: 2.2rem;
 			line-height: 1;
 		}
 	}

@@ -39,12 +39,24 @@ const StyledWordsDisplay = styled.section`
 				font-size: 1.8rem;
 				text-transform: uppercase;
 				color: black;
+				font-weight: 800;
 				&.strike {
 					text-decoration: line-through;
 					color: #9e9a9a;
 					color: ${({ theme }) => theme.red};
 				}
 			}
+
+			/* &:first-child, */
+			/* &:nth-child(3n + 1) {
+				justify-content: flex-start;
+			}
+			&:nth-child(2n + 3) {
+				justify-content: center;
+			}
+			&:nth-child(3n) {
+				justify-content: flex-end;
+			} */
 		}
 	}
 `;

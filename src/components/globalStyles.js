@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.bg};
     color: ${({ theme }) => theme.syntax};
-    /* transition: all 0.50s linear; */
+    transition: all 0.50s linear;
     font-family: 'Bebas Neue', cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -11,15 +11,16 @@ function Header({ pageTitle }) {
 	);
 }
 const StyledHeader = styled.header`
-	margin: 1rem;
-	background-color: ${({ theme }) => theme.bg};
+	margin: 0rem 0rem 1rem 0rem;
+	/* background-color: ${({ theme }) => theme.bg}; */
+	background-color: ${({ theme }) => theme.bgChosen};
 	transition: all 0.5s linear;
-	padding: 0.5rem 1rem;
+	padding: 0.2rem 1rem;
 	/* border-bottom: 4px solid ${({ theme }) => theme.border}; */
 	/* position: relative; */
 	/* height: 35px; */
-	border-top: 3px solid ${({ theme }) => theme.bgChosen};
-	border-bottom: 3px solid ${({ theme }) => theme.bgChosen};
+	/* border-top: 3px solid ${({ theme }) => theme.bgTile}; */
+	border-bottom: 3px solid ${({ theme }) => theme.border};
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

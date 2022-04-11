@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
 // import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
-import GameTitle from '../../components/Global/GameTitle';
+// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
@@ -38,6 +38,8 @@ const LetterRoundResults = ({
 	setSortedWordsByLengthArray,
 	// setSortedWordsByLengthArray,
 	sortedWordsByLengthArray,
+	setPageTitle,
+	setMessage,
 }) => {
 	useEffect(() => {
 		console.log('lr results render');
@@ -231,7 +233,8 @@ const LetterRoundResults = ({
 
 	useEffect(() => {
 		console.log('lr results');
-	}, []);
+		setPageTitle('results');
+	}, [setPageTitle]);
 
 	// const updateLRPlayed = () => {
 	// 	// console.log(letterRoundData, 'lrd');
@@ -249,7 +252,7 @@ const LetterRoundResults = ({
 
 	return (
 		<>
-			<GameTitle title='results' />
+			{/* <GameTitle title='results' /> */}
 			<StyledLetterRoundResults>
 				{/* <h2>RESULTS</h2> */}
 				{/* <div className='letter-round-stats-container'>
@@ -727,6 +730,7 @@ const LetterRoundResults = ({
 			<button
 				className='results-home-btn'
 				onClick={() => {
+					setMessage('play again?');
 					// setIsNextDayCountdownActive(false);
 					// updateLRPlayed();
 

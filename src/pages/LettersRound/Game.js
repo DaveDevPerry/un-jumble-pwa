@@ -22,10 +22,13 @@ const LetterRoundGame = ({
 	setAllLetterRoundUserWords,
 	setCurrentLetterRoundWord,
 	currentLetterRoundWord,
+	setMessage,
+	setPageTitle,
 }) => {
 	useEffect(() => {
 		console.log('lr game render');
-	}, []);
+		setPageTitle('letter round');
+	}, [setPageTitle]);
 	// let navigate = useNavigate();
 	// const [letterRoundTicking, setLetterRoundTicking] = useState(false);
 	// const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
@@ -70,6 +73,7 @@ const LetterRoundGame = ({
 	// };
 
 	const handleLetterRoundStart = (e) => {
+		setMessage('good luck!');
 		e.preventDefault();
 		setIsTimerActive(true);
 		document.querySelectorAll('.btn-timer').forEach((btn) => {
@@ -99,7 +103,8 @@ const LetterRoundGame = ({
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (currentLetterRoundWord.length < 3) return;
+		if (currentLetterRoundWord.length < 3)
+			return setMessage('use 3 letters or more!');
 		checkWord();
 		// reset tiles
 		const tiles = document.querySelectorAll('.card-front');
@@ -142,6 +147,17 @@ const LetterRoundGame = ({
 		console.log('current word', currentLetterRoundWord);
 		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			console.log('wrong');
+			const wrongWordMessages = [
+				"that's not a word!",
+				"I don't think so!",
+				'you what?',
+				'incorrect!',
+				'worth a try!',
+			];
+			// console.log(Math.random() * wrongWordMessages.length);
+			setMessage(
+				wrongWordMessages[Math.floor(Math.random() * wrongWordMessages.length)]
+			);
 			// setCurrentAnagramWordScore(-2);
 			const currentWordPoints = parseInt('-' + getWordScore());
 			setAllLetterRoundUserWords([
@@ -155,6 +171,17 @@ const LetterRoundGame = ({
 		}
 		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			console.log('right');
+			const correctWordMessages = [
+				"that's a good one!",
+				'correct!',
+				'too easy!',
+				'right, you are!',
+			];
+			setMessage(
+				correctWordMessages[
+					Math.floor(Math.random() * correctWordMessages.length)
+				]
+			);
 			const currentWordPoints = getWordScore();
 			setAllLetterRoundUserWords([
 				...allLetterRoundUserWords,
@@ -222,6 +249,7 @@ const LetterRoundGame = ({
 				isTimerActive={isTimerActive}
 				setIsTimerActive={setIsTimerActive}
 				handleLetterRoundStart={handleLetterRoundStart}
+				setMessage={setMessage}
 			/>
 			{/* <GamePanel
 				// handleStart={handleStart}

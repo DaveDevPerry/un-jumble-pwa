@@ -36,7 +36,7 @@ const Home = ({
 			{/* </ConundrumContextProvider> */}
 			<GameTypeScreen
 				name='anagram round'
-				description='unscramble words in two minutes'
+				description='un-jumble as many words as poss. in two minutes'
 				isTimed='true'
 				anagramGameMode={anagramGameMode}
 				setAnagramGameMode={setAnagramGameMode}

@@ -21,6 +21,7 @@ const ConundrumResults = ({
 	conundrumGameMode,
 	isConundrumCorrect,
 	setPageTitle,
+	setMessage,
 	// setIsNextDayCountdownActive,
 	// defData,
 }) => {
@@ -265,6 +266,7 @@ const ConundrumResults = ({
 					conundrum={conundrum}
 					conundrumGameMode={conundrumGameMode}
 					isConundrumCorrect={isConundrumCorrect}
+					setMessage={setMessage}
 					url='/'
 				/>
 				{/* <NewConundrumForm /> */}

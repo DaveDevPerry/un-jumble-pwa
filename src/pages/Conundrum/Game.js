@@ -97,6 +97,7 @@ const ConundrumGame = ({
 	}
 
 	const handleStartGame = (e) => {
+		setMessage('good luck!');
 		e.preventDefault();
 		console.log(conundrum);
 		const gameLetterTiles = document.querySelectorAll('.card');

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const AnagramLevelStatus = ({ setAnagramGameMode }) => {
+const LetterRoundLevelStatus = () => {
 	let navigate = useNavigate();
 
 	function setTileStyleVariable(number) {
@@ -10,44 +10,24 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 		root.style.setProperty('--letter-count', number);
 	}
 	return (
-		<StyledAnagramLevelStatus>
+		<StyledLetterRoundLevelStatus>
 			{/* map stats here */}
 			<div
 				className='quick-stat'
 				onClick={() => {
-					setAnagramGameMode(4);
-					setTileStyleVariable(4);
-					navigate('/anagramround/game');
+					// setAnagramGameMode(4);
+					setTileStyleVariable(9);
+					navigate('/selectletters');
 				}}
 			>
-				4
+				play
 			</div>
-			<div
-				className='quick-stat'
-				onClick={() => {
-					setAnagramGameMode(5);
-					setTileStyleVariable(5);
-					navigate('/anagramround/game');
-				}}
-			>
-				5
-			</div>
-			<div
-				className='quick-stat'
-				onClick={() => {
-					setAnagramGameMode(6);
-					setTileStyleVariable(6);
-					navigate('/anagramround/game');
-				}}
-			>
-				6
-			</div>
-		</StyledAnagramLevelStatus>
+		</StyledLetterRoundLevelStatus>
 	);
 };
-const StyledAnagramLevelStatus = styled.section`
+const StyledLetterRoundLevelStatus = styled.section`
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	grid-template-rows: repeat(1, auto);
 	column-gap: 0.5rem;
 	width: 100%;
@@ -62,10 +42,11 @@ const StyledAnagramLevelStatus = styled.section`
 		font-weight: 800;
 		font-size: 2rem;
 		cursor: pointer;
+		letter-spacing: 2px;
 		&.isComplete {
 			background-color: ${({ theme }) => theme.isComplete};
 			color: ${({ theme }) => theme.bgChosen};
 		}
 	}
 `;
-export default AnagramLevelStatus;
+export default LetterRoundLevelStatus;
