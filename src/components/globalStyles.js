@@ -28,9 +28,11 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1.6rem;
-    max-height: 100vh;
+    height: 100vh;
+    width: 100vw;
   }
   .container {
+    /* height: 100%; */
     height: 100vh;
     width: clamp(320px, 100%, 500px);
     margin: 0 auto;
