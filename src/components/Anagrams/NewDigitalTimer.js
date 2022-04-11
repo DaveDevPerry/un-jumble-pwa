@@ -6,6 +6,7 @@ const NewDigitalTimer = ({
 	isTimerActive,
 	setIsTimerActive,
 	handleAnagramStart,
+	setMessage,
 }) => {
 	useEffect(() => {
 		console.log('new digital timer render');
@@ -33,6 +34,7 @@ const NewDigitalTimer = ({
 				playBuzz();
 			}
 			if (time === 0) {
+				setMessage('time is up!');
 				playEnd();
 				clearInterval(timer);
 				setIsTimerActive(false);
@@ -44,7 +46,7 @@ const NewDigitalTimer = ({
 			}
 			time--;
 		}, 1000);
-	}, [isTimerActive, time, setIsTimerActive, navigate]);
+	}, [isTimerActive, time, setIsTimerActive, navigate, setMessage]);
 
 	const playBeep = () => {
 		const audio = new Audio('/audio/beep.mp3');

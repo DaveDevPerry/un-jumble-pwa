@@ -7,6 +7,7 @@ const DigitalTimer = ({
 	isTimerActive,
 	setIsTimerActive,
 	isNextDayCountdownActive,
+	setMessage,
 }) => {
 	useEffect(() => {
 		console.log('digital timer render');
@@ -34,6 +35,7 @@ const DigitalTimer = ({
 				playBuzz();
 			}
 			if (time === 0) {
+				setMessage('time is up!');
 				playEnd();
 				clearInterval(timer);
 				setIsTimerActive(false);

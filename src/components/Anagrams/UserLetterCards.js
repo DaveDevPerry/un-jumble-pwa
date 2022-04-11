@@ -7,6 +7,7 @@ const UserLetterCards = ({
 	handleReset,
 	handleSubmit,
 	handleSkip,
+	anagramGameMode,
 }) => {
 	return (
 		<StyledUserLetterCards>
@@ -167,8 +168,10 @@ const StyledSmallNumberOutput = styled.div`
 		background-color: ${({ theme }) => theme.bgTile};
 		color: ${({ theme }) => theme.syntax};
 		cursor: pointer;
+		pointer-events: auto;
 		&.active {
 			background-color: ${({ theme }) => theme.bgChosen};
+			pointer-events: none;
 		}
 	}
 `;
