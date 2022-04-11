@@ -21,7 +21,7 @@ export const darkTheme = {
 	syntax: '#ffffff',
 	black: '#000000',
 	bg: 'rgb(38,61,142)',
-	bgContainer: 'rgb(38,61,142)',
+	bgContainer: 'rgb(38, 61, 142)',
 	bgTile: 'rgb(51,112,156)',
 	bgTileInset: '#235980',
 	bgNumber: 'rgb(27,66,121)',

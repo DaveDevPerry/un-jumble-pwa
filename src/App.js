@@ -12,6 +12,7 @@ import { lightTheme, darkTheme } from './components/Themes';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 // CONUNDRUM
+// import ConundrumContextProvider from './contexts/ConundrumContext';
 // import ConundrumHome from './pages/Conundrum/Home';
 import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
@@ -108,7 +109,10 @@ function App() {
 
 	if (!mountedComponent)
 		return (
-			<div id='unmounted' style={{ backgroundColor: '#ff3366' }}>
+			<div
+				id='unmounted'
+				style={{ backgroundColor: '#263d8e', height: '100vh' }}
+			>
 				Can i see this
 			</div>
 		);
@@ -186,6 +190,7 @@ function App() {
 										/>
 									}
 								/>
+
 								{/* anagram round  */}
 								<Route
 									path='/anagramround/rules'

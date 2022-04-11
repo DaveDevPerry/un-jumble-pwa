@@ -8,6 +8,9 @@ import ResultsFooter from '../../components/Global/ResultsFooter';
 import WordDefinition from '../../components/Conundrum/WordDefinition';
 
 import { FaTrophy } from 'react-icons/fa';
+import NewConundrumForm from '../../components/Conundrum/NewConundrumForm';
+
+import ConundrumContextProvider from '../../contexts/ConundrumContext';
 
 // import axios from 'axios';
 
@@ -102,33 +105,34 @@ const ConundrumResults = ({
 
 	return (
 		<>
-			<GameTitle title='results' />
-			<StyledConundrumResults>
-				{/* <DataFetching conundrum={conundrum} /> */}
-				{/* <WordDefinition conundrum={conundrum} /> */}
-				{/* <p>{defData}</p> */}
-				{/* <p>{defMeaning}</p> */}
-				{/* <StyledConundrumResults
+			<ConundrumContextProvider>
+				<GameTitle title='results' />
+				<StyledConundrumResults>
+					{/* <DataFetching conundrum={conundrum} /> */}
+					{/* <WordDefinition conundrum={conundrum} /> */}
+					{/* <p>{defData}</p> */}
+					{/* <p>{defMeaning}</p> */}
+					{/* <StyledConundrumResults
 			className={showResults ? 'results-modal show' : 'results-modal'}
 		> */}
-				{/* <h2>RESULTS</h2> */}
-				{/* <div className='conundrum-stats-container'>
+					{/* <h2>RESULTS</h2> */}
+					{/* <div className='conundrum-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
-					</div>
+						</div>
 					<div className='stat-wrapper'>
 						<p>607</p>
 						<p>points</p>
 					</div>
 					<div className='stat-wrapper'>
-						<p>100</p>
-						<p>win %</p>
+					<p>100</p>
+					<p>win %</p>
 					</div>
-				</div>
-				<div className='conundrum-level-stats-grid'>
+					</div>
+					<div className='conundrum-level-stats-grid'>
 					<div className='level-stat-wrapper'>
-						<p>
+					<p>
 							<GiCrossMark size='15px' color='#8a0202' />
 						</p>
 						<p>master</p>
@@ -138,15 +142,15 @@ const ConundrumResults = ({
 							<GiCrossMark size='15px' color='#8a0202' />
 						</p>
 						<p>expert</p>
-					</div>
+						</div>
 					<div className='level-stat-wrapper'>
 						<p>
 							<GiCrossMark size='15px' color='#8a0202' />
 						</p>
 						<p>advanced</p>
-					</div>
+						</div>
 					<div className='level-stat-wrapper'>
-						<p>
+					<p>
 							<GiCheckMark size='15px' color='#004600' />
 						</p>
 						<p>intermediate</p>
@@ -154,41 +158,41 @@ const ConundrumResults = ({
 					<div className='level-stat-wrapper'>
 						<p>
 							<GiCrossMark size='15px' color='#8a0202' />
-						</p>
-						<p>beginner</p>
+							</p>
+							<p>beginner</p>
 					</div>
 					<div className='level-stat-wrapper'>
-						<p>
+					<p>
 							<GiCheckMark size='15px' color='#004600' />
 						</p>
 						<p>advanced</p>
-					</div>
+						</div>
 				</div> */}
 
-				{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
-				<StyledLetterOutput>
-					{conundrum.split('').map((letter, index) => {
-						return (
-							<div key={index} className='results-card'>
-								<div className='results-card-back results-card-letter'>
-									&nbsp;
+					{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
+					<StyledLetterOutput>
+						{conundrum.split('').map((letter, index) => {
+							return (
+								<div key={index} className='results-card'>
+									<div className='results-card-back results-card-letter'>
+										&nbsp;
+									</div>
+									<div className='results-card-front results-card-letter'>
+										{letter}
+									</div>
 								</div>
-								<div className='results-card-front results-card-letter'>
-									{letter}
-								</div>
-							</div>
-						);
-					})}
-				</StyledLetterOutput>
-				<WordDefinition conundrum={conundrum} APIKey={APIKey} />
-				{/* <p className='conundrum-meaning'>{meaning}</p> */}
-				{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
-				{/* <ul className='best-attempt'>
+							);
+						})}
+					</StyledLetterOutput>
+					<WordDefinition conundrum={conundrum} APIKey={APIKey} />
+					{/* <p className='conundrum-meaning'>{meaning}</p> */}
+					{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
+					{/* <ul className='best-attempt'>
 				<li>{usersBestAttempt}</li>
 			</ul> */}
-				{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
+					{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
 
-				{/* <p className='conundrum-user-result'>
+					{/* <p className='conundrum-user-result'>
 				{usersBestWords &&
 				usersBestWords.sort(function (a, b) {
 					return b[1] - a[1];
@@ -196,71 +200,73 @@ const ConundrumResults = ({
 					? 'CONGRATULATIONS!'
 					: 'BETTER LUCK TOMORROW'}
 			</p> */}
-				{/* <ul className='best-attempt'>
+					{/* <ul className='best-attempt'>
 				<li>
-					{usersBestWords &&
-						usersBestWords.sort(function (a, b) {
+				{usersBestWords &&
+					usersBestWords.sort(function (a, b) {
 							return b[1] - a[1];
 						})[0]}
 				</li>
 			</ul> */}
-				{/* <ul className='longest-word'>
+					{/* <ul className='longest-word'>
 				<li>{longestWord}</li>
 			</ul> */}
-				{/* <ul className='best-attempt'>
+					{/* <ul className='best-attempt'>
 				<li>
 					<p>best word</p>
 					<p>
-						<span>{longestWord}</span>
+					<span>{longestWord}</span>
 					</p>
 					<p>{longestWord.length} letters</p>
-				</li>
-			</ul> */}
+					</li>
+				</ul> */}
 
-				{/* <p className='conundrum-user-result'>
+					{/* <p className='conundrum-user-result'>
 				{gotConundrum.length === 9
 					? 'CONGRATULATIONS!'
 					: 'BETTER LUCK TOMORROW'}
-			</p> */}
-				<div className='results-outcome-container'>
-					<div className='conundrum-points-container'>
-						<FaTrophy id='trophy' />
-						{/* <FaTrophy size='50px' id='trophy' /> */}
-						<h2 id='share-conundrum-points'>1</h2>
-						{/* <p>win</p> */}
+				</p> */}
+					<div className='results-outcome-container'>
+						<div className='conundrum-points-container'>
+							<FaTrophy id='trophy' />
+							{/* <FaTrophy size='50px' id='trophy' /> */}
+							<h2 id='share-conundrum-points'>1</h2>
+							{/* <p>win</p> */}
+						</div>
+						<p className='conundrum-user-result'>CONGRATULATIONS!</p>
 					</div>
-					<p className='conundrum-user-result'>CONGRATULATIONS!</p>
-				</div>
 
-				{/* <div className='points-container'>
+					{/* <div className='points-container'>
 				<h2>
 					{usersBestWords &&
-					usersBestWords.sort(function (a, b) {
+						usersBestWords.sort(function (a, b) {
 						return b[1] - a[1];
 					})[0].length === 9
 						? 10
 						: 0}
-				</h2>
-				<p>points</p>
-			</div> */}
-				{/* <div className='rank-container'>
+						</h2>
+						<p>points</p>
+					</div> */}
+					{/* <div className='rank-container'>
 				<p>RANKED: 560th</p>
 			</div> */}
 
-				<ResultsFooter
-					isNextDayCountdownActive={isNextDayCountdownActive}
-					shareMobile={shareMobile}
-				/>
-				{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
-			</StyledConundrumResults>
-			<button
-				className='results-home-btn'
-				onClick={() => {
-					navigate('/');
-				}}
-			>
-				HOME
-			</button>
+					<ResultsFooter
+						isNextDayCountdownActive={isNextDayCountdownActive}
+						shareMobile={shareMobile}
+					/>
+					{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
+				</StyledConundrumResults>
+				<NewConundrumForm />
+				<button
+					className='results-home-btn'
+					onClick={() => {
+						navigate('/');
+					}}
+				>
+					HOME
+				</button>
+			</ConundrumContextProvider>
 		</>
 	);
 };
