@@ -57,35 +57,35 @@ const PageLoader = () => {
 		<StyledPageLoader ref={pageRef}>
 			<div className='loader-grid'>
 				<div className='loader-letters' data-order='8' data-jump='1'>
-					<div className='loader-letter-back loader-letter'>1</div>
+					<div className='loader-letter-back loader-letter'>e</div>
 					<div className='loader-letter-front loader-letter'>U</div>
 				</div>
 				<div className='loader-letters' data-order='2' data-jump='2'>
-					<div className='loader-letter-back loader-letter'>2</div>
+					<div className='loader-letter-back loader-letter'>n</div>
 					<div className='loader-letter-front loader-letter'>n</div>
 				</div>
 				<div className='loader-letters' data-order='4' data-jump='3'>
-					<div className='loader-letter-back loader-letter'>3</div>
+					<div className='loader-letter-back loader-letter'>u</div>
 					<div className='loader-letter-front loader-letter'>j</div>
 				</div>
 				<div className='loader-letters' data-order='6' data-jump='4'>
-					<div className='loader-letter-back loader-letter'>4</div>
+					<div className='loader-letter-back loader-letter'>b</div>
 					<div className='loader-letter-front loader-letter'>U</div>
 				</div>
 				<div className='loader-letters' data-order='5' data-jump='5'>
-					<div className='loader-letter-back loader-letter'>5</div>
+					<div className='loader-letter-back loader-letter'>m</div>
 					<div className='loader-letter-front loader-letter'>m</div>
 				</div>
 				<div className='loader-letters' data-order='7' data-jump='6'>
-					<div className='loader-letter-back loader-letter'>6</div>
+					<div className='loader-letter-back loader-letter'>l</div>
 					<div className='loader-letter-front loader-letter'>b</div>
 				</div>
 				<div className='loader-letters' data-order='1' data-jump='7'>
-					<div className='loader-letter-back loader-letter'>7</div>
+					<div className='loader-letter-back loader-letter'>u</div>
 					<div className='loader-letter-front loader-letter'>l</div>
 				</div>
 				<div className='loader-letters' data-order='3' data-jump='8'>
-					<div className='loader-letter-back loader-letter'>8</div>
+					<div className='loader-letter-back loader-letter'>j</div>
 					<div className='loader-letter-front loader-letter'>e</div>
 				</div>
 			</div>

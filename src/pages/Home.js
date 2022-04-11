@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import GameTitle from '../components/Global/GameTitle';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
+// import ConundrumContextProvider from '../contexts/ConundrumContext';
 
 const Home = ({
 	conundrumGameMode,
@@ -24,6 +25,7 @@ const Home = ({
 	return (
 		<StyledHome>
 			{/* <GameTitle title='select game' /> */}
+			{/* <ConundrumContextProvider> */}
 			<GameTypeScreen
 				name='conundrum'
 				description="use all letters to make today's word"
@@ -31,6 +33,7 @@ const Home = ({
 				conundrumGameMode={conundrumGameMode}
 				setConundrumGameMode={setConundrumGameMode}
 			/>
+			{/* </ConundrumContextProvider> */}
 			<GameTypeScreen
 				name='anagram round'
 				description='unscramble words in two minutes'

@@ -157,7 +157,7 @@ const StyledWeeksResultsTable = styled.section`
 const StyledLetterOutput = styled.div`
 	display: grid;
 	justify-content: center;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(var(--letter-count), 1fr);
 	grid-template-rows: repeat(1, auto);
 	border-radius: 5px;
 	/* perspective: 500px; */

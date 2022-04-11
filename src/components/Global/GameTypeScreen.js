@@ -5,6 +5,7 @@ import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
 import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
+import ConundrumContextProvider from '../../contexts/ConundrumContext';
 // import ReactTooltip from "react-tooltip";
 
 const GameTypeScreen = ({
@@ -52,10 +53,12 @@ const GameTypeScreen = ({
 			{(() => {
 				if (name === 'conundrum') {
 					return (
-						<ConundrumLevelStatus
-							conundrumGameMode={conundrumGameMode}
-							setConundrumGameMode={setConundrumGameMode}
-						/>
+						<ConundrumContextProvider>
+							<ConundrumLevelStatus
+								conundrumGameMode={conundrumGameMode}
+								setConundrumGameMode={setConundrumGameMode}
+							/>
+						</ConundrumContextProvider>
 					);
 				} else if (name === 'anagram round') {
 					return (
