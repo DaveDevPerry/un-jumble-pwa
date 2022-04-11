@@ -1,217 +1,95 @@
-import React from 'react';
+// import React from 'react';
 import styled from 'styled-components';
 import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 
-const WeeksResultsTable = ({ currentWord }) => {
+import React, { useContext } from 'react';
+
+import { ConundrumContext } from '../../contexts/ConundrumContext';
+
+const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
+	const { conundrums } = useContext(ConundrumContext);
 	// NEEDS TO MAP FROM LAST 6 DAYS OF RESULTS
-	return (
+	return conundrums.length ? (
 		<StyledWeeksResultsTable>
 			<table>
 				<caption>Previous results</caption>
 				<tbody>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCrossMark size='18px' color='#8a0202' />
-						</td>
-					</tr>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCheckMark size='18px' color='#004600' />
-						</td>
-					</tr>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCheckMark size='18px' color='#004600' />
-						</td>
-					</tr>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCrossMark size='18px' color='#8a0202' />
-						</td>
-					</tr>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCheckMark size='18px' color='#004600' />
-						</td>
-					</tr>
-					<tr>
-						<td>12/06</td>
-						<td>
-							<StyledLetterOutput>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-								<div className='results-card'>
-									<div className='results-card-front results-card-letter'>
-										M
-									</div>
-								</div>
-							</StyledLetterOutput>
-						</td>
-						<td>
-							<GiCheckMark size='18px' color='#004600' />
-						</td>
-					</tr>
+					{/* sort by date, then filter out last 6 */}
+					{conundrums
+						// FILTER BY LEVEL
+						.filter((item) => {
+							return item.level === conundrumGameMode;
+						})
+						// SORT BY DATE
+						.sort((a, b) => {
+							return b.date > a.date;
+						})
+						// return last 6
+						.slice(-6)
+						// .filter((item) => {
+						// 	return item
+						// })
+						.map((conundrum, index) => {
+							return (
+								<tr key={index}>
+									<td>{conundrum.date}</td>
+									<td>
+										<StyledLetterOutput>
+											{conundrum.wordOfTheDay.split('').map((letter, index) => {
+												return (
+													<div key={letter + index} className='results-card'>
+														<div className='results-card-front results-card-letter'>
+															{letter}
+														</div>
+													</div>
+												);
+											})}
+										</StyledLetterOutput>
+									</td>
+									<td>
+										{conundrum.isCorrect === true ? (
+											<GiCheckMark size='18px' color='#004600' />
+										) : (
+											<GiCrossMark size='18px' color='#8a0202' />
+										)}
+									</td>
+								</tr>
+							);
+						})}
+					{/* {conundrums.map((conundrum, index) => {
+						return (
+							<tr key={index}>
+								<td>{conundrum.date}</td>
+								<td>
+									<StyledLetterOutput>
+										{conundrum.wordOfTheDay.split('').map((letter, index) => {
+											return (
+												<div key={letter + index} className='results-card'>
+													<div className='results-card-front results-card-letter'>
+														{letter}
+													</div>
+												</div>
+											);
+										})}
+									</StyledLetterOutput>
+								</td>
+								<td>
+									{conundrum.isCorrect === true ? (
+										<GiCheckMark size='18px' color='#004600' />
+									) : (
+										<GiCrossMark size='18px' color='#8a0202' />
+									)}
+								</td>
+							</tr>
+						);
+					})} */}
 				</tbody>
 			</table>
 		</StyledWeeksResultsTable>
-		// <StyledWordsDisplay>
-		// 	<p className='yesterday-date'>12/04/2022</p>
-		// 	<StyledLetterOutput>
-		// 		<div className='results-card'>
-		// 			<div className='results-card-front results-card-letter'>M</div>
-		// 		</div>
-		// 		<div className='results-card'>
-		// 			<div className='results-card-front results-card-letter'>M</div>
-		// 		</div>
-		// 		<div className='results-card'>
-		// 			<div className='results-card-front results-card-letter'>M</div>
-		// 		</div>
-		// 		<div className='results-card'>
-		// 			<div className='results-card-front results-card-letter'>M</div>
-		// 		</div>
-		// 	</StyledLetterOutput>
-		// 	<span>
-		// 		<GiCheckMark size='18px' color='#004600' />
-		// 	</span>
-		// </StyledWordsDisplay>
+	) : (
+		<StyledWeeksResultsTable>
+			<p>no player history data yet</p>
+		</StyledWeeksResultsTable>
 	);
 };
 const StyledWeeksResultsTable = styled.section`

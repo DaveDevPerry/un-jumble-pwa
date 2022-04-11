@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import ConundrumUserLetterCards from '../../components/Conundrum/UserLetterCards';
 // import YesterdayUserWordDisplay from '../../components/Conundrum/WeeksResultsTable';
 import WeeksResultsTable from '../../components/Conundrum/WeeksResultsTable';
+import ConundrumContextProvider from '../../contexts/ConundrumContext';
 
 const ConundrumGame = ({
 	dictionary,
@@ -21,6 +22,7 @@ const ConundrumGame = ({
 	conundrumGameMode,
 	setPageTitle,
 	setIsConundrumCorrect,
+	// conundrumGameMode
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
@@ -124,7 +126,12 @@ const ConundrumGame = ({
 				</div>
 			</div> */}
 			{/* <GamePanel handleStartGame={handleStartGame} shuffled={shuffled} /> */}
-			<WeeksResultsTable currentWord={currentWord} />
+			<ConundrumContextProvider>
+				<WeeksResultsTable
+					currentWord={currentWord}
+					conundrumGameMode={conundrumGameMode}
+				/>
+			</ConundrumContextProvider>
 			<UserWordsDisplay currentWord={currentWord} />
 			<div className='back-btn-container'>
 				<div className='button'>
