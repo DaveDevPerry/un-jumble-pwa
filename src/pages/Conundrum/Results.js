@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import { useNavigate } from 'react-router-dom';
 // import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
-import GameTitle from '../../components/Global/GameTitle';
+// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 // import DataFetching from '../../components/Conundrum/WordDefinition';
 import WordDefinition from '../../components/Conundrum/WordDefinition';
@@ -20,18 +20,20 @@ const ConundrumResults = ({
 	APIKey,
 	conundrumGameMode,
 	isConundrumCorrect,
+	setPageTitle,
 	// setIsNextDayCountdownActive,
 	// defData,
 }) => {
 	useEffect(() => {
 		console.log('conundrum results');
+		setPageTitle(`results`);
 		setTimeout(() => {
 			const gameLetterTiles = document.querySelectorAll('.results-card');
 			gameLetterTiles.forEach((tile) => {
 				tile.classList.add('visible');
 			});
 		}, 1000);
-	}, []);
+	}, [setPageTitle]);
 	// const [defMeaning, setDefMeaning] = useState(null);
 	// let navigate = useNavigate();
 
@@ -108,7 +110,7 @@ const ConundrumResults = ({
 	return (
 		<>
 			<ConundrumContextProvider>
-				<GameTitle title='results' />
+				{/* <GameTitle title='results' /> */}
 				<StyledConundrumResults>
 					{/* <DataFetching conundrum={conundrum} /> */}
 					{/* <WordDefinition conundrum={conundrum} /> */}

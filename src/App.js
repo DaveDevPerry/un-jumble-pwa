@@ -29,12 +29,16 @@ import AnagramRoundRules from './pages/Anagrams/Rules';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
+// import ConundrumContextProvider from './contexts/ConundrumContext';
+
+// global
 
 function App() {
 	const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
 	useEffect(() => {
 		console.log('app render');
 		console.log(setAPIKey);
+		// setCurrentDate(new Date().toLocaleDateString())
 	}, []);
 
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -42,6 +46,7 @@ function App() {
 	const [dictionary, setDictionary] = useState(null);
 	const englishDictionary = require('an-array-of-english-words');
 	// GLOBAL - working with conundrum
+	// const [currentDate, setCurrentDate] = useState('')
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
 		useState(true);
 	// HEADER
@@ -123,6 +128,9 @@ function App() {
 			<Router>
 				<GlobalStyles />
 				<div className='container'>
+					{/* <ConundrumContextProvider>
+						<PageLoader />
+					</ConundrumContextProvider> */}
 					<PageLoader />
 					<Header pageTitle={pageTitle} />
 					<StrictMode>
@@ -224,6 +232,7 @@ function App() {
 											anagramGameMode={anagramGameMode}
 											setAnagramGameMode={setAnagramGameMode}
 											setPageTitle={setPageTitle}
+											setMessage={setMessage}
 										/>
 									}
 								/>

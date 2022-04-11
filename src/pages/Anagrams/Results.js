@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
 import { useNavigate } from 'react-router-dom';
 // import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
-import GameTitle from '../../components/Global/GameTitle';
+// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 import UserWordResultsDisplay from '../../components/Anagrams/UserWordResultsDisplay';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
@@ -25,10 +25,12 @@ const AnagramRoundResults = ({
 	// letterRoundData,
 	allAnagramUserWords,
 	setAllAnagramUserWords,
+	setPageTitle,
 }) => {
 	useEffect(() => {
 		console.log('anagram results render');
-	}, []);
+		setPageTitle(`results`);
+	}, [setPageTitle]);
 	let navigate = useNavigate();
 
 	const shareMobile = () => {
@@ -93,7 +95,7 @@ const AnagramRoundResults = ({
 
 	return (
 		<>
-			<GameTitle title='results' />
+			{/* <GameTitle title='results' /> */}
 			<StyledAnagramResults>
 				{/* <div className='anagram-stats-container'>
 					<div className='stat-wrapper'>

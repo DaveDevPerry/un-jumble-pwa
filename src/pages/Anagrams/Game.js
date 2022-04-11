@@ -18,10 +18,11 @@ const AnagramRoundGame = ({
 	setAllAnagramUserWords,
 	anagramGameMode,
 	setPageTitle,
+	setMessage,
 }) => {
 	useEffect(() => {
 		console.log('anagram game render');
-		setPageTitle(`anagram Level ${anagramGameMode}`);
+		setPageTitle(`anagrams: Level ${anagramGameMode}`);
 	}, [setPageTitle, anagramGameMode]);
 
 	const [currentTargetWord, setCurrentTargetWord] = useState('');
@@ -203,6 +204,7 @@ const AnagramRoundGame = ({
 		console.log('current word', currentAnagramWord);
 		if (!dictionary.includes(currentAnagramWord)) {
 			console.log('wrong');
+			setMessage('invalid word!');
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
@@ -214,6 +216,7 @@ const AnagramRoundGame = ({
 		}
 		if (dictionary.includes(currentAnagramWord)) {
 			console.log('right');
+			setMessage('correct!');
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
