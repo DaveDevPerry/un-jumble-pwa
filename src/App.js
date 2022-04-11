@@ -59,6 +59,7 @@ function App() {
 	const [allFourLetterWords, setAllFourLetterWords] = useState(null);
 	const [gameMode, setGameMode] = useState('');
 	const [conundrumGameMode, setConundrumGameMode] = useState('');
+	const [isConundrumCorrect, setIsConundrumCorrect] = useState(false);
 
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
@@ -175,6 +176,7 @@ function App() {
 											setMessage={setMessage}
 											message={message}
 											setPageTitle={setPageTitle}
+											setIsConundrumCorrect={setIsConundrumCorrect}
 										/>
 									}
 								/>
@@ -187,6 +189,10 @@ function App() {
 											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
 											APIKey={APIKey}
 											setPageTitle={setPageTitle}
+											conundrumGameMode={conundrumGameMode}
+											isConundrumCorrect={isConundrumCorrect}
+											setIsConundrumCorrect={setIsConundrumCorrect}
+											// conundrumGameMode={conundrumGameMode}
 										/>
 									}
 								/>

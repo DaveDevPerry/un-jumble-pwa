@@ -10,6 +10,7 @@ const ConundrumUserLetterCards = ({
 	conundrum,
 	setConundrum,
 	setMessage,
+	setIsConundrumCorrect,
 }) => {
 	let navigate = useNavigate();
 
@@ -76,6 +77,7 @@ const ConundrumUserLetterCards = ({
 		if (dictionary.includes(currentWord)) {
 			console.log('right');
 			setConundrum(currentWord);
+			setIsConundrumCorrect(true);
 			setMessage('correct word!');
 			// setAllUserWords([...allUserWords, [currentWord, currentWord.length]]);
 			// if (currentWord.length > longestWord.length) {

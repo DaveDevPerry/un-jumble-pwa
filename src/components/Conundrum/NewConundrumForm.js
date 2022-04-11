@@ -1,57 +1,65 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ConundrumContext } from '../../contexts/ConundrumContext';
+import { useNavigate } from 'react-router-dom';
 
-const NewConundrumForm = () => {
+const NewConundrumForm = ({
+	conundrum,
+	conundrumGameMode,
+	isConundrumCorrect,
+	url,
+}) => {
+	useEffect(() => {
+		console.log(
+			'new con form initial render',
+			conundrum,
+			conundrumGameMode,
+			isConundrumCorrect
+		);
+	}, [conundrum, conundrumGameMode, isConundrumCorrect]);
+	let navigate = useNavigate();
 	const { dispatch } = useContext(ConundrumContext);
-	const [date, setDate] = useState('');
-	const [level, setLevel] = useState(0);
-	const [wordOfTheDay, setWordOfTheDay] = useState('');
-	const [isCorrect, setIsCorrect] = useState(false);
+	// const [date, setDate] = useState('');
+	// const [level, setLevel] = useState(0);
+	// const [wordOfTheDay, setWordOfTheDay] = useState('');
+	// const [isCorrect, setIsCorrect] = useState(false);
 
-	const handleSave = (e) => {
-		e.preventDefault();
+	const handleSave = () => {
+		// e.preventDefault();
 		dispatch({
 			type: 'ADD_CONUNDRUM',
-			conundrum: { date, level, wordOfTheDay, isCorrect },
+			// conundrum: { date, level, wordOfTheDay, isCorrect },
+			conundrum: {
+				// date,
+				// level,
+				// wordOfTheDay,
+				// isCorrect,
+				date: new Date().toLocaleDateString(),
+				level: conundrumGameMode,
+				wordOfTheDay: conundrum,
+				isCorrect: isConundrumCorrect,
+			},
 		});
-		setDate('');
-		setLevel('');
-		setWordOfTheDay('');
-		setIsCorrect('');
+		// setDate('');
+		// setLevel('');
+		// setWordOfTheDay('');
+		// setIsCorrect(false);
+		setTimeout(() => {
+			navigate('/');
+		}, 100);
 	};
 
 	return (
-		<form onSubmit={handleSave}>
-			<input
-				type='date'
-				placeholder='conundrum date'
-				value={date}
-				onChange={(e) => setDate(e.target.value)}
-				required
-			/>
-			<input
-				type='text'
-				placeholder='conundrum level'
-				value={level}
-				onChange={(e) => setLevel(e.target.value)}
-				required
-			/>
-			<input
-				type='text'
-				placeholder='conundrum word of the day'
-				value={wordOfTheDay}
-				onChange={(e) => setWordOfTheDay(e.target.value)}
-				required
-			/>
-			<input
-				type='text'
-				placeholder='conundrum correct'
-				value={isCorrect}
-				onChange={(e) => setIsCorrect(e.target.value)}
-				required
-			/>
-			<input type='submit' value='add conundrum' />
-		</form>
+		<button
+			onClick={() => {
+				// setDate(new Date().toLocaleDateString());
+				// setLevel(conundrumGameMode);
+				// setWordOfTheDay(conundrum);
+				// setIsCorrect(isConundrumCorrect);
+				handleSave();
+			}}
+		>
+			Save Data
+		</button>
 		// <form onSubmit={handleSubmit}>
 		//   <input type="text" placeholder="book title" value={title}
 		//     onChange={(e) => setTitle(e.target.value)} required />

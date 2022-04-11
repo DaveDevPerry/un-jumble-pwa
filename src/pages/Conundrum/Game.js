@@ -20,6 +20,7 @@ const ConundrumGame = ({
 	setConundrum,
 	conundrumGameMode,
 	setPageTitle,
+	setIsConundrumCorrect,
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
@@ -148,6 +149,7 @@ const ConundrumGame = ({
 				conundrum={conundrum}
 				setConundrum={setConundrum}
 				setMessage={setMessage}
+				setIsConundrumCorrect={setIsConundrumCorrect}
 			/>
 		</StyledConundrumGame>
 	);

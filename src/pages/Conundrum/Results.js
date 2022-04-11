@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
@@ -18,6 +18,8 @@ const ConundrumResults = ({
 	conundrum,
 	isNextDayCountdownActive,
 	APIKey,
+	conundrumGameMode,
+	isConundrumCorrect,
 	// setIsNextDayCountdownActive,
 	// defData,
 }) => {
@@ -31,7 +33,7 @@ const ConundrumResults = ({
 		}, 1000);
 	}, []);
 	// const [defMeaning, setDefMeaning] = useState(null);
-	let navigate = useNavigate();
+	// let navigate = useNavigate();
 
 	// const updateStatus = () => {
 	// 	let updatedValue = {};
@@ -257,15 +259,21 @@ const ConundrumResults = ({
 					/>
 					{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
 				</StyledConundrumResults>
-				<NewConundrumForm />
-				<button
+				<NewConundrumForm
+					conundrum={conundrum}
+					conundrumGameMode={conundrumGameMode}
+					isConundrumCorrect={isConundrumCorrect}
+					url='/'
+				/>
+				{/* <NewConundrumForm /> */}
+				{/* <button
 					className='results-home-btn'
 					onClick={() => {
 						navigate('/');
 					}}
 				>
 					HOME
-				</button>
+				</button> */}
 			</ConundrumContextProvider>
 		</>
 	);
