@@ -9,6 +9,15 @@ const DigitalTimer = ({
 	isNextDayCountdownActive,
 	setMessage,
 }) => {
+	const playBeep = () => {
+		new Audio('/audio/beep.mp3').audio.play();
+	};
+	const playBuzz = () => {
+		new Audio('/audio/buzz.mp3').audio.play();
+	};
+	const playShowResults = () => {
+		new Audio('/audio/squeek.mp3').audio.play();
+	};
 	useEffect(() => {
 		console.log('digital timer render');
 	}, []);
@@ -35,8 +44,9 @@ const DigitalTimer = ({
 				playBuzz();
 			}
 			if (time === 0) {
+				playBuzz();
 				setMessage('time is up!');
-				playEnd();
+
 				clearInterval(timer);
 				setIsTimerActive(false);
 				setTimeout(() => {
@@ -49,22 +59,6 @@ const DigitalTimer = ({
 		}, 1000);
 	}, [isTimerActive, time, setIsTimerActive, navigate]);
 
-	const playBeep = () => {
-		const audio = new Audio('/audio/beep.mp3');
-		audio.play();
-	};
-	const playBuzz = () => {
-		const audio = new Audio('/audio/buzz.mp3');
-		audio.play();
-	};
-	const playEnd = () => {
-		const audio = new Audio('/audio/end.mp3');
-		audio.play();
-	};
-	const playShowResults = () => {
-		const audio = new Audio('/audio/squeek.mp3');
-		audio.play();
-	};
 	return (
 		<StyledDigitalTimer className='date-countdown-container'>
 			<Clock

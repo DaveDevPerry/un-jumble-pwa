@@ -15,6 +15,9 @@ const LetterSelect = ({
 	setPageTitle,
 	setMessage,
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 	useEffect(() => {
 		console.log('lr letter select render');
 		// setGameLetters([])
@@ -87,6 +90,7 @@ const LetterSelect = ({
 							: 'close-modal-btn'
 					}
 					onClick={() => {
+						playButton();
 						navigate('/letterround/game');
 					}}
 				>

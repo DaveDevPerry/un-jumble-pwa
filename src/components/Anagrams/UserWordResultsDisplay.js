@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { AiOutlineSwap } from 'react-icons/ai';
 
 const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
+	const playTile = () => {
+		new Audio('/audio/tile.mp3').play();
+	};
 	const handleFlipWordStatusList = (e) => {
 		e.preventDefault();
 		document.querySelectorAll('.status').forEach((btn) => {
@@ -12,7 +15,13 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 	return (
 		<StyledUserWordResultsDisplay>
 			<div className='word-status-btn-container'>
-				<button className='flip-btn' onClick={handleFlipWordStatusList}>
+				<button
+					className='flip-btn'
+					onClick={() => {
+						playTile();
+						handleFlipWordStatusList();
+					}}
+				>
 					<AiOutlineSwap size='30px' />
 				</button>
 			</div>

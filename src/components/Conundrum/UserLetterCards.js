@@ -27,6 +27,10 @@ const ConundrumUserLetterCards = ({
 		const audio = new Audio('/audio/negative.mp3');
 		audio.play();
 	};
+	const playCorrect = () => {
+		const audio = new Audio('/audio/correct.mp3');
+		audio.play();
+	};
 
 	const handleReset = (e) => {
 		playClear();
@@ -78,6 +82,7 @@ const ConundrumUserLetterCards = ({
 			return;
 		}
 		if (dictionary.includes(currentWord)) {
+			playCorrect();
 			console.log('right');
 			setConundrum(currentWord);
 			setIsConundrumCorrect(true);

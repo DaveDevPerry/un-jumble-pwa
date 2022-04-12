@@ -4,6 +4,9 @@ import NextGameCountdown from './NextGameCountdown';
 import styled from 'styled-components';
 
 const ResultsFooter = ({ isNextDayCountdownActive, shareMobile }) => {
+	const playTile = () => {
+		new Audio('/audio/tile.mp3').play();
+	};
 	return (
 		<StyledResultsFooter className='wrapper'>
 			<div className='next-wrapper'>
@@ -13,7 +16,13 @@ const ResultsFooter = ({ isNextDayCountdownActive, shareMobile }) => {
 				/>
 			</div>
 			<div className='share-wrapper-whatsapp'>
-				<button className='share-btn-whatsapp' onClick={shareMobile}>
+				<button
+					className='share-btn-whatsapp'
+					onClick={() => {
+						playTile();
+						shareMobile();
+					}}
+				>
 					{/* <p>Share</p> */}
 					<BsFillShareFill size='20px' />
 					<BsWhatsapp size='25px' />

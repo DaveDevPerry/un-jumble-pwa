@@ -17,6 +17,9 @@ const ConundrumLevelStatus = ({
 }) => {
 	// const { conundrums } = useContext(ConundrumContext);
 	let navigate = useNavigate();
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 
 	// const createConundrumCurrentDayData = () => {
 	// 	for (let i = 4; i <= 9; i++) {
@@ -120,6 +123,7 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
 					setConundrumGameMode(4);
 					setTileStyleVariable(4);
 
@@ -132,6 +136,8 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setConundrumGameMode(5);
 					setTileStyleVariable(5);
 					navigate('/conundrum/game');
@@ -142,6 +148,8 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setConundrumGameMode(6);
 					setTileStyleVariable(6);
 					navigate('/conundrum/game');
@@ -152,6 +160,8 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setConundrumGameMode(7);
 					setTileStyleVariable(7);
 					navigate('/conundrum/game');
@@ -162,6 +172,8 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setConundrumGameMode(8);
 					setTileStyleVariable(8);
 					navigate('/conundrum/game');
@@ -172,6 +184,8 @@ const ConundrumLevelStatus = ({
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setConundrumGameMode(9);
 					setTileStyleVariable(9);
 					navigate('/conundrum/game');

@@ -64,7 +64,7 @@ const NewDigitalTimer = ({
 			}
 			if (time === 0) {
 				setMessage('time is up!');
-				playEnd();
+				playBuzz();
 				clearInterval(timer);
 				setIsTimerActive(false);
 				setTimeout(() => {
@@ -86,10 +86,10 @@ const NewDigitalTimer = ({
 		const audio = new Audio('/audio/buzz.mp3');
 		audio.play();
 	};
-	const playEnd = () => {
-		const audio = new Audio('/audio/end.mp3');
-		audio.play();
-	};
+	// const playEnd = () => {
+	// 	const audio = new Audio('/audio/end.mp3');
+	// 	audio.play();
+	// };
 	const playShowResults = () => {
 		const audio = new Audio('/audio/squeek.mp3');
 		audio.play();

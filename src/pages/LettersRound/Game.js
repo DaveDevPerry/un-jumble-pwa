@@ -72,8 +72,16 @@ const LetterRoundGame = ({
 	// 	});
 	// 	setIsTimerActive(true);
 	// };
+	const playCorrect = () => {
+		const audio = new Audio('/audio/correct.mp3');
+		audio.play();
+	};
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 
 	const handleLetterRoundStart = (e) => {
+		playButton();
 		setMessage('good luck!');
 		e.preventDefault();
 		setIsTimerActive(true);
@@ -171,6 +179,7 @@ const LetterRoundGame = ({
 			]);
 		}
 		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
+			playCorrect();
 			console.log('right');
 			const correctWordMessages = [
 				"that's a good one!",

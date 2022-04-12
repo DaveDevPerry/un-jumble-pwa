@@ -7,9 +7,10 @@ const Clock = ({ timerSeconds }) => {
 				<section className='timer'>
 					<div className='clock'>
 						<section>
-							<p id='new-timer-element-secs'>
+							<p id='new-timer-element-secs'>30</p>
+							{/* <p id='new-timer-element-secs'>
 								{timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds}
-							</p>
+							</p> */}
 						</section>
 					</div>
 				</section>
@@ -20,8 +21,8 @@ const Clock = ({ timerSeconds }) => {
 
 Clock.defaultProps = {
 	// timerHours: 10,
-	timerMinutes: 10,
-	timerSeconds: 0,
+	// timerMinutes: 10,
+	timerSeconds: 30,
 };
 
 export default Clock;

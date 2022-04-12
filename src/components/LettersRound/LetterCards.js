@@ -118,8 +118,14 @@ const LetterCards = ({
 	const [vowelCount, setVowelCount] = useState(1);
 	const [consonantCount, setConsonantCount] = useState(1);
 
+	const playTile = () => {
+		new Audio('/audio/tile.mp3').play();
+	};
+
 	// const [consonants, setConsonants] = useState([])
 	const handlePickVowel = (e) => {
+		playTile();
+
 		console.log(vowels, setVowels);
 		// const currentVowel = vowels.pop();
 		e.preventDefault();
@@ -140,6 +146,7 @@ const LetterCards = ({
 		// console.log(count);
 	};
 	const handlePickConsonant = (e) => {
+		playTile();
 		console.log(consonants, setConsonants);
 		e.preventDefault();
 		if (consonantCount === 6) {

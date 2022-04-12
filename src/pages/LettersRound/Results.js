@@ -41,6 +41,9 @@ const LetterRoundResults = ({
 	setPageTitle,
 	setMessage,
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 	useEffect(() => {
 		console.log('lr results render');
 		setTimeout(() => {
@@ -699,6 +702,7 @@ const LetterRoundResults = ({
 			<button
 				className='results-home-btn'
 				onClick={() => {
+					playButton();
 					setMessage('play again?');
 					// setIsNextDayCountdownActive(false);
 					// updateLRPlayed();

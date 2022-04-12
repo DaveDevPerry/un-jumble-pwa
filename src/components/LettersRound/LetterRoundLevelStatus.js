@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const LetterRoundLevelStatus = () => {
 	let navigate = useNavigate();
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 
 	function setTileStyleVariable(number) {
 		const root = document.querySelector(':root');
@@ -15,6 +18,7 @@ const LetterRoundLevelStatus = () => {
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
 					// setAnagramGameMode(4);
 					setTileStyleVariable(9);
 					navigate('/selectletters');

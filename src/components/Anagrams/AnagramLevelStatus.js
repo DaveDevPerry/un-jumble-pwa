@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 	let navigate = useNavigate();
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 
 	function setTileStyleVariable(number) {
 		const root = document.querySelector(':root');
@@ -15,6 +18,8 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+					// new Audio('/audio/button.mp3').play();
 					setAnagramGameMode(4);
 					setTileStyleVariable(4);
 					navigate('/anagramround/game');
@@ -25,6 +30,8 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setAnagramGameMode(5);
 					setTileStyleVariable(5);
 					navigate('/anagramround/game');
@@ -35,6 +42,8 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 			<div
 				className='quick-stat'
 				onClick={() => {
+					playButton();
+
 					setAnagramGameMode(6);
 					setTileStyleVariable(6);
 					navigate('/anagramround/game');

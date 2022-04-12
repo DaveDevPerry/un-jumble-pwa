@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 	  user-select: none;
   }
   body {
-    background-color: ${({ theme }) => theme.bg};
+    background-color: ${({ theme }) => theme.bgChosen};
     color: ${({ theme }) => theme.syntax};
     transition: all 0.50s linear;
     font-family: 'Bebas Neue', cursive;
@@ -30,16 +30,19 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
     height: 100vh;
     width: 100vw;
+    /* display: flex; 
+    justify-content: center; */
   }
   .container {
     /* height: 100%; */
     height: 100vh;
-    width: clamp(320px, 100%, 500px);
+    /* width: clamp(320px, 100%, 500px); */
+    max-width: 500px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: ${({ theme }) => theme.bgBody};
+    background-color: ${({ theme }) => theme.bgContainer};
     transition: all 0.5s linear;
     position: relative;
   }

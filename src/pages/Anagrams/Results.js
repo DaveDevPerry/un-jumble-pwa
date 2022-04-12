@@ -28,6 +28,10 @@ const AnagramRoundResults = ({
 	setPageTitle,
 	setMessage,
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
+
 	useEffect(() => {
 		console.log('anagram results render');
 		setPageTitle(`results`);
@@ -160,6 +164,7 @@ const AnagramRoundResults = ({
 			<button
 				className='results-home-btn'
 				onClick={() => {
+					playButton();
 					setMessage('play again?');
 					setAllAnagramUserWords([]);
 					navigate('/');

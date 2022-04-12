@@ -8,54 +8,11 @@ const PageLoader = () => {
 	// let navigate = useNavigate();/
 	// const { dispatch } = useContext(ConundrumContext);
 	const pageRef = useRef();
+	// const playCloseLoader = () => {
+	// 	const audio = new Audio('/audio/closeModal.mp3');
+	// 	audio.play();
+	// };
 	// const dogRef = useRef();
-
-	useEffect(() => {
-		// testing setting con all level same day data
-		// createConundrumCurrentDayData();
-
-		// animate tiles
-		// const loaderLetterTiles = document.querySelectorAll('.loader-letters');
-		// loaderLetterTiles.forEach((tile) => {
-		// 	tile.classList.add('visible');
-		// });
-		for (let i = 1; i <= 8; i++) {
-			// setTimeout(() => {
-			// 	document.querySelector(`[data-letter='${i}']`).classList.add('visible');
-			// }, 1000);
-			flipLetter(i);
-			// createConundrumCurrentDayData(i);
-		}
-		setTimeout(() => {
-			for (let i = 1; i <= 8; i++) {
-				jumpLetter(i);
-			}
-		}, 3200);
-		setTimeout(() => {
-			rotateContainer();
-		}, 4200);
-
-		// gsap.to(
-		// 	pageRef.current,
-		// 	{
-		// 		rotationZ: 90,
-		// 		// transformOrigin: '50% 50%',
-		// 		duration: 1.5,
-		// 		ease: 'Linear'.easeNone,
-		// 	},
-		// 	'+=5'
-		// );
-
-		// gsap.to(
-		// 	pageRef.current,
-		// 	{
-		// 		y: '-100%',
-		// 		duration: 1.5,
-		// 		ease: 'Linear'.easeNone,
-		// 	},
-		// 	'+=5'
-		// );
-	}, []);
 
 	// setTimeout(() => {
 	// 	dispatch({
@@ -123,8 +80,57 @@ const PageLoader = () => {
 		// });
 	};
 	const rotateContainer = () => {
+		// playCloseLoader();
 		document.querySelector('.load-screen').classList.add('rotate');
 	};
+
+	useEffect(() => {
+		// testing setting con all level same day data
+		// createConundrumCurrentDayData();
+
+		// animate tiles
+		// const loaderLetterTiles = document.querySelectorAll('.loader-letters');
+		// loaderLetterTiles.forEach((tile) => {
+		// 	tile.classList.add('visible');
+		// });
+		for (let i = 1; i <= 8; i++) {
+			// setTimeout(() => {
+			// 	document.querySelector(`[data-letter='${i}']`).classList.add('visible');
+			// }, 1000);
+			flipLetter(i);
+			// createConundrumCurrentDayData(i);
+		}
+		setTimeout(() => {
+			for (let i = 1; i <= 8; i++) {
+				jumpLetter(i);
+			}
+		}, 3200);
+		setTimeout(() => {
+			// playCloseLoader();
+			rotateContainer();
+		}, 4200);
+
+		// gsap.to(
+		// 	pageRef.current,
+		// 	{
+		// 		rotationZ: 90,
+		// 		// transformOrigin: '50% 50%',
+		// 		duration: 1.5,
+		// 		ease: 'Linear'.easeNone,
+		// 	},
+		// 	'+=5'
+		// );
+
+		// gsap.to(
+		// 	pageRef.current,
+		// 	{
+		// 		y: '-100%',
+		// 		duration: 1.5,
+		// 		ease: 'Linear'.easeNone,
+		// 	},
+		// 	'+=5'
+		// );
+	}, []);
 	return (
 		<>
 			<StyledPageLoader ref={pageRef} className='load-screen'>
@@ -200,7 +206,7 @@ const StyledPageLoader = styled.div`
 	justify-content: center;
 	row-gap: 2rem;
 	/* perspective: 500px; */
-	transition: all 400ms linear;
+	transition: all 800ms linear;
 	transform: rotateY(0deg);
 
 	&.rotate {
@@ -252,6 +258,7 @@ const StyledPageLoader = styled.div`
 			display: grid;
 			place-content: center;
 			border-radius: 5px;
+			transform: rotate(180deg);
 		}
 		.loader-letter-front {
 			font-size: 3rem;

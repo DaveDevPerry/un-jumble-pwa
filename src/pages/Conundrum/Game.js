@@ -24,6 +24,9 @@ const ConundrumGame = ({
 	setIsConundrumCorrect,
 	// conundrumGameMode
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 	useEffect(() => {
 		console.log('conundrum game render');
 		setPageTitle(`conundrum: Level ${conundrumGameMode}`);
@@ -97,6 +100,7 @@ const ConundrumGame = ({
 	}
 
 	const handleStartGame = (e) => {
+		playButton();
 		setMessage('good luck!');
 		e.preventDefault();
 		console.log(conundrum);
@@ -141,6 +145,7 @@ const ConundrumGame = ({
 					<button
 						className='btn-front btn-cta'
 						onClick={() => {
+							playButton();
 							navigate('/');
 						}}
 					>

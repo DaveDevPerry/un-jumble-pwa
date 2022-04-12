@@ -9,6 +9,9 @@ const NewConundrumForm = ({
 	setMessage,
 	url,
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
 	useEffect(() => {
 		console.log(
 			'new con form initial render',
@@ -25,6 +28,7 @@ const NewConundrumForm = ({
 	// const [isCorrect, setIsCorrect] = useState(false);
 
 	const handleSave = () => {
+		playButton();
 		// e.preventDefault();
 		dispatch({
 			type: 'ADD_CONUNDRUM',

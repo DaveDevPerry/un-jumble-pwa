@@ -14,50 +14,55 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 			<StyledWeeksResultsTable>
 				<table className='table-spacing'>
 					<caption>Previous results</caption>
-					{/* <tbody> */}
-					{/* sort by date, then filter out last 6 */}
-					{conundrums
-						// FILTER BY LEVEL
-						.filter((item) => {
-							return item.level === conundrumGameMode;
-						})
-						// SORT BY DATE
-						.sort((a, b) => {
-							return b.date > a.date;
-						})
-						// return last 6
-						.slice(-6)
-						// .filter((item) => {
-						// 	return item
-						// })
-						.map((conundrum, index) => {
-							return (
-								<tr key={index}>
-									<td>{conundrum.date.substring(0, 5)}</td>
-									<td>
-										<StyledLetterOutput>
-											{conundrum.wordOfTheDay.split('').map((letter, index) => {
-												return (
-													<div key={letter + index} className='results-card'>
-														<div className='results-card-front results-card-letter'>
-															{letter}
-														</div>
-													</div>
-												);
-											})}
-										</StyledLetterOutput>
-									</td>
-									<td>
-										{conundrum.isCorrect === true ? (
-											<GiCheckMark size='18px' color='#004600' />
-										) : (
-											<GiCrossMark size='18px' color='#8a0202' />
-										)}
-									</td>
-								</tr>
-							);
-						})}
-					{/* {conundrums.map((conundrum, index) => {
+					<tbody>
+						{/* sort by date, then filter out last 6 */}
+						{conundrums
+							// FILTER BY LEVEL
+							.filter((item) => {
+								return item.level === conundrumGameMode;
+							})
+							// SORT BY DATE
+							.sort((a, b) => {
+								return b.date > a.date;
+							})
+							// return last 6
+							.slice(-6)
+							// .filter((item) => {
+							// 	return item
+							// })
+							.map((conundrum, index) => {
+								return (
+									<tr key={index}>
+										<td>{conundrum.date.substring(0, 5)}</td>
+										<td>
+											<StyledLetterOutput>
+												{conundrum.wordOfTheDay
+													.split('')
+													.map((letter, index) => {
+														return (
+															<div
+																key={letter + index}
+																className='results-card'
+															>
+																<div className='results-card-front results-card-letter'>
+																	{letter}
+																</div>
+															</div>
+														);
+													})}
+											</StyledLetterOutput>
+										</td>
+										<td>
+											{conundrum.isCorrect === true ? (
+												<GiCheckMark size='18px' color='#004600' />
+											) : (
+												<GiCrossMark size='18px' color='#8a0202' />
+											)}
+										</td>
+									</tr>
+								);
+							})}
+						{/* {conundrums.map((conundrum, index) => {
 						return (
 							<tr key={index}>
 								<td>{conundrum.date}</td>
@@ -84,7 +89,7 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 							</tr>
 							);
 					})} */}
-					{/* </tbody> */}
+					</tbody>
 				</table>
 			</StyledWeeksResultsTable>
 		</StyledWeeksResultsContainer>

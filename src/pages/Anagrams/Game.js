@@ -16,6 +16,18 @@ const AnagramRoundGame = ({
 	setPageTitle,
 	setMessage,
 }) => {
+	const playButton = () => {
+		new Audio('/audio/button.mp3').play();
+	};
+	const tileAudio = () => {
+		new Audio('/audio/tile.mp3').play();
+	};
+	const playClear = () => {
+		new Audio('/audio/negative.mp3').play();
+	};
+	const playCorrect = () => {
+		new Audio('/audio/correct.mp3').play();
+	};
 	useEffect(() => {
 		console.log('anagram game render');
 		setPageTitle(`anagrams: Level ${anagramGameMode}`);
@@ -73,6 +85,7 @@ const AnagramRoundGame = ({
 	]);
 
 	const handleAnagramStart = (e) => {
+		playButton();
 		e.preventDefault();
 		setIsTimerActive(true);
 		setMessage('good luck!');
@@ -158,6 +171,7 @@ const AnagramRoundGame = ({
 	};
 
 	const handleSkip = (e) => {
+		playClear();
 		setMessage('skipping!?');
 		e.preventDefault();
 		console.log('skipped');
@@ -221,6 +235,7 @@ const AnagramRoundGame = ({
 			]);
 		}
 		if (dictionary.includes(currentAnagramWord)) {
+			playCorrect();
 			console.log('right', currentTargetWord, currentAnagramWord);
 			const correctWordMessages = [
 				"that's a good one!",
@@ -265,15 +280,6 @@ const AnagramRoundGame = ({
 			lettersElem[i].firstElementChild.textContent = currentAnagramWord[i];
 		}
 	}, [currentAnagramWord]);
-
-	const tileAudio = () => {
-		const audio = new Audio('/audio/tile.mp3');
-		audio.play();
-	};
-	const playClear = () => {
-		const audio = new Audio('/audio/negative.mp3');
-		audio.play();
-	};
 
 	return (
 		<StyledGame>
