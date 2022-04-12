@@ -376,7 +376,7 @@ const StyledConundrumResults = styled.section`
 			#trophy {
 				color: ${({ theme }) => theme.textTarget};
 				/* position: absolute; */
-				z-index: 2;
+				/* z-index: 2; */
 				/* top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%); */
@@ -389,7 +389,7 @@ const StyledConundrumResults = styled.section`
 				/* line-height: 0.7; */
 				font-weight: 400;
 				position: absolute;
-				z-index: 10000;
+				/* z-index: 10000; */
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -70%);

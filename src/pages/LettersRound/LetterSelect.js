@@ -3,15 +3,12 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import UserSelectedLetters from '../../components/LettersRound/UserSelectLetters';
 import LetterCards from '../../components/LettersRound/LetterCards';
-// import GameTitle from '../../components/Global/GameTitle';
 
 const LetterSelect = ({
 	gameLetters,
 	letterTypes,
 	setLetterTypes,
 	setGameLetters,
-	setLetterRoundData,
-	letterRoundData,
 	setPageTitle,
 	setMessage,
 }) => {
@@ -20,8 +17,6 @@ const LetterSelect = ({
 	};
 	useEffect(() => {
 		console.log('lr letter select render');
-		// setGameLetters([])
-		// setLetterTypes([])
 		setMessage('lets go!');
 		setPageTitle('letter round');
 	}, [setPageTitle, setMessage]);
@@ -33,24 +28,8 @@ const LetterSelect = ({
 		setMessage('only 3 more!');
 	}, [setMessage, gameLetters]);
 
-	// const updateLRPlayed = () => {
-	// 	console.log(letterRoundData, 'lrd');
-
-	// 	letterRoundData.played++;
-	// 	// const newData =
-
-	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
-	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
-	// 	wordObj.played++;
-	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
-	// 	setLetterRoundData(letterRoundData);
-	// 	console.log(letterRoundData, 'new lrd');
-	// };
-	// let { username } = useParams();
 	return (
 		<>
-			{/* <GameTitle title='letter round' /> */}
-
 			<StyledLetterSelect>
 				<div className='letter-select-container'>
 					<div className='letter-select-wrapper'>
@@ -69,18 +48,6 @@ const LetterSelect = ({
 							setGameLetters={setGameLetters}
 							setLetterTypes={setLetterTypes}
 						/>
-
-						{/* <button
-				className={
-					gameLetters.length === 9 ? 'close-modal-btn show' : 'close-modal-btn'
-				}
-				onClick={() => {
-					// updateLRPlayed();
-					navigate('/letterround/game');
-				}}
-				>
-				NEXT
-			</button> */}
 					</div>
 				</div>
 				<StyledCloseBtn
@@ -102,14 +69,11 @@ const LetterSelect = ({
 };
 
 const StyledLetterSelect = styled.section`
-	/* border: 2px solid red; */
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-
 	.letter-select-container {
-		/* border: 2px solid green; */
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -122,8 +86,6 @@ const StyledLetterSelect = styled.section`
 			flex-direction: column;
 			display: flex;
 			row-gap: 1rem;
-
-			/* transition: opacity 200ms ease-in; */
 			.modal-header {
 				font-family: 'Bebas Neue', cursive;
 				display: flex;
@@ -154,8 +116,6 @@ const StyledCloseBtn = styled.button`
 	font-size: 2.5rem;
 	font-weight: bold;
 	padding: 0.5rem 1rem;
-	/* margin-top: 2rem; */
-	/* margin-bottom: 1rem; */
 	background-color: ${({ theme }) => theme.bgChosen};
 	border: none;
 	border-radius: 5px;
