@@ -317,7 +317,7 @@ const StyledConundrumResults = styled.section`
 				line-height: 1;
 				color: ${({ theme }) => theme.bgChosen};
 				&:last-child {
-					font-family: 'Montserrat';
+					font-family: 'Montserrat', sans-serif;
 					text-transform: capitalize;
 					font-size: 1.2rem;
 					font-weight: 400;
@@ -345,7 +345,7 @@ const StyledConundrumResults = styled.section`
 				line-height: 1;
 				color: ${({ theme }) => theme.bgChosen};
 				&:last-child {
-					font-family: 'Montserrat';
+					font-family: 'Montserrat', sans-serif;
 					text-transform: capitalize;
 					font-size: 1.2rem;
 					font-weight: 400;

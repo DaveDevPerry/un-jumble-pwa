@@ -140,7 +140,7 @@ const StyledWordDefinition = styled.div`
 	}
 	table {
 		/* border: 1px solid; */
-		font-family: 'Montserrat', cursive;
+		font-family: 'Montserrat', sans-serif;
 		font-size: 1.2rem;
 		tr {
 			display: flex;

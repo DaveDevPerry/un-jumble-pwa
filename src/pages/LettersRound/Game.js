@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import CurrentWordDisplay from '../../components/LettersRound/CurrentWordDisplay';
-// import ClockTimer from '../../components/LettersRound/ClockTimer';
-// import GamePanel from '../../components/LettersRound/GamePanel';
 import NewDigitalTimer from '../../components/LettersRound/NewDigitalTimer';
 import UserLetterCards from '../../components/LettersRound/UserLetterCards';
 import UserAllWordsDisplay from '../../components/LettersRound/UserWordsDisplay';
 import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
-// import LetterRoundResults from '../../pages/LettersRound/Results';
 
 const LetterRoundGame = ({
 	gameLetters,
-	// setGameLetters,
 	dictionary,
 	setLetterRoundData,
 	letterRoundData,
 	setGotNineLetterWord,
-	// setShowLetterRoundResults,
 	setLetterRoundLongestWord,
 	letterRoundLongestWord,
 	allLetterRoundUserWords,
@@ -65,7 +59,6 @@ const LetterRoundGame = ({
 	const handleReset = (e) => {
 		playClear();
 		e.preventDefault();
-		console.log('reset tiles');
 		setCurrentLetterRoundWord('');
 		const tiles = document.querySelectorAll('.card-front');
 		tiles.forEach((tile) => {
@@ -91,7 +84,6 @@ const LetterRoundGame = ({
 	const handleLetter = (e) => {
 		tileAudio();
 		e.preventDefault();
-		console.log(e.target.textContent, 'e');
 		if (e.target.classList.contains('active')) {
 			e.target.classList.remove('active');
 			e.target.style.pointerEvents = 'initial';
@@ -116,7 +108,6 @@ const LetterRoundGame = ({
 	const checkWord = () => {
 		console.log('current word', currentLetterRoundWord);
 		if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-			console.log('wrong');
 			const wrongWordMessages = [
 				"that's not a word!",
 				"I don't think so!",
@@ -139,7 +130,6 @@ const LetterRoundGame = ({
 		}
 		if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
 			playCorrect();
-			console.log('right');
 			const correctWordMessages = [
 				"that's a good one!",
 				'correct!',
@@ -161,7 +151,6 @@ const LetterRoundGame = ({
 				},
 			]);
 		}
-		// resetWord(); - yes or no?
 		resetWord();
 	};
 

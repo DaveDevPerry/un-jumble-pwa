@@ -114,7 +114,7 @@ const StyledRules = styled.section`
 		display: flex;
 		flex-direction: column;
 		li {
-			font-family: 'Montserrat';
+			font-family: 'Montserrat', sans-serif;
 			font-weight: 100;
 			font-size: 1.2rem;
 			pointer-events: none;

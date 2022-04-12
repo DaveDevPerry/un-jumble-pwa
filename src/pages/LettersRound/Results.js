@@ -23,12 +23,11 @@ const LetterRoundResults = ({
 	}, []);
 
 	const shareMobile = () => {
-		const gameType = 'letter round';
 		const gameScore = document.querySelector(
 			'.share-letter-round-points'
 		).textContent;
 		window.open(
-			`whatsapp://send?text=I just scored ${gameScore} points on the ${gameType}. My best word was ${letterRoundLongestWord}.`
+			`whatsapp://send?text=I just scored ${gameScore} points on the letter round. My best word was ${letterRoundLongestWord}.`
 		);
 	};
 
@@ -86,7 +85,6 @@ const LetterRoundResults = ({
 			return wordItem.word.length === 3;
 		});
 		setThreeLetterWrongWords(threeCountWrong);
-		console.log(sortedWrongWordsByLength, 'wrong array');
 
 		// correct words
 		console.log('setting sorted');
@@ -97,9 +95,6 @@ const LetterRoundResults = ({
 			.sort(function (a, b) {
 				return b.word.length - a.word.length;
 			});
-		console.log(sortedWordsByLength, 'sorted words');
-		// setSortedWordsByLengthArray(sortedWordsByLength);
-		console.log(sortedWordsByLength, 'sorted');
 		const nineCount = sortedWordsByLength.filter((wordItem) => {
 			return wordItem.word.length === 9;
 		});
@@ -128,66 +123,7 @@ const LetterRoundResults = ({
 			return wordItem.word.length === 3;
 		});
 		setThreeLetterWords(threeCount);
-		// setLetterRoundPoints(
-		// 	nineLetterWrongWords.length * 20 +
-		// 		eightLetterWrongWords.length * 13 +
-		// 		sevenLetterWrongWords.length * 10 +
-		// 		sixLetterWrongWords.length * 7 +
-		// 		fiveLetterWrongWords.length * 5 +
-		// 		fourLetterWrongWords.length * 3 +
-		// 		threeLetterWrongWords.length * 1
-		// );
-		// setLetterRoundPoints(
-		// 	nineLetterWords.length * 20 +
-		// 		eightLetterWords.length * 13 +
-		// 		sevenLetterWords.length * 10 +
-		// 		sixLetterWords.length * 7 +
-		// 		fiveLetterWords.length * 5 +
-		// 		fourLetterWords.length * 3 +
-		// 		threeLetterWords.length * 1
-		// );
 	}, [allLetterRoundUserWords]);
-
-	// useEffect(() => {
-	// 	console.log('setting sorted');
-	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
-	// 		return b.word.length - a.word.length;
-	// 	});
-	// 	console.log(sortedWordsByLength, 'sorted words');
-	// 	setSortedWordsByLengthArray([
-	// 		...sortedWordsByLengthArray,
-	// 		sortedWordsByLength,
-	// 	]);
-	// 	console.log(sortedWordsByLengthArray, 'sorted');
-	// 	const nineCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 9;
-	// 	});
-	// 	setNineLetterWords(nineCount);
-	// 	const eightCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 8;
-	// 	});
-	// 	setEightLetterWords(eightCount);
-	// 	const sevenCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 7;
-	// 	});
-	// 	setSevenLetterWords(sevenCount);
-	// 	const sixCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 6;
-	// 	});
-	// 	setSixLetterWords(sixCount);
-	// 	const fiveCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 5;
-	// 	});
-	// 	setFiveLetterWords(fiveCount);
-	// 	const fourCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 4;
-	// 	});
-	// 	setFourLetterWords(fourCount);
-	// 	const threeCount = sortedWordsByLengthArray.filter((wordItem) => {
-	// 		return wordItem.word.length === 3;
-	// 	});
-	// 	setThreeLetterWords(threeCount);
-	// }, []);
 
 	useEffect(() => {
 		console.log('lr results');
@@ -585,29 +521,14 @@ const LetterRoundResults = ({
 							</tbody>
 						</table>
 					</section>
-					{/* <div className='points-container'>
-				<h2>{gotNineLetterWord === '' ? 0 : 10}</h2>
-				<p>points</p>
-			</div> */}
 					<div className='points-container'>
 						<h2 className='share-letter-round-points'>
-							{/* {nineLetterWords.length * 20 +
-							eightLetterWords.length * 13 +
-							sevenLetterWords.length * 10 +
-							sixLetterWords.length * 7 +
-							fiveLetterWords.length * 5 +
-							fourLetterWords.length * 3 +
-							threeLetterWords.length * 1} */}
 							{allLetterRoundUserWords.reduce((accumulator, object) => {
 								return accumulator + object.score;
 							}, 0)}
 						</h2>
 						<p>points</p>
 					</div>
-
-					{/* <p className='letter-round-user-result'>
-						{}
-				</p> */}
 					{(() => {
 						if (
 							allLetterRoundUserWords.reduce((accumulator, object) => {
@@ -637,7 +558,6 @@ const LetterRoundResults = ({
 							console.log('bad');
 						}
 					})()}
-
 					<ResultsFooter
 						isNextDayCountdownActive={isNextDayCountdownActive}
 						shareMobile={shareMobile}
@@ -650,34 +570,8 @@ const LetterRoundResults = ({
 					setMessage={setMessage}
 					url='/'
 				/>
-				{/* <button
-					className='results-home-btn'
-					onClick={() => {
-						playButton();
-						setMessage('play again?');
-						navigate('/');
-						setAllLetterRoundUserWords([]);
-						setGameLetters([]);
-					}}
-				>
-					HOME
-				</button> */}
 			</LetterRoundContextProvider>
 		</>
-		// <StyledLetterRoundResults className={isTimeUp === true ? 'results show' : 'results'}>
-		// 	<p className='results-header'>GAME OVER - RESULTS</p>
-
-		// 	<button
-		// 		className={
-		// 			gameNumbers.length === 6
-		// 				? 'close-results-btn show'
-		// 				: 'close-results-btn'
-		// 		}
-		// 		onClick={closeResults}
-		// 	>
-		// 		HOME
-		// 	</button>
-		// </StyledLetterRoundResults>
 	);
 };
 const StyledLetterRoundResults = styled.section`
@@ -689,7 +583,6 @@ const StyledLetterRoundResults = styled.section`
 	padding: 1rem 2rem;
 	transition: all 300ms ease-in;
 	flex: 1;
-	/* color: red !important; */
 	h2 {
 		font-family: 'Bebas Neue', cursive;
 		display: flex;
@@ -715,7 +608,7 @@ const StyledLetterRoundResults = styled.section`
 				line-height: 1;
 				color: ${({ theme }) => theme.bgChosen};
 				&:last-child {
-					font-family: 'Montserrat';
+					font-family: 'Montserrat', sans-serif;
 					text-transform: capitalize;
 					font-size: 1.2rem;
 					font-weight: 400;
@@ -747,7 +640,6 @@ const StyledLetterRoundResults = styled.section`
 			th {
 				font-weight: lighter;
 			}
-
 			tr {
 				td {
 					padding: 0rem 0.2rem;
@@ -773,7 +665,6 @@ const StyledLetterRoundResults = styled.section`
 			th {
 				font-weight: lighter;
 			}
-
 			tr {
 				td {
 					padding: 0rem 0.2rem;
@@ -837,12 +728,10 @@ const StyledLetterOutput = styled.div`
 	.results-card.visible .results-card-front {
 		transform: rotateY(0);
 	}
-
 	.results-card-back {
 		font-size: 3rem;
 		outline: none;
 		background-color: ${({ theme }) => theme.bgTile};
-
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
