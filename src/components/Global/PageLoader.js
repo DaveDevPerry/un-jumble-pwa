@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 // import { ConundrumContext } from '../../contexts/ConundrumContext';
 import styled from 'styled-components';
 // import { useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
+// import { gsap } from 'gsap';
 
 const PageLoader = () => {
 	// let navigate = useNavigate();/
@@ -31,16 +31,30 @@ const PageLoader = () => {
 				jumpLetter(i);
 			}
 		}, 3200);
+		setTimeout(() => {
+			rotateContainer();
+		}, 4200);
 
-		gsap.to(
-			pageRef.current,
-			{
-				y: '-100%',
-				duration: 1.5,
-				ease: 'Linear'.easeNone,
-			},
-			'+=5'
-		);
+		// gsap.to(
+		// 	pageRef.current,
+		// 	{
+		// 		rotationZ: 90,
+		// 		// transformOrigin: '50% 50%',
+		// 		duration: 1.5,
+		// 		ease: 'Linear'.easeNone,
+		// 	},
+		// 	'+=5'
+		// );
+
+		// gsap.to(
+		// 	pageRef.current,
+		// 	{
+		// 		y: '-100%',
+		// 		duration: 1.5,
+		// 		ease: 'Linear'.easeNone,
+		// 	},
+		// 	'+=5'
+		// );
 	}, []);
 
 	// setTimeout(() => {
@@ -107,9 +121,9 @@ const PageLoader = () => {
 			// loaderLetterTiles[i].classList.add('jump');
 		}, 100 * i);
 		// });
-		// setTimeout(() => {
-		//   loaderLetterTiles
-		// }, 200)
+	};
+	const rotateContainer = () => {
+		document.querySelector('.load-screen').classList.add('rotate');
 	};
 	return (
 		<>
@@ -185,6 +199,13 @@ const StyledPageLoader = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	row-gap: 2rem;
+	/* perspective: 500px; */
+	transition: all 400ms linear;
+	transform: rotateY(0deg);
+
+	&.rotate {
+		transform: rotateY(-90deg);
+	}
 	.loader-grid {
 		width: 100%;
 		display: grid;
@@ -246,6 +267,7 @@ const StyledPageLoader = styled.div`
 	&.close {
 		display: none;
 	}
+
 	@keyframes jump {
 		0%,
 		100% {
