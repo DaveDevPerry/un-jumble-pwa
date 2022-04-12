@@ -133,7 +133,6 @@ const ConundrumGame = ({
 					conundrumGameMode={conundrumGameMode}
 				/>
 			</ConundrumContextProvider>
-			<UserWordsDisplay currentWord={currentWord} />
 			<div className='back-btn-container'>
 				<div className='button'>
 					<button className='btn-back btn-cta' onClick={handleStartGame}>
@@ -149,6 +148,7 @@ const ConundrumGame = ({
 					</button>
 				</div>
 			</div>
+			<UserWordsDisplay currentWord={currentWord} />
 			<ConundrumUserLetterCards
 				currentWord={currentWord}
 				setCurrentWord={setCurrentWord}

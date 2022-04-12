@@ -24,10 +24,10 @@ const UserWordsDisplay = ({ allAnagramUserWords }) => {
 const StyledWordsDisplay = styled.section`
 	background-color: ${({ theme }) => theme.syntax};
 	padding: 1rem 2rem;
-	border-radius: 10px;
+	border-radius: 5px;
 	width: 100%;
 	flex: 1;
-	border: 6px solid ${({ theme }) => theme.bgChosen};
+	/* border: 6px solid ${({ theme }) => theme.bgChosen}; */
 	ul {
 		list-style: none;
 		font-size: 3rem;

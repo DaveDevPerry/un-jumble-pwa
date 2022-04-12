@@ -24,11 +24,12 @@ const StyledWordsDisplay = styled.section`
 	/* flex: 1; */
 	/* border: 6px solid ${({ theme }) => theme.bgChosen}; */
 	.update-current-word-elem {
-		font-size: 4rem;
+		font-size: 3rem;
 		text-transform: uppercase;
 		color: ${({ theme }) => theme.bgChosen};
 		font-family: 'Bebas Neue', cursive;
-		font-weight: 800;
+		font-weight: 100;
+		letter-spacing: 2px;
 	}
 `;
 

@@ -10,10 +10,11 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 	const { conundrums } = useContext(ConundrumContext);
 	// NEEDS TO MAP FROM LAST 6 DAYS OF RESULTS
 	return conundrums.length ? (
-		<StyledWeeksResultsTable>
-			<table>
-				<caption>Previous results</caption>
-				<tbody>
+		<StyledWeeksResultsContainer>
+			<StyledWeeksResultsTable>
+				<table className='table-spacing'>
+					<caption>Previous results</caption>
+					{/* <tbody> */}
 					{/* sort by date, then filter out last 6 */}
 					{conundrums
 						// FILTER BY LEVEL
@@ -69,68 +70,81 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 														{letter}
 													</div>
 												</div>
-											);
-										})}
-									</StyledLetterOutput>
-								</td>
-								<td>
-									{conundrum.isCorrect === true ? (
+												);
+											})}
+											</StyledLetterOutput>
+											</td>
+											<td>
+											{conundrum.isCorrect === true ? (
 										<GiCheckMark size='18px' color='#004600' />
 									) : (
 										<GiCrossMark size='18px' color='#8a0202' />
 									)}
 								</td>
 							</tr>
-						);
+							);
 					})} */}
-				</tbody>
-			</table>
-		</StyledWeeksResultsTable>
+					{/* </tbody> */}
+				</table>
+			</StyledWeeksResultsTable>
+		</StyledWeeksResultsContainer>
 	) : (
-		<StyledWeeksResultsTable>
-			<p>no player history data yet</p>
-		</StyledWeeksResultsTable>
+		<StyledWeeksResultsContainer>
+			<StyledWeeksResultsTable>
+				<p>no player history data yet</p>
+			</StyledWeeksResultsTable>
+		</StyledWeeksResultsContainer>
 	);
 };
+const StyledWeeksResultsContainer = styled.div`
+	flex: 1;
+`;
 const StyledWeeksResultsTable = styled.section`
 	padding: 1rem;
 	background-color: ${({ theme }) => theme.bgTile};
 	border-radius: 5px;
 	display: flex;
 	justify-content: center;
-	/* flex: 1; */
+	flex: 1;
 	table {
 		width: 100%;
+		/* height: 100%; */
 		/* border-spacing: 2rem; */
-
+		/* flex: 1; */
 		/* border: 1px solid white; */
-		/* border-collapse: separate; */
+		/* border-collapse: separate;
+		border-spacing: 0px; */
 		/* border-spacing: 0px 30px; */
+		/* border-collapse: collapse; */
+		&.table-spacing {
+			/* border-collapse: separate;
+			border-spacing: 5px 20px; */
+		}
 		caption {
 			font-size: 2.2rem;
 			/* margin-top: 0.5rem; */
 			margin-bottom: 0.2rem;
 		}
-		tbody {
-			tr {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				column-gap: 1rem;
-				/* border-spacing: 0px 30px; */
-				padding: 0.2rem 0rem;
-				/* border-collapse: separate;
+		/* tbody { */
+		tr {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			column-gap: 1rem;
+			/* border-spacing: 0px 30px; */
+			padding: 0.2rem 0rem;
+			/* border-collapse: separate;
 				border-spacing: 0px 15px; */
-				td {
-					/* border-spacing: 30px; */
-					/* align-self: center; */
-					/* font-weight: 100; */
-					&:nth-child(2) {
-						flex: 1;
-					}
+			td {
+				/* border-spacing: 30px; */
+				/* align-self: center; */
+				/* font-weight: 100; */
+				&:nth-child(2) {
+					flex: 1;
 				}
 			}
 		}
+		/* } */
 	}
 `;
 // const StyledWordsDisplay = styled.section`
