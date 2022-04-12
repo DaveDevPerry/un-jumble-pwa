@@ -201,6 +201,7 @@ function App() {
 											conundrumGameMode={conundrumGameMode}
 											isConundrumCorrect={isConundrumCorrect}
 											setIsConundrumCorrect={setIsConundrumCorrect}
+											setMessage={setMessage}
 											// conundrumGameMode={conundrumGameMode}
 										/>
 									}
@@ -246,6 +247,7 @@ function App() {
 											allAnagramUserWords={allAnagramUserWords}
 											setAllAnagramUserWords={setAllAnagramUserWords}
 											setPageTitle={setPageTitle}
+											setMessage={setMessage}
 										/>
 									}
 								/>
@@ -318,6 +320,7 @@ function App() {
 											sortedWordsByLengthArray={sortedWordsByLengthArray}
 											setSortedWordsByLengthArray={setSortedWordsByLengthArray}
 											setPageTitle={setPageTitle}
+											setMessage={setMessage}
 										/>
 									}
 								/>

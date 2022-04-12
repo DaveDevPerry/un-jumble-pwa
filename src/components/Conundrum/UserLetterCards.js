@@ -11,6 +11,7 @@ const ConundrumUserLetterCards = ({
 	setConundrum,
 	setMessage,
 	setIsConundrumCorrect,
+	conundrumGameMode,
 }) => {
 	let navigate = useNavigate();
 
@@ -39,6 +40,8 @@ const ConundrumUserLetterCards = ({
 	};
 
 	const handleSubmit = (e) => {
+		if (currentWord.length !== conundrumGameMode)
+			return setMessage('Use all letters!');
 		e.preventDefault();
 		checkWord();
 		// setMessage('');

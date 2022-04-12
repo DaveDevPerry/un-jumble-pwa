@@ -26,7 +26,7 @@ const ConundrumGame = ({
 }) => {
 	useEffect(() => {
 		console.log('conundrum game render');
-		setPageTitle(`conundrum Level ${conundrumGameMode}`);
+		setPageTitle(`conundrum: Level ${conundrumGameMode}`);
 		// setPageTitle('conundrum');
 	}, [setPageTitle, conundrumGameMode]);
 	let navigate = useNavigate();
@@ -158,6 +158,7 @@ const ConundrumGame = ({
 				setConundrum={setConundrum}
 				setMessage={setMessage}
 				setIsConundrumCorrect={setIsConundrumCorrect}
+				conundrumGameMode={conundrumGameMode}
 			/>
 		</StyledConundrumGame>
 	);

@@ -164,12 +164,19 @@ const AnagramRoundGame = ({
 		setAllAnagramUserWords([
 			...allAnagramUserWords,
 			{
+				// word: currentAnagramWord,
 				word: currentTargetWord,
 				score: -1,
 				isCorrect: false,
 			},
 		]);
+		setCurrentTargetWord(
+			allCurrentTargetWords[
+				Math.floor(Math.random() * allCurrentTargetWords.length)
+			]
+		);
 		setCurrentAnagramWord('');
+		setCurrentTargetWord('');
 		document.querySelectorAll('.card-front').forEach((tile) => {
 			tile.classList.remove('active');
 			tile.style.pointerEvents = 'initial';
@@ -192,7 +199,7 @@ const AnagramRoundGame = ({
 	const checkWord = () => {
 		console.log('current anagram word', currentAnagramWord);
 		if (!dictionary.includes(currentAnagramWord)) {
-			console.log('wrong');
+			console.log('wrong', currentTargetWord, currentAnagramWord);
 			const wrongWordMessages = [
 				"that's not a word!",
 				"I don't think so!",
@@ -206,6 +213,7 @@ const AnagramRoundGame = ({
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
+					// word: currentAnagramWord,
 					word: currentTargetWord,
 					score: -1,
 					isCorrect: false,
@@ -213,7 +221,7 @@ const AnagramRoundGame = ({
 			]);
 		}
 		if (dictionary.includes(currentAnagramWord)) {
-			console.log('right');
+			console.log('right', currentTargetWord, currentAnagramWord);
 			const correctWordMessages = [
 				"that's a good one!",
 				'correct!',
@@ -235,8 +243,15 @@ const AnagramRoundGame = ({
 				},
 			]);
 		}
+		console.log('pre reset word', currentTargetWord, currentAnagramWord);
 		resetWord();
+		console.log('post reset word', currentTargetWord, currentAnagramWord);
 		getNewWord();
+		console.log(
+			'rightpost get new word',
+			currentTargetWord,
+			currentAnagramWord
+		);
 	};
 	// updates ui with letter chosen by user
 	useEffect(() => {

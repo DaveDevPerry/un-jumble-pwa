@@ -10,6 +10,9 @@ const UserWordsDisplay = ({ allAnagramUserWords }) => {
 						<li key={userWord.word + index}>
 							<p className={userWord.isCorrect === false ? 'strike' : ''}>
 								{userWord.word}
+								{/* {allAnagramUserWords.length === 0
+									? ''
+									: allAnagramUserWords[index - 1].word} */}
 							</p>
 						</li>
 					);

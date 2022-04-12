@@ -45,6 +45,7 @@ const NewConundrumForm = ({
 		// setWordOfTheDay('');
 		// setIsCorrect(false);
 		setTimeout(() => {
+			// setMessage('play another?');
 			navigate('/');
 		}, 100);
 	};

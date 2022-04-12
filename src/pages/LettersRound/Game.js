@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import CurrentWordDisplay from '../../components/LettersRound/CurrentWordDisplay';
 // import ClockTimer from '../../components/LettersRound/ClockTimer';
 // import GamePanel from '../../components/LettersRound/GamePanel';
 import NewDigitalTimer from '../../components/LettersRound/NewDigitalTimer';
@@ -251,6 +252,7 @@ const LetterRoundGame = ({
 				handleLetterRoundStart={handleLetterRoundStart}
 				setMessage={setMessage}
 			/>
+			<CurrentWordDisplay currentLetterRoundWord={currentLetterRoundWord} />
 			{/* <GamePanel
 				// handleStart={handleStart}
 				handleLetterRoundStart={handleLetterRoundStart}

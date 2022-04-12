@@ -658,74 +658,43 @@ const LetterRoundResults = ({
 					<p>points</p>
 				</div>
 
-				<p className='letter-round-user-result'>
-					{allLetterRoundUserWords.reduce((accumulator, object) => {
-						return accumulator + object.score;
-					}, 0) > 20
-						? 'EXCELLENT'
-						: 'GOOD JOB'}
-				</p>
-
-				{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
-				{/* <StyledSmallNumberOutput>
-				{wordOfTheDayArray.map((letter, index) => {
-					return (
-						<div key={index} className='card'>
-							<div className='card-back card-number'>{letter}</div>
-							<div className='card-front card-number'>&nbsp;</div>
-						</div>
-					);
-				})}
-
-			
-	
-			</StyledSmallNumberOutput> */}
-				{/* <table id="letter-round-results-table">
-		<thead>
-			<th>word</th>
-			<th>letters</th>
-		</thead>
-	</table> */}
-				{/* <ul className='best-attempt'>
-				<li>
-					{
-						allLetterRoundUserWords.sort(function (a, b) {
-							return b[1] - a[1];
-						})[0]
+				{/* <p className='letter-round-user-result'>
+						{}
+				</p> */}
+				{(() => {
+					if (
+						allLetterRoundUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0) < 0
+					) {
+						return <p className='letter-round-user-result'>oh dear</p>;
+					} else if (
+						allLetterRoundUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0) < 8
+					) {
+						return <p className='letter-round-user-result'>not bad</p>;
+					} else if (
+						allLetterRoundUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0) < 20
+					) {
+						return <p className='letter-round-user-result'>good</p>;
+					} else if (
+						allLetterRoundUserWords.reduce((accumulator, object) => {
+							return accumulator + object.score;
+						}, 0) >= 20
+					) {
+						return <p className='letter-round-user-result'>excellent</p>;
+					} else {
+						console.log('bad');
 					}
-				</li>
-				
-			</ul> */}
-				{/* <div className='points-container'>
-				<h2>10</h2>
-				<p>points</p>
-			</div> */}
-				{/* <div className='rank-container'>
-					<p>RANKED: 560th</p>
-				</div> */}
+				})()}
+
 				<ResultsFooter
 					isNextDayCountdownActive={isNextDayCountdownActive}
 					shareMobile={shareMobile}
 				/>
-
-				{/* <div className='wrapper'>
-					<div className='next-wrapper'>
-						<p>Next Game</p>
-						<NextGameCountdown
-							isNextDayCountdownActive={isNextDayCountdownActive}
-						/>
-					</div>
-					<div className='share-wrapper-whatsapp'>
-						<button className='share-btn-whatsapp' onClick={shareMobile}>
-						
-							<BsFillShareFill size='20px' />
-							<BsWhatsapp size='25px' />
-						</button>
-						{/* <button id='share-btn'>
-						<p>Share</p>
-						<BsFillShareFill size='16px' />
-					</div>
-				</div> */}
 			</StyledLetterRoundResults>
 			<button
 				className='results-home-btn'

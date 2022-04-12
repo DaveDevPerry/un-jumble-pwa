@@ -41,6 +41,7 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 											<p
 												className={userWord.isCorrect === false ? 'strike' : ''}
 											>
+												{/* {allAnagramUserWords[index - 1].word} */}
 												{userWord.word}
 											</p>
 										</li>

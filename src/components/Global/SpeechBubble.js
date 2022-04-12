@@ -17,7 +17,7 @@ const SpeechBubble = ({ message }) => {
 	return (
 		<>
 			<StyledSpeechBubble className='footer-speech-bubble'>
-				<q>{message}</q>
+				{message}
 				{/* <p>{message}</p> */}
 			</StyledSpeechBubble>
 		</>

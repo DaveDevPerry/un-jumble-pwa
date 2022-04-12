@@ -25,14 +25,14 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 							return b.date > a.date;
 						})
 						// return last 6
-						.slice(-3)
+						.slice(-6)
 						// .filter((item) => {
 						// 	return item
 						// })
 						.map((conundrum, index) => {
 							return (
 								<tr key={index}>
-									<td>{conundrum.date}</td>
+									<td>{conundrum.date.substring(0, 5)}</td>
 									<td>
 										<StyledLetterOutput>
 											{conundrum.wordOfTheDay.split('').map((letter, index) => {
@@ -98,8 +98,9 @@ const StyledWeeksResultsTable = styled.section`
 	border-radius: 5px;
 	display: flex;
 	justify-content: center;
+	/* flex: 1; */
 	table {
-		/* width: 100%; */
+		width: 100%;
 		/* border-spacing: 2rem; */
 
 		/* border: 1px solid white; */
@@ -123,6 +124,7 @@ const StyledWeeksResultsTable = styled.section`
 				td {
 					/* border-spacing: 30px; */
 					/* align-self: center; */
+					/* font-weight: 100; */
 					&:nth-child(2) {
 						flex: 1;
 					}
@@ -156,14 +158,17 @@ const StyledWeeksResultsTable = styled.section`
 // `;
 const StyledLetterOutput = styled.div`
 	display: grid;
-	justify-content: center;
+	/* justify-content: center; */
 	grid-template-columns: repeat(var(--letter-count), 1fr);
 	grid-template-rows: repeat(1, auto);
 	border-radius: 5px;
 	/* perspective: 500px; */
 	gap: 0.1rem;
+	/* width: 100%; */
+	/* flex: 1; */
 	.results-card {
 		position: relative;
+		/* flex: 1; */
 		/* display: grid;
 		place-content: center; */
 	
@@ -175,6 +180,7 @@ const StyledLetterOutput = styled.div`
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
+		flex: 1;
 		/* backface-visibility: hidden; */
 		/* transition: transform 500ms ease-in-out; */
 	/* } */
