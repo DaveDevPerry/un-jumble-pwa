@@ -16,16 +16,16 @@ import Home from './pages/Home';
 // import ConundrumHome from './pages/Conundrum/Home';
 import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
-import ConundrumRules from './pages/Conundrum/Rules';
+// import ConundrumRules from './pages/Conundrum/Rules';
 // LETTER ROUND
 // import LetterRoundHome from './pages/LettersRound/Home';
-import LetterRoundRules from './pages/LettersRound/Rules';
+// import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
 import LetterRoundResults from './pages/LettersRound/Results';
 // ANAGRAM - UNSCRAMBLE
 // import AnagramRoundHome from './pages/Anagrams/Home';
-import AnagramRoundRules from './pages/Anagrams/Rules';
+// import AnagramRoundRules from './pages/Anagrams/Rules';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
@@ -149,10 +149,10 @@ function App() {
 									/>
 								}
 							/>
-							<Route
+							{/* <Route
 								path='/conundrum/rules'
 								element={<ConundrumRules setPageTitle={setPageTitle} />}
-							/>
+							/> */}
 							<Route
 								path='/conundrum/game'
 								element={
@@ -195,10 +195,10 @@ function App() {
 								}
 							/>
 							{/* anagram round  */}
-							<Route
+							{/* <Route
 								path='/anagramround/rules'
 								element={<AnagramRoundRules setPageTitle={setPageTitle} />}
-							/>
+							/> */}
 							<Route
 								path='/anagramround/game'
 								element={
@@ -239,10 +239,10 @@ function App() {
 								}
 							/>
 							{/* letter round  */}
-							<Route
+							{/* <Route
 								path='/letterround/rules'
 								element={<LetterRoundRules setPageTitle={setPageTitle} />}
-							/>
+							/> */}
 							<Route
 								path='/selectletters'
 								element={
