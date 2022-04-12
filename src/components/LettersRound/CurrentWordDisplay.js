@@ -21,8 +21,6 @@ const StyledWordsDisplay = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	/* border: 6px solid ${({ theme }) => theme.bgChosen}; */
 	.update-current-word-elem {
 		font-size: 3rem;
 		text-transform: uppercase;

@@ -2,148 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const UserLetterCards = ({
-	currentLetterRoundWord,
-	setCurrentLetterRoundWord,
-	dictionary,
-	setAllLetterRoundUserWords,
-	allLetterRoundUserWords,
 	gameLetters,
 	handleLetter,
 	handleReset,
 	handleSubmit,
-	setLetterRoundLongestWord,
-	letterRoundLongestWord,
-	setGotNineLetterWord,
-	setLetterRoundData,
-	letterRoundData,
-	sortedWordsByLengthArray,
-	setSortedWordsByLengthArray,
-	setNineLetterWords,
-	setEightLetterWords,
-	setSevenLetterWords,
-	setSixLetterWords,
-	setFiveLetterWords,
-	setFourLetterWords,
-	setThreeLetterWords,
 }) => {
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	if (currentLetterRoundWord.length < 3) return;
-	// 	checkWord();
-	// 	// reset tiles
-	// 	const tiles = document.querySelectorAll('.card-front');
-	// 	tiles.forEach((tile) => {
-	// 		tile.classList.remove('active');
-	// 		tile.style.pointerEvents = 'initial';
-	// 	});
-	// 	setCurrentLetterRoundWord('');
-	// };
-	// const handleReset = (e) => {
-	// 	e.preventDefault();
-	// 	setCurrentLetterRoundWord('');
-	// 	const tiles = document.querySelectorAll('.card-front');
-	// 	tiles.forEach((tile) => {
-	// 		tile.classList.remove('active');
-	// 		tile.style.pointerEvents = 'initial';
-	// 	});
-	// };
-	// const tileAudio = () => {
-	// 	const audio = new Audio('/audio/tile.mp3');
-	// 	audio.play();
-	// };
-
-	// const handleLetter = (e) => {
-	// 	tileAudio();
-	// 	e.preventDefault();
-	// 	console.log(e.target.textContent);
-	// 	if (e.target.classList.contains('active')) {
-	// 		e.target.classList.remove('active');
-	// 		e.target.style.pointerEvents = 'initial';
-	// 	} else {
-	// 		e.target.classList.add('active');
-	// 		e.target.style.pointerEvents = 'none';
-	// 	}
-	// 	setCurrentLetterRoundWord((currentLetterRoundWord += e.target.textContent));
-	// };
-
-	// checks validity of word and displays relative msg
-	// const checkWord = () => {
-	// 	console.log('current word', currentLetterRoundWord);
-	// 	if (!dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-	// 		console.log('wrong');
-	// 		const currentWordPoints = parseInt('-' + getWordScore());
-	// 		setAllLetterRoundUserWords([
-	// 			...allLetterRoundUserWords,
-	// 			{
-	// 				word: currentLetterRoundWord,
-	// 				score: currentWordPoints,
-	// 				isCorrect: false,
-	// 			},
-	// 		]);
-	// 	}
-	// 	if (dictionary.includes(currentLetterRoundWord.toLowerCase())) {
-	// 		console.log('right');
-	// 		const currentWordPoints = getWordScore();
-	// 		setAllLetterRoundUserWords([
-	// 			...allLetterRoundUserWords,
-	// 			{
-	// 				word: currentLetterRoundWord,
-	// 				score: currentWordPoints,
-	// 				isCorrect: true,
-	// 			},
-	// 		]);
-
-	// 		// updateLS({
-	// 		// 	word: currentLetterRoundWord,
-	// 		// 	length: currentLetterRoundWord.length,
-	// 		// });
-	// 		// works
-	// 		// updateLS({
-	// 		// 	word: currentLetterRoundWord,
-	// 		// 	length: currentLetterRoundWord.length,
-	// 		// });
-
-	// 		// later
-	// 		// if (currentLetterRoundWord.length > letterRoundLongestWord.length) {
-	// 		// 	setLetterRoundLongestWord(currentLetterRoundWord);
-	// 		// }
-	// 		// if (currentLetterRoundWord.length === 9) {
-	// 		// 	setGotNineLetterWord(setCurrentLetterRoundWord);
-	// 		// }
-	// 		// return;
-	// 	}
-	// };
-
-	// const getWordScore = () => {
-	// 	let newWordScore = 0;
-	// 	switch (currentLetterRoundWord.length) {
-	// 		case 9:
-	// 			newWordScore = 20;
-	// 			break;
-	// 		case 8:
-	// 			newWordScore = 13;
-	// 			break;
-	// 		case 7:
-	// 			newWordScore = 10;
-	// 			break;
-	// 		case 6:
-	// 			newWordScore = 7;
-	// 			break;
-	// 		case 5:
-	// 			newWordScore = 5;
-	// 			break;
-	// 		case 4:
-	// 			newWordScore = 3;
-	// 			break;
-	// 		case 3:
-	// 			newWordScore = 1;
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-	// 	return newWordScore;
-	// };
-
 	return (
 		<StyledUserLetterCards>
 			<div className='row-btns-container'>
@@ -159,13 +22,6 @@ const UserLetterCards = ({
 						Submit
 					</button>
 				</div>
-
-				{/* <button className='start-btns-container' onClick={handleReset}>
-					reset
-				</button>
-				<button className='start-btns-container' onClick={handleSubmit}>
-					Submit
-				</button> */}
 			</div>
 			<StyledLetterOutput>
 				{gameLetters.map((letter, index) => {
@@ -179,27 +35,6 @@ const UserLetterCards = ({
 					);
 				})}
 			</StyledLetterOutput>
-
-			{/* <StyledLetterOutput>
-				{wordOfTheDay.split('').map((letter, index) => {
-					return (
-						<div key={index} className='card'>
-							<div className='card-back card-letter'>&nbsp;</div>
-							<div className='card-front card-letter'>{letter}</div>
-						</div>
-					);
-				})}
-			</StyledLetterOutput> */}
-			{/* <StyledLetterOutput>
-				{wordOfTheDay.map((letter, index) => {
-					return (
-						<div key={index} className='card'>
-							<div className='card-back card-letter'>&nbsp;</div>
-							<div className='card-front card-letter'>{letter}</div>
-						</div>
-					);
-				})}
-			</StyledLetterOutput> */}
 		</StyledUserLetterCards>
 	);
 };
@@ -219,7 +54,6 @@ const StyledUserLetterCards = styled.div`
 		flex: 1;
 		&.small-btn {
 			height: 34px;
-			/* font-size: 2.5rem; */
 		}
 		&.small-btn > button {
 			height: 34px;
@@ -244,38 +78,25 @@ const StyledUserLetterCards = styled.div`
 	}
 	.button.visible .btn-back {
 		transform: rotateX(-180deg);
-		/* background-color: pink; */
 	}
 	.button.visible .btn-front {
 		transform: rotateX(0);
 	}
-	/* .card.matched .card-value {
-	animation: correct 1s linear forwards 500ms;
-} */
-
 	.btn-back {
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
 		font-size: 2rem;
-		/* border: 1px solid white; */
 		outline: none;
 		background-color: ${({ theme }) => theme.bgTile};
 		color: ${({ theme }) => theme.bgTile};
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
-		/* border-radius: 5px; */
 	}
 	.btn-front {
-		/* border: 1px solid white; */
 		font-size: 3rem;
-		/* border: 1px solid white; */
 		outline: none;
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
-		/* color: ${({ theme }) => theme.bgChosen}; */
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
-		/* border-radius: 5px; */
 		transform: rotateX(180deg);
 		background-color: ${({ theme }) => theme.bgChosen};
 		color: ${({ theme }) => theme.syntax};
@@ -283,11 +104,6 @@ const StyledUserLetterCards = styled.div`
 			background-color: ${({ theme }) => theme.bgChosen};
 		}
 	}
-	/* .start-btns-container {
-		width: 100%;
-		margin-bottom: 1rem;
-	} */
-	/* padding: 0 2rem; */
 `;
 const StyledLetterOutput = styled.div`
 	display: grid;
@@ -318,29 +134,21 @@ const StyledLetterOutput = styled.div`
 		transform: rotateY(0);
 	}
 	.card-back {
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
 		font-size: 2rem;
-		/* border: 1px solid white; */
 		outline: none;
 		background-color: ${({ theme }) => theme.bgChosen};
 		color: ${({ theme }) => theme.bgChosen};
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
-		/* border-radius: 5px; */
 	}
 	.card-front {
-		/* border: 1px solid white; */
 		font-size: 3rem;
-		/* border: 1px solid white; */
 		outline: none;
-		/* background-color: ${({ theme }) => theme.bgChosen}; */
-		/* color: ${({ theme }) => theme.bgChosen}; */
 		cursor: pointer;
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
-		/* border-radius: 5px; */
 		transform: rotateY(180deg);
 		background-color: ${({ theme }) => theme.bgTile};
 		color: ${({ theme }) => theme.syntax};
@@ -348,62 +156,6 @@ const StyledLetterOutput = styled.div`
 			background-color: ${({ theme }) => theme.bgChosen};
 		}
 	}
-	/* .card-value {
-	transition: transform 100ms ease-in-out;
-	transform: scale(1);
-}
-.card-front:hover .card-value {
-	transform: scale(1);
-} */
-
-	/* .game-number {
-		font-size: 2rem;
-		border: 1px solid white;
-		outline: none;
-		background-color: ${({ theme }) => theme.bgChosen};
-		color: ${({ theme }) => theme.bgChosen};
-		display: grid;
-		place-content: center;
-		border-radius: 5px;
-
-		&.flip {
-			animation: 0.5s linear flipping;
-			background-color: ${({ theme }) => theme.bgNumber};
-			color: ${({ theme }) => theme.syntax};
-			&:nth-child(2) {
-				animation-delay: 300ms;
-			}
-			&:nth-child(3) {
-				animation-delay: 600ms;
-			}
-			&:nth-child(4) {
-				animation-delay: 900ms;
-			}
-			&:nth-child(5) {
-				animation-delay: 1.2s;
-			}
-			&:last-child {
-				animation-delay: 1.5s;
-			}
-		}
-	}
-	@keyframes flipping {
-		0% {
-			transform: rotateX(0deg);
-			background-color: ${({ theme }) => theme.bgChosen};
-			color: ${({ theme }) => theme.bgChosen};
-		}
-		50% {
-			transform: rotateX(90deg);
-			background-color: ${({ theme }) => theme.bgNumber};
-			color: ${({ theme }) => theme.syntax};
-		}
-		100% {
-			transform: rotateX(0deg);
-			background-color: ${({ theme }) => theme.bgNumber};
-			color: ${({ theme }) => theme.syntax};
-		}
-	} */
 `;
 
 export default UserLetterCards;

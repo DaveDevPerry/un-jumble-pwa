@@ -8,7 +8,6 @@ const LetterCards = ({
 	setLetterTypes,
 	letterTypes,
 }) => {
-	// const [vowels, setVowels] = useState([]);
 	const [consonants, setConsonants] = useState(
 		[
 			'N',
@@ -122,32 +121,19 @@ const LetterCards = ({
 		new Audio('/audio/tile.mp3').play();
 	};
 
-	// const [consonants, setConsonants] = useState([])
 	const handlePickVowel = (e) => {
 		playTile();
-
-		console.log(vowels, setVowels);
-		// const currentVowel = vowels.pop();
+		console.log(setVowels, setConsonants);
 		e.preventDefault();
 		if (vowelCount === 5) {
 			document.querySelector('.vowel-btn').style.pointerEvents = 'none';
 		}
-		// if(vowelCount === 5){
-		// 	document.querySelectorAll('.vowel-btn').forEach((card) => {
-		// 		card.style.pointerEvents = 'none';
-		// })
 		setGameLetters([...gameLetters, vowels.pop()]);
 		setLetterTypes([...letterTypes, 'V']);
 		setVowelCount(vowelCount + 1);
-		console.log(vowelCount, 'vowel count');
-		// const count = letterTypes.reduce((accumulator, value) => {
-		// 	return { ...accumulator, [value]: (accumulator[value] || 0) + 1 };
-		// }, {});
-		// console.log(count);
 	};
 	const handlePickConsonant = (e) => {
 		playTile();
-		console.log(consonants, setConsonants);
 		e.preventDefault();
 		if (consonantCount === 6) {
 			document.querySelector('.consonant-btn').style.pointerEvents = 'none';
@@ -156,7 +142,6 @@ const LetterCards = ({
 		setLetterTypes([...letterTypes, 'C']);
 		setConsonantCount(consonantCount + 1);
 	};
-
 	if (gameLetters.length === 9) {
 		document.querySelectorAll('.letter-btn').forEach((card) => {
 			card.style.pointerEvents = 'none';
@@ -201,52 +186,18 @@ const LetterCards = ({
 					</button>
 				</StyledConsonantContainer>
 			</StyledLetterCards>
-			{/* <StyledLetterCards>
-				<StyledVowelContainer className='vowel-container'>
-					<button className='letter-btn vowel-btn' onClick={handlePickVowel}>
-						VOWEL
-					</button>
-				</StyledVowelContainer>
-				<StyledConsonantContainer className='consonant-container'>
-					<button
-						className='letter-btn consonant-btn'
-						onClick={handlePickConsonant}
-					>
-						Consonant
-					</button>
-				</StyledConsonantContainer>
-			</StyledLetterCards> */}
-			{/* <div className='letter-choice-msg-container'>
-				{consonantCount < 7 && vowelCount < 6 ? (
-					<p className='letter-choice-msg'>MIN 3 VOWELS & 4 CONSONANTS</p>
-				) : (
-					<p className='letter-choice-msg'>
-						{consonantCount === 7 && gameLetters.length !== 9
-							? 'THE REST MUST BE VOWELS'
-							: ' '}
-						{vowelCount === 6 && gameLetters.length !== 9
-							? 'THE REST MUST BE CONSONANTS'
-							: ' '}
-					</p>
-				)}
-
-		
-			</div> */}
 		</>
 	);
 };
 const StyledLetterCards = styled.div`
-	/* padding: 1rem 0rem; */
 	display: flex;
 	justify-content: space-between;
 	column-gap: 1rem;
-	/* margin-bottom: 3rem; */
 `;
 const StyledVowelContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* align-items: center; */
 	row-gap: 0.5rem;
 	flex: 1;
 	background-color: ${({ theme }) => theme.bgTile};
@@ -263,39 +214,17 @@ const StyledVowelContainer = styled.div`
 				font-size: 4rem;
 				color: ${({ theme }) => theme.bgChosen};
 				font-family: 'Bebas Neue', cursive;
-				/* line-height: 5rem; */
 				font-weight: 800;
 				text-align: center;
 				line-height: 1;
-				/* display: grid;
-				place-content: center; */
 			}
 		}
 	}
-	/* background-color: ${({ theme }) => theme.bgNumber}; */
-	/* border-radius: 5px; */
-	/* background-color: ${({ theme }) => theme.bgChosen}; */
-	/* font-size: 3rem; */
-	/* border-radius: 5px; */
-	/* padding: 0 1rem; */
-	/* flex: 1; */
-	/* display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: ${({ theme }) => theme.bgNumber};
-	border-radius: 5px;
-	background-color: ${({ theme }) => theme.bgChosen};
-	font-size: 3rem;
-	border-radius: 5px;
-	padding: 0 1rem;
-	flex: 1; */
 `;
 const StyledConsonantContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/* align-items: center; */
 	flex: 1;
 	row-gap: 0.5rem;
 	background-color: ${({ theme }) => theme.bgTile};
@@ -312,33 +241,12 @@ const StyledConsonantContainer = styled.div`
 				font-size: 4rem;
 				color: ${({ theme }) => theme.bgChosen};
 				font-family: 'Bebas Neue', cursive;
-				/* line-height: 5rem; */
 				font-weight: 800;
 				text-align: center;
 				line-height: 1;
 			}
 		}
 	}
-	/* .title {
-		background-color: ${({ theme }) => theme.bgChosen};
-		font-size: 3rem;
-		padding: 1rem;
-		border-radius: 5px;
-	}
-	.vowel-cards {
-		background-color: black;
-		display: flex;
-		position: relative;
-		.vowel-card {
-			border: 1px solid white;
-			background-color: blue !important;
-			width: 60px;
-			height: 60px;
-			position: absolute;
-			top: 0;
-			border-radius: 5px;
-		}
-	} */
 `;
 
 export default LetterCards;

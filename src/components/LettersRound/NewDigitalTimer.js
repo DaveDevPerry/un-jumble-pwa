@@ -1,15 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Clock from './Clock';
-
-// import Clock from './Clock';
-
-// const beep = require('../../audio/beep.mp3');
-// const BeepAudio = new Audio(beep);
-// const buzz = require('../../audio/buzz.mp3');
-// const BuzzAudio = new Audio(buzz);
 
 const NewDigitalTimer = ({
 	isTimerActive,
@@ -17,49 +9,38 @@ const NewDigitalTimer = ({
 	handleLetterRoundStart,
 	setMessage,
 }) => {
+	const playBeep = () => {
+		new Audio('/audio/beep.mp3').play();
+	};
+	const playBuzz = () => {
+		new Audio('/audio/buzz.mp3').play();
+	};
+	const playShowResults = () => {
+		new Audio('/audio/squeek.mp3').play();
+	};
 	useEffect(() => {
 		console.log('new digital timer render');
-		// BeepAudio.load();
-		// BuzzAudio.load();
 	}, []);
 	let navigate = useNavigate();
-
 	let time = 30;
-	// useEffect(() => {
-	// 	// setTimerSeconds(time);
-	// }, [time]);
 
 	useEffect(() => {
 		console.log('new digital timer use effect');
 		if (isTimerActive === false) {
 			return;
 		}
-		// runTimer();
 		let timer = setInterval(() => {
-			console.log(time, 'time');
-			// if (time > 60) {
-			// 	document.querySelector('#timer-element-mins').textContent = `0${
-			// 		time % 60
-			// 	}`;
-			// }
 			if (time > 5 && time <= 10) {
-				// beep();
 				playBeep();
 			}
 			if (time < 10) {
-				// document.querySelector('#timer-element').textContent = `0${time}`;
 				document.querySelector(
 					'#new-timer-element-secs'
 				).textContent = `0${time}`;
 			} else {
-				// document.querySelector('#timer-element').textContent = time;
 				document.querySelector('#new-timer-element-secs').textContent = time;
 			}
-			// document.querySelector('#timer-element').textContent = time;
 			if (time >= 1 && time <= 5) {
-				// console.log('pulse');
-				// document.querySelector('.timer-card').classList.add('pulse');
-				// buzzer();
 				playBuzz();
 			}
 			if (time === 0) {
@@ -74,26 +55,8 @@ const NewDigitalTimer = ({
 				return;
 			}
 			time--;
-			// setTimerSeconds(time);
 		}, 1000);
 	}, [isTimerActive, time, setIsTimerActive, navigate, setMessage]);
-
-	const playBeep = () => {
-		const audio = new Audio('/audio/beep.mp3');
-		audio.play();
-	};
-	const playBuzz = () => {
-		const audio = new Audio('/audio/buzz.mp3');
-		audio.play();
-	};
-	// const playEnd = () => {
-	// 	const audio = new Audio('/audio/end.mp3');
-	// 	audio.play();
-	// };
-	const playShowResults = () => {
-		const audio = new Audio('/audio/squeek.mp3');
-		audio.play();
-	};
 
 	return (
 		<StyledNewDigitalTimer className='date-countdown-container btn-and-timer'>
@@ -153,7 +116,6 @@ const StyledNewDigitalTimer = styled.div`
 		transform: rotateX(180deg);
 		color: ${({ theme }) => theme.syntax};
 		&.active {
-			/* background-color: ${({ theme }) => theme.bgChosen}; */
 		}
 	}
 	.clock {

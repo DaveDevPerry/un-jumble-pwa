@@ -6,7 +6,6 @@ const PlayButton = ({ url }) => {
 	let navigate = useNavigate();
 	return (
 		<StyledPlayButton
-			// className='btn start-btn'
 			onClick={() => {
 				navigate(url);
 			}}

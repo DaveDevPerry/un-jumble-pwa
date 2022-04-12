@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserSelectedLetters = ({ letterTypes, gameLetters }) => {
+const UserSelectedLetters = ({ gameLetters }) => {
 	return (
 		<StyledUserSelectedLetters>
 			<StyledUserLettersGrid>
@@ -16,9 +16,7 @@ const UserSelectedLetters = ({ letterTypes, gameLetters }) => {
 		</StyledUserSelectedLetters>
 	);
 };
-const StyledUserSelectedLetters = styled.div`
-	/* padding: 1rem 0rem; */
-`;
+const StyledUserSelectedLetters = styled.div``;
 const StyledUserLettersGrid = styled.div`
 	display: grid;
 	justify-content: center;
@@ -30,7 +28,6 @@ const StyledUserLettersGrid = styled.div`
 	gap: 0.3rem;
 	.selected-letters {
 		font-size: 2.5rem;
-		/* border: 1px solid white; */
 		outline: none;
 		background-color: ${({ theme }) => theme.bgChosen};
 		display: grid;
