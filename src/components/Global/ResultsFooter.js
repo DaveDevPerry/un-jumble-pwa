@@ -23,7 +23,6 @@ const ResultsFooter = ({ isNextDayCountdownActive, shareMobile }) => {
 						shareMobile();
 					}}
 				>
-					{/* <p>Share</p> */}
 					<BsFillShareFill size='20px' />
 					<BsWhatsapp size='25px' />
 				</button>
