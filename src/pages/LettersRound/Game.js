@@ -7,6 +7,7 @@ import CurrentWordDisplay from '../../components/LettersRound/CurrentWordDisplay
 import NewDigitalTimer from '../../components/LettersRound/NewDigitalTimer';
 import UserLetterCards from '../../components/LettersRound/UserLetterCards';
 import UserAllWordsDisplay from '../../components/LettersRound/UserWordsDisplay';
+import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
 // import LetterRoundResults from '../../pages/LettersRound/Results';
 
 const LetterRoundGame = ({
@@ -196,12 +197,14 @@ const LetterRoundGame = ({
 
 	return (
 		<StyledGame>
-			<UserAllWordsDisplay
-				currentLetterRoundWord={currentLetterRoundWord}
-				setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-				allLetterRoundUserWords={allLetterRoundUserWords}
-				setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-			/>
+			<LetterRoundContextProvider>
+				<UserAllWordsDisplay
+					currentLetterRoundWord={currentLetterRoundWord}
+					setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+					allLetterRoundUserWords={allLetterRoundUserWords}
+					setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+				/>
+			</LetterRoundContextProvider>
 			<NewDigitalTimer
 				isTimerActive={isTimerActive}
 				setIsTimerActive={setIsTimerActive}

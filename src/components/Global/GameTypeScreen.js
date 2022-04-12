@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 // import { useNavigate } from 'react-router-dom';
 import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
-import { BsWhatsapp } from 'react-icons/bs';
+// import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
 import LetterRoundLevelStatus from '../LettersRound/LetterRoundLevelStatus';
+import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
 // import ReactTooltip from "react-tooltip";
+import { MdOutlineHelpOutline } from 'react-icons/md';
 
 const GameTypeScreen = ({
 	url,
@@ -20,6 +22,11 @@ const GameTypeScreen = ({
 	setAnagramGameMode,
 }) => {
 	// let navigate = useNavigate();
+
+	// const handleRules = (e) => {
+	// 	console.log(e.target.parentElement.parentElement);
+	// };
+
 	return (
 		<StyledGameTypeScreen
 		// className='btn start-btn start-game-mode-btn'
@@ -33,7 +40,10 @@ const GameTypeScreen = ({
 				)}
 				<h3>{name}</h3>
 				{/* <a data-tip="React-tooltip"> */}
-				<BsWhatsapp size='20px' />
+				{/* <div className='rules-btn' onClick={handleRules}> */}
+				<MdOutlineHelpOutline size='25px' />
+				{/* </div> */}
+				{/* <BsWhatsapp size='20px' /> */}
 				{/* </a>
 				{'<ReactTooltip place="' +
                     place +
@@ -70,10 +80,12 @@ const GameTypeScreen = ({
 					);
 				} else if (name === 'letter round') {
 					return (
-						<LetterRoundLevelStatus
-						// anagramGameMode={anagramGameMode}
-						// setAnagramGameMode={setAnagramGameMode}
-						/>
+						<LetterRoundContextProvider>
+							<LetterRoundLevelStatus
+							// anagramGameMode={anagramGameMode}
+							// setAnagramGameMode={setAnagramGameMode}
+							/>
+						</LetterRoundContextProvider>
 					);
 				} else {
 					return <p>&nbsp;</p>;

@@ -1,4 +1,4 @@
-import React, { StrictMode, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -18,7 +18,7 @@ import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
 import ConundrumRules from './pages/Conundrum/Rules';
 // LETTER ROUND
-import LetterRoundHome from './pages/LettersRound/Home';
+// import LetterRoundHome from './pages/LettersRound/Home';
 import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
@@ -31,13 +31,14 @@ import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
 // import ConundrumContextProvider from './contexts/ConundrumContext';
 
-// global
-
 function App() {
-	const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
+	// const { conundrums } = useContext(ConundrumContext);
+	const APIKey = process.env.REACT_APP_API_KEY;
+	// const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
 	useEffect(() => {
 		console.log('app render');
-		console.log(setAPIKey);
+		// console.log(setAPIKey);
+		// console.log(conundrums);
 		// setCurrentDate(new Date().toLocaleDateString())
 	}, []);
 
@@ -114,223 +115,205 @@ function App() {
 		setDictionary(letterRoundWords);
 	}, [englishDictionary]);
 
-	if (!mountedComponent)
-		return (
-			<div
-				id='unmounted'
-				style={{ backgroundColor: '#263d8e', height: '100vh' }}
-			>
-				Can i see this
-			</div>
-		);
+	if (!mountedComponent) return <div id='unmounted'>Can i see this</div>;
 
 	return (
 		<ThemeProvider theme={themeMode}>
 			<Router>
 				<GlobalStyles />
 				<div className='container'>
-					{/* <ConundrumContextProvider>
-						<PageLoader />
-					</ConundrumContextProvider> */}
 					<PageLoader />
 					<Header pageTitle={pageTitle} />
-					<StrictMode>
-						<main>
-							<Routes>
-								<Route
-									path='/'
-									element={
-										<Home
-											// gameData={gameData}
-											// setGameData={setGameData}
-											// setConundrumData={setConundrumData}
-											// letterRoundData={letterRoundData}
-											conundrumGameMode={conundrumGameMode}
-											setConundrumGameMode={setConundrumGameMode}
-											allNineLetterWords={allNineLetterWords}
-											allEightLetterWords={allEightLetterWords}
-											allSevenLetterWords={allSevenLetterWords}
-											allSixLetterWords={allSixLetterWords}
-											allFiveLetterWords={allFiveLetterWords}
-											allFourLetterWords={allFourLetterWords}
-											anagramGameMode={anagramGameMode}
-											setAnagramGameMode={setAnagramGameMode}
-											setPageTitle={setPageTitle}
-											// pageTitle={pageTitle}
-										/>
-									}
-								/>
-								<Route
-									path='/conundrum/rules'
-									element={<ConundrumRules setPageTitle={setPageTitle} />}
-								/>
-								<Route
-									path='/conundrum/game'
-									element={
-										<ConundrumGame
-											allNineLetterWords={allNineLetterWords}
-											allEightLetterWords={allEightLetterWords}
-											allSevenLetterWords={allSevenLetterWords}
-											allSixLetterWords={allSixLetterWords}
-											allFiveLetterWords={allFiveLetterWords}
-											allFourLetterWords={allFourLetterWords}
-											setGameMode={setGameMode}
-											gameMode={gameMode}
-											dictionary={dictionary}
-											setConundrum={setConundrum}
-											isNextDayCountdownActive={isNextDayCountdownActive}
-											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
-											conundrumGameMode={conundrumGameMode}
-											setConundrumGameMode={setConundrumGameMode}
-											setMessage={setMessage}
-											message={message}
-											setPageTitle={setPageTitle}
-											setIsConundrumCorrect={setIsConundrumCorrect}
-										/>
-									}
-								/>
-								<Route
-									path='/conundrum/results'
-									element={
-										<ConundrumResults
-											conundrum={conundrum}
-											isNextDayCountdownActive={isNextDayCountdownActive}
-											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
-											APIKey={APIKey}
-											setPageTitle={setPageTitle}
-											conundrumGameMode={conundrumGameMode}
-											isConundrumCorrect={isConundrumCorrect}
-											setIsConundrumCorrect={setIsConundrumCorrect}
-											setMessage={setMessage}
-											// conundrumGameMode={conundrumGameMode}
-										/>
-									}
-								/>
-
-								{/* anagram round  */}
-								<Route
-									path='/anagramround/rules'
-									element={<AnagramRoundRules setPageTitle={setPageTitle} />}
-								/>
-								<Route
-									path='/anagramround/game'
-									element={
-										<AnagramRoundGame
-											isLetterRoundTimeUp={isLetterRoundTimeUp}
-											setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
-											gameLetters={gameLetters}
-											setGameLetters={setGameLetters}
-											letterTypes={letterTypes}
-											setLetterTypes={setLetterTypes}
-											dictionary={dictionary}
-											setLetterRoundData={setLetterRoundData}
-											letterRoundData={letterRoundData}
-											allSevenLetterWords={allSevenLetterWords}
-											allSixLetterWords={allSixLetterWords}
-											allFiveLetterWords={allFiveLetterWords}
-											allFourLetterWords={allFourLetterWords}
-											allAnagramUserWords={allAnagramUserWords}
-											setAllAnagramUserWords={setAllAnagramUserWords}
-											anagramGameMode={anagramGameMode}
-											setAnagramGameMode={setAnagramGameMode}
-											setPageTitle={setPageTitle}
-											setMessage={setMessage}
-										/>
-									}
-								/>
-								<Route
-									path='/anagramround/results'
-									element={
-										<AnagramRoundResults
-											isNextDayCountdownActive={isNextDayCountdownActive}
-											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
-											allAnagramUserWords={allAnagramUserWords}
-											setAllAnagramUserWords={setAllAnagramUserWords}
-											setPageTitle={setPageTitle}
-											setMessage={setMessage}
-										/>
-									}
-								/>
-								{/* letter round  */}
-								<Route
-									path='/letterround'
-									element={<LetterRoundHome setPageTitle={setPageTitle} />}
-								/>
-								<Route
-									path='/letterround/rules'
-									element={<LetterRoundRules setPageTitle={setPageTitle} />}
-								/>
-								<Route
-									path='/selectletters'
-									element={
-										<LetterSelect
-											gameLetters={gameLetters}
-											letterTypes={letterTypes}
-											setLetterTypes={setLetterTypes}
-											setGameLetters={setGameLetters}
-											setPageTitle={setPageTitle}
-											setMessage={setMessage}
-										/>
-									}
-								/>
-								<Route
-									path='/letterround/game'
-									element={
-										<LetterRoundGame
-											isLetterRoundTimeUp={isLetterRoundTimeUp}
-											setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
-											gameLetters={gameLetters}
-											letterTypes={letterTypes}
-											setLetterTypes={setLetterTypes}
-											dictionary={dictionary}
-											setLetterRoundData={setLetterRoundData}
-											letterRoundData={letterRoundData}
-											setGotNineLetterWord={setGotNineLetterWord}
-											letterRoundLongestWord={letterRoundLongestWord}
-											setLetterRoundLongestWord={setLetterRoundLongestWord}
-											allLetterRoundUserWords={allLetterRoundUserWords}
-											setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-											sortedWordsByLengthArray={sortedWordsByLengthArray}
-											setSortedWordsByLengthArray={setSortedWordsByLengthArray}
-											currentLetterRoundWord={currentLetterRoundWord}
-											setCurrentLetterRoundWord={setCurrentLetterRoundWord}
-											setPageTitle={setPageTitle}
-											setMessage={setMessage}
-										/>
-									}
-								/>
-								<Route
-									path='/letterround/results'
-									element={
-										<LetterRoundResults
-											isLetterRoundTimeUp={isLetterRoundTimeUp}
-											gameLetters={gameLetters}
-											setGameLetters={setGameLetters}
-											setLetterTypes={setLetterTypes}
-											setLetterRoundData={setLetterRoundData}
-											letterRoundData={letterRoundData}
-											showLetterRoundResults={showLetterRoundResults}
-											allLetterRoundUserWords={allLetterRoundUserWords}
-											setAllLetterRoundUserWords={setAllLetterRoundUserWords}
-											gotNineLetterWord={gotNineLetterWord}
-											isNextDayCountdownActive={isNextDayCountdownActive}
-											setIsNextDayCountdownActive={setIsNextDayCountdownActive}
-											letterRoundLongestWord={letterRoundLongestWord}
-											setShowLetterRoundResults={setShowLetterRoundResults}
-											sortedWordsByLengthArray={sortedWordsByLengthArray}
-											setSortedWordsByLengthArray={setSortedWordsByLengthArray}
-											setPageTitle={setPageTitle}
-											setMessage={setMessage}
-										/>
-									}
-								/>
-								<Route
-									path='*'
-									element={<ErrorPage setPageTitle={setPageTitle} />}
-								/>
-							</Routes>
-						</main>
-					</StrictMode>
+					{/* <StrictMode> */}
+					<main>
+						<Routes>
+							<Route
+								path='/'
+								element={
+									<Home
+										// gameData={gameData}
+										// setGameData={setGameData}
+										// setConundrumData={setConundrumData}
+										// letterRoundData={letterRoundData}
+										conundrumGameMode={conundrumGameMode}
+										setConundrumGameMode={setConundrumGameMode}
+										allNineLetterWords={allNineLetterWords}
+										allEightLetterWords={allEightLetterWords}
+										allSevenLetterWords={allSevenLetterWords}
+										allSixLetterWords={allSixLetterWords}
+										allFiveLetterWords={allFiveLetterWords}
+										allFourLetterWords={allFourLetterWords}
+										anagramGameMode={anagramGameMode}
+										setAnagramGameMode={setAnagramGameMode}
+										setPageTitle={setPageTitle}
+									/>
+								}
+							/>
+							<Route
+								path='/conundrum/rules'
+								element={<ConundrumRules setPageTitle={setPageTitle} />}
+							/>
+							<Route
+								path='/conundrum/game'
+								element={
+									<ConundrumGame
+										allNineLetterWords={allNineLetterWords}
+										allEightLetterWords={allEightLetterWords}
+										allSevenLetterWords={allSevenLetterWords}
+										allSixLetterWords={allSixLetterWords}
+										allFiveLetterWords={allFiveLetterWords}
+										allFourLetterWords={allFourLetterWords}
+										setGameMode={setGameMode}
+										gameMode={gameMode}
+										dictionary={dictionary}
+										setConundrum={setConundrum}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										conundrumGameMode={conundrumGameMode}
+										setConundrumGameMode={setConundrumGameMode}
+										setMessage={setMessage}
+										message={message}
+										setPageTitle={setPageTitle}
+										setIsConundrumCorrect={setIsConundrumCorrect}
+									/>
+								}
+							/>
+							<Route
+								path='/conundrum/results'
+								element={
+									<ConundrumResults
+										conundrum={conundrum}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										APIKey={APIKey}
+										setPageTitle={setPageTitle}
+										conundrumGameMode={conundrumGameMode}
+										isConundrumCorrect={isConundrumCorrect}
+										setIsConundrumCorrect={setIsConundrumCorrect}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							{/* anagram round  */}
+							<Route
+								path='/anagramround/rules'
+								element={<AnagramRoundRules setPageTitle={setPageTitle} />}
+							/>
+							<Route
+								path='/anagramround/game'
+								element={
+									<AnagramRoundGame
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										dictionary={dictionary}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+										allSevenLetterWords={allSevenLetterWords}
+										allSixLetterWords={allSixLetterWords}
+										allFiveLetterWords={allFiveLetterWords}
+										allFourLetterWords={allFourLetterWords}
+										allAnagramUserWords={allAnagramUserWords}
+										setAllAnagramUserWords={setAllAnagramUserWords}
+										anagramGameMode={anagramGameMode}
+										setAnagramGameMode={setAnagramGameMode}
+										setPageTitle={setPageTitle}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							<Route
+								path='/anagramround/results'
+								element={
+									<AnagramRoundResults
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										allAnagramUserWords={allAnagramUserWords}
+										setAllAnagramUserWords={setAllAnagramUserWords}
+										setPageTitle={setPageTitle}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							{/* letter round  */}
+							<Route
+								path='/letterround/rules'
+								element={<LetterRoundRules setPageTitle={setPageTitle} />}
+							/>
+							<Route
+								path='/selectletters'
+								element={
+									<LetterSelect
+										gameLetters={gameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										setGameLetters={setGameLetters}
+										setPageTitle={setPageTitle}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							<Route
+								path='/letterround/game'
+								element={
+									<LetterRoundGame
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										setIsLetterRoundTimeUp={setIsLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										letterTypes={letterTypes}
+										setLetterTypes={setLetterTypes}
+										dictionary={dictionary}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+										setGotNineLetterWord={setGotNineLetterWord}
+										letterRoundLongestWord={letterRoundLongestWord}
+										setLetterRoundLongestWord={setLetterRoundLongestWord}
+										allLetterRoundUserWords={allLetterRoundUserWords}
+										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+										sortedWordsByLengthArray={sortedWordsByLengthArray}
+										setSortedWordsByLengthArray={setSortedWordsByLengthArray}
+										currentLetterRoundWord={currentLetterRoundWord}
+										setCurrentLetterRoundWord={setCurrentLetterRoundWord}
+										setPageTitle={setPageTitle}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							<Route
+								path='/letterround/results'
+								element={
+									<LetterRoundResults
+										isLetterRoundTimeUp={isLetterRoundTimeUp}
+										gameLetters={gameLetters}
+										setGameLetters={setGameLetters}
+										setLetterTypes={setLetterTypes}
+										setLetterRoundData={setLetterRoundData}
+										letterRoundData={letterRoundData}
+										showLetterRoundResults={showLetterRoundResults}
+										allLetterRoundUserWords={allLetterRoundUserWords}
+										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
+										gotNineLetterWord={gotNineLetterWord}
+										isNextDayCountdownActive={isNextDayCountdownActive}
+										setIsNextDayCountdownActive={setIsNextDayCountdownActive}
+										letterRoundLongestWord={letterRoundLongestWord}
+										setShowLetterRoundResults={setShowLetterRoundResults}
+										sortedWordsByLengthArray={sortedWordsByLengthArray}
+										setSortedWordsByLengthArray={setSortedWordsByLengthArray}
+										setPageTitle={setPageTitle}
+										setMessage={setMessage}
+									/>
+								}
+							/>
+							<Route
+								path='*'
+								element={<ErrorPage setPageTitle={setPageTitle} />}
+							/>
+						</Routes>
+					</main>
+					{/* </StrictMode> */}
 					<Footer theme={theme} themeToggler={themeToggler} message={message} />
 				</div>
 			</Router>

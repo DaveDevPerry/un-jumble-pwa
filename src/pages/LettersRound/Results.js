@@ -1,49 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import NextGameCountdown from '../../components/Global/NextGameCountdown';
-// import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
-import { useNavigate } from 'react-router-dom';
-// import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
-// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
-// import GameLetterCards from '../../components/Conundrum/GameLetterCards';
+import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
+import NewLetterRoundForm from '../../components/LettersRound/NewLetterRoundForm';
 
 const LetterRoundResults = ({
-	showLetterRoundResults,
 	allLetterRoundUserWords,
-	setAllLetterRoundUserWords,
 	gameLetters,
-	setGameLetters,
 	letterRoundLongestWord,
-	gotNineLetterWord,
-	setIsNextDayCountdownActive,
 	isNextDayCountdownActive,
-	setLetterTypes,
-	setLetterRoundData,
-	letterRoundData,
-	// nineLetterWords,
-	// eightLetterWords,
-	// sevenLetterWords,
-	// sixLetterWords,
-	// fiveLetterWords,
-	// fourLetterWords,
-	// threeLetterWords,
-	// setNineLetterWords,
-	// setEightLetterWords,
-	// setSevenLetterWords,
-	// setSixLetterWords,
-	// setFiveLetterWords,
-	// setFourLetterWords,
-	// setThreeLetterWords,
-	setSortedWordsByLengthArray,
-	// setSortedWordsByLengthArray,
-	sortedWordsByLengthArray,
 	setPageTitle,
 	setMessage,
 }) => {
-	const playButton = () => {
-		new Audio('/audio/button.mp3').play();
-	};
 	useEffect(() => {
 		console.log('lr results render');
 		setTimeout(() => {
@@ -53,7 +21,6 @@ const LetterRoundResults = ({
 			});
 		}, 1000);
 	}, []);
-	let navigate = useNavigate();
 
 	const shareMobile = () => {
 		const gameType = 'letter round';
@@ -64,14 +31,7 @@ const LetterRoundResults = ({
 			`whatsapp://send?text=I just scored ${gameScore} points on the ${gameType}. My best word was ${letterRoundLongestWord}.`
 		);
 	};
-	// console.log(wordOfTheDay, 'word otd');
-	// console.log(typeof wordOfTheDay, 'word otd type');
-	// const [usersBestWord, setUsersBestWord] = useState([]);
 
-	// useEffect(() => {
-	// 	const wordSplit = wordOfTheDay.split(',');
-	// 	setUsersBestWord(wordSplit);
-	// }, [wordOfTheDay]);
 	const [nineLetterWords, setNineLetterWords] = useState([]);
 	const [eightLetterWords, setEightLetterWords] = useState([]);
 	const [sevenLetterWords, setSevenLetterWords] = useState([]);
@@ -86,11 +46,6 @@ const LetterRoundResults = ({
 	const [fiveLetterWrongWords, setFiveLetterWrongWords] = useState([]);
 	const [fourLetterWrongWords, setFourLetterWrongWords] = useState([]);
 	const [threeLetterWrongWords, setThreeLetterWrongWords] = useState([]);
-	// const [letterRoundPoints, setLetterRoundPoints] = useState(0)
-	// const [letterRoundPoints, setLetterRoundPoints] = useState(0);
-	// const [wrongWords, setWrongWords] = useState([])
-
-	// const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
 
 	useEffect(() => {
 		const sortedWrongWordsByLength = allLetterRoundUserWords
@@ -239,76 +194,62 @@ const LetterRoundResults = ({
 		setPageTitle('results');
 	}, [setPageTitle]);
 
-	// const updateLRPlayed = () => {
-	// 	// console.log(letterRoundData, 'lrd');
-
-	// 	// letterRoundData.played++;
-	// 	// const newData =
-
-	// 	const fromLs = JSON.parse(localStorage.getItem('countdown-v1'));
-	// 	const wordObj = fromLs.find((Obj) => Obj.gameType === 'letter round');
-	// 	wordObj.played++;
-	// 	localStorage.setItem('countdown-v1', JSON.stringify(fromLs));
-	// 	// setLetterRoundData(letterRoundData);
-	// 	// console.log(letterRoundData, 'new lrd');
-	// };
-
 	return (
 		<>
-			{/* <GameTitle title='results' /> */}
-			<StyledLetterRoundResults>
-				{/* <h2>RESULTS</h2> */}
-				{/* <div className='letter-round-stats-container'>
+			<LetterRoundContextProvider>
+				<StyledLetterRoundResults>
+					{/* <h2>RESULTS</h2> */}
+					{/* <div className='letter-round-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
 					</div>
 					<div className='stat-wrapper'>
-						<p>607</p>
+					<p>607</p>
 						<p>points</p>
-					</div>
-					<div className='stat-wrapper'>
+						</div>
+						<div className='stat-wrapper'>
 						<p>100</p>
 						<p>win %</p>
 					</div>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>current streak</p>
-					</div>
+						</div>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>max streak</p>
 					</div>
 				</div> */}
 
-				{/* // IF 9 letter word can be made from all letters display below */}
-				<StyledLetterOutput>
-					{gameLetters.map((letter, index) => {
-						return (
-							<div key={index} className='results-card'>
-								<div className='results-card-back results-card-letter'>
-									&nbsp;
+					{/* // IF 9 letter word can be made from all letters display below */}
+					<StyledLetterOutput>
+						{gameLetters.map((letter, index) => {
+							return (
+								<div key={index} className='results-card'>
+									<div className='results-card-back results-card-letter'>
+										&nbsp;
+									</div>
+									<div className='results-card-front results-card-letter'>
+										{letter}
+									</div>
 								</div>
-								<div className='results-card-front results-card-letter'>
-									{letter}
-								</div>
-							</div>
-						);
-					})}
-				</StyledLetterOutput>
-				{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
-				{/* <p className='letter-round-ai-best-word'>
+							);
+						})}
+					</StyledLetterOutput>
+					{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
+					{/* <p className='letter-round-ai-best-word'>
 					longest possible word - IN PROGRESS
 				</p> */}
-				{/* <ul className='best-attempt'>
+					{/* <ul className='best-attempt'>
 				<li>{usersBestAttempt}</li>
 			</ul> */}
-				{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
+					{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
 
-				{/* <p className='letter-round-user-result'>
+					{/* <p className='letter-round-user-result'>
 				CONGRATULATIONS!
 			</p> */}
-				{/* <ul className='best-attempt'>
+					{/* <ul className='best-attempt'>
 				<li>
 					{usersBestWords &&
 						usersBestWords.sort(function (a, b) {
@@ -316,412 +257,412 @@ const LetterRoundResults = ({
 						})[0]}
 				</li>
 			</ul> */}
-				{/* <ul className='longest-word'>
+					{/* <ul className='longest-word'>
 				<li>Total Word Count</li>
 			</ul> */}
 
-				{/* <p className='letter-round-user-result'> */}
-				{/* {nineLetterWords.length * 20 +
+					{/* <p className='letter-round-user-result'> */}
+					{/* {nineLetterWords.length * 20 +
 						eightLetterWords.length * 13 +
 						sevenLetterWords.length * 10 +
 						sixLetterWords.length * 7 +
 						fiveLetterWords.length * 5 +
 						fourLetterWords.length * 3 +
 						threeLetterWords.length * 1 <=
-					10
+						10
 						? 'YOU PLAYED OK'
 						: 'WELL PLAYED'} */}
-				{/* </p> */}
+					{/* </p> */}
 
-				{/* <ul className='best-attempt'>
+					{/* <ul className='best-attempt'>
 					<li>
 						<p>best word</p>
 						<p>
 							<span>{letterRoundLongestWord}</span>
-						</p>
-						<p> letters</p>
-					</li>
+							</p>
+							<p> letters</p>
+							</li>
 				</ul> */}
 
-				<section className='points-table-container'>
-					<table className='letter-round-player-word-table'>
-						<tbody>
-							{nineLetterWords && nineLetterWords.length > 0 ? (
-								<tr>
-									<td>{nineLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										9 letter {nineLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{nineLetterWords.length * 20}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{eightLetterWords && eightLetterWords.length > 0 ? (
-								<tr>
-									<td>{eightLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										8 letter {eightLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{eightLetterWords.length * 13}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{sevenLetterWords && sevenLetterWords.length > 0 ? (
-								<tr>
-									<td>{sevenLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										7 letter {sevenLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{sevenLetterWords.length * 10}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{sixLetterWords && sixLetterWords.length > 0 ? (
-								<tr>
-									<td>{sixLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										6 letter {sixLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{sixLetterWords.length * 7}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{fiveLetterWords && fiveLetterWords.length > 0 ? (
-								<tr>
-									<td>{fiveLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										5 letter {fiveLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{fiveLetterWords.length * 5}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{fourLetterWords && fourLetterWords.length > 0 ? (
-								<tr>
-									<td>{fourLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										4 letter {fourLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{fourLetterWords.length * 3}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{threeLetterWords && threeLetterWords.length > 0 ? (
-								<tr>
-									<td>{threeLetterWords.length}</td>
-									<td>X</td>
-									<td>
-										3 letter {threeLetterWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{threeLetterWords.length * 1}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-						</tbody>
-					</table>
+					<section className='points-table-container'>
+						<table className='letter-round-player-word-table'>
+							<tbody>
+								{nineLetterWords && nineLetterWords.length > 0 ? (
+									<tr>
+										<td>{nineLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											9 letter {nineLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{nineLetterWords.length * 20}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{eightLetterWords && eightLetterWords.length > 0 ? (
+									<tr>
+										<td>{eightLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											8 letter{' '}
+											{eightLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{eightLetterWords.length * 13}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{sevenLetterWords && sevenLetterWords.length > 0 ? (
+									<tr>
+										<td>{sevenLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											7 letter{' '}
+											{sevenLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{sevenLetterWords.length * 10}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{sixLetterWords && sixLetterWords.length > 0 ? (
+									<tr>
+										<td>{sixLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											6 letter {sixLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{sixLetterWords.length * 7}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{fiveLetterWords && fiveLetterWords.length > 0 ? (
+									<tr>
+										<td>{fiveLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											5 letter {fiveLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{fiveLetterWords.length * 5}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{fourLetterWords && fourLetterWords.length > 0 ? (
+									<tr>
+										<td>{fourLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											4 letter {fourLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{fourLetterWords.length * 3}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{threeLetterWords && threeLetterWords.length > 0 ? (
+									<tr>
+										<td>{threeLetterWords.length}</td>
+										<td>X</td>
+										<td>
+											3 letter{' '}
+											{threeLetterWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{threeLetterWords.length * 1}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+							</tbody>
+						</table>
 
-					<table className='letter-round-player-wrong-word-table'>
-						<tbody>
-							{nineLetterWrongWords && nineLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{nineLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										9 letter{' '}
-										{nineLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-20 * nineLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{eightLetterWrongWords && eightLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{eightLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										8 letter{' '}
-										{eightLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-13 * eightLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{sevenLetterWrongWords && sevenLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{sevenLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										7 letter{' '}
-										{sevenLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-10 * sevenLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{sixLetterWrongWords && sixLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{sixLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										6 letter{' '}
-										{sixLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-7 * sixLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{fiveLetterWrongWords && fiveLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{fiveLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										5 letter{' '}
-										{fiveLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-5 * fiveLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{fourLetterWrongWords && fourLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{fourLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										4 letter{' '}
-										{fourLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-3 * fourLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-							{threeLetterWrongWords && threeLetterWrongWords.length > 0 ? (
-								<tr>
-									<td>{threeLetterWrongWords.length}</td>
-									<td>X</td>
-									<td>
-										3 letter{' '}
-										{threeLetterWrongWords.length === 1 ? 'word' : 'words'}
-									</td>
-									<td>
-										{-1 * threeLetterWrongWords.length}
-										<span className='small-pts'>pts</span>
-									</td>
-								</tr>
-							) : (
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							)}
-						</tbody>
-					</table>
-				</section>
-				{/* <div className='points-container'>
+						<table className='letter-round-player-wrong-word-table'>
+							<tbody>
+								{nineLetterWrongWords && nineLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{nineLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											9 letter{' '}
+											{nineLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-20 * nineLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{eightLetterWrongWords && eightLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{eightLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											8 letter{' '}
+											{eightLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-13 * eightLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{sevenLetterWrongWords && sevenLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{sevenLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											7 letter{' '}
+											{sevenLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-10 * sevenLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{sixLetterWrongWords && sixLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{sixLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											6 letter{' '}
+											{sixLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-7 * sixLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{fiveLetterWrongWords && fiveLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{fiveLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											5 letter{' '}
+											{fiveLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-5 * fiveLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{fourLetterWrongWords && fourLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{fourLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											4 letter{' '}
+											{fourLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-3 * fourLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+								{threeLetterWrongWords && threeLetterWrongWords.length > 0 ? (
+									<tr>
+										<td>{threeLetterWrongWords.length}</td>
+										<td>X</td>
+										<td>
+											3 letter{' '}
+											{threeLetterWrongWords.length === 1 ? 'word' : 'words'}
+										</td>
+										<td>
+											{-1 * threeLetterWrongWords.length}
+											<span className='small-pts'>pts</span>
+										</td>
+									</tr>
+								) : (
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								)}
+							</tbody>
+						</table>
+					</section>
+					{/* <div className='points-container'>
 				<h2>{gotNineLetterWord === '' ? 0 : 10}</h2>
 				<p>points</p>
 			</div> */}
-				<div className='points-container'>
-					<h2 className='share-letter-round-points'>
-						{/* {nineLetterWords.length * 20 +
+					<div className='points-container'>
+						<h2 className='share-letter-round-points'>
+							{/* {nineLetterWords.length * 20 +
 							eightLetterWords.length * 13 +
 							sevenLetterWords.length * 10 +
 							sixLetterWords.length * 7 +
 							fiveLetterWords.length * 5 +
 							fourLetterWords.length * 3 +
 							threeLetterWords.length * 1} */}
-						{allLetterRoundUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0)}
-					</h2>
-					<p>points</p>
-				</div>
+							{allLetterRoundUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0)}
+						</h2>
+						<p>points</p>
+					</div>
 
-				{/* <p className='letter-round-user-result'>
+					{/* <p className='letter-round-user-result'>
 						{}
 				</p> */}
-				{(() => {
-					if (
-						allLetterRoundUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0) < 0
-					) {
-						return <p className='letter-round-user-result'>oh dear</p>;
-					} else if (
-						allLetterRoundUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0) < 8
-					) {
-						return <p className='letter-round-user-result'>not bad</p>;
-					} else if (
-						allLetterRoundUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0) < 20
-					) {
-						return <p className='letter-round-user-result'>good</p>;
-					} else if (
-						allLetterRoundUserWords.reduce((accumulator, object) => {
-							return accumulator + object.score;
-						}, 0) >= 20
-					) {
-						return <p className='letter-round-user-result'>excellent</p>;
-					} else {
-						console.log('bad');
-					}
-				})()}
+					{(() => {
+						if (
+							allLetterRoundUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) < 0
+						) {
+							return <p className='letter-round-user-result'>oh dear</p>;
+						} else if (
+							allLetterRoundUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) < 8
+						) {
+							return <p className='letter-round-user-result'>not bad</p>;
+						} else if (
+							allLetterRoundUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) < 20
+						) {
+							return <p className='letter-round-user-result'>good</p>;
+						} else if (
+							allLetterRoundUserWords.reduce((accumulator, object) => {
+								return accumulator + object.score;
+							}, 0) >= 20
+						) {
+							return <p className='letter-round-user-result'>excellent</p>;
+						} else {
+							console.log('bad');
+						}
+					})()}
 
-				<ResultsFooter
-					isNextDayCountdownActive={isNextDayCountdownActive}
-					shareMobile={shareMobile}
+					<ResultsFooter
+						isNextDayCountdownActive={isNextDayCountdownActive}
+						shareMobile={shareMobile}
+					/>
+				</StyledLetterRoundResults>
+				<NewLetterRoundForm
+					gameLetters={gameLetters}
+					allLetterRoundUserWords={allLetterRoundUserWords}
+					timeLimit='30'
+					setMessage={setMessage}
+					url='/'
 				/>
-			</StyledLetterRoundResults>
-			<button
-				className='results-home-btn'
-				onClick={() => {
-					playButton();
-					setMessage('play again?');
-					// setIsNextDayCountdownActive(false);
-					// updateLRPlayed();
-
-					navigate('/');
-					// setAllAttempts([]);
-					// setGameNumbers([]);
-					// setNumberTarget(0);
-					// setGameNumberSizes([]);
-					setAllLetterRoundUserWords([]);
-					setGameLetters([]);
-					// setLetterTypes([]);
-					// document
-					// 	.querySelector('.start-btns-container')
-					// 	.classList.remove('hide');
-				}}
-			>
-				HOME
-			</button>
+				{/* <button
+					className='results-home-btn'
+					onClick={() => {
+						playButton();
+						setMessage('play again?');
+						navigate('/');
+						setAllLetterRoundUserWords([]);
+						setGameLetters([]);
+					}}
+				>
+					HOME
+				</button> */}
+			</LetterRoundContextProvider>
 		</>
 		// <StyledLetterRoundResults className={isTimeUp === true ? 'results show' : 'results'}>
 		// 	<p className='results-header'>GAME OVER - RESULTS</p>
