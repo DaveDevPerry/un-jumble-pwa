@@ -7,6 +7,7 @@ import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
 import LetterRoundLevelStatus from '../LettersRound/LetterRoundLevelStatus';
 import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
+import AnagramContextProvider from '../../contexts/AnagramContext';
 
 const GameTypeScreen = ({
 	url,
@@ -22,6 +23,7 @@ const GameTypeScreen = ({
 }) => {
 	const [letterRoundData, setLetterRoundData] = useState([]);
 	const [conundrumData, setConundrumData] = useState([]);
+	const [anagramData, setAnagramData] = useState([]);
 
 	useEffect(() => {
 		console.log('game type screen render');
@@ -30,6 +32,9 @@ const GameTypeScreen = ({
 		setConundrumData(localConundrumData);
 		const localLRData = JSON.parse(localStorage.getItem('letterRounds')) || [];
 		setLetterRoundData(localLRData);
+		const localAnagramData =
+			JSON.parse(localStorage.getItem('anagramRound')) || [];
+		setAnagramData(localAnagramData);
 	}, []);
 
 	useEffect(() => {
@@ -95,8 +100,35 @@ const GameTypeScreen = ({
 					.querySelector('.conundrum-level-status-nine')
 					.classList.add('played');
 			}
+			// check anagram
+			const todayPlayedAnagram = conundrumData.filter(function (today) {
+				return today.date === currentDate;
+			});
+			// check for each conundrum level - clean up later by for loop calling function
+			const anagramLevelFour = todayPlayedAnagram.find(
+				(Obj) => Obj.level === 4
+			);
+			if (anagramLevelFour !== undefined) {
+				document
+					.querySelector('.anagram-level-status-four')
+					.classList.add('played');
+			}
+			const anagramLevelFive = todayPlayedAnagram.find(
+				(Obj) => Obj.level === 5
+			);
+			if (anagramLevelFive !== undefined) {
+				document
+					.querySelector('.anagram-level-status-five')
+					.classList.add('played');
+			}
+			const anagramLevelSix = todayPlayedAnagram.find((Obj) => Obj.level === 6);
+			if (anagramLevelSix !== undefined) {
+				document
+					.querySelector('.anagram-level-status-six')
+					.classList.add('played');
+			}
 		}, 10);
-	}, [letterRoundData, conundrumData]);
+	}, [letterRoundData, conundrumData, anagramData]);
 	return (
 		<StyledGameTypeScreen>
 			<div className='game-mode-header'>
@@ -121,10 +153,12 @@ const GameTypeScreen = ({
 					);
 				} else if (name === 'anagram round') {
 					return (
-						<AnagramLevelStatus
-							anagramGameMode={anagramGameMode}
-							setAnagramGameMode={setAnagramGameMode}
-						/>
+						<AnagramContextProvider>
+							<AnagramLevelStatus
+								anagramGameMode={anagramGameMode}
+								setAnagramGameMode={setAnagramGameMode}
+							/>
+						</AnagramContextProvider>
 					);
 				} else if (name === 'letter round') {
 					return (

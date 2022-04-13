@@ -253,6 +253,7 @@ function App() {
 										setAllAnagramUserWords={setAllAnagramUserWords}
 										setPageTitle={setPageTitle}
 										setMessage={setMessage}
+										anagramGameMode={anagramGameMode}
 									/>
 								}
 							/>

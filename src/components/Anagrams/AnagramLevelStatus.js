@@ -16,7 +16,7 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 		<StyledAnagramLevelStatus>
 			{/* map stats here */}
 			<div
-				className='quick-stat'
+				className='quick-stat anagram-level-status-four'
 				onClick={() => {
 					playButton();
 					// new Audio('/audio/button.mp3').play();
@@ -28,7 +28,7 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 				4
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat anagram-level-status-five'
 				onClick={() => {
 					playButton();
 
@@ -40,7 +40,7 @@ const AnagramLevelStatus = ({ setAnagramGameMode }) => {
 				5
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat anagram-level-status-six'
 				onClick={() => {
 					playButton();
 
@@ -73,6 +73,13 @@ const StyledAnagramLevelStatus = styled.section`
 		cursor: pointer;
 		&.isComplete {
 			background-color: ${({ theme }) => theme.isComplete};
+			color: ${({ theme }) => theme.bgChosen};
+		}
+		&.anagram-level-status-four.played,
+		&.anagram-level-status-five.played,
+		&.anagram-level-status-six.played {
+			background-color: ${({ theme }) => theme.isComplete};
+			pointer-events: none;
 			color: ${({ theme }) => theme.bgChosen};
 		}
 	}

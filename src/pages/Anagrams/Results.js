@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import NextGameCountdown from '../../components/Global/NextGameCountdown';
 // import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
 // import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 import UserWordResultsDisplay from '../../components/Anagrams/UserWordResultsDisplay';
+import AnagramContextProvider from '../../contexts/AnagramContext';
+import NewAnagramForm from '../../components/Anagrams/NewAnagramForm';
 // import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const AnagramRoundResults = ({
@@ -27,16 +29,17 @@ const AnagramRoundResults = ({
 	setAllAnagramUserWords,
 	setPageTitle,
 	setMessage,
+	anagramGameMode,
 }) => {
-	const playButton = () => {
-		new Audio('/audio/button.mp3').play();
-	};
+	// const playButton = () => {
+	// 	new Audio('/audio/button.mp3').play();
+	// };
 
 	useEffect(() => {
 		console.log('anagram results render');
 		setPageTitle(`results`);
 	}, [setPageTitle]);
-	let navigate = useNavigate();
+	// let navigate = useNavigate();
 
 	const shareMobile = () => {
 		const gameType = 'anagram round';
@@ -100,9 +103,10 @@ const AnagramRoundResults = ({
 
 	return (
 		<>
-			{/* <GameTitle title='results' /> */}
-			<StyledAnagramResults>
-				{/* <div className='anagram-stats-container'>
+			<AnagramContextProvider>
+				{/* <GameTitle title='results' /> */}
+				<StyledAnagramResults>
+					{/* <div className='anagram-stats-container'>
 					<div className='stat-wrapper'>
 						<p>03</p>
 						<p>played</p>
@@ -112,66 +116,74 @@ const AnagramRoundResults = ({
 						<p>points</p>
 					</div>
 					<div className='stat-wrapper'>
-						<p>100</p>
-						<p>win %</p>
+					<p>100</p>
+					<p>win %</p>
 					</div>
 					<div className='stat-wrapper'>
-						<p>03</p>
+					<p>03</p>
 						<p>current streak</p>
-					</div>
-					<div className='stat-wrapper'>
+						</div>
+						<div className='stat-wrapper'>
 						<p>03</p>
 						<p>max streak</p>
 					</div>
 				</div> */}
-				<UserWordResultsDisplay allAnagramUserWords={allAnagramUserWords} />
-				<div className='anagram-results-outcome-container'>
-					<div className='points-container'>
-						<h2 id='share-anagram-points'>
-							{allAnagramUserWords.reduce((accumulator, object) => {
-								return accumulator + object.score;
-							}, 0)}
-						</h2>
-						<p>points</p>
+					<UserWordResultsDisplay allAnagramUserWords={allAnagramUserWords} />
+					<div className='anagram-results-outcome-container'>
+						<div className='points-container'>
+							<h2 id='share-anagram-points'>
+								{allAnagramUserWords.reduce((accumulator, object) => {
+									return accumulator + object.score;
+								}, 0)}
+							</h2>
+							<p>points</p>
+						</div>
+						{(() => {
+							if (
+								allAnagramUserWords.reduce((accumulator, object) => {
+									return accumulator + object.score;
+								}, 0) < 10
+							) {
+								return <p className='anagram-user-result'>NOT GREAT</p>;
+							} else if (
+								allAnagramUserWords.reduce((accumulator, object) => {
+									return accumulator + object.score;
+								}, 0) > 10
+							) {
+								return <p className='anagram-user-result'>GOOD GAME</p>;
+							} else if (
+								allAnagramUserWords.reduce((accumulator, object) => {
+									return accumulator + object.score;
+								}, 0) > 20
+							) {
+								return <p className='anagram-user-result'>EXCELLENT!</p>;
+							}
+						})()}
 					</div>
-					{(() => {
-						if (
-							allAnagramUserWords.reduce((accumulator, object) => {
-								return accumulator + object.score;
-							}, 0) < 10
-						) {
-							return <p className='anagram-user-result'>NOT GREAT</p>;
-						} else if (
-							allAnagramUserWords.reduce((accumulator, object) => {
-								return accumulator + object.score;
-							}, 0) > 10
-						) {
-							return <p className='anagram-user-result'>GOOD GAME</p>;
-						} else if (
-							allAnagramUserWords.reduce((accumulator, object) => {
-								return accumulator + object.score;
-							}, 0) > 20
-						) {
-							return <p className='anagram-user-result'>EXCELLENT!</p>;
-						}
-					})()}
-				</div>
-				<ResultsFooter
-					isNextDayCountdownActive={isNextDayCountdownActive}
-					shareMobile={shareMobile}
+					<ResultsFooter
+						isNextDayCountdownActive={isNextDayCountdownActive}
+						shareMobile={shareMobile}
+					/>
+				</StyledAnagramResults>
+				<NewAnagramForm
+					timeLimit='120'
+					setMessage={setMessage}
+					allAnagramUserWords={allAnagramUserWords}
+					anagramGameMode={anagramGameMode}
+					setAllAnagramUserWords={setAllAnagramUserWords}
 				/>
-			</StyledAnagramResults>
-			<button
-				className='results-home-btn'
-				onClick={() => {
-					playButton();
-					setMessage('play again?');
-					setAllAnagramUserWords([]);
-					navigate('/');
-				}}
-			>
-				HOME
-			</button>
+				{/* <button
+					className='results-home-btn'
+					onClick={() => {
+						playButton();
+						setMessage('play again?');
+						setAllAnagramUserWords([]);
+						navigate('/');
+					}}
+				>
+					HOME
+				</button> */}
+			</AnagramContextProvider>
 		</>
 	);
 };

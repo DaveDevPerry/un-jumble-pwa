@@ -6,8 +6,8 @@ const UserWordResultsDisplay = ({ allAnagramUserWords }) => {
 	const playTile = () => {
 		new Audio('/audio/tile.mp3').play();
 	};
-	const handleFlipWordStatusList = (e) => {
-		e.preventDefault();
+	const handleFlipWordStatusList = () => {
+		// e.preventDefault();
 		document.querySelectorAll('.status').forEach((btn) => {
 			btn.classList.toggle('visible');
 		});
