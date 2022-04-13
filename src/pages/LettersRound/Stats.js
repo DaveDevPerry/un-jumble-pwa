@@ -2,8 +2,18 @@ import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { MdOutlineClose } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+// import { Doughnut } from 'react-chartjs-2';
 
 import { LetterRoundContext } from '../../contexts/LetterRoundContext';
+import StatsBarChart from '../../components/LettersRound/StatsBarChart';
+// const data = {
+// 	labels: ['red', 'blue', 'yellow', 'green', 'purple', 'orange'],
+// 	datasets: [
+// 		{
+// 			data: [12, 19, 3, 5, 2, 3],
+// 		},
+// 	],
+// };
 
 const LetterRoundStats = ({ setPageTitle }) => {
 	const { games } = useContext(LetterRoundContext);
@@ -11,6 +21,8 @@ const LetterRoundStats = ({ setPageTitle }) => {
 
 	const [totalWordCount, setTotalWordCount] = useState(0);
 	const [totalScoreCount, setTotalScoreCount] = useState(0);
+	const [threeLetters, setThreeLetters] = useState([]);
+	const [fourLetters, setFourLetters] = useState([]);
 
 	useEffect(() => {
 		setPageTitle('letterRound');
@@ -31,6 +43,21 @@ const LetterRoundStats = ({ setPageTitle }) => {
 		// }, 0);
 		// console.log(scoreTotal, 'score tot');
 		// sum scores
+
+		setThreeLetters(
+			merged.filter((item) => {
+				return item.word.length === 3;
+			}).length
+		);
+		setFourLetters(
+			merged.filter((item) => {
+				return item.word.length === 4;
+			}).length
+		);
+		// let threeL = merged.filter((item) => {
+		// 	return item.word.length === 3;
+		// });
+		// console.log(threeL, '3 words only');
 	}, [setPageTitle, games]);
 
 	// const getWordCount = () => {
@@ -122,7 +149,13 @@ const LetterRoundStats = ({ setPageTitle }) => {
 				</div> */}
 			</div>
 
-			<div className='letter-round-chart-wrapper'>chart goes here</div>
+			<div className='letter-round-chart-wrapper'>
+				<StatsBarChart threeLetters={threeLetters} fourLetters={fourLetters} />
+				{/* <Doughnut data={data} /> */}
+				{/* chart goes here
+				<p>three letter words: {threeLetters}</p>
+				<p>four letter words: {fourLetters}</p> */}
+			</div>
 		</StyledStats>
 	) : (
 		<StyledStats>
@@ -229,7 +262,8 @@ const StyledStats = styled.div`
 	.letter-round-chart-wrapper {
 		flex: 1;
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		/* align-items: center; */
 		justify-content: center;
 	}
 `;
