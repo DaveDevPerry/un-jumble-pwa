@@ -34,6 +34,7 @@ import ConundrumRules from './pages/Conundrum/Rules';
 import AnagramRoundRules from './pages/Anagrams/Rules';
 import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterRoundStats from './pages/LettersRound/Stats';
+import LetterRoundContextProvider from './contexts/LetterRoundContext';
 // import ConundrumContextProvider from './contexts/ConundrumContext';
 
 function App() {
@@ -273,10 +274,16 @@ function App() {
 								path='/letterround/rules'
 								element={<LetterRoundRules setPageTitle={setPageTitle} />}
 							/>
+
 							<Route
 								path='/letterround/stats'
-								element={<LetterRoundStats setPageTitle={setPageTitle} />}
+								element={
+									<LetterRoundContextProvider>
+										<LetterRoundStats setPageTitle={setPageTitle} />
+									</LetterRoundContextProvider>
+								}
 							/>
+
 							<Route
 								path='/selectletters'
 								element={

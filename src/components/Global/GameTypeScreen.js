@@ -183,26 +183,28 @@ const GameTypeScreen = ({
 					);
 				} else if (name === 'letter round') {
 					return (
-						<div className='game-mode-header'>
-							<div
-								className='rules-btn'
-								onClick={() => {
-									navigate('/letterround/rules');
-								}}
-							>
-								<MdOutlineHelpOutline size='22px' />
-							</div>
+						<LetterRoundContextProvider>
+							<div className='game-mode-header'>
+								<div
+									className='rules-btn'
+									onClick={() => {
+										navigate('/letterround/rules');
+									}}
+								>
+									<MdOutlineHelpOutline size='22px' />
+								</div>
 
-							<h3>{name}</h3>
-							<div
-								className='stats-btn'
-								onClick={() => {
-									navigate('/letterround/stats');
-								}}
-							>
-								<RiBarChart2Line size='22px' />
+								<h3>{name}</h3>
+								<div
+									className='stats-btn'
+									onClick={() => {
+										navigate('/letterround/stats');
+									}}
+								>
+									<RiBarChart2Line size='22px' />
+								</div>
 							</div>
-						</div>
+						</LetterRoundContextProvider>
 					);
 				} else {
 					return <p>&nbsp;</p>;
