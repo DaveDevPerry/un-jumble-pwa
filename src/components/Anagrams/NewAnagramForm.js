@@ -44,7 +44,7 @@ const NewAnagramForm = ({
 				handleSave();
 			}}
 		>
-			Save Data
+			continue
 		</button>
 	);
 };

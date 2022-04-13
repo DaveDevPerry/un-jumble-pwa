@@ -65,7 +65,7 @@ const NewConundrumForm = ({
 				handleSave();
 			}}
 		>
-			Save Data
+			Continue
 		</button>
 		// <form onSubmit={handleSubmit}>
 		//   <input type="text" placeholder="book title" value={title}

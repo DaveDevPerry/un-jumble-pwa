@@ -29,6 +29,7 @@ import LetterRoundResults from './pages/LettersRound/Results';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
+import Delete from './pages/Delete';
 // import ConundrumContextProvider from './contexts/ConundrumContext';
 
 function App() {
@@ -167,10 +168,8 @@ function App() {
 									/>
 								}
 							/>
-							{/* <Route
-								path='/conundrum/rules'
-								element={<ConundrumRules setPageTitle={setPageTitle} />}
-							/> */}
+							<Route path='/delete' element={<Delete />} />
+
 							<Route
 								path='/conundrum/game'
 								element={

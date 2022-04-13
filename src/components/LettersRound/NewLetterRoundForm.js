@@ -49,7 +49,7 @@ const NewLetterRoundForm = ({
 				handleSave();
 			}}
 		>
-			Save Data
+			Continue
 		</button>
 	);
 };

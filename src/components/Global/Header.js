@@ -1,10 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+// import Delete from '../../pages/Delete';
+import { MdDeleteForever } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ pageTitle }) {
+	let navigate = useNavigate();
+	//
+
 	return (
 		<StyledHeader>
-			<div></div>
+			<div
+				className='delete-btn'
+				onClick={() => {
+					navigate('/delete');
+				}}
+			>
+				<MdDeleteForever size='20px' />
+			</div>
 			<h2>{pageTitle}</h2>
 			<div></div>
 		</StyledHeader>
@@ -24,6 +37,10 @@ const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	.delete-btn {
+		display: grid;
+		place-content: center;
+	}
 	h2 {
 		letter-spacing: 2px;
 		font-size: 2rem;
