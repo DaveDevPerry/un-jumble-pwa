@@ -101,7 +101,7 @@ const GameTypeScreen = ({
 					.classList.add('played');
 			}
 			// check anagram
-			const todayPlayedAnagram = conundrumData.filter(function (today) {
+			const todayPlayedAnagram = anagramData.filter(function (today) {
 				return today.date === currentDate;
 			});
 			// check for each conundrum level - clean up later by for loop calling function
