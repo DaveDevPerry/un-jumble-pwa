@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
-import { BsWhatsapp } from 'react-icons/bs';
+import { MdOutlineHelpOutline } from 'react-icons/md';
+// import { MdOutlineTimerOff, MdOutlineTimer,MdOutlineHelpOutline } from 'react-icons/md';
+// import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
 import LetterRoundLevelStatus from '../LettersRound/LetterRoundLevelStatus';
 import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
 import AnagramContextProvider from '../../contexts/AnagramContext';
-
+import { useNavigate } from 'react-router-dom';
+import { RiBarChart2Line } from 'react-icons/ri';
 const GameTypeScreen = ({
 	url,
 	name,
@@ -21,6 +23,7 @@ const GameTypeScreen = ({
 	// letterRoundData,
 	// setLetterRoundData,
 }) => {
+	let navigate = useNavigate();
 	const [letterRoundData, setLetterRoundData] = useState([]);
 	const [conundrumData, setConundrumData] = useState([]);
 	const [anagramData, setAnagramData] = useState([]);
@@ -131,15 +134,81 @@ const GameTypeScreen = ({
 	}, [letterRoundData, conundrumData, anagramData]);
 	return (
 		<StyledGameTypeScreen>
-			<div className='game-mode-header'>
-				{isTimed === 'true' ? (
-					<MdOutlineTimer size='23px' />
-				) : (
-					<MdOutlineTimerOff size='23px' />
-				)}
-				<h3>{name}</h3>
-				<BsWhatsapp size='20px' />
-			</div>
+			{(() => {
+				if (name === 'conundrum') {
+					return (
+						<div className='game-mode-header'>
+							<div
+								className='rules-btn'
+								onClick={() => {
+									navigate('/conundrum/rules');
+								}}
+							>
+								<MdOutlineHelpOutline size='22px' />
+							</div>
+
+							<h3>{name}</h3>
+							<div
+								className='stats-btn'
+								onClick={() => {
+									navigate('/conundrum/stats');
+								}}
+							>
+								<RiBarChart2Line size='22px' />
+							</div>
+						</div>
+					);
+				} else if (name === 'anagram round') {
+					return (
+						<div className='game-mode-header'>
+							<div
+								className='rules-btn'
+								onClick={() => {
+									navigate('/anagramround/rules');
+								}}
+							>
+								<MdOutlineHelpOutline size='22px' />
+							</div>
+
+							<h3>{name}</h3>
+							<div
+								className='stats-btn'
+								onClick={() => {
+									navigate('/anagramround/stats');
+								}}
+							>
+								<RiBarChart2Line size='22px' />
+							</div>
+						</div>
+					);
+				} else if (name === 'letter round') {
+					return (
+						<div className='game-mode-header'>
+							<div
+								className='rules-btn'
+								onClick={() => {
+									navigate('/letterround/rules');
+								}}
+							>
+								<MdOutlineHelpOutline size='22px' />
+							</div>
+
+							<h3>{name}</h3>
+							<div
+								className='stats-btn'
+								onClick={() => {
+									navigate('/letterround/stats');
+								}}
+							>
+								<RiBarChart2Line size='22px' />
+							</div>
+						</div>
+					);
+				} else {
+					return <p>&nbsp;</p>;
+				}
+			})()}
+
 			<p>{description}</p>
 			{(() => {
 				if (name === 'conundrum') {
@@ -171,6 +240,47 @@ const GameTypeScreen = ({
 				}
 			})()}
 		</StyledGameTypeScreen>
+		// <StyledGameTypeScreen>
+		// 	<div className='game-mode-header'>
+		// 		{isTimed === 'true' ? (
+		// 			<MdOutlineTimer size='23px' />
+		// 		) : (
+		// 			<MdOutlineTimerOff size='23px' />
+		// 		)}
+		// 		<h3>{name}</h3>
+		// 		<BsWhatsapp size='20px' />
+		// 	</div>
+		// 	<p>{description}</p>
+		// 	{(() => {
+		// 		if (name === 'conundrum') {
+		// 			return (
+		// 				<ConundrumContextProvider>
+		// 					<ConundrumLevelStatus
+		// 						conundrumGameMode={conundrumGameMode}
+		// 						setConundrumGameMode={setConundrumGameMode}
+		// 					/>
+		// 				</ConundrumContextProvider>
+		// 			);
+		// 		} else if (name === 'anagram round') {
+		// 			return (
+		// 				<AnagramContextProvider>
+		// 					<AnagramLevelStatus
+		// 						anagramGameMode={anagramGameMode}
+		// 						setAnagramGameMode={setAnagramGameMode}
+		// 					/>
+		// 				</AnagramContextProvider>
+		// 			);
+		// 		} else if (name === 'letter round') {
+		// 			return (
+		// 				<LetterRoundContextProvider>
+		// 					<LetterRoundLevelStatus />
+		// 				</LetterRoundContextProvider>
+		// 			);
+		// 		} else {
+		// 			return <p>&nbsp;</p>;
+		// 		}
+		// 	})()}
+		// </StyledGameTypeScreen>
 	);
 };
 const StyledGameTypeScreen = styled.div`
@@ -196,6 +306,10 @@ const StyledGameTypeScreen = styled.div`
 		align-items: flex-start;
 		width: 100%;
 		color: ${({ theme }) => theme.bgChosen};
+		.rules-btn,
+		.stats-btn {
+			cursor: pointer;
+		}
 		h3 {
 			font-weight: lighter;
 			font-size: 2.2rem;

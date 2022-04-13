@@ -30,6 +30,10 @@ import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
 import Delete from './pages/Delete';
+import ConundrumRules from './pages/Conundrum/Rules';
+import AnagramRoundRules from './pages/Anagrams/Rules';
+import LetterRoundRules from './pages/LettersRound/Rules';
+import LetterRoundStats from './pages/LettersRound/Stats';
 // import ConundrumContextProvider from './contexts/ConundrumContext';
 
 function App() {
@@ -211,11 +215,15 @@ function App() {
 									/>
 								}
 							/>
+							<Route
+								path='/conundrum/rules'
+								element={<ConundrumRules setPageTitle={setPageTitle} />}
+							/>
 							{/* anagram round  */}
-							{/* <Route
+							<Route
 								path='/anagramround/rules'
 								element={<AnagramRoundRules setPageTitle={setPageTitle} />}
-							/> */}
+							/>
 							<Route
 								path='/anagramround/game'
 								element={
@@ -261,6 +269,14 @@ function App() {
 								path='/letterround/rules'
 								element={<LetterRoundRules setPageTitle={setPageTitle} />}
 							/> */}
+							<Route
+								path='/letterround/rules'
+								element={<LetterRoundRules setPageTitle={setPageTitle} />}
+							/>
+							<Route
+								path='/letterround/stats'
+								element={<LetterRoundStats setPageTitle={setPageTitle} />}
+							/>
 							<Route
 								path='/selectletters'
 								element={
