@@ -41,6 +41,7 @@ const AnagramRoundGame = ({
 		'd',
 		'd',
 		'i',
+		'd',
 	]);
 	// const [shuffledTiles, setShuffledTiles] = useState(null);
 	const [currentAnagramWord, setCurrentAnagramWord] = useState('');
