@@ -121,7 +121,7 @@ const ConundrumLevelStatus = ({
 			{/* map stats here */}
 
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-four'
 				onClick={() => {
 					playButton();
 					setConundrumGameMode(4);
@@ -134,7 +134,7 @@ const ConundrumLevelStatus = ({
 				4
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-five'
 				onClick={() => {
 					playButton();
 
@@ -146,7 +146,7 @@ const ConundrumLevelStatus = ({
 				5
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-six'
 				onClick={() => {
 					playButton();
 
@@ -158,7 +158,7 @@ const ConundrumLevelStatus = ({
 				6
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-seven'
 				onClick={() => {
 					playButton();
 
@@ -170,7 +170,7 @@ const ConundrumLevelStatus = ({
 				7
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-eight'
 				onClick={() => {
 					playButton();
 
@@ -182,7 +182,7 @@ const ConundrumLevelStatus = ({
 				8
 			</div>
 			<div
-				className='quick-stat'
+				className='quick-stat conundrum-level-status-nine'
 				onClick={() => {
 					playButton();
 
@@ -218,6 +218,16 @@ const StyledConundrumLevelStatus = styled.section`
 			background-color: ${({ theme }) => theme.isComplete};
 			color: ${({ theme }) => theme.bgChosen};
 			pointer-events: none;
+		}
+		&.conundrum-level-status-four.played,
+		&.conundrum-level-status-five.played,
+		&.conundrum-level-status-six.played,
+		&.conundrum-level-status-seven.played,
+		&.conundrum-level-status-eight.played,
+		&.conundrum-level-status-nine.played {
+			background-color: ${({ theme }) => theme.isComplete};
+			pointer-events: none;
+			color: ${({ theme }) => theme.bgChosen};
 		}
 	}
 `;

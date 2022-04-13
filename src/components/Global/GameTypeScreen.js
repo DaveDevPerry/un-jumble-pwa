@@ -21,28 +21,82 @@ const GameTypeScreen = ({
 	// setLetterRoundData,
 }) => {
 	const [letterRoundData, setLetterRoundData] = useState([]);
+	const [conundrumData, setConundrumData] = useState([]);
 
 	useEffect(() => {
-		console.log('app render');
-		// console.log(setAPIKey);
-		// console.log(conundrums);
-		// setCurrentDate(new Date().toLocaleDateString())
+		console.log('game type screen render');
+		const localConundrumData =
+			JSON.parse(localStorage.getItem('conundrums')) || [];
+		setConundrumData(localConundrumData);
 		const localLRData = JSON.parse(localStorage.getItem('letterRounds')) || [];
-		console.log(localLRData, 'lr data');
 		setLetterRoundData(localLRData);
 	}, []);
+
 	useEffect(() => {
 		setTimeout(() => {
 			const currentDate = new Date().toLocaleDateString();
-			const todayPlayed = letterRoundData.find(
+			// check letter round
+			const todayPlayedLetterRound = letterRoundData.find(
 				(Obj) => Obj.date === currentDate
 			);
-			console.log(todayPlayed, 'played already?');
-			if (todayPlayed !== undefined) {
+			if (todayPlayedLetterRound !== undefined) {
 				document.querySelector('.letter-round-status').classList.add('played');
 			}
-		}, 2000);
-	}, [letterRoundData]);
+			// check conundrum
+			const todayPlayedConundrums = conundrumData.filter(function (today) {
+				return today.date === currentDate;
+			});
+			// check for each conundrum level - clean up later by for loop calling function
+			const conundrumLevelFour = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 4
+			);
+			if (conundrumLevelFour !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-four')
+					.classList.add('played');
+			}
+			const conundrumLevelFive = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 5
+			);
+			if (conundrumLevelFive !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-five')
+					.classList.add('played');
+			}
+			const conundrumLevelSix = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 6
+			);
+			if (conundrumLevelSix !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-six')
+					.classList.add('played');
+			}
+			const conundrumLevelSeven = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 7
+			);
+			if (conundrumLevelSeven !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-seven')
+					.classList.add('played');
+			}
+			const conundrumLevelEight = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 8
+			);
+			if (conundrumLevelEight !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-eight')
+					.classList.add('played');
+			}
+			const conundrumLevelNine = todayPlayedConundrums.find(
+				(Obj) => Obj.level === 9
+			);
+			if (conundrumLevelNine !== undefined) {
+				document
+					.querySelector('.conundrum-level-status-nine')
+					.classList.add('played');
+			}
+		}, 10);
+	}, [letterRoundData, conundrumData]);
 	return (
 		<StyledGameTypeScreen>
 			<div className='game-mode-header'>

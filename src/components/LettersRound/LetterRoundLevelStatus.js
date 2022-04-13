@@ -69,6 +69,7 @@ const StyledLetterRoundLevelStatus = styled.section`
 	.letter-round-status.played {
 		background-color: ${({ theme }) => theme.isComplete};
 		pointer-events: none;
+		color: ${({ theme }) => theme.bgChosen};
 	}
 `;
 export default LetterRoundLevelStatus;
