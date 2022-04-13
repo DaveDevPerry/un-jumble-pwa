@@ -35,12 +35,18 @@ function App() {
 	// const { conundrums } = useContext(ConundrumContext);
 	const APIKey = process.env.REACT_APP_API_KEY;
 	// const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
-	useEffect(() => {
-		console.log('app render');
-		// console.log(setAPIKey);
-		// console.log(conundrums);
-		// setCurrentDate(new Date().toLocaleDateString())
-	}, []);
+
+	// useEffect(() => {
+	// 	console.log('app render');
+	// 	// console.log(setAPIKey);
+	// 	// console.log(conundrums);
+	// 	// setCurrentDate(new Date().toLocaleDateString())
+	// 	const localLRData = JSON.parse(localStorage.getItem('letterRounds')) || [];
+	// 	console.log(localLRData, 'lr data');
+	// 	setLetterRoundData(localLRData);
+	// }, []);
+
+	// const [letterRoundData, setLetterRoundData] = useState(null)
 
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
 	const themeMode = theme === 'light' ? lightTheme : darkTheme;
@@ -71,7 +77,7 @@ function App() {
 	const [letterTypes, setLetterTypes] = useState([]);
 	const [gameLetters, setGameLetters] = useState([]);
 	const [isLetterRoundTimeUp, setIsLetterRoundTimeUp] = useState(false);
-	const [letterRoundData, setLetterRoundData] = useState(null);
+	// const [letterRoundData, setLetterRoundData] = useState([]);
 	const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
 	const [gotNineLetterWord, setGotNineLetterWord] = useState('');
 	const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
@@ -79,6 +85,18 @@ function App() {
 	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
 	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
 	// const [LetterRoundNineLetters, setLetterRoundNineLetters] = useState(second)
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		const currentDate = new Date().toLocaleDateString();
+	// 		const todayPlayed = letterRoundData.find(
+	// 			(Obj) => Obj.date === currentDate
+	// 		);
+	// 		console.log(todayPlayed, 'played already?');
+	// 		if (todayPlayed !== undefined) {
+	// 			document.querySelector('.letter-round-status').classList.add('played');
+	// 		}
+	// 	}, 2000);
+	// }, [letterRoundData]);
 
 	// ANAGRAM
 	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
@@ -119,8 +137,8 @@ function App() {
 
 	return (
 		<ThemeProvider theme={themeMode}>
+			<GlobalStyles />
 			<Router>
-				<GlobalStyles />
 				<div className='container'>
 					<PageLoader />
 					<Header pageTitle={pageTitle} />
@@ -210,8 +228,8 @@ function App() {
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
-										setLetterRoundData={setLetterRoundData}
-										letterRoundData={letterRoundData}
+										// setLetterRoundData={setLetterRoundData}
+										// letterRoundData={letterRoundData}
 										allSevenLetterWords={allSevenLetterWords}
 										allSixLetterWords={allSixLetterWords}
 										allFiveLetterWords={allFiveLetterWords}
@@ -266,8 +284,8 @@ function App() {
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
-										setLetterRoundData={setLetterRoundData}
-										letterRoundData={letterRoundData}
+										// setLetterRoundData={setLetterRoundData}
+										// letterRoundData={letterRoundData}
 										setGotNineLetterWord={setGotNineLetterWord}
 										letterRoundLongestWord={letterRoundLongestWord}
 										setLetterRoundLongestWord={setLetterRoundLongestWord}
@@ -290,8 +308,8 @@ function App() {
 										gameLetters={gameLetters}
 										setGameLetters={setGameLetters}
 										setLetterTypes={setLetterTypes}
-										setLetterRoundData={setLetterRoundData}
-										letterRoundData={letterRoundData}
+										// setLetterRoundData={setLetterRoundData}
+										// letterRoundData={letterRoundData}
 										showLetterRoundResults={showLetterRoundResults}
 										allLetterRoundUserWords={allLetterRoundUserWords}
 										setAllLetterRoundUserWords={setAllLetterRoundUserWords}

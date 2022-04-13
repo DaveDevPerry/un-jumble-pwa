@@ -1,8 +1,10 @@
-import React from 'react';
+// import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+// import { LetterRoundContext } from '../../contexts/LetterRoundContext';
 
 const LetterRoundLevelStatus = () => {
+	// const { dispatch } = useContext(LetterRoundContext);
 	let navigate = useNavigate();
 	const playButton = () => {
 		new Audio('/audio/button.mp3').play();
@@ -12,13 +14,25 @@ const LetterRoundLevelStatus = () => {
 		const root = document.querySelector(':root');
 		root.style.setProperty('--letter-count', number);
 	}
+	// const checkForExisting = () => {
+	// 	dispatch({
+	// 		type: 'CHECK_FOR_GAME',
+	// 		game: {
+	// 			date: new Date().toLocaleDateString(),
+	// 			letterSet: 0,
+	// 			allWords: 0,
+	// 			timeLimit: 0,
+	// 		},
+	// 	});
+	// };
 	return (
 		<StyledLetterRoundLevelStatus>
 			{/* map stats here */}
 			<div
-				className='quick-stat'
+				className='quick-stat letter-round-status'
 				onClick={() => {
 					playButton();
+					// checkForExisting();
 					// setAnagramGameMode(4);
 					setTileStyleVariable(9);
 					navigate('/selectletters');
@@ -51,6 +65,10 @@ const StyledLetterRoundLevelStatus = styled.section`
 			background-color: ${({ theme }) => theme.isComplete};
 			color: ${({ theme }) => theme.bgChosen};
 		}
+	}
+	.letter-round-status.played {
+		background-color: ${({ theme }) => theme.isComplete};
+		pointer-events: none;
 	}
 `;
 export default LetterRoundLevelStatus;

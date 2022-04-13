@@ -11,6 +11,8 @@ const LetterRoundResults = ({
 	isNextDayCountdownActive,
 	setPageTitle,
 	setMessage,
+	setGameLetters,
+	setAllLetterRoundUserWords,
 }) => {
 	useEffect(() => {
 		console.log('lr results render');
@@ -568,6 +570,8 @@ const LetterRoundResults = ({
 					allLetterRoundUserWords={allLetterRoundUserWords}
 					timeLimit='30'
 					setMessage={setMessage}
+					setGameLetters={setGameLetters}
+					setAllLetterRoundUserWords={setAllLetterRoundUserWords}
 					url='/'
 				/>
 			</LetterRoundContextProvider>

@@ -7,6 +7,8 @@ const NewLetterRoundForm = ({
 	allLetterRoundUserWords,
 	setMessage,
 	timeLimit,
+	setGameLetters,
+	setAllLetterRoundUserWords,
 	url,
 }) => {
 	const playButton = () => {
@@ -33,6 +35,8 @@ const NewLetterRoundForm = ({
 				timeLimit: timeLimit,
 			},
 		});
+		setGameLetters([]);
+		setAllLetterRoundUserWords([]);
 		setTimeout(() => {
 			navigate('/');
 		}, 100);

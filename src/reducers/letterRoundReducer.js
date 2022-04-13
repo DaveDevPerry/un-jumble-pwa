@@ -12,6 +12,14 @@ export const letterRoundReducer = (state, action) => {
 					timeLimit: action.game.timeLimit,
 				},
 			];
+		// case 'CHECK_FOR_GAME':
+		// 	console.log(...state, 'games?');
+		// 	const checkForExisting = state.find(
+		// 		(Obj) => Obj.date === new Date().toLocaleDateString()
+		// 	);
+		// 	console.log(checkForExisting, 'existing');
+
+		// 	return console.log(checkForExisting);
 		default:
 			return state;
 	}

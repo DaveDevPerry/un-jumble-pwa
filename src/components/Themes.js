@@ -3,7 +3,6 @@ export const lightTheme = {
 	black: '#000000',
 	bg: '#000000',
 	bgContainer: '#000000',
-	// bgContainer: 'rgb(45,52,105)',
 	bgTile: '#841d1d',
 	bgTileInset: '#235980',
 	bgNumber: '#980303',

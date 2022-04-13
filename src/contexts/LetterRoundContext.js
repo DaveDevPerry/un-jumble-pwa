@@ -5,11 +5,11 @@ export const LetterRoundContext = createContext();
 
 const LetterRoundContextProvider = (props) => {
 	const [games, dispatch] = useReducer(letterRoundReducer, [], () => {
-		const localData = localStorage.getItem('letter-rounds');
+		const localData = localStorage.getItem('letterRounds');
 		return localData ? JSON.parse(localData) : [];
 	});
 	useEffect(() => {
-		localStorage.setItem('letter-rounds', JSON.stringify(games));
+		localStorage.setItem('letterRounds', JSON.stringify(games));
 	}, [games]);
 	return (
 		<LetterRoundContext.Provider value={{ games, dispatch }}>

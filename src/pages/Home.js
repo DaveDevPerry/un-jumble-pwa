@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import GameTypeScreen from '../components/Global/GameTypeScreen';
+import LetterRoundContextProvider from '../contexts/LetterRoundContext';
+// import LetterRoundContextProvider, {
+// 	LetterRoundContext,
+// } from '../contexts/LetterRoundContext';
 
 const Home = ({
 	conundrumGameMode,
@@ -9,15 +13,40 @@ const Home = ({
 	setAnagramGameMode,
 	setPageTitle,
 }) => {
+	// const { games } = useContext(LetterRoundContext);
+
 	useEffect(() => {
 		console.log('home rendered');
 		setPageTitle('select game');
+		// console.log(games, 'letter round games');
+		// handleUpdate()
 	}, [setPageTitle]);
+
+	// const handleUpdate = () => {
+	// 	// dispatch({
+	// 	// 	type: 'ADD_CONUNDRUM',
+	// 	// 	// conundrum: { date, level, wordOfTheDay, isCorrect },
+	// 	// 	conundrum: {
+	// 	// 		// date,
+	// 	// 		// level,
+	// 	// 		// wordOfTheDay,
+	// 	// 		// isCorrect,
+	// 	// 		date: new Date().toLocaleDateString(),
+	// 	// 		level: conundrumGameMode,
+	// 	// 		wordOfTheDay: conundrum,
+	// 	// 		isCorrect: isConundrumCorrect,
+	// 	// 	},
+	// 	// });
+
+	// 	console.log(games)
+	// }
+
 	return (
 		<StyledHome>
 			<GameTypeScreen
 				name='conundrum'
-				description="use all letters to make today's word"
+				description='select below how many letters you want to play'
+				// description="use all letters to make today's word"
 				isTimed='false'
 				conundrumGameMode={conundrumGameMode}
 				setConundrumGameMode={setConundrumGameMode}
@@ -29,12 +58,14 @@ const Home = ({
 				anagramGameMode={anagramGameMode}
 				setAnagramGameMode={setAnagramGameMode}
 			/>
-			<GameTypeScreen
-				url={'/letterround'}
-				name='letter round'
-				description='make words from a selection of nine letters'
-				isTimed='true'
-			/>
+			<LetterRoundContextProvider>
+				<GameTypeScreen
+					url={'/letterround'}
+					name='letter round'
+					description='make words from a selection of nine letters'
+					isTimed='true'
+				/>
+			</LetterRoundContextProvider>
 		</StyledHome>
 	);
 };

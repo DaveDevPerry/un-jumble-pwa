@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import { useNavigate } from 'react-router-dom';
 import { MdOutlineTimerOff, MdOutlineTimer } from 'react-icons/md';
-// import { BsWhatsapp } from 'react-icons/bs';
+import { BsWhatsapp } from 'react-icons/bs';
 import ConundrumLevelStatus from '../Conundrum/ConundrumLevelStatus';
 import AnagramLevelStatus from '../Anagrams/AnagramLevelStatus';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
 import LetterRoundLevelStatus from '../LettersRound/LetterRoundLevelStatus';
 import LetterRoundContextProvider from '../../contexts/LetterRoundContext';
-// import ReactTooltip from "react-tooltip";
-import { MdOutlineHelpOutline } from 'react-icons/md';
 
 const GameTypeScreen = ({
 	url,
@@ -20,18 +17,34 @@ const GameTypeScreen = ({
 	setConundrumGameMode,
 	anagramGameMode,
 	setAnagramGameMode,
+	// letterRoundData,
+	// setLetterRoundData,
 }) => {
-	// let navigate = useNavigate();
+	const [letterRoundData, setLetterRoundData] = useState([]);
 
-	// const handleRules = (e) => {
-	// 	console.log(e.target.parentElement.parentElement);
-	// };
-
+	useEffect(() => {
+		console.log('app render');
+		// console.log(setAPIKey);
+		// console.log(conundrums);
+		// setCurrentDate(new Date().toLocaleDateString())
+		const localLRData = JSON.parse(localStorage.getItem('letterRounds')) || [];
+		console.log(localLRData, 'lr data');
+		setLetterRoundData(localLRData);
+	}, []);
+	useEffect(() => {
+		setTimeout(() => {
+			const currentDate = new Date().toLocaleDateString();
+			const todayPlayed = letterRoundData.find(
+				(Obj) => Obj.date === currentDate
+			);
+			console.log(todayPlayed, 'played already?');
+			if (todayPlayed !== undefined) {
+				document.querySelector('.letter-round-status').classList.add('played');
+			}
+		}, 2000);
+	}, [letterRoundData]);
 	return (
-		<StyledGameTypeScreen
-		// className='btn start-btn start-game-mode-btn'
-		// onClick={url === '/letterround' ? navigate('/') : navigate(url)}
-		>
+		<StyledGameTypeScreen>
 			<div className='game-mode-header'>
 				{isTimed === 'true' ? (
 					<MdOutlineTimer size='23px' />
@@ -39,26 +52,7 @@ const GameTypeScreen = ({
 					<MdOutlineTimerOff size='23px' />
 				)}
 				<h3>{name}</h3>
-				{/* <a data-tip="React-tooltip"> */}
-				{/* <div className='rules-btn' onClick={handleRules}> */}
-				<MdOutlineHelpOutline size='25px' />
-				{/* </div> */}
-				{/* <BsWhatsapp size='20px' /> */}
-				{/* </a>
-				{'<ReactTooltip place="' +
-                    place +
-                    '" type="' +
-                    type +
-                    '" effect="' +
-                    effect +
-                    '"/>'}
-				<ReactTooltip
-            id="main"
-            place={place}
-            type={type}
-            effect={effect}
-            multiline={true}
-          /> */}
+				<BsWhatsapp size='20px' />
 			</div>
 			<p>{description}</p>
 			{(() => {
@@ -81,10 +75,7 @@ const GameTypeScreen = ({
 				} else if (name === 'letter round') {
 					return (
 						<LetterRoundContextProvider>
-							<LetterRoundLevelStatus
-							// anagramGameMode={anagramGameMode}
-							// setAnagramGameMode={setAnagramGameMode}
-							/>
+							<LetterRoundLevelStatus />
 						</LetterRoundContextProvider>
 					);
 				} else {
