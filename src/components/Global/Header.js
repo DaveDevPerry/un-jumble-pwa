@@ -26,7 +26,7 @@ const StyledHeader = styled.header`
 	align-items: center;
 	h2 {
 		letter-spacing: 2px;
-		font-size: 2.5rem;
+		font-size: 2rem;
 		font-weight: lighter;
 	}
 	/* text-align: center;
