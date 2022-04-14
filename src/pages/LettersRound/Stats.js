@@ -193,7 +193,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 			</div> */}
 
 				<div className='letter-round-chart-wrapper'>
-					NO PREVIOUS STATS TO DISPLAY
+					<p>NO PREVIOUS STATS TO DISPLAY</p>
 				</div>
 			</div>
 		</StyledStats>

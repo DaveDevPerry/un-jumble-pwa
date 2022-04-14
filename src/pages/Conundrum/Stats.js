@@ -192,7 +192,7 @@ const ConundrumStats = ({ setPageTitle }) => {
 			</div> */}
 
 				<div className='conundrum-chart-wrapper'>
-					NO PREVIOUS STATS TO DISPLAY
+					<p>NO PREVIOUS STATS TO DISPLAY</p>
 				</div>
 			</div>
 		</StyledStats>
