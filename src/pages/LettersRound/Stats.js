@@ -163,19 +163,20 @@ const LetterRoundStats = ({ setPageTitle }) => {
 		</StyledStats>
 	) : (
 		<StyledStats>
-			<div className='letter-round-header'>
-				<MdOutlineClose size='25px' id='close-letter-round-blank' />
-				<p className='letter-round-title'>error</p>
-				<div
-					className='close-letter-round-btn'
-					onClick={() => {
-						navigate('/');
-					}}
-				>
-					<MdOutlineClose size='25px' />
+			<div className='stats-page-container'>
+				<div className='letter-round-header'>
+					<MdOutlineClose size='25px' id='close-letter-round-blank' />
+					<p className='letter-round-title'>error</p>
+					<div
+						className='close-letter-round-btn'
+						onClick={() => {
+							navigate('/');
+						}}
+					>
+						<MdOutlineClose className='close-btn-icon' />
+					</div>
 				</div>
-			</div>
-			<div className='letter-round-stats-container'>
+				{/* <div className='letter-round-stats-container'>
 				<div className='stat-wrapper'>
 					<p>03</p>
 					<p>played</p>
@@ -188,21 +189,13 @@ const LetterRoundStats = ({ setPageTitle }) => {
 					<p>607</p>
 					<p>points</p>
 				</div>
-				{/* <div className='stat-wrapper'>
-        <p>100</p>
-        <p>win %</p>
-      </div>
-      <div className='stat-wrapper'>
-        <p>03</p>
-        <p>current streak</p>
-      </div>
-      <div className='stat-wrapper'>
-        <p>03</p>
-        <p>max streak</p>
-      </div> */}
-			</div>
 
-			<div className='letter-round-chart-wrapper'>chart goes here</div>
+			</div> */}
+
+				<div className='letter-round-chart-wrapper'>
+					NO PREVIOUS STATS TO DISPLAY
+				</div>
+			</div>
 		</StyledStats>
 	);
 };

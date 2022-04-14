@@ -205,50 +205,24 @@ const AnagramStats = ({ setPageTitle, setMessage }) => {
 		</StyledStats>
 	) : (
 		<StyledStats>
-			<div className='anagram-header'>
-				<MdOutlineClose size='25px' id='close-anagram-blank' />
-				<p className='anagram-title'>error</p>
-				<div
-					className='close-anagram-btn'
-					onClick={() => {
-						navigate('/');
-					}}
-				>
-					<MdOutlineClose size='25px' className='close-btn-icon' />
+			<div className='stats-page-container'>
+				<div className='anagram-header'>
+					<MdOutlineClose size='25px' id='close-anagram-blank' />
+					<p className='anagram-title'>error</p>
+					<div
+						className='close-anagram-btn'
+						onClick={() => {
+							navigate('/');
+						}}
+					>
+						<MdOutlineClose className='close-btn-icon' />
+					</div>
 				</div>
-			</div>
-			<div className='anagram-stats-container'>
-				<div className='stat-wrapper'>
-					<p>03</p>
-					<p>
-						total
-						<br />
-						played
-					</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>607</p>
-					<p>total words</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>607</p>
-					<p>total points</p>
-				</div>
-				{/* <div className='stat-wrapper'>
-        <p>100</p>
-        <p>win %</p>
-      </div>
-      <div className='stat-wrapper'>
-        <p>03</p>
-        <p>current streak</p>
-      </div>
-      <div className='stat-wrapper'>
-        <p>03</p>
-        <p>max streak</p>
-      </div> */}
-			</div>
 
-			<div className='anagram-chart-wrapper'>chart goes here</div>
+				<div className='anagram-chart-wrapper'>
+					NO PREVIOUS STATS TO DISPLAY
+				</div>
+			</div>
 		</StyledStats>
 	);
 };
