@@ -225,12 +225,13 @@ const AnagramRoundGame = ({
 			setMessage(
 				wrongWordMessages[Math.floor(Math.random() * wrongWordMessages.length)]
 			);
+			const currentWordPoints = parseInt('-' + getWordScore());
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
 					// word: currentAnagramWord,
 					word: currentTargetWord,
-					score: -1,
+					score: currentWordPoints,
 					isCorrect: false,
 				},
 			]);
@@ -249,12 +250,13 @@ const AnagramRoundGame = ({
 					Math.floor(Math.random() * correctWordMessages.length)
 				]
 			);
+			const currentWordPoints = getWordScore();
 			// setMessage('correct!');
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
 					word: currentAnagramWord,
-					score: 1,
+					score: currentWordPoints,
 					isCorrect: true,
 				},
 			]);
@@ -281,6 +283,36 @@ const AnagramRoundGame = ({
 			lettersElem[i].firstElementChild.textContent = currentAnagramWord[i];
 		}
 	}, [currentAnagramWord]);
+
+	const getWordScore = () => {
+		let newWordScore = 0;
+		switch (currentAnagramWord.length) {
+			case 9:
+				newWordScore = 20;
+				break;
+			case 8:
+				newWordScore = 13;
+				break;
+			case 7:
+				newWordScore = 10;
+				break;
+			case 6:
+				newWordScore = 7;
+				break;
+			case 5:
+				newWordScore = 5;
+				break;
+			case 4:
+				newWordScore = 3;
+				break;
+			case 3:
+				newWordScore = 1;
+				break;
+			default:
+				break;
+		}
+		return newWordScore;
+	};
 
 	return (
 		<StyledGame>

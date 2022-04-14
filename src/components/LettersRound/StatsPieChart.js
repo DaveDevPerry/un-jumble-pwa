@@ -47,7 +47,8 @@ const StatsPieChart = ({
 	// 	},
 	// };
 	const data = {
-		labels: ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
+		labels: [3, 4, 5, 6, 7, 8, 9],
+		// labels: ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
 		// font: { color: '#f00' },
 		fontColor: '#f00',
 		// labels: ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
@@ -72,7 +73,7 @@ const StatsPieChart = ({
 					'rgba(255, 159, 64, 1)',
 					'rgba(255, 206, 86, 1)',
 				],
-				borderColor: ['rgb(51,112,156)'],
+				// borderColor: ['rgb(51,112,156)'],
 				// borderColor: [
 				// 	'rgba(255, 99, 132, 1)',
 				// 	'rgba(54, 162, 235, 1)',
