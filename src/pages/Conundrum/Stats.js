@@ -219,7 +219,7 @@ const StyledStats = styled.div`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		row-gap: 2rem;
+		row-gap: 1rem;
 		.conundrum-header {
 			display: flex;
 			justify-content: space-between;

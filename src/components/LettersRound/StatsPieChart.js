@@ -47,8 +47,16 @@ const StatsPieChart = ({
 	// 	},
 	// };
 	const data = {
-		labels: [3, 4, 5, 6, 7, 8, 9],
-		// labels: ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],
+		// labels: [3, 4, 5, 6, 7, 8, 9],
+		labels: [
+			'3 Letter Words',
+			'4 Letter Words',
+			'5 Letter Words',
+			'6 Letter Words',
+			'7 Letter Words',
+			'8 Letter Words',
+			'9 Letter Words',
+		],
 		// font: { color: '#f00' },
 		fontColor: '#f00',
 		// labels: ['Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'],

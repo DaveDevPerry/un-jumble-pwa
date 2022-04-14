@@ -3,9 +3,12 @@ import { func, string } from 'prop-types';
 
 const Toggle = ({ toggleTheme }) => {
 	return (
-		<button id='toggle-switch' onClick={toggleTheme}>
+		<div id='toggle-switch' onClick={toggleTheme}>
 			mode
-		</button>
+		</div>
+		// <button id='toggle-switch' onClick={toggleTheme}>
+		// 	mode
+		// </button>
 	);
 };
 Toggle.propTypes = {

@@ -265,8 +265,7 @@ const StyledStats = styled.div`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		row-gap: 2rem;
-		/* justify-self: center; */
+		row-gap: 1rem; /* justify-self: center; */
 		.anagram-header {
 			display: flex;
 			justify-content: space-between;

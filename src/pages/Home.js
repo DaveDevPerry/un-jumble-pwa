@@ -17,7 +17,7 @@ const Home = ({
 
 	useEffect(() => {
 		console.log('home rendered');
-		setPageTitle('select game');
+		setPageTitle('un-jumble');
 		// console.log(games, 'letter round games');
 		// handleUpdate()
 	}, [setPageTitle]);

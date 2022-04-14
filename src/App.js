@@ -39,6 +39,7 @@ import ConundrumStats from './pages/Conundrum/Stats';
 import ConundrumContextProvider from './contexts/ConundrumContext';
 import AnagramContextProvider from './contexts/AnagramContext';
 import AnagramStats from './pages/Anagrams/Stats';
+import Settings from './pages/Settings';
 // import ConundrumContextProvider from './contexts/ConundrumContext';
 
 function App() {
@@ -178,6 +179,16 @@ function App() {
 								}
 							/>
 							<Route path='/delete' element={<Delete />} />
+							<Route
+								path='/settings'
+								element={
+									<Settings
+										setPageTitle={setPageTitle}
+										theme={theme}
+										themeToggler={themeToggler}
+									/>
+								}
+							/>
 
 							<Route
 								path='/conundrum/game'

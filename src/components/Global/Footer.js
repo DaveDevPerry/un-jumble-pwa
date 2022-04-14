@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Toggle from './Toggler';
+// import Toggle from './Toggler';
 import { useNavigate } from 'react-router-dom';
 import SpeechBubble from './SpeechBubble';
 
@@ -22,8 +22,8 @@ function Footer({ theme, themeToggler, message, setMessage }) {
 					navigate('/');
 				}}
 			/>
-			<p id='ssg'>© Silly Sausage Games 2022</p>
-			<Toggle theme={theme} toggleTheme={themeToggler} />
+			<p id='ssg'>Silly Sausage Games</p>
+			{/* <Toggle theme={theme} toggleTheme={themeToggler} /> */}
 			<SpeechBubble
 				message={message}
 				// message='test message here'
@@ -48,7 +48,7 @@ const StyledFooter = styled.footer`
 		color: ${({ theme }) => theme.syntax};
 		font-size: 1.2rem;
 	}
-	#toggle-switch {
+	/* #toggle-switch {
 		position: absolute;
 		right: 5px;
 		top: 50%;
@@ -61,13 +61,12 @@ const StyledFooter = styled.footer`
 		font-weight: lighter;
 		color: ${({ theme }) => theme.syntax};
 		background-color: ${({ theme }) => theme.bgTile};
-		/* font-family: 'Montserrat'; */
 		font-size: 1.2rem;
 		line-height: 1px;
 		letter-spacing: initial;
 		width: unset;
 		height: 1rem;
-	}
+	} */
 	#savannah {
 		position: absolute;
 		bottom: 0px;
