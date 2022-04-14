@@ -263,13 +263,13 @@ const StyledStats = styled.div`
 				}
 			}
 		}
-		/* .conundrum-chart-wrapper {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-	} */
+		.conundrum-chart-wrapper {
+			p {
+				color: ${({ theme }) => theme.bgChosen};
+				text-align: center;
+				font-weight: 800;
+			}
+		}
 	}
 `;
 

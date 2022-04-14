@@ -166,7 +166,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 			<div className='stats-page-container'>
 				<div className='letter-round-header'>
 					<MdOutlineClose size='25px' id='close-letter-round-blank' />
-					<p className='letter-round-title'>error</p>
+					<p className='letter-round-title'>statistics</p>
 					<div
 						className='close-letter-round-btn'
 						onClick={() => {
@@ -267,13 +267,11 @@ const StyledStats = styled.div`
 			}
 		}
 		.letter-round-chart-wrapper {
-			/* flex: 1;
-			display: flex;
-			flex-direction: column;
-			justify-content: center; */
-			/* canvas {
-			color: black !important;
-		} */
+			p {
+				color: ${({ theme }) => theme.bgChosen};
+				text-align: center;
+				font-weight: 800;
+			}
 		}
 	}
 `;

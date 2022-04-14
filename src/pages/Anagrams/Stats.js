@@ -208,7 +208,7 @@ const AnagramStats = ({ setPageTitle, setMessage }) => {
 			<div className='stats-page-container'>
 				<div className='anagram-header'>
 					<MdOutlineClose size='25px' id='close-anagram-blank' />
-					<p className='anagram-title'>error</p>
+					<p className='anagram-title'>statistics</p>
 					<div
 						className='close-anagram-btn'
 						onClick={() => {
@@ -295,16 +295,13 @@ const StyledStats = styled.div`
 				}
 			}
 		}
-		/* .anagram-chart-wrapper {
-			background-color: white; */
-		/* flex: 1; */
-		/* display: flex;
-		flex-direction: column;
-		justify-content: center; */
-		/* canvas {
-			color: black !important;
-		} */
-		/* } */
+		.anagram-chart-wrapper {
+			p {
+				color: ${({ theme }) => theme.bgChosen};
+				text-align: center;
+				font-weight: 800;
+			}
+		}
 	}
 `;
 
