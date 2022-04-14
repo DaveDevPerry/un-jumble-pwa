@@ -29,42 +29,38 @@ const LetterSelect = ({
 	}, [setMessage, gameLetters]);
 
 	return (
-		<>
-			<StyledLetterSelect>
-				<div className='letter-select-container'>
-					<div className='letter-select-wrapper'>
-						<div className='modal-header'>
-							<p>select</p>
-							<span>{9 - gameLetters.length}</span>
-							<p>letters</p>
-						</div>
-						<UserSelectedLetters
-							gameLetters={gameLetters}
-							letterTypes={letterTypes}
-						/>
-						<LetterCards
-							gameLetters={gameLetters}
-							letterTypes={letterTypes}
-							setGameLetters={setGameLetters}
-							setLetterTypes={setLetterTypes}
-						/>
+		<StyledLetterSelect>
+			<div className='letter-select-container'>
+				<div className='letter-select-wrapper'>
+					<div className='modal-header'>
+						<p>select</p>
+						<span>{9 - gameLetters.length}</span>
+						<p>letters</p>
 					</div>
+					<UserSelectedLetters
+						gameLetters={gameLetters}
+						letterTypes={letterTypes}
+					/>
+					<LetterCards
+						gameLetters={gameLetters}
+						letterTypes={letterTypes}
+						setGameLetters={setGameLetters}
+						setLetterTypes={setLetterTypes}
+					/>
 				</div>
-				<StyledCloseBtn
-					className={
-						gameLetters.length === 9
-							? 'close-modal-btn show'
-							: 'close-modal-btn'
-					}
-					onClick={() => {
-						playButton();
-						navigate('/letterround/game');
-					}}
-				>
-					NEXT
-				</StyledCloseBtn>
-			</StyledLetterSelect>
-		</>
+			</div>
+			<StyledCloseBtn
+				className={
+					gameLetters.length === 9 ? 'close-modal-btn show' : 'close-modal-btn'
+				}
+				onClick={() => {
+					playButton();
+					navigate('/letterround/game');
+				}}
+			>
+				NEXT
+			</StyledCloseBtn>
+		</StyledLetterSelect>
 	);
 };
 

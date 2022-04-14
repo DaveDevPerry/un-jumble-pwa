@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import UserWordsDisplay from '../../components/Conundrum/UserWordsDisplay';
 import { useNavigate } from 'react-router-dom';
 import ConundrumUserLetterCards from '../../components/Conundrum/UserLetterCards';
-// import YesterdayUserWordDisplay from '../../components/Conundrum/WeeksResultsTable';
 import WeeksResultsTable from '../../components/Conundrum/WeeksResultsTable';
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
 
@@ -15,14 +14,12 @@ const ConundrumGame = ({
 	allSixLetterWords,
 	allFiveLetterWords,
 	allFourLetterWords,
-	message,
 	setMessage,
 	conundrum,
 	setConundrum,
 	conundrumGameMode,
 	setPageTitle,
 	setIsConundrumCorrect,
-	// conundrumGameMode
 }) => {
 	const playButton = () => {
 		new Audio('/audio/button.mp3').play();
@@ -30,11 +27,9 @@ const ConundrumGame = ({
 	useEffect(() => {
 		console.log('conundrum game render');
 		setPageTitle(`conundrum: Level ${conundrumGameMode}`);
-		// setPageTitle('conundrum');
 	}, [setPageTitle, conundrumGameMode]);
 	let navigate = useNavigate();
 	const [conundrumOfTheDay, setConundrumOfTheDay] = useState([]);
-	// const [yesterdayConundrum, setYesterdayConundrum] = useState()
 	const [conundrumOfTheDayArray, setConundrumOfTheDayArray] = useState([]);
 	const [shuffled, setShuffled] = useState([]);
 	const [currentWord, setCurrentWord] = useState('');
@@ -43,12 +38,7 @@ const ConundrumGame = ({
 	useEffect(() => {
 		const offsetFromDate = new Date(2022, 0, 2);
 		const msOffset = Date.now() - offsetFromDate;
-		console.log(msOffset, 'ms');
 		const dayOffset = msOffset / 1000 / 60 / 60 / 24;
-		console.log(dayOffset, 'dos');
-		console.log(allFourLetterWords, 'four');
-		console.log(conundrumGameMode, 'gm');
-		console.log(Math.floor(dayOffset), 'day offset');
 		let getConundrumOfTheDay;
 		switch (conundrumGameMode) {
 			case 9:
@@ -71,7 +61,6 @@ const ConundrumGame = ({
 				break;
 			default:
 				console.error('error in word length choice');
-			// return;
 		}
 		const getConundrumOfTheDayArray = getConundrumOfTheDay.split('');
 		console.log(getConundrumOfTheDayArray, 'arr');
@@ -89,7 +78,6 @@ const ConundrumGame = ({
 		conundrumGameMode,
 		setConundrum,
 	]);
-
 	// shuffle word - WORKING
 	function shuffleArray(array) {
 		for (let i = array.length - 1; i > 0; i--) {
@@ -98,7 +86,6 @@ const ConundrumGame = ({
 		}
 		return array;
 	}
-
 	const handleStartGame = (e) => {
 		playButton();
 		setMessage('good luck!');
@@ -114,23 +101,8 @@ const ConundrumGame = ({
 			btn.classList.add('visible');
 		});
 	};
-
 	return (
 		<StyledConundrumGame>
-			{/* <div className='back-btn-container'>
-				<div className='button'>
-					<button className='btn-back btn-cta'>back</button>
-					<button
-						className='btn-front btn-cta'
-						onClick={() => {
-							navigate('/');
-						}}
-					>
-						try again later
-					</button>
-				</div>
-			</div> */}
-			{/* <GamePanel handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 			<ConundrumContextProvider>
 				<WeeksResultsTable
 					currentWord={currentWord}
@@ -176,7 +148,6 @@ const StyledConundrumGame = styled.section`
 	flex: 1;
 	position: relative;
 	row-gap: 1rem;
-
 	.back-btns-container {
 		perspective: 500px;
 		display: flex;
@@ -210,7 +181,6 @@ const StyledConundrumGame = styled.section`
 	.button.visible .btn-front {
 		transform: rotateX(0);
 	}
-
 	.btn-back {
 		font-size: 2rem;
 		outline: none;

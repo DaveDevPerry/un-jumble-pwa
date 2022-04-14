@@ -153,7 +153,6 @@ const LetterRoundGame = ({
 		}
 		resetWord();
 	};
-
 	const getWordScore = () => {
 		let newWordScore = 0;
 		switch (currentLetterRoundWord.length) {

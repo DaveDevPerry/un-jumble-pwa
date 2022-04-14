@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { MdDeleteForever } from 'react-icons/md';
-// import { Navigate } from 'react-router-dom';
-// import DeleteIcon from '../components/Global/DeleteIcon';
 
 const Delete = () => {
 	let navigate = useNavigate();
@@ -36,7 +34,6 @@ const Delete = () => {
 					}}
 				>
 					<MdDeleteForever size='50px' />
-
 					<p>Delete Letter Round Data</p>
 				</li>
 			</ul>
@@ -51,7 +48,6 @@ const Delete = () => {
 	);
 };
 const StyledDeletePage = styled.section`
-	/* background-color: green; */
 	display: flex;
 	flex-direction: column;
 	row-gap: 2rem;

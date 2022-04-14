@@ -1,5 +1,3 @@
-// import uuid from 'uuid/v4';
-
 export const conundrumReducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD_CONUNDRUM':
@@ -10,7 +8,6 @@ export const conundrumReducer = (state, action) => {
 					level: action.conundrum.level,
 					wordOfTheDay: action.conundrum.wordOfTheDay,
 					isCorrect: action.conundrum.isCorrect,
-					// id: uuid(),
 				},
 			];
 		case 'ADD_CURRENT_DAY_CONUNDRUMS':
@@ -22,40 +19,7 @@ export const conundrumReducer = (state, action) => {
 					wordOfTheDay: action.conundrum.wordOfTheDay,
 					isCorrect: action.conundrum.isCorrect,
 				},
-				// ,
-				// {
-				// 	date: new Date('Apr 02, 2022').toLocaleDateString(),
-				// 	level: 5,
-				// 	wordOfTheDay: '',
-				// 	isCorrect: false,
-				// },
-				// {
-				// 	date: new Date('Apr 02, 2022').toLocaleDateString(),
-				// 	level: 6,
-				// 	wordOfTheDay: '',
-				// 	isCorrect: false,
-				// },
-				// {
-				// 	date: new Date('Apr 02, 2022').toLocaleDateString(),
-				// 	level: 7,
-				// 	wordOfTheDay: '',
-				// 	isCorrect: false,
-				// },
-				// {
-				// 	date: new Date('Apr 02, 2022').toLocaleDateString(),
-				// 	level: 8,
-				// 	wordOfTheDay: '',
-				// 	isCorrect: false,
-				// },
-				// {
-				// 	date: new Date('Apr 02, 2022').toLocaleDateString(),
-				// 	level: 9,
-				// 	wordOfTheDay: '',
-				// 	isCorrect: false,
-				// },
 			];
-		// case 'REMOVE_BOOK':
-		//   return state.filter(book => book.id !== action.id);
 		default:
 			return state;
 	}

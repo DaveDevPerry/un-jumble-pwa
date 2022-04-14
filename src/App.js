@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-
 // COMPONENTS
 import Header from './components/Global/Header';
 import Footer from './components/Global/Footer';
@@ -12,20 +11,13 @@ import { lightTheme, darkTheme } from './components/Themes';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
 // CONUNDRUM
-// import ConundrumContextProvider from './contexts/ConundrumContext';
-// import ConundrumHome from './pages/Conundrum/Home';
 import ConundrumGame from './pages/Conundrum/Game';
 import ConundrumResults from './pages/Conundrum/Results';
-// import ConundrumRules from './pages/Conundrum/Rules';
 // LETTER ROUND
-// import LetterRoundHome from './pages/LettersRound/Home';
-// import LetterRoundRules from './pages/LettersRound/Rules';
 import LetterSelect from './pages/LettersRound/LetterSelect';
 import LetterRoundGame from './pages/LettersRound/Game';
 import LetterRoundResults from './pages/LettersRound/Results';
 // ANAGRAM - UNSCRAMBLE
-// import AnagramRoundHome from './pages/Anagrams/Home';
-// import AnagramRoundRules from './pages/Anagrams/Rules';
 import AnagramRoundGame from './pages/Anagrams/Game';
 import AnagramRoundResults from './pages/Anagrams/Results';
 import PageLoader from './components/Global/PageLoader';
@@ -40,38 +32,21 @@ import ConundrumContextProvider from './contexts/ConundrumContext';
 import AnagramContextProvider from './contexts/AnagramContext';
 import AnagramStats from './pages/Anagrams/Stats';
 import Settings from './pages/Settings';
-// import ConundrumContextProvider from './contexts/ConundrumContext';
 
 function App() {
-	// const { conundrums } = useContext(ConundrumContext);
 	const APIKey = process.env.REACT_APP_API_KEY;
-	// const [APIKey, setAPIKey] = useState(process.env.REACT_APP_API_KEY);
-
-	// useEffect(() => {
-	// 	console.log('app render');
-	// 	// console.log(setAPIKey);
-	// 	// console.log(conundrums);
-	// 	// setCurrentDate(new Date().toLocaleDateString())
-	// 	const localLRData = JSON.parse(localStorage.getItem('letterRounds')) || [];
-	// 	console.log(localLRData, 'lr data');
-	// 	setLetterRoundData(localLRData);
-	// }, []);
-
-	// const [letterRoundData, setLetterRoundData] = useState(null)
 
 	const [theme, themeToggler, mountedComponent] = useDarkMode();
 	const themeMode = theme === 'light' ? lightTheme : darkTheme;
 	const [dictionary, setDictionary] = useState(null);
 	const englishDictionary = require('an-array-of-english-words');
 	// GLOBAL - working with conundrum
-	// const [currentDate, setCurrentDate] = useState('')
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
 		useState(true);
 	// HEADER
 	const [pageTitle, setPageTitle] = useState('select game');
 	// FOOTER
 	const [message, setMessage] = useState('');
-
 	// CONUNDRUM
 	const [conundrum, setConundrum] = useState('');
 	const [allNineLetterWords, setAllNineLetterWords] = useState(null);
@@ -83,32 +58,16 @@ function App() {
 	const [gameMode, setGameMode] = useState('');
 	const [conundrumGameMode, setConundrumGameMode] = useState('');
 	const [isConundrumCorrect, setIsConundrumCorrect] = useState(false);
-
 	// LETTER ROUND
 	const [letterTypes, setLetterTypes] = useState([]);
 	const [gameLetters, setGameLetters] = useState([]);
 	const [isLetterRoundTimeUp, setIsLetterRoundTimeUp] = useState(false);
-	// const [letterRoundData, setLetterRoundData] = useState([]);
 	const [showLetterRoundResults, setShowLetterRoundResults] = useState(false);
 	const [gotNineLetterWord, setGotNineLetterWord] = useState('');
 	const [letterRoundLongestWord, setLetterRoundLongestWord] = useState('');
 	const [allLetterRoundUserWords, setAllLetterRoundUserWords] = useState([]);
 	const [sortedWordsByLengthArray, setSortedWordsByLengthArray] = useState([]);
 	const [currentLetterRoundWord, setCurrentLetterRoundWord] = useState('');
-	// const [LetterRoundNineLetters, setLetterRoundNineLetters] = useState(second)
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		const currentDate = new Date().toLocaleDateString();
-	// 		const todayPlayed = letterRoundData.find(
-	// 			(Obj) => Obj.date === currentDate
-	// 		);
-	// 		console.log(todayPlayed, 'played already?');
-	// 		if (todayPlayed !== undefined) {
-	// 			document.querySelector('.letter-round-status').classList.add('played');
-	// 		}
-	// 	}, 2000);
-	// }, [letterRoundData]);
-
 	// ANAGRAM
 	const [allAnagramUserWords, setAllAnagramUserWords] = useState([]);
 	const [anagramGameMode, setAnagramGameMode] = useState('');
@@ -153,17 +112,12 @@ function App() {
 				<div className='container'>
 					<PageLoader />
 					<Header pageTitle={pageTitle} />
-					{/* <StrictMode> */}
 					<main>
 						<Routes>
 							<Route
 								path='/'
 								element={
 									<Home
-										// gameData={gameData}
-										// setGameData={setGameData}
-										// setConundrumData={setConundrumData}
-										// letterRoundData={letterRoundData}
 										conundrumGameMode={conundrumGameMode}
 										setConundrumGameMode={setConundrumGameMode}
 										allNineLetterWords={allNineLetterWords}
@@ -189,7 +143,6 @@ function App() {
 									/>
 								}
 							/>
-
 							<Route
 								path='/conundrum/game'
 								element={
@@ -267,8 +220,6 @@ function App() {
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
-										// setLetterRoundData={setLetterRoundData}
-										// letterRoundData={letterRoundData}
 										allSevenLetterWords={allSevenLetterWords}
 										allSixLetterWords={allSixLetterWords}
 										allFiveLetterWords={allFiveLetterWords}
@@ -297,15 +248,10 @@ function App() {
 								}
 							/>
 							{/* letter round  */}
-							{/* <Route
-								path='/letterround/rules'
-								element={<LetterRoundRules setPageTitle={setPageTitle} />}
-							/> */}
 							<Route
 								path='/letterround/rules'
 								element={<LetterRoundRules setPageTitle={setPageTitle} />}
 							/>
-
 							<Route
 								path='/letterround/stats'
 								element={
@@ -314,7 +260,6 @@ function App() {
 									</LetterRoundContextProvider>
 								}
 							/>
-
 							<Route
 								path='/selectletters'
 								element={
@@ -338,8 +283,6 @@ function App() {
 										letterTypes={letterTypes}
 										setLetterTypes={setLetterTypes}
 										dictionary={dictionary}
-										// setLetterRoundData={setLetterRoundData}
-										// letterRoundData={letterRoundData}
 										setGotNineLetterWord={setGotNineLetterWord}
 										letterRoundLongestWord={letterRoundLongestWord}
 										setLetterRoundLongestWord={setLetterRoundLongestWord}
@@ -362,8 +305,6 @@ function App() {
 										gameLetters={gameLetters}
 										setGameLetters={setGameLetters}
 										setLetterTypes={setLetterTypes}
-										// setLetterRoundData={setLetterRoundData}
-										// letterRoundData={letterRoundData}
 										showLetterRoundResults={showLetterRoundResults}
 										allLetterRoundUserWords={allLetterRoundUserWords}
 										setAllLetterRoundUserWords={setAllLetterRoundUserWords}
@@ -385,8 +326,7 @@ function App() {
 							/>
 						</Routes>
 					</main>
-					{/* </StrictMode> */}
-					<Footer theme={theme} themeToggler={themeToggler} message={message} />
+					<Footer message={message} />
 				</div>
 			</Router>
 		</ThemeProvider>

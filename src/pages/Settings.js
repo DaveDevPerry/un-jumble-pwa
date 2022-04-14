@@ -27,7 +27,6 @@ const Settings = ({ setPageTitle, theme, themeToggler }) => {
 						<MdOutlineClose size='25px' color='#1b2877' />
 					</div>
 				</div>
-
 				<div className='settings-list-container'>
 					<ul className='settings-list'>
 						<li>
@@ -65,10 +64,8 @@ const StyledSettings = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	.settings-page-container {
-		/* background-color: ${({ theme }) => theme.bgTile}; */
 		background-color: white;
 		border-radius: 5px;
-		/* padding: 1rem; */
 		padding: 1rem;
 		display: flex;
 		flex-direction: column;
@@ -86,19 +83,13 @@ const StyledSettings = styled.div`
 				font-family: 'Bebas Neue', cursive;
 				font-size: 2.2rem;
 				color: ${({ theme }) => theme.bgChosen};
-				/* width: 100%; */
 			}
 			#close-settings-btn {
 				justify-self: flex-end;
 			}
 		}
 		.settings-list-container {
-			/* display: flex;
-			justify-content: space-evenly;
-			align-items: flex-start; */
 			width: 100%;
-			/* border-top: 2px solid ${({ theme }) => theme.bgContainer};
-			border-bottom: 2px solid ${({ theme }) => theme.bgContainer}; */
 			padding: 1rem;
 			.settings-list {
 				li {
@@ -139,7 +130,6 @@ const StyledSettings = styled.div`
 		font-weight: 100;
 		color: ${({ theme }) => theme.syntax};
 		background-color: ${({ theme }) => theme.bgChosen};
-
 		letter-spacing: initial;
 	}
 `;

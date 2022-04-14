@@ -1,45 +1,22 @@
 import React, { useEffect } from 'react';
-// import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import NextGameCountdown from '../../components/Global/NextGameCountdown';
-// import NextGameCountdown from '../../components/LettersRound/NextGameCountdown';
-// import { useNavigate } from 'react-router-dom';
-// import { BsWhatsapp, BsFillShareFill } from 'react-icons/bs';
-// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
 import UserWordResultsDisplay from '../../components/Anagrams/UserWordResultsDisplay';
 import AnagramContextProvider from '../../contexts/AnagramContext';
 import NewAnagramForm from '../../components/Anagrams/NewAnagramForm';
-// import GameLetterCards from '../../components/Conundrum/GameLetterCards';
 
 const AnagramRoundResults = ({
-	showAnagramRoundResults,
-	// allLetterRoundUserWords,
-	// setAllLetterRoundUserWords,
-	// gameLetters,
-	// setGameLetters,
-	// letterRoundLongestWord,
-	// gotNineLetterWord,
-	setIsNextDayCountdownActive,
 	isNextDayCountdownActive,
-	// setLetterTypes,
-	// setLetterRoundData,
-	// letterRoundData,
 	allAnagramUserWords,
 	setAllAnagramUserWords,
 	setPageTitle,
 	setMessage,
 	anagramGameMode,
 }) => {
-	// const playButton = () => {
-	// 	new Audio('/audio/button.mp3').play();
-	// };
-
 	useEffect(() => {
 		console.log('anagram results render');
 		setPageTitle(`results`);
 	}, [setPageTitle]);
-	// let navigate = useNavigate();
 
 	const shareMobile = () => {
 		const gameType = 'anagram round';
@@ -51,83 +28,10 @@ const AnagramRoundResults = ({
 		);
 	};
 
-	// const [nineLetterWords, setNineLetterWords] = useState([]);
-	// const [eightLetterWords, setEightLetterWords] = useState([]);
-	// const [sevenLetterWords, setSevenLetterWords] = useState([]);
-	// const [sixLetterWords, setSixLetterWords] = useState([]);
-	// const [fiveLetterWords, setFiveLetterWords] = useState([]);
-	// const [fourLetterWords, setFourLetterWords] = useState([]);
-	// const [threeLetterWords, setThreeLetterWords] = useState([]);
-
-	// useEffect(() => {
-	// 	const sortedWordsByLength = allLetterRoundUserWords.sort(function (a, b) {
-	// 		return parseFloat(b.length) - parseFloat(a.length);
-	// 	});
-	// 	const nineCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 9;
-	// 	});
-	// 	setNineLetterWords(nineCount);
-	// 	const eightCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 8;
-	// 	});
-	// 	setEightLetterWords(eightCount);
-	// 	const sevenCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 7;
-	// 	});
-	// 	setSevenLetterWords(sevenCount);
-	// 	const sixCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 6;
-	// 	});
-	// 	setSixLetterWords(sixCount);
-	// 	const fiveCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 5;
-	// 	});
-	// 	setFiveLetterWords(fiveCount);
-	// 	const fourCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 4;
-	// 	});
-	// 	setFourLetterWords(fourCount);
-	// 	const threeCount = sortedWordsByLength.filter((word) => {
-	// 		return word.length === 3;
-	// 	});
-	// 	setThreeLetterWords(threeCount);
-
-	// }, [
-	// 	allLetterRoundUserWords,
-
-	// ]);
-
-	useEffect(() => {
-		console.log('lr results');
-	}, []);
-
 	return (
 		<>
 			<AnagramContextProvider>
-				{/* <GameTitle title='results' /> */}
 				<StyledAnagramResults>
-					{/* <div className='anagram-stats-container'>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>played</p>
-					</div>
-					<div className='stat-wrapper'>
-						<p>607</p>
-						<p>points</p>
-					</div>
-					<div className='stat-wrapper'>
-					<p>100</p>
-					<p>win %</p>
-					</div>
-					<div className='stat-wrapper'>
-					<p>03</p>
-						<p>current streak</p>
-						</div>
-						<div className='stat-wrapper'>
-						<p>03</p>
-						<p>max streak</p>
-					</div>
-				</div> */}
 					<UserWordResultsDisplay allAnagramUserWords={allAnagramUserWords} />
 					<div className='anagram-results-outcome-container'>
 						<div className='points-container'>
@@ -172,17 +76,6 @@ const AnagramRoundResults = ({
 					anagramGameMode={anagramGameMode}
 					setAllAnagramUserWords={setAllAnagramUserWords}
 				/>
-				{/* <button
-					className='results-home-btn'
-					onClick={() => {
-						playButton();
-						setMessage('play again?');
-						setAllAnagramUserWords([]);
-						navigate('/');
-					}}
-				>
-					HOME
-				</button> */}
 			</AnagramContextProvider>
 		</>
 	);

@@ -2,10 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { MdOutlineClose } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-// import { Doughnut } from 'react-chartjs-2';
-
 import { LetterRoundContext } from '../../contexts/LetterRoundContext';
-// import StatsBarChart from '../../components/LettersRound/StatsBarChart';
 import StatsPieChart from '../../components/LettersRound/StatsPieChart';
 
 const LetterRoundStats = ({ setPageTitle }) => {
@@ -121,20 +118,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 							points
 						</p>
 					</div>
-					{/* <div className='stat-wrapper'>
-					<p>100</p>
-					<p>win %</p>
 				</div>
-				<div className='stat-wrapper'>
-					<p>03</p>
-					<p>current streak</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>03</p>
-					<p>max streak</p>
-				</div> */}
-				</div>
-
 				<div className='letter-round-chart-wrapper'>
 					<StatsPieChart
 						threeLetters={threeLetters}
@@ -145,19 +129,6 @@ const LetterRoundStats = ({ setPageTitle }) => {
 						eightLetters={eightLetters}
 						nineLetters={nineLetters}
 					/>
-					{/* <StatsBarChart
-					threeLetters={threeLetters}
-					fourLetters={fourLetters}
-					fiveLetters={fiveLetters}
-					sixLetters={sixLetters}
-					sevenLetters={sevenLetters}
-					eightLetters={eightLetters}
-					nineLetters={nineLetters}
-				/> */}
-					{/* <Doughnut data={data} /> */}
-					{/* chart goes here
-				<p>three letter words: {threeLetters}</p>
-				<p>four letter words: {fourLetters}</p> */}
 				</div>
 			</div>
 		</StyledStats>
@@ -176,22 +147,6 @@ const LetterRoundStats = ({ setPageTitle }) => {
 						<MdOutlineClose className='close-btn-icon' />
 					</div>
 				</div>
-				{/* <div className='letter-round-stats-container'>
-				<div className='stat-wrapper'>
-					<p>03</p>
-					<p>played</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>607</p>
-					<p>words</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>607</p>
-					<p>points</p>
-				</div>
-
-			</div> */}
-
 				<div className='letter-round-chart-wrapper'>
 					<p>NO PREVIOUS STATS TO DISPLAY</p>
 				</div>
@@ -205,12 +160,9 @@ const StyledStats = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	.stats-page-container {
-		/* background-color: ${({ theme }) => theme.bgTile}; */
 		background-color: white;
 		border-radius: 5px;
-		/* padding: 1rem; */
 		padding: 1rem 1rem 2rem 1rem;
-		/* flex: 1; */
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -227,7 +179,6 @@ const StyledStats = styled.div`
 				font-family: 'Bebas Neue', cursive;
 				font-size: 2.2rem;
 				color: ${({ theme }) => theme.bgChosen};
-				/* width: 100%; */
 			}
 			#close-letter-round-btn {
 				justify-self: flex-end;
@@ -237,10 +188,7 @@ const StyledStats = styled.div`
 			display: flex;
 			justify-content: space-evenly;
 			align-items: flex-start;
-			/* border-top: 2px solid ${({ theme }) => theme.bgContainer}; */
-			/* border-bottom: 2px solid ${({ theme }) => theme.bgContainer}; */
 			padding: 1rem;
-			/* margin: 0rem 1rem; */
 			.stat-wrapper {
 				display: flex;
 				flex-direction: column;
@@ -260,8 +208,6 @@ const StyledStats = styled.div`
 						font-weight: 400;
 						text-align: center;
 						color: ${({ theme }) => theme.bgChosen};
-
-						/* color: ${({ theme }) => theme.syntax}; */
 					}
 				}
 			}

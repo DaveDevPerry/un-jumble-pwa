@@ -89,7 +89,6 @@ const LetterRoundResults = ({
 		setThreeLetterWrongWords(threeCountWrong);
 
 		// correct words
-		console.log('setting sorted');
 		const sortedWordsByLength = allLetterRoundUserWords
 			.filter((wordItem) => {
 				return wordItem.isCorrect === true;
@@ -128,7 +127,6 @@ const LetterRoundResults = ({
 	}, [allLetterRoundUserWords]);
 
 	useEffect(() => {
-		console.log('lr results');
 		setPageTitle('results');
 	}, [setPageTitle]);
 
@@ -136,31 +134,6 @@ const LetterRoundResults = ({
 		<>
 			<LetterRoundContextProvider>
 				<StyledLetterRoundResults>
-					{/* <h2>RESULTS</h2> */}
-					{/* <div className='letter-round-stats-container'>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>played</p>
-					</div>
-					<div className='stat-wrapper'>
-					<p>607</p>
-						<p>points</p>
-						</div>
-						<div className='stat-wrapper'>
-						<p>100</p>
-						<p>win %</p>
-					</div>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>current streak</p>
-						</div>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>max streak</p>
-					</div>
-				</div> */}
-
-					{/* // IF 9 letter word can be made from all letters display below */}
 					<StyledLetterOutput>
 						{gameLetters.map((letter, index) => {
 							return (
@@ -175,53 +148,6 @@ const LetterRoundResults = ({
 							);
 						})}
 					</StyledLetterOutput>
-					{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
-					{/* <p className='letter-round-ai-best-word'>
-					longest possible word - IN PROGRESS
-				</p> */}
-					{/* <ul className='best-attempt'>
-				<li>{usersBestAttempt}</li>
-			</ul> */}
-					{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
-
-					{/* <p className='letter-round-user-result'>
-				CONGRATULATIONS!
-			</p> */}
-					{/* <ul className='best-attempt'>
-				<li>
-					{usersBestWords &&
-						usersBestWords.sort(function (a, b) {
-							return b[1] - a[1];
-						})[0]}
-				</li>
-			</ul> */}
-					{/* <ul className='longest-word'>
-				<li>Total Word Count</li>
-			</ul> */}
-
-					{/* <p className='letter-round-user-result'> */}
-					{/* {nineLetterWords.length * 20 +
-						eightLetterWords.length * 13 +
-						sevenLetterWords.length * 10 +
-						sixLetterWords.length * 7 +
-						fiveLetterWords.length * 5 +
-						fourLetterWords.length * 3 +
-						threeLetterWords.length * 1 <=
-						10
-						? 'YOU PLAYED OK'
-						: 'WELL PLAYED'} */}
-					{/* </p> */}
-
-					{/* <ul className='best-attempt'>
-					<li>
-						<p>best word</p>
-						<p>
-							<span>{letterRoundLongestWord}</span>
-							</p>
-							<p> letters</p>
-							</li>
-				</ul> */}
-
 					<section className='points-table-container'>
 						<table className='letter-round-player-word-table'>
 							<tbody>
@@ -370,7 +296,6 @@ const LetterRoundResults = ({
 								)}
 							</tbody>
 						</table>
-
 						<table className='letter-round-player-wrong-word-table'>
 							<tbody>
 								{nineLetterWrongWords && nineLetterWrongWords.length > 0 ? (

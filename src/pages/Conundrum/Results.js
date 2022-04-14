@@ -1,18 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import { useNavigate } from 'react-router-dom';
-// import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
-// import GameTitle from '../../components/Global/GameTitle';
 import ResultsFooter from '../../components/Global/ResultsFooter';
-// import DataFetching from '../../components/Conundrum/WordDefinition';
 import WordDefinition from '../../components/Conundrum/WordDefinition';
-
 import { FaTrophy } from 'react-icons/fa';
 import NewConundrumForm from '../../components/Conundrum/NewConundrumForm';
-
 import ConundrumContextProvider from '../../contexts/ConundrumContext';
-
-// import axios from 'axios';
 
 const ConundrumResults = ({
 	conundrum,
@@ -22,8 +14,6 @@ const ConundrumResults = ({
 	isConundrumCorrect,
 	setPageTitle,
 	setMessage,
-	// setIsNextDayCountdownActive,
-	// defData,
 }) => {
 	useEffect(() => {
 		console.log('conundrum results');
@@ -35,146 +25,17 @@ const ConundrumResults = ({
 			});
 		}, 1000);
 	}, [setPageTitle]);
-	// const [defMeaning, setDefMeaning] = useState(null);
-	// let navigate = useNavigate();
-
-	// const updateStatus = () => {
-	// 	let updatedValue = {};
-	// 	updatedValue = { four: true };
-
-	// 	// let updatedValue = {};
-	// 	// updatedValue = {"item1":"juice"};
-	// 	setConundrumStatus((conundrumStatus) => ({
-	// 		...conundrumStatus,
-	// 		...updatedValue,
-	// 	}));
-	// 	// setConundrumStatus({
-	// 	// 	nine: true,
-	// 	// 	eight: false,
-	// 	// 	seven: true,
-	// 	// 	six: false,
-	// 	// 	five: false,
-	// 	// 	four: false,
-	// 	// });
-	// };
 
 	const shareMobile = () => {
 		const conundrumLength = conundrum.length;
-		// const gameScore = document.querySelector(
-		// 	'#share-conundrum-points'
-		// ).textContent;
 		window.open(
 			`whatsapp://send?text=I just got the ${conundrumLength} letter conundrum of the day!`
 		);
 	};
-
-	// const setData = () => {
-	// 	console.log('in set data');
-	// 	// setConundrumData((conundrumData) => ({
-	// 	// 	...conundrumData,
-	// 	// 	played: conundrumData.played + 1,
-	// 	// }));
-	// 	setConundrumData({ ...conundrumData, played: 2 });
-	// 	return;
-	// };
-	// console.log(conundrumOfTheDay, 'word otd');
-	// console.log(typeof conundrumOfTheDay, 'word otd type');
-
-	// const [usersBestWord, setUsersBestWord] = useState([]);
-	// const [usersBestAttempt, setUsersBestAttempt] = useState('');
-	// useEffect(() => {
-	// 	const wordSplit = conundrumOfTheDay.split(',');
-	// 	setUsersBestWord(wordSplit);
-	// }, [conundrumOfTheDay]);
-	// useEffect(() => {
-
-	// },[])
-	// const [conundrum, setConundrum] = useState([])
-
-	// useEffect(() => {
-	// 	const strToArr = conundrumOfTheDay.split
-
-	// 	return () => {
-	// 		second
-	// 	}
-	// }, [third])
-	// const allWordsSorted = allUserWords.sort(function (a, b) {
-	// 	return b[1] - a[1];
-	// });
-	// const usersBestWord = allWordsSorted[0];
-	// const best = usersBestWord[0];
-	// setUsersBestAttempt(best);
-	// console.log(allWordsSorted, 'all sorted');
-	// console.log(usersBestWord, 'best');
-	// console.log(best, 'best');
-
 	return (
 		<>
 			<ConundrumContextProvider>
-				{/* <GameTitle title='results' /> */}
 				<StyledConundrumResults>
-					{/* <DataFetching conundrum={conundrum} /> */}
-					{/* <WordDefinition conundrum={conundrum} /> */}
-					{/* <p>{defData}</p> */}
-					{/* <p>{defMeaning}</p> */}
-					{/* <StyledConundrumResults
-			className={showResults ? 'results-modal show' : 'results-modal'}
-		> */}
-					{/* <h2>RESULTS</h2> */}
-					{/* <div className='conundrum-stats-container'>
-					<div className='stat-wrapper'>
-						<p>03</p>
-						<p>played</p>
-						</div>
-					<div className='stat-wrapper'>
-						<p>607</p>
-						<p>points</p>
-					</div>
-					<div className='stat-wrapper'>
-					<p>100</p>
-					<p>win %</p>
-					</div>
-					</div>
-					<div className='conundrum-level-stats-grid'>
-					<div className='level-stat-wrapper'>
-					<p>
-							<GiCrossMark size='15px' color='#8a0202' />
-						</p>
-						<p>master</p>
-					</div>
-					<div className='level-stat-wrapper'>
-						<p>
-							<GiCrossMark size='15px' color='#8a0202' />
-						</p>
-						<p>expert</p>
-						</div>
-					<div className='level-stat-wrapper'>
-						<p>
-							<GiCrossMark size='15px' color='#8a0202' />
-						</p>
-						<p>advanced</p>
-						</div>
-					<div className='level-stat-wrapper'>
-					<p>
-							<GiCheckMark size='15px' color='#004600' />
-						</p>
-						<p>intermediate</p>
-					</div>
-					<div className='level-stat-wrapper'>
-						<p>
-							<GiCrossMark size='15px' color='#8a0202' />
-							</p>
-							<p>beginner</p>
-					</div>
-					<div className='level-stat-wrapper'>
-					<p>
-							<GiCheckMark size='15px' color='#004600' />
-						</p>
-						<p>advanced</p>
-						</div>
-				</div> */}
-
-					{/* <GameLetterCards handleStartGame={handleStartGame} shuffled={shuffled} /> */}
 					<StyledLetterOutput>
 						{conundrum.split('').map((letter, index) => {
 							return (
@@ -190,77 +51,17 @@ const ConundrumResults = ({
 						})}
 					</StyledLetterOutput>
 					<WordDefinition conundrum={conundrum} APIKey={APIKey} />
-					{/* <p className='conundrum-meaning'>{meaning}</p> */}
-					{/* <p className='conundrum-meaning'>meaning of the word goes here</p> */}
-					{/* <ul className='best-attempt'>
-				<li>{usersBestAttempt}</li>
-			</ul> */}
-					{/* <p className='conundrum-user-result'>BETTER LUCK TOMORROW</p> */}
-
-					{/* <p className='conundrum-user-result'>
-				{usersBestWords &&
-				usersBestWords.sort(function (a, b) {
-					return b[1] - a[1];
-				})[0].length === 9
-					? 'CONGRATULATIONS!'
-					: 'BETTER LUCK TOMORROW'}
-			</p> */}
-					{/* <ul className='best-attempt'>
-				<li>
-				{usersBestWords &&
-					usersBestWords.sort(function (a, b) {
-							return b[1] - a[1];
-						})[0]}
-				</li>
-			</ul> */}
-					{/* <ul className='longest-word'>
-				<li>{longestWord}</li>
-			</ul> */}
-					{/* <ul className='best-attempt'>
-				<li>
-					<p>best word</p>
-					<p>
-					<span>{longestWord}</span>
-					</p>
-					<p>{longestWord.length} letters</p>
-					</li>
-				</ul> */}
-
-					{/* <p className='conundrum-user-result'>
-				{gotConundrum.length === 9
-					? 'CONGRATULATIONS!'
-					: 'BETTER LUCK TOMORROW'}
-				</p> */}
 					<div className='results-outcome-container'>
 						<div className='conundrum-points-container'>
 							<FaTrophy id='trophy' />
-							{/* <FaTrophy size='50px' id='trophy' /> */}
 							<h2 id='share-conundrum-points'>1</h2>
-							{/* <p>win</p> */}
 						</div>
 						<p className='conundrum-user-result'>CONGRATULATIONS!</p>
 					</div>
-
-					{/* <div className='points-container'>
-				<h2>
-					{usersBestWords &&
-						usersBestWords.sort(function (a, b) {
-						return b[1] - a[1];
-					})[0].length === 9
-						? 10
-						: 0}
-						</h2>
-						<p>points</p>
-					</div> */}
-					{/* <div className='rank-container'>
-				<p>RANKED: 560th</p>
-			</div> */}
-
 					<ResultsFooter
 						isNextDayCountdownActive={isNextDayCountdownActive}
 						shareMobile={shareMobile}
 					/>
-					{/* setCounter( counter => ({...counter,seconds:counter.seconds+1 } )); */}
 				</StyledConundrumResults>
 				<NewConundrumForm
 					conundrum={conundrum}
@@ -269,15 +70,6 @@ const ConundrumResults = ({
 					setMessage={setMessage}
 					url='/'
 				/>
-				{/* <NewConundrumForm /> */}
-				{/* <button
-					className='results-home-btn'
-					onClick={() => {
-						navigate('/');
-					}}
-				>
-					HOME
-				</button> */}
 			</ConundrumContextProvider>
 		</>
 	);
@@ -355,14 +147,10 @@ const StyledConundrumResults = styled.section`
 			}
 		}
 	}
-	/* .conundrum-meaning {
-		text-align: center;
-	} */
 	.results-outcome-container {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		/* border: 1px solid red; */
 		flex: 1;
 		row-gap: 0.5rem;
 		opacity: 0;
@@ -371,25 +159,16 @@ const StyledConundrumResults = styled.section`
 			flex-direction: column;
 			align-items: center;
 			position: relative;
-			/* border: 2px solid black; */
-			/* flex: 1; */
 			#trophy {
 				color: ${({ theme }) => theme.textTarget};
-				/* position: absolute; */
-				/* z-index: 2; */
-				/* top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%); */
 				height: 6rem;
 				width: 6rem;
 			}
 			#share-conundrum-points {
 				color: ${({ theme }) => theme.bgChosen};
 				font-size: 3rem;
-				/* line-height: 0.7; */
 				font-weight: 400;
 				position: absolute;
-				/* z-index: 10000; */
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -70%);
@@ -404,7 +183,6 @@ const StyledConundrumResults = styled.section`
 			align-self: center;
 			display: inline-block;
 			padding: 0 1rem;
-			/* flex: 1; */
 		}
 		&.appear {
 			opacity: 1;
@@ -439,12 +217,10 @@ const StyledLetterOutput = styled.div`
 	.results-card.visible .results-card-front {
 		transform: rotateY(0);
 	}
-
 	.results-card-back {
 		font-size: 3rem;
 		outline: none;
 		background-color: ${({ theme }) => theme.bgTile};
-
 		display: grid;
 		place-content: center;
 		border-radius: 5px;
