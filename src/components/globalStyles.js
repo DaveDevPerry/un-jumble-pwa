@@ -75,4 +75,14 @@ export const GlobalStyles = createGlobalStyle`
 	  border: none;
     height: 4.6rem;
   }
+  .close-btn-icon{
+    /* color='#1b2877' */
+    background-color: ${({ theme }) => theme.bgChosen};
+    border-radius: 3px;
+    font-size: 2.5rem;
+  }
+  #hide-btn{
+    pointer-events: none;
+    opacity: 0;
+  }
 `;

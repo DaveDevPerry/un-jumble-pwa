@@ -122,7 +122,8 @@ const AnagramStats = ({ setPageTitle, setMessage }) => {
 							navigate('/');
 						}}
 					>
-						<MdOutlineClose size='25px' id='close-cross-btn' color='#1b2877' />
+						<MdOutlineClose className='close-btn-icon' />
+						{/* <MdOutlineClose size='25px' id='close-cross-btn' color='#1b2877' /> */}
 					</div>
 				</div>
 				<div className='anagram-stats-container'>
@@ -213,7 +214,7 @@ const AnagramStats = ({ setPageTitle, setMessage }) => {
 						navigate('/');
 					}}
 				>
-					<MdOutlineClose size='25px' />
+					<MdOutlineClose size='25px' className='close-btn-icon' />
 				</div>
 			</div>
 			<div className='anagram-stats-container'>

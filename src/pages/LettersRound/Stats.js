@@ -91,7 +91,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 							navigate('/');
 						}}
 					>
-						<MdOutlineClose size='25px' color='#1b2877' />
+						<MdOutlineClose className='close-btn-icon' />
 					</div>
 				</div>
 				<div className='letter-round-stats-container'>

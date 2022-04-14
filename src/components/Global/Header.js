@@ -13,10 +13,10 @@ function Header({ pageTitle }) {
 			<div
 				className='delete-btn'
 				onClick={() => {
-					navigate('/delete');
+					// navigate('/delete');
 				}}
 			>
-				<MdDeleteForever size='20px' />
+				<MdDeleteForever size='20px' id='hide-btn' />
 			</div>
 			<h2>{pageTitle}</h2>
 			<div
