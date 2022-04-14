@@ -4,16 +4,17 @@ import { MdOutlineClose } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 // import { Doughnut } from 'react-chartjs-2';
 
-import { LetterRoundContext } from '../../contexts/LetterRoundContext';
+import { ConundrumContext } from '../../contexts/ConundrumContext';
 // import StatsBarChart from '../../components/LettersRound/StatsBarChart';
-import StatsPieChart from '../../components/LettersRound/StatsPieChart';
+import StatsPieChart from '../../components/Conundrum/StatsPieChart';
+// import { ConundrumContext } from '../../contexts/ConundrumContext';
 
-const LetterRoundStats = ({ setPageTitle }) => {
-	const { games } = useContext(LetterRoundContext);
+const ConundrumStats = ({ setPageTitle }) => {
+	const { conundrums } = useContext(ConundrumContext);
 	let navigate = useNavigate();
 
 	const [totalWordCount, setTotalWordCount] = useState(0);
-	const [totalScoreCount, setTotalScoreCount] = useState(0);
+	// const [totalScoreCount, setTotalScoreCount] = useState(0);
 	const [threeLetters, setThreeLetters] = useState([]);
 	const [fourLetters, setFourLetters] = useState([]);
 	const [fiveLetters, setFiveLetters] = useState([]);
@@ -23,69 +24,67 @@ const LetterRoundStats = ({ setPageTitle }) => {
 	const [nineLetters, setNineLetters] = useState([]);
 
 	useEffect(() => {
-		setPageTitle('letterRound');
-		console.log(games, 'lr stats?');
-		const result = extractValue(games, 'allWords');
-		console.log(result);
-		let merged = [].concat.apply([], result);
-		console.log(merged, 'single arr?');
-		setTotalWordCount(merged.length);
-		setTotalScoreCount(
-			merged.reduce((accumulator, object) => {
-				return accumulator + object.score;
-			}, 0)
-		);
+		setPageTitle('conundrum');
+		console.log(conundrums, 'conundrum stats?');
+		// const result = extractValue(conundrums, 'allWords');
+		// console.log(result);
+		// let merged = [].concat.apply([], result);
+		// console.log(merged, 'single arr?');
+		// setTotalWordCount(merged.length);
+
+		setTotalWordCount(conundrums.length);
+
 		setThreeLetters(
-			merged.filter((item) => {
-				return item.word.length === 3;
+			conundrums.filter((item) => {
+				return item.level === 3;
 			}).length
 		);
 		setFourLetters(
-			merged.filter((item) => {
-				return item.word.length === 4;
+			conundrums.filter((item) => {
+				return item.level === 4;
 			}).length
 		);
 		setFiveLetters(
-			merged.filter((item) => {
-				return item.word.length === 5;
+			conundrums.filter((item) => {
+				return item.level === 5;
 			}).length
 		);
 		setSixLetters(
-			merged.filter((item) => {
-				return item.word.length === 6;
+			conundrums.filter((item) => {
+				return item.level === 6;
 			}).length
 		);
 		setSevenLetters(
-			merged.filter((item) => {
-				return item.word.length === 7;
+			conundrums.filter((item) => {
+				return item.level === 7;
 			}).length
 		);
 		setEightLetters(
-			merged.filter((item) => {
-				return item.word.length === 8;
+			conundrums.filter((item) => {
+				return item.level === 8;
 			}).length
 		);
 		setNineLetters(
-			merged.filter((item) => {
-				return item.word.length === 9;
+			conundrums.filter((item) => {
+				return item.level === 9;
 			}).length
 		);
-	}, [setPageTitle, games]);
+	}, [setPageTitle, conundrums]);
 
 	// program to extract value as an array from an array of objects
-	function extractValue(arr, prop) {
-		// extract value from property
-		let extractedValue = arr.map((item) => item[prop]);
-		return extractedValue;
-	}
+	// function extractValue(arr, prop) {
+	// 	// extract value from property
+	// 	let extractedValue = arr.map((item) => item[prop]);
+	// 	return extractedValue;
+	// }
 
-	return games.length ? (
+	return conundrums.length ? (
 		<StyledStats>
-			<div className='letter-round-header'>
-				<MdOutlineClose size='25px' id='close-letter-round-blank' />
-				<p className='letter-round-title'>statistics</p>
+			<div className='conundrum-header'>
+				<MdOutlineClose size='25px' id='close-conundrum-blank' />
+				<p className='conundrum-title'>statistics</p>
 				<div
-					className='close-letter-round-btn'
+					className='close-conundrum-btn'
 					onClick={() => {
 						navigate('/');
 					}}
@@ -93,21 +92,25 @@ const LetterRoundStats = ({ setPageTitle }) => {
 					<MdOutlineClose size='25px' />
 				</div>
 			</div>
-			<div className='letter-round-stats-container'>
+			<div className='conundrum-stats-container'>
 				<div className='stat-wrapper'>
-					<p>{games.length < 10 ? `0${games.length}` : games.length}</p>
+					<p>
+						{conundrums.length < 10
+							? `0${conundrums.length}`
+							: conundrums.length}
+					</p>
 					<p>played</p>
 				</div>
 				<div className='stat-wrapper'>
 					<p>{totalWordCount < 10 ? `0${totalWordCount}` : totalWordCount}</p>
 					<p>words</p>
 				</div>
-				<div className='stat-wrapper'>
+				{/* <div className='stat-wrapper'>
 					<p>
 						{totalScoreCount < 10 ? `0${totalScoreCount}` : totalScoreCount}
 					</p>
 					<p>points</p>
-				</div>
+				</div> */}
 				{/* <div className='stat-wrapper'>
 					<p>100</p>
 					<p>win %</p>
@@ -122,7 +125,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 				</div> */}
 			</div>
 
-			<div className='letter-round-chart-wrapper'>
+			<div className='conundrum-chart-wrapper'>
 				<StatsPieChart
 					threeLetters={threeLetters}
 					fourLetters={fourLetters}
@@ -149,11 +152,11 @@ const LetterRoundStats = ({ setPageTitle }) => {
 		</StyledStats>
 	) : (
 		<StyledStats>
-			<div className='letter-round-header'>
-				<MdOutlineClose size='25px' id='close-letter-round-blank' />
-				<p className='letter-round-title'>error</p>
+			<div className='conundrum-header'>
+				<MdOutlineClose size='25px' id='close-conundrum-blank' />
+				<p className='conundrum-title'>error</p>
 				<div
-					className='close-letter-round-btn'
+					className='close-conundrum-btn'
 					onClick={() => {
 						navigate('/');
 					}}
@@ -161,7 +164,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
 					<MdOutlineClose size='25px' />
 				</div>
 			</div>
-			<div className='letter-round-stats-container'>
+			<div className='conundrum-stats-container'>
 				<div className='stat-wrapper'>
 					<p>03</p>
 					<p>played</p>
@@ -188,7 +191,7 @@ const LetterRoundStats = ({ setPageTitle }) => {
       </div> */}
 			</div>
 
-			<div className='letter-round-chart-wrapper'>chart goes here</div>
+			<div className='conundrum-chart-wrapper'>chart goes here</div>
 		</StyledStats>
 	);
 };
@@ -201,24 +204,24 @@ const StyledStats = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	row-gap: 2rem;
-	.letter-round-header {
+	.conundrum-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		#close-letter-round-blank {
+		#close-conundrum-blank {
 			opacity: 0;
 		}
-		.letter-round-title {
+		.conundrum-title {
 			text-transform: uppercase;
 			font-family: 'Bebas Neue', cursive;
 			font-size: 2.2rem;
 			/* width: 100%; */
 		}
-		#close-letter-round-btn {
+		#close-conundrum-btn {
 			justify-self: flex-end;
 		}
 	}
-	.letter-round-stats-container {
+	.conundrum-stats-container {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: flex-start;
@@ -249,7 +252,7 @@ const StyledStats = styled.div`
 			}
 		}
 	}
-	.letter-round-chart-wrapper {
+	.conundrum-chart-wrapper {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -261,4 +264,4 @@ const StyledStats = styled.div`
 	}
 `;
 
-export default LetterRoundStats;
+export default ConundrumStats;
