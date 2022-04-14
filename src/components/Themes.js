@@ -4,7 +4,7 @@ export const lightTheme = {
 	bg: '#000000',
 	bgContainer: '#000000',
 	bgTile: '#841d1d',
-	bgTileInset: '#235980',
+	bgTileInset: '#3d0101',
 	bgNumber: '#980303',
 	bgTarget: '#333333',
 	border: '#980303',

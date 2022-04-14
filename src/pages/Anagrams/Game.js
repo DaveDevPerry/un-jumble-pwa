@@ -31,33 +31,14 @@ const AnagramRoundGame = ({
 	useEffect(() => {
 		console.log('anagram game render');
 		setPageTitle(`anagrams: Level ${anagramGameMode}`);
-	}, [setPageTitle, anagramGameMode]);
-
-	const [currentTargetWord, setCurrentTargetWord] = useState('');
-	const [allCurrentTargetWords, setAllCurrentTargetWords] = useState('');
-	const [currentShuffledTargetWord, setCurrentShuffledTargetWord] = useState([
-		'a',
-		'v',
-		'd',
-		'd',
-		'i',
-		'd',
-	]);
-	// const [shuffledTiles, setShuffledTiles] = useState(null);
-	const [currentAnagramWord, setCurrentAnagramWord] = useState('');
-	const [isTimerActive, setIsTimerActive] = useState(false);
-	const [numberOfGuessTilesToRender, setNumberOfGuessTilesToRender] =
-		useState(0);
-
-	useEffect(() => {
 		switch (anagramGameMode) {
 			case 4:
+				setAllCurrentTargetWords(allFourLetterWords);
 				setCurrentTargetWord(
 					allFourLetterWords[
 						Math.floor(Math.random() * allFourLetterWords.length)
 					]
 				);
-				setAllCurrentTargetWords(allFourLetterWords);
 				break;
 			case 5:
 				setCurrentTargetWord(
@@ -79,11 +60,66 @@ const AnagramRoundGame = ({
 				console.log('error in switch');
 		}
 	}, [
+		setPageTitle,
 		anagramGameMode,
 		allFourLetterWords,
 		allFiveLetterWords,
 		allSixLetterWords,
 	]);
+
+	const [currentTargetWord, setCurrentTargetWord] = useState('');
+	const [allCurrentTargetWords, setAllCurrentTargetWords] = useState('');
+	const [currentShuffledTargetWord, setCurrentShuffledTargetWord] = useState([
+		'a',
+		'v',
+		'd',
+		'd',
+		'i',
+		'd',
+	]);
+	// const [shuffledTiles, setShuffledTiles] = useState(null);
+	const [currentAnagramWord, setCurrentAnagramWord] = useState('');
+	const [isTimerActive, setIsTimerActive] = useState(false);
+	const [numberOfGuessTilesToRender, setNumberOfGuessTilesToRender] =
+		useState(0);
+
+	// useEffect(() => {
+	// 	switch (anagramGameMode) {
+	// 		case 4:
+	// 			setAllCurrentTargetWords(allFourLetterWords);
+	// 			// setCurrentTargetWord(
+	// 			// 	allFourLetterWords[
+	// 			// 		Math.floor(Math.random() * allFourLetterWords.length)
+	// 			// 	]
+	// 			// );
+	// 			break;
+	// 		case 5:
+	// 			// setCurrentTargetWord(
+	// 			// 	allFiveLetterWords[
+	// 			// 		Math.floor(Math.random() * allFiveLetterWords.length)
+	// 			// 	]
+	// 			// );
+	// 			setAllCurrentTargetWords(allFiveLetterWords);
+	// 			break;
+	// 		case 6:
+	// 			// setCurrentTargetWord(
+	// 			// 	allSixLetterWords[
+	// 			// 		Math.floor(Math.random() * allSixLetterWords.length)
+	// 			// 	]
+	// 			// );
+	// 			setAllCurrentTargetWords(allSixLetterWords);
+	// 			break;
+	// 		default:
+	// 			console.log('error in switch');
+	// 	}
+	// 	// getNewWord()
+	// }, [
+	// 	anagramGameMode,
+	// 	allFourLetterWords,
+	// 	allFiveLetterWords,
+	// 	allSixLetterWords,
+	// 	// getNewWord
+	// ]);
 
 	const handleAnagramStart = (e) => {
 		playButton();
@@ -109,6 +145,7 @@ const AnagramRoundGame = ({
 
 	const getNewWord = () => {
 		console.log('get new word', currentTargetWord, allCurrentTargetWords);
+
 		setCurrentTargetWord(
 			allCurrentTargetWords[
 				Math.floor(Math.random() * allCurrentTargetWords.length)
@@ -120,29 +157,41 @@ const AnagramRoundGame = ({
 		setCurrentShuffledTargetWord(
 			currentTargetWord.split('').sort(() => Math.random() - 0.5)
 		);
-		// const currentShuffledTargetWord = currentTargetWord
-		// 	.split('')
-		// 	.sort(() => Math.random() - 0.5);
-		// console.log(currentShuffledTargetWord);
-		// setShuffledTiles(currentShuffledTargetWord);
+		// document.querySelectorAll('.guess').forEach((tile) => {
+		// 	tile.classList.add('visible');
+		// });
+		// document.querySelectorAll('.btn-timer').forEach((btn) => {
+		// 	btn.classList.add('visible');
+		// });
+		// document.querySelectorAll('.button').forEach((btn) => {
+		// 	btn.classList.add('visible');
+		// });
+		// document.querySelectorAll('.card').forEach((card) => {
+		// 	card.classList.add('visible');
+		// });
 	};
 
 	useEffect(() => {
 		console.log(currentTargetWord);
-		// setCurrentShuffledTargetWord(
-		// 	currentTargetWord.split('').sort(() => Math.random() - 0.5)
+		setCurrentShuffledTargetWord(
+			currentTargetWord.split('').sort(() => Math.random() - 0.5)
+		);
+		// console.log(
+		// 	currentTargetWord,
+		// 	currentShuffledTargetWord,
+		// 	'current 1st time words'
 		// );
 	}, [currentTargetWord]);
 
-	const handleReset = (e) => {
-		playClear();
+	const handleLetter = (e) => {
+		tileAudio();
 		e.preventDefault();
-		console.log('reset tiles');
-		setCurrentAnagramWord('');
-		document.querySelectorAll('.card-front').forEach((tile) => {
-			tile.classList.remove('active');
-			// tile.style.pointerEvents = 'initial';
-		});
+		if (e.target.classList.contains('active')) {
+			e.target.classList.remove('active');
+		} else {
+			e.target.classList.add('active');
+			setCurrentAnagramWord(currentAnagramWord + e.target.textContent);
+		}
 	};
 
 	const handleSubmit = (e) => {
@@ -151,26 +200,21 @@ const AnagramRoundGame = ({
 			return setMessage('not enough letters!');
 		checkWord();
 		// reset tiles
-		// document.querySelectorAll('.card-front').forEach((tile) => {
-		// 	tile.classList.remove('active');
-		// 	tile.style.pointerEvents = 'initial';
-		// });
+		document.querySelectorAll('.card-front').forEach((tile) => {
+			tile.classList.remove('active');
+			tile.style.pointerEvents = 'initial';
+		});
 		setCurrentAnagramWord('');
 	};
-
-	const handleLetter = (e) => {
-		tileAudio();
+	const handleReset = (e) => {
+		playClear();
 		e.preventDefault();
-		if (e.target.classList.contains('active')) {
-			e.target.classList.remove('active');
-			// e.target.style.pointerEvents = 'initial';
-		} else {
-			e.target.classList.add('active');
-			setCurrentAnagramWord(currentAnagramWord + e.target.textContent);
-			// e.target.style.pointerEvents = 'none';
-		}
+		// console.log('reset tiles');
+		setCurrentAnagramWord('');
+		document.querySelectorAll('.card-front').forEach((tile) => {
+			tile.classList.remove('active');
+		});
 	};
-
 	const handleSkip = (e) => {
 		playClear();
 		setMessage('skipping!?');
@@ -185,18 +229,19 @@ const AnagramRoundGame = ({
 				isCorrect: false,
 			},
 		]);
-		setCurrentTargetWord(
-			allCurrentTargetWords[
-				Math.floor(Math.random() * allCurrentTargetWords.length)
-			]
-		);
-		setCurrentAnagramWord('');
-		setCurrentTargetWord('');
-		document.querySelectorAll('.card-front').forEach((tile) => {
-			tile.classList.remove('active');
-			tile.style.pointerEvents = 'initial';
-		});
+		// setCurrentTargetWord(
+		// 	allCurrentTargetWords[
+		// 		Math.floor(Math.random() * allCurrentTargetWords.length)
+		// 	]
+		// );
 		// setCurrentAnagramWord('');
+		// setCurrentTargetWord('');
+		// document.querySelectorAll('.card-front').forEach((tile) => {
+		// 	tile.classList.remove('active');
+		// 	tile.style.pointerEvents = 'initial';
+		// });
+		// setCurrentAnagramWord('');
+		resetWord();
 		getNewWord();
 	};
 
@@ -208,11 +253,15 @@ const AnagramRoundGame = ({
 			// tile.textContent = '\u00A0';
 			// tile.style.pointerEvents = 'initial';
 		});
+		setCurrentAnagramWord('');
+		setCurrentTargetWord('');
+		setCurrentShuffledTargetWord('');
+		return;
 	};
 
 	// checks validity of word and displays relative msg
 	const checkWord = () => {
-		console.log('current anagram word', currentAnagramWord);
+		console.log('check word', currentTargetWord, currentAnagramWord);
 		if (!dictionary.includes(currentAnagramWord)) {
 			console.log('wrong', currentTargetWord, currentAnagramWord);
 			const wrongWordMessages = [
@@ -251,7 +300,7 @@ const AnagramRoundGame = ({
 				]
 			);
 			const currentWordPoints = getWordScore();
-			// setMessage('correct!');
+			setMessage('correct!');
 			setAllAnagramUserWords([
 				...allAnagramUserWords,
 				{
@@ -266,7 +315,7 @@ const AnagramRoundGame = ({
 		console.log('post reset word', currentTargetWord, currentAnagramWord);
 		getNewWord();
 		console.log(
-			'rightpost get new word',
+			'right post get new word',
 			currentTargetWord,
 			currentAnagramWord
 		);
