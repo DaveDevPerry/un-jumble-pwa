@@ -52,23 +52,23 @@ const StatsBarChart = ({ levelFourData, levelFiveData, levelSixData }) => {
 		let extractedValue = arr.map((item) => item[prop]);
 		return extractedValue;
 	}
-	// const options = {
-	// 	// plugins: {
-	// 	// 	title: {
-	// 	// 		display: true,
-	// 	// 		text: 'Chart.js Bar Chart - Stacked',
-	// 	// 	},
-	// 	// },
-	// 	responsive: true,
-	// 	scales: {
-	// 		x: {
-	// 			stacked: true,
-	// 		},
-	// 		y: {
-	// 			stacked: true,
-	// 		},
-	// 	},
-	// };
+	const options = {
+		// plugins: {
+		// 	title: {
+		// 		display: true,
+		// 		text: 'Chart.js Bar Chart - Stacked',
+		// 	},
+		// },
+		responsive: true,
+		scales: {
+			x: {
+				stacked: true,
+			},
+			y: {
+				stacked: true,
+			},
+		},
+	};
 	const data = {
 		labels: ['Level Four', 'Level Five', 'Level Six'],
 		datasets: [
@@ -202,8 +202,8 @@ const StatsBarChart = ({ levelFourData, levelFiveData, levelSixData }) => {
 		// 	},
 		// ],
 	};
-	return <Bar data={data} />;
-	// return <Bar data={data} options={options} />;
+	// return <Bar data={data} />;
+	return <Bar data={data} options={options} />;
 };
 
 export default StatsBarChart;

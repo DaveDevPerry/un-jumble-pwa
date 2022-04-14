@@ -321,16 +321,16 @@ const StyledStats = styled.div`
 				}
 			}
 		}
-		.anagram-chart-wrapper {
-			background-color: white;
-			/* flex: 1; */
-			/* display: flex;
+		/* .anagram-chart-wrapper {
+			background-color: white; */
+		/* flex: 1; */
+		/* display: flex;
 		flex-direction: column;
 		justify-content: center; */
-			/* canvas {
+		/* canvas {
 			color: black !important;
 		} */
-		}
+		/* } */
 	}
 `;
 

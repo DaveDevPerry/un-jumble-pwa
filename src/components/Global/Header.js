@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // import Delete from '../../pages/Delete';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever, MdOutlineSettings } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 function Header({ pageTitle }) {
@@ -19,7 +19,14 @@ function Header({ pageTitle }) {
 				<MdDeleteForever size='20px' />
 			</div>
 			<h2>{pageTitle}</h2>
-			<div></div>
+			<div
+				className='delete-btn'
+				onClick={() => {
+					navigate('/settings');
+				}}
+			>
+				<MdOutlineSettings size='18px' />
+			</div>
 		</StyledHeader>
 	);
 }

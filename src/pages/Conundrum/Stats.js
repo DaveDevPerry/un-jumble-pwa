@@ -15,7 +15,7 @@ const ConundrumStats = ({ setPageTitle }) => {
 
 	const [totalWordCount, setTotalWordCount] = useState(0);
 	// const [totalScoreCount, setTotalScoreCount] = useState(0);
-	const [threeLetters, setThreeLetters] = useState([]);
+	// const [threeLetters, setThreeLetters] = useState([]);
 	const [fourLetters, setFourLetters] = useState([]);
 	const [fiveLetters, setFiveLetters] = useState([]);
 	const [sixLetters, setSixLetters] = useState([]);
@@ -34,11 +34,11 @@ const ConundrumStats = ({ setPageTitle }) => {
 
 		setTotalWordCount(conundrums.length);
 
-		setThreeLetters(
-			conundrums.filter((item) => {
-				return item.level === 3;
-			}).length
-		);
+		// setThreeLetters(
+		// 	conundrums.filter((item) => {
+		// 		return item.level === 3;
+		// 	}).length
+		// );
 		setFourLetters(
 			conundrums.filter((item) => {
 				return item.level === 4;
@@ -80,38 +80,47 @@ const ConundrumStats = ({ setPageTitle }) => {
 
 	return conundrums.length ? (
 		<StyledStats>
-			<div className='conundrum-header'>
-				<MdOutlineClose size='25px' id='close-conundrum-blank' />
-				<p className='conundrum-title'>statistics</p>
-				<div
-					className='close-conundrum-btn'
-					onClick={() => {
-						navigate('/');
-					}}
-				>
-					<MdOutlineClose size='25px' />
+			<div className='stats-page-container'>
+				<div className='conundrum-header'>
+					<MdOutlineClose size='25px' id='close-conundrum-blank' />
+					<p className='conundrum-title'>statistics</p>
+					<div
+						className='close-conundrum-btn'
+						onClick={() => {
+							navigate('/');
+						}}
+					>
+						<MdOutlineClose size='25px' color='#1b2877' />
+					</div>
 				</div>
-			</div>
-			<div className='conundrum-stats-container'>
-				<div className='stat-wrapper'>
-					<p>
-						{conundrums.length < 10
-							? `0${conundrums.length}`
-							: conundrums.length}
-					</p>
-					<p>played</p>
-				</div>
-				<div className='stat-wrapper'>
-					<p>{totalWordCount < 10 ? `0${totalWordCount}` : totalWordCount}</p>
-					<p>words</p>
-				</div>
-				{/* <div className='stat-wrapper'>
+				<div className='conundrum-stats-container'>
+					<div className='stat-wrapper'>
+						<p>
+							{conundrums.length < 10
+								? `0${conundrums.length}`
+								: conundrums.length}
+						</p>
+						<p>
+							total
+							<br />
+							played
+						</p>
+					</div>
+					<div className='stat-wrapper'>
+						<p>{totalWordCount < 10 ? `0${totalWordCount}` : totalWordCount}</p>
+						<p>
+							total
+							<br />
+							words
+						</p>
+					</div>
+					{/* <div className='stat-wrapper'>
 					<p>
 						{totalScoreCount < 10 ? `0${totalScoreCount}` : totalScoreCount}
 					</p>
 					<p>points</p>
 				</div> */}
-				{/* <div className='stat-wrapper'>
+					{/* <div className='stat-wrapper'>
 					<p>100</p>
 					<p>win %</p>
 				</div>
@@ -123,19 +132,19 @@ const ConundrumStats = ({ setPageTitle }) => {
 					<p>03</p>
 					<p>max streak</p>
 				</div> */}
-			</div>
+				</div>
 
-			<div className='conundrum-chart-wrapper'>
-				<StatsPieChart
-					threeLetters={threeLetters}
-					fourLetters={fourLetters}
-					fiveLetters={fiveLetters}
-					sixLetters={sixLetters}
-					sevenLetters={sevenLetters}
-					eightLetters={eightLetters}
-					nineLetters={nineLetters}
-				/>
-				{/* <StatsBarChart
+				<div className='conundrum-chart-wrapper'>
+					<StatsPieChart
+						// threeLetters={threeLetters}
+						fourLetters={fourLetters}
+						fiveLetters={fiveLetters}
+						sixLetters={sixLetters}
+						sevenLetters={sevenLetters}
+						eightLetters={eightLetters}
+						nineLetters={nineLetters}
+					/>
+					{/* <StatsBarChart
 					threeLetters={threeLetters}
 					fourLetters={fourLetters}
 					fiveLetters={fiveLetters}
@@ -144,10 +153,11 @@ const ConundrumStats = ({ setPageTitle }) => {
 					eightLetters={eightLetters}
 					nineLetters={nineLetters}
 				/> */}
-				{/* <Doughnut data={data} /> */}
-				{/* chart goes here
+					{/* <Doughnut data={data} /> */}
+					{/* chart goes here
 				<p>three letter words: {threeLetters}</p>
 				<p>four letter words: {fourLetters}</p> */}
+				</div>
 			</div>
 		</StyledStats>
 	) : (
@@ -196,71 +206,77 @@ const ConundrumStats = ({ setPageTitle }) => {
 	);
 };
 const StyledStats = styled.div`
-	background-color: ${({ theme }) => theme.bgTile};
-	border-radius: 5px;
-	padding: 1rem;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	row-gap: 2rem;
-	.conundrum-header {
+	justify-content: center;
+	.stats-page-container {
+		/* background-color: ${({ theme }) => theme.bgTile}; */
+		background-color: white;
+		border-radius: 5px;
+		/* padding: 1rem; */
+		padding: 1rem 1rem 2rem 1rem;
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
-		align-items: center;
-		#close-conundrum-blank {
-			opacity: 0;
-		}
-		.conundrum-title {
-			text-transform: uppercase;
-			font-family: 'Bebas Neue', cursive;
-			font-size: 2.2rem;
-			/* width: 100%; */
-		}
-		#close-conundrum-btn {
-			justify-self: flex-end;
-		}
-	}
-	.conundrum-stats-container {
-		display: flex;
-		justify-content: space-evenly;
-		align-items: flex-start;
-		border-top: 2px solid ${({ theme }) => theme.bgContainer};
-		border-bottom: 2px solid ${({ theme }) => theme.bgContainer};
-		padding: 1rem;
-		margin: 0rem 1rem;
-		.stat-wrapper {
+		row-gap: 2rem;
+		.conundrum-header {
 			display: flex;
-			flex-direction: column;
+			justify-content: space-between;
 			align-items: center;
-			justify-content: flex-start;
-			flex-wrap: wrap;
-			flex: 1;
-			p {
-				font-size: 2rem;
-				font-weight: 800;
-				line-height: 1;
+			#close-conundrum-blank {
+				opacity: 0;
+			}
+			.conundrum-title {
+				text-transform: uppercase;
+				font-family: 'Bebas Neue', cursive;
+				font-size: 2.2rem;
 				color: ${({ theme }) => theme.bgChosen};
-				&:last-child {
-					font-family: 'Montserrat', sans-serif;
-					text-transform: capitalize;
-					font-size: 1.2rem;
-					font-weight: 400;
-					text-align: center;
-					color: ${({ theme }) => theme.syntax};
+				/* width: 100%; */
+			}
+			#close-conundrum-btn {
+				justify-self: flex-end;
+			}
+		}
+		.conundrum-stats-container {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: flex-start;
+			/* border-top: 2px solid ${({ theme }) => theme.bgContainer};
+			border-bottom: 2px solid ${({ theme }) => theme.bgContainer}; */
+			padding: 1rem;
+			/* margin: 0rem 1rem; */
+			.stat-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				flex: 1;
+				p {
+					font-size: 2rem;
+					font-weight: 800;
+					line-height: 1;
+					color: ${({ theme }) => theme.bgChosen};
+					&:last-child {
+						font-family: 'Montserrat', sans-serif;
+						text-transform: capitalize;
+						font-size: 1.2rem;
+						font-weight: 400;
+						text-align: center;
+						/* color: ${({ theme }) => theme.syntax}; */
+						color: ${({ theme }) => theme.bgChosen};
+					}
 				}
 			}
 		}
-	}
-	.conundrum-chart-wrapper {
+		/* .conundrum-chart-wrapper {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		/* align-items: center; */
 		justify-content: center;
-		/* canvas {
-			color: black !important;
-		} */
+
+	} */
 	}
 `;
 
