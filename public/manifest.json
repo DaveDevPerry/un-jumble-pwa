@@ -1,6 +1,6 @@
 {
-  "short_name": "Un-Jumble",
-  "name": "Un-Jumble PWA",
+  "short_name": "Find Words, Score Points!",
+  "name": "Un-Jumble",
   "icons": [
      {"src":"/favicon/android-chrome-512x512.png","sizes":"512x512","type":"image/png","purpose": "any maskable"}
   ],
