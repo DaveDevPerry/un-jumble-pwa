@@ -68,6 +68,21 @@ const ConundrumGame = ({
 		setConundrumOfTheDay(getConundrumOfTheDay);
 		setConundrumOfTheDayArray(getConundrumOfTheDayArray);
 		setShuffled(shuffleArray(getConundrumOfTheDayArray));
+
+		setMessage('good luck!');
+		// e.preventDefault();
+		// console.log(conundrum);
+
+		// console.log(conundrumOfTheDay);
+		// console.log(conundrumOfTheDayArray);
+		setTimeout(() => {
+			document.querySelectorAll('.card').forEach((tile) => {
+				tile.classList.add('visible');
+			});
+			document.querySelectorAll('.button').forEach((btn) => {
+				btn.classList.add('visible');
+			});
+		}, 100);
 	}, [
 		allNineLetterWords,
 		allEightLetterWords,
@@ -77,6 +92,7 @@ const ConundrumGame = ({
 		allFourLetterWords,
 		conundrumGameMode,
 		setConundrum,
+		setMessage,
 	]);
 	// shuffle word - WORKING
 	function shuffleArray(array) {
@@ -86,21 +102,25 @@ const ConundrumGame = ({
 		}
 		return array;
 	}
-	const handleStartGame = (e) => {
-		playButton();
-		setMessage('good luck!');
-		e.preventDefault();
-		console.log(conundrum);
-		const gameLetterTiles = document.querySelectorAll('.card');
-		gameLetterTiles.forEach((tile) => {
-			tile.classList.add('visible');
-		});
-		console.log(conundrumOfTheDay);
-		console.log(conundrumOfTheDayArray);
-		document.querySelectorAll('.button').forEach((btn) => {
-			btn.classList.add('visible');
-		});
-	};
+	// useEffect(() => {
+	console.log(conundrumOfTheDay);
+	console.log(conundrumOfTheDayArray);
+	// }, [])
+	// const handleStartGame = (e) => {
+	// 	playButton();
+	// 	setMessage('good luck!');
+	// 	e.preventDefault();
+	// 	console.log(conundrum);
+	// 	const gameLetterTiles = document.querySelectorAll('.card');
+	// 	gameLetterTiles.forEach((tile) => {
+	// 		tile.classList.add('visible');
+	// 	});
+	// 	console.log(conundrumOfTheDay);
+	// 	console.log(conundrumOfTheDayArray);
+	// 	document.querySelectorAll('.button').forEach((btn) => {
+	// 		btn.classList.add('visible');
+	// 	});
+	// };
 	return (
 		<StyledConundrumGame>
 			<ConundrumContextProvider>
@@ -110,6 +130,22 @@ const ConundrumGame = ({
 				/>
 			</ConundrumContextProvider>
 			<div className='back-btn-container'>
+				<div className='button'>
+					{/* <button className='btn-back btn-cta' onClick={handleStartGame}>
+						start game
+					</button> */}
+					<button
+						className='btn-front btn-cta'
+						onClick={() => {
+							playButton();
+							navigate('/');
+						}}
+					>
+						back
+					</button>
+				</div>
+			</div>
+			{/* <div className='back-btn-container'>
 				<div className='button'>
 					<button className='btn-back btn-cta' onClick={handleStartGame}>
 						start game
@@ -124,7 +160,7 @@ const ConundrumGame = ({
 						back
 					</button>
 				</div>
-			</div>
+			</div> */}
 			<UserWordsDisplay currentWord={currentWord} />
 			<ConundrumUserLetterCards
 				currentWord={currentWord}

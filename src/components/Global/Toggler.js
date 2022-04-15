@@ -3,7 +3,7 @@ import { func, string } from 'prop-types';
 
 const Toggle = ({ toggleTheme }) => {
 	return (
-		<div id='toggle-switch' onClick={toggleTheme}>
+		<div id='toggle-switch' onClick={toggleTheme} className='toggle-icon'>
 			mode
 		</div>
 		// <button id='toggle-switch' onClick={toggleTheme}>

@@ -80,9 +80,17 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.bgChosen};
     border-radius: 3px;
     font-size: 2.5rem;
+    cursor: pointer;
   }
   #hide-btn{
     pointer-events: none;
     opacity: 0;
+  }
+  .settings-icon{
+    cursor: pointer;
+    font-size: 2rem;
+  }
+  .sm-icon, .toggle-icon{
+    cursor: pointer;
   }
 `;

@@ -24,7 +24,7 @@ const Settings = ({ setPageTitle, theme, themeToggler }) => {
 							navigate('/');
 						}}
 					>
-						<MdOutlineClose size='25px' color='#1b2877' />
+						<MdOutlineClose className='close-btn-icon' />
 					</div>
 				</div>
 				<div className='settings-list-container'>
@@ -46,7 +46,7 @@ const Settings = ({ setPageTitle, theme, themeToggler }) => {
 						<li>
 							<p className='setting-name'>Community</p>
 							<div className='settings-action'>
-								<ImFacebook2 size='22px' />
+								<ImFacebook2 size='22px' className='sm-icon' />
 							</div>
 						</li>
 					</ul>

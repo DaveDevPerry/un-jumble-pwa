@@ -2,12 +2,16 @@
 import styled from 'styled-components';
 import { GiCheckMark, GiCrossMark } from 'react-icons/gi';
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { ConundrumContext } from '../../contexts/ConundrumContext';
 
 const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 	const { conundrums } = useContext(ConundrumContext);
+
+	useEffect(() => {
+		console.log(conundrums);
+	});
 	// NEEDS TO MAP FROM LAST 6 DAYS OF RESULTS
 	return conundrums.length ? (
 		<StyledWeeksResultsContainer>
@@ -23,7 +27,9 @@ const WeeksResultsTable = ({ currentWord, conundrumGameMode }) => {
 							})
 							// SORT BY DATE
 							.sort((a, b) => {
-								return b.date > a.date;
+								let aDate = new Date(a);
+								let bDate = new Date(b);
+								return bDate.date > aDate.date;
 							})
 							// return last 6
 							.slice(-6)

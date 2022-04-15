@@ -25,7 +25,7 @@ function Header({ pageTitle }) {
 					navigate('/settings');
 				}}
 			>
-				<MdOutlineSettings size='18px' />
+				<MdOutlineSettings className='settings-icon' />
 			</div>
 		</StyledHeader>
 	);
