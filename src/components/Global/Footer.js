@@ -33,10 +33,12 @@ function Footer({ theme, themeToggler, message, setMessage }) {
 	);
 }
 const StyledFooter = styled.footer`
-	background: ${({ theme }) => theme.bgChosen};
+	/* background: ${({ theme }) => theme.bgChosen}; */
+	background-color: ${({ theme }) => theme.bgContainer};
 	position: relative;
 	margin-top: 4rem;
-	border-top: 4px solid ${({ theme }) => theme.border};
+	/* border-top: 4px solid ${({ theme }) => theme.border}; */
+	/* border-top: 4px solid ${({ theme }) => theme.bgChosen}; */
 	/* #footer-speech-bubble {
 		color: red;
 	} */

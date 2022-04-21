@@ -44,7 +44,7 @@ function App() {
 	const [isNextDayCountdownActive, setIsNextDayCountdownActive] =
 		useState(true);
 	// HEADER
-	const [pageTitle, setPageTitle] = useState('select game');
+	const [pageTitle, setPageTitle] = useState('FUN-Jumble');
 	// FOOTER
 	const [message, setMessage] = useState('');
 	// CONUNDRUM

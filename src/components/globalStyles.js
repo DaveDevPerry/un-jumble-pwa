@@ -21,7 +21,8 @@ export const GlobalStyles = createGlobalStyle`
 	  user-select: none;
   }
   body {
-    background-color: ${({ theme }) => theme.bgChosen};
+    /* background-color: ${({ theme }) => theme.bgChosen}; */
+    background-color: ${({ theme }) => theme.bgContainer};
     color: ${({ theme }) => theme.syntax};
     transition: all 0.50s linear;
     font-family: 'Bebas Neue', cursive;
@@ -88,7 +89,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   .settings-icon{
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   .sm-icon, .toggle-icon{
     cursor: pointer;

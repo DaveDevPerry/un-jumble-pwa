@@ -11,7 +11,7 @@ const Home = ({
 	setPageTitle,
 }) => {
 	useEffect(() => {
-		setPageTitle('un-jumble');
+		setPageTitle('FUNjumble');
 	}, [setPageTitle]);
 
 	return (

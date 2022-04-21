@@ -9,7 +9,7 @@ const Settings = ({ setPageTitle, theme, themeToggler }) => {
 	let navigate = useNavigate();
 
 	useEffect(() => {
-		setPageTitle('un-jumble');
+		setPageTitle('FUNjumble');
 	}, [setPageTitle]);
 
 	return (

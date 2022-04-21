@@ -208,9 +208,9 @@ const StyledPageLoader = styled.div`
 	/* perspective: 500px; */
 	transition: all 800ms linear;
 	transform: rotateY(0deg);
-	border-left: 6px solid ${({ theme }) => theme.bgChosen};
+	/* border-left: 6px solid ${({ theme }) => theme.bgChosen};
 	border-right: 6px solid ${({ theme }) => theme.bgChosen};
-	border-top: 6px solid ${({ theme }) => theme.bgChosen};
+	border-top: 6px solid ${({ theme }) => theme.bgChosen}; */
 
 	&.rotate {
 		transform: rotateY(-90deg);

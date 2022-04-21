@@ -33,14 +33,15 @@ function Header({ pageTitle }) {
 const StyledHeader = styled.header`
 	margin: 0rem 0rem 1rem 0rem;
 	/* background-color: ${({ theme }) => theme.bg}; */
-	background-color: ${({ theme }) => theme.bgChosen};
+	/* background-color: ${({ theme }) => theme.bgChosen}; */
+	background-color: ${({ theme }) => theme.bgContainer};
 	transition: all 0.5s linear;
 	padding: 0.2rem 1rem;
 	/* border-bottom: 4px solid ${({ theme }) => theme.border}; */
 	/* position: relative; */
 	/* height: 35px; */
 	/* border-top: 3px solid ${({ theme }) => theme.bgTile}; */
-	border-bottom: 3px solid ${({ theme }) => theme.border};
+	/* border-bottom: 3px solid ${({ theme }) => theme.border}; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -49,9 +50,11 @@ const StyledHeader = styled.header`
 		place-content: center;
 	}
 	h2 {
-		letter-spacing: 2px;
+		/* letter-spacing: 2px; */
 		font-size: 2rem;
 		font-weight: lighter;
+		font-family: 'Montserrat', sans-serif;
+		text-transform: capitalize;
 	}
 	/* text-align: center;
 	letter-spacing: 2px;
