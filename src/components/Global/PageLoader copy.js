@@ -79,10 +79,6 @@ const PageLoader = () => {
 		}, 100 * i);
 		// });
 	};
-
-	// const popLetter = () => {
-	// 	document.querySelectorAll('[data-pop]').classList.add('pop');
-	// };
 	const rotateContainer = () => {
 		// playCloseLoader();
 		document.querySelector('.load-screen').classList.add('rotate');
@@ -97,7 +93,7 @@ const PageLoader = () => {
 		// loaderLetterTiles.forEach((tile) => {
 		// 	tile.classList.add('visible');
 		// });
-		for (let i = 1; i <= 9; i++) {
+		for (let i = 1; i <= 8; i++) {
 			// setTimeout(() => {
 			// 	document.querySelector(`[data-letter='${i}']`).classList.add('visible');
 			// }, 1000);
@@ -105,16 +101,12 @@ const PageLoader = () => {
 			// createConundrumCurrentDayData(i);
 		}
 		setTimeout(() => {
-			document.querySelector('.loader-text').classList.add('display');
-		}, 2000);
-		setTimeout(() => {
-			for (let i = 1; i <= 6; i++) {
+			for (let i = 1; i <= 8; i++) {
 				jumpLetter(i);
 			}
 		}, 3200);
 		setTimeout(() => {
 			// playCloseLoader();
-			// popLetter();
 			rotateContainer();
 		}, 4200);
 
@@ -142,69 +134,40 @@ const PageLoader = () => {
 	return (
 		<>
 			<StyledPageLoader ref={pageRef} className='load-screen'>
-				{/* <div className='loader-text'>
-					Un-jumble words to win in three different game modes
-				</div> */}
 				<div className='loader-grid'>
-					<div
-						className='loader-letters span-two'
-						data-order='9'
-						// data-jump='1'
-						data-pop
-					>
-						<div className='loader-letter-back loader-letter'>e</div>
-						<div className='loader-letter-front loader-letter'>F</div>
-					</div>
-					<div
-						className='loader-letters span-two'
-						data-order='4'
-						// data-jump='1'
-						data-pop
-					>
+					<div className='loader-letters' data-order='8' data-jump='1'>
 						<div className='loader-letter-back loader-letter'>e</div>
 						<div className='loader-letter-front loader-letter'>U</div>
 					</div>
-					<div
-						className='loader-letters span-two'
-						data-order='2'
-						// data-jump='2'
-						data-pop
-					>
+					<div className='loader-letters' data-order='2' data-jump='2'>
 						<div className='loader-letter-back loader-letter'>n</div>
 						<div className='loader-letter-front loader-letter'>n</div>
 					</div>
-					<div className='loader-letters' data-order='8' data-jump='1'>
+					<div className='loader-letters' data-order='4' data-jump='3'>
 						<div className='loader-letter-back loader-letter'>u</div>
 						<div className='loader-letter-front loader-letter'>j</div>
 					</div>
-					<div className='loader-letters' data-order='7' data-jump='2'>
+					<div className='loader-letters' data-order='6' data-jump='4'>
 						<div className='loader-letter-back loader-letter'>b</div>
 						<div className='loader-letter-front loader-letter'>U</div>
 					</div>
-					<div className='loader-letters' data-order='5' data-jump='3'>
+					<div className='loader-letters' data-order='5' data-jump='5'>
 						<div className='loader-letter-back loader-letter'>m</div>
 						<div className='loader-letter-front loader-letter'>m</div>
 					</div>
-					<div className='loader-letters' data-order='6' data-jump='4'>
+					<div className='loader-letters' data-order='7' data-jump='6'>
 						<div className='loader-letter-back loader-letter'>l</div>
 						<div className='loader-letter-front loader-letter'>b</div>
 					</div>
-					<div className='loader-letters' data-order='1' data-jump='5'>
+					<div className='loader-letters' data-order='1' data-jump='7'>
 						<div className='loader-letter-back loader-letter'>u</div>
 						<div className='loader-letter-front loader-letter'>l</div>
 					</div>
-					<div className='loader-letters' data-order='3' data-jump='6'>
+					<div className='loader-letters' data-order='3' data-jump='8'>
 						<div className='loader-letter-back loader-letter'>j</div>
 						<div className='loader-letter-front loader-letter'>e</div>
 					</div>
 				</div>
-				<div className='loader-text'>
-					Un-jumble words to win in three different game modes
-				</div>
-				{/* <div className='loader-btn-wrapper'> */}
-				{/* <div className='load-btn'>PLAY</div> */}
-				{/* &nbsp; */}
-				{/* </div> */}
 
 				{/* <button
 					onClick={() => {
@@ -252,32 +215,14 @@ const StyledPageLoader = styled.div`
 	&.rotate {
 		transform: rotateY(-90deg);
 	}
-	.loader-text {
-		font-size: 2.5rem;
-		text-align: center;
-		padding: 1rem;
-		/* flex: 1; */
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		opacity: 0;
-		transition: opacity 500ms linear;
-	}
-	.loader-text.display {
-		opacity: 1;
-	}
-	.loader-btn-wrapper {
-		flex: 1;
-	}
 	.loader-grid {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: repeat(2, 4rem);
+		grid-template-columns: repeat(8, 1fr);
+		grid-template-rows: repeat(1, 4rem);
 		/* gap: 1rem; */
 		perspective: 500px;
-		column-gap: 0.5rem;
-		row-gap: 1rem;
+		gap: 0.3rem;
 		padding: 1rem;
 		.loader-letters {
 			position: relative;
@@ -301,9 +246,6 @@ const StyledPageLoader = styled.div`
 		}
 		.loader-letters.jump {
 			animation: jump 100ms ease-out;
-		}
-		.loader-letters.pop {
-			animation: pop 100ms ease-out;
 		}
 		/* [data-letter='1'].loader-letters.visible .loader-letter-back {
 			transform: rotateY(-180deg);
@@ -335,9 +277,6 @@ const StyledPageLoader = styled.div`
 	&.close {
 		display: none;
 	}
-	.span-two {
-		grid-column: span 2;
-	}
 
 	@keyframes jump {
 		0%,
@@ -354,15 +293,6 @@ const StyledPageLoader = styled.div`
 		50% {
 			transform: scale(1.2);
 		} */
-	}
-	@keyframes pop {
-		0%,
-		100% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.1);
-		}
 	}
 `;
 
