@@ -106,7 +106,7 @@ const PageLoader = () => {
 		}
 		setTimeout(() => {
 			document.querySelector('.loader-text').classList.add('display');
-		}, 2000);
+		}, 1000);
 		setTimeout(() => {
 			for (let i = 1; i <= 6; i++) {
 				jumpLetter(i);
@@ -116,7 +116,7 @@ const PageLoader = () => {
 			// playCloseLoader();
 			// popLetter();
 			rotateContainer();
-		}, 4200);
+		}, 4800);
 
 		// gsap.to(
 		// 	pageRef.current,
@@ -243,7 +243,7 @@ const StyledPageLoader = styled.div`
 	justify-content: center;
 	row-gap: 2rem;
 	/* perspective: 500px; */
-	transition: all 800ms linear;
+	transition: all 200ms linear;
 	transform: rotateY(0deg);
 	/* border-left: 6px solid ${({ theme }) => theme.bgChosen};
 	border-right: 6px solid ${({ theme }) => theme.bgChosen};
