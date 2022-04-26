@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+![Screenshot](/public/images/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Link: [FUNjumble](https://bit.ly/FUNjumble)
 
-## Available Scripts
+# FUNjumble
 
-In the project directory, you can run:
+<!-- A little info about your project and/ or overview that explains **what** the project is about. -->
 
-### `npm start`
+A fun word game with three different game modes. Can you beat them all?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Motivation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+After seeing the quick success of Wordle, I wanted to create a simple game and try and release on the play store or something similar. I then converted it to a PWA to learn something new and post on the PWA store. Although not quite the success I was hoping for , at least it is a game that my family and I enjoy playing.
 
-### `npm test`
+## Code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This was my first real project using React with hooks. React-router V6 and I also started using createContext and useReducer.
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot](/public/images/funjumble.webp)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- ## Tech/framework used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Ex. -
 
-### `npm run eject`
+<b>Built with</b>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [Electron](https://electron.atom.io) -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- ## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+What makes your project stand out? -->
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Future Features
 
-## Learn More
+- A delete letter function
+- MERN stack
+- User authentication
+- User Ranking System
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- ## Code Example
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise. -->
 
-### Code Splitting
+<!-- ## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Provide step by step series of examples and explanations about how to get a development env running. -->
 
-### Analyzing the Bundle Size
+<!-- ## API Reference
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
 
-### Making a Progressive Web App
+## Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Describe and show how to run the tests with code examples. -->
 
-### Advanced Configuration
+<!-- ## How to use? -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project. -->
+<!--
+1.Player data is added in users.json
+2.Every draw is added in draws.json
 
-### Deployment
+```javascript
+	{
+			"date": "19/02/2022",
+			"day": "Saturday",
+			"numbers": [33,34,44,50,56,57],
+			"bonusBall": 26,
+			"winner": false
+		}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3.Countdown timer is reset in var nextDraw located in countdownTimer function
 
-### `npm run build` fails to minify
+```javascript
+const nextDraw = 'Feb 23, 2022 19:45:00';
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4.Winner is added in draw object
+
+```javascript
+	{
+			"date": "19/02/2022",
+			"day": "Saturday",
+			"numbers": [33,34,44,50,56,57],
+			"bonusBall": 26,
+			"winner": "WINNERS NAME"
+		}
+```
+
+5.To begin a new game, add start date in startDateInput.mjs
+
+```javascript
+const gameStartDates = [
+	'08/08/2020',
+	'30/09/2020',
+	'26/12/2020',
+	'10/02/2021',
+	'24/03/2021',
+	'12/05/2021',
+	'10/07/2021',
+	'11/08/2021',
+	'09/10/2021',
+	'13/11/2021',
+	'18/12/2021',
+	'02/02/2022',
+];
+``` -->
+
+<!-- ## Contribute
+
+Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus. -->
+
+<!-- ## Credits
+
+Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
+
+#### Anything else that seems useful -->
+
+## Contact
+
+If you want to contact me you can reach me at [daveperry.tech](https://daveperry.tech)
+
+<!-- [loopy lotto repo](https://github.com/your_username/repo_name) -->
+
+## License
+
+<!-- A short snippet describing the license (MIT, Apache etc) -->
+
+Distributed under the MIT License. See [LICENCE.txt](LICENSE.txt) for more information.
+
+<!-- MIT © [Dave Perry]() -->
